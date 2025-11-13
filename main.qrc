@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>icon_redo.png</file>
+        <file>icon_save.png</file>
+        <file>icon_undo.png</file>
+        <file>img_Circle.png</file>
+        <file>img_FlowRect.png</file>
+        <file>img_HorLine.png</file>
+        <file>img_Image.png</file>
+        <file>img_Rect.png</file>
+        <file>img_TextEdit.png</file>
+        <file>img_Triangle.png</file>
+        <file>img_VerLine.png</file>
+        <file>img_占位符.png</file>
+        <file>icon_Image.png</file>
+        <file>image_单元格拆分.png</file>
+        <file>image_单元格合并.png</file>
+        <file>image_添加新列.png</file>
+        <file>image_添加新行.png</file>
+        <file>image_删除列.png</file>
+        <file>image_删除行.png</file>
+        <file>image_表格属性.png</file>
+        <file>image_设置表头.png</file>
+        <file>main_icon.png</file>
+        <file>嗖谷熊_big.png</file>
+        <file>嗖谷熊_icon.png</file>
+        <file>icon_doc.png</file>
+        <file>icon_user.png</file>
+        <file>icon_chajian.png</file>
+        <file>icon_回车.png</file>
+        <file>icon_回车.svg</file>
+        <file>icon_rotate.png</file>
+        <file>icon_fontEdit.png</file>
+    </qresource>
+    <qresource prefix="/shader">
+        <file alias="stroke.frag">Shader/stroke.frag.qsb</file>
+        <file alias="folding.vert">Shader/folding.vert.qsb</file>
+        <file alias="folding.frag">Shader/folding.frag.qsb</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>Expandable_LineText.qml</file>
+        <file>GlowImageButton.qml</file>
+        <file>TText.qml</file>
+    </qresource>
+</RCC>
