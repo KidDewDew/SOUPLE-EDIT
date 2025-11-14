@@ -18,6 +18,7 @@ public:
         qmlItem = 0;
     }
     virtual QVariant qmlGetData(int dataName) override;
+    virtual void qt_paint(QPainter& painter,Page* page) override;
 public:
     TableInfo *tableinfo = 0;
 private:

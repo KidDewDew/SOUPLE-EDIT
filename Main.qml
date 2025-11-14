@@ -1229,6 +1229,27 @@ Window {
                                     else SoupleManager.unfreeze_frame()
                                 }
                             }
+                            Button {
+                                text: "测试-1"
+                                onClicked: {
+                                    Helper.doTest_1(parseInt(tf_test.text))
+                                    d_test.open()
+                                    img.source = ""
+                                    img.source = "image://provider/test_page"
+                                }
+                                Dialog {
+                                    id: d_test
+                                    Image {
+                                        id: img
+                                        width:400
+                                        height: sourceSize.height*width/sourceSize.width
+                                    }
+                                }
+                            }
+                            TextField {
+                                id: tf_test
+                                placeholderText: "测试参数"
+                            }
                         }
 
                     } //二级工具栏 END

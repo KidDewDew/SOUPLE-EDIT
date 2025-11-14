@@ -1,5 +1,6 @@
 #include "free_tableunit.h"
 #include "tableline.h"
+#include <QPainterPath>
 
 Free_TableUnit::Free_TableUnit() {}
 
@@ -27,3 +28,14 @@ QVariant Free_TableUnit::qmlGetData(int dataName) {
     return Free_Rich::qmlGetData(dataName);
 }
 
+void Free_TableUnit::qt_paint(QPainter& painter,Page* page) {
+    if(!tableinfo) return;
+    QPainterPath path;
+    QPen pen;
+    pen.setColor("black");
+    pen.setWidthF(Helper::point2pixel(0.6));
+    path.moveTo(x,y-page->top_y+height);
+    path.lineTo(x+width,y-page->top_y+height);
+    path.lineTo(x+width,y-page->top_y);
+    painter.strokePath(path,pen);
+}

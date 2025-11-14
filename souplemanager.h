@@ -49,6 +49,12 @@ class SoupleManager : public QObject
     Q_PROPERTY(float documentWidth READ documentWidth NOTIFY documentWidthChanged FINAL)
     Q_PROPERTY(float documentHeight READ documentHeight NOTIFY documentHeightChanged FINAL)
     Q_PROPERTY(int pageCount READ getPageCount NOTIFY pageCountChanged FINAL)
+    struct _PAGE_INF {
+        std::vector<Page*> pages; //页面列表，按顺序排列
+        std::vector<float> sum_heights; //页面高度前缀和,[0]=page[.., [1] = pages[0].height, ...，用于快速定位obj所在页面
+        std::vector<float> sum_margins;
+        //页面上边距+下边距的前缀和,[0] = page[0].topMargin, [1] = [0] + page[0].bottom_margin + page[1].top_margin
+    };
 public:
     Q_INVOKABLE float documentHeight() const {
         return edit_height;
@@ -326,10 +332,8 @@ public:
     // @param document_id: 文档的id
     // @param page_index: 页码
     // @param: into_image_id 渲染好的图像通过image://provider/${into_image_id}在qml使用
-    // @param 回调函数 参数(result:是否成功，tip:提示字符串)
-    Q_INVOKABLE static void request_render_page(int document_id,int page_index,
-                                                const QString& into_image_id,
-                                                QJSValue callback);
+    Q_INVOKABLE static bool request_render_page(int document_id,int page_index,
+                                                const QString& into_image_id);
 
     static Page* getPageByIndex(int page_index) { //从0算起
         if(page_index >= page_inf.pages.size()) return 0;
@@ -492,6 +496,16 @@ public:
         return hline->getName();
     }
 
+    static std::list<Obj*>& getDocumentObjs(int s) {
+        if(s == currentDocumentID) return all_objs;
+        return all_documents[s]->all_objs;
+    }
+
+    static _PAGE_INF& getDocumentPages(int s) {
+        if(s == currentDocumentID) return page_inf;
+        return all_documents[s]->page_inf;
+    }
+
     static void saveCurrentDocument() {
         if(currentDocumentID == -1)
             return;
@@ -556,12 +570,6 @@ private:
     static inline std::list<Obj*>::iterator scan_iter_visble = all_visible_objs.begin(); //扫描可见id
     static inline float edit_width; //编辑区总宽度(=最宽的页面的宽度)
     static inline float edit_height; //编辑区总高度(=所有页面高度和)
-    struct _PAGE_INF {
-        std::vector<Page*> pages; //页面列表，按顺序排列
-        std::vector<float> sum_heights; //页面高度前缀和,[0]=page[.., [1] = pages[0].height, ...，用于快速定位obj所在页面
-        std::vector<float> sum_margins;
-        //页面上边距+下边距的前缀和,[0] = page[0].topMargin, [1] = [0] + page[0].bottom_margin + page[1].top_margin
-    };
     //y_sort_objs[i]存储着所有y属于[i*500,i*500+500)间的obj
     //static inline std::vector<QSet<Obj*>> y_sort_objs{10000,QSet<Obj*>{}}; //最多5000页
     static inline _PAGE_INF page_inf;

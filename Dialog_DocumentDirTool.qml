@@ -7,7 +7,7 @@ ApplicationWindow {
     id: view
     color: theme.bg
     width:500
-    height:315
+    height:345
     title: "PDF目录实用工具 v1.0"
     Material.foreground: theme.fg
     Material.background: theme.bg

@@ -391,6 +391,9 @@ public:
     //Q_INVOKABLE static QString getFileNameFromPath()
 
 
+    //测试接口，在qml中手动触发。可以测试任何功能。
+    Q_INVOKABLE static void doTest_1(QVariant arg);
+
     // removeAll: 删除一个随机访问容器的所有某个值 O(n)
     template<typename T,typename V>
         requires requires(T t,V v){

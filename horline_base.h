@@ -47,6 +47,14 @@ public:
         ci_obj = ci2 - ci;
     }
 
+    virtual float getHScale() const noexcept {
+        return 1.0f;
+    }
+
+    virtual float getObjX_atHScale(AnchorObj* obj) const noexcept {
+        return obj->x;
+    }
+
     virtual HorLine_Base *getNextLine() const noexcept {
         return 0;
     }

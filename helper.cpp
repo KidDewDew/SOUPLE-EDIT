@@ -8,6 +8,7 @@
 #include "PdfFontExtractor.h"
 #include "safe_pointer.h"
 #include <QtConcurrent/QtConcurrent>
+#include "souple_pdfsaver.h"
 
 Helper* Helper::helper = new Helper(nullptr);
 
@@ -168,3 +169,8 @@ float Helper::levenshtein(const QString& str1,const QString& str2) noexcept
     return similarity;
 }
 
+void Helper::doTest_1(QVariant arg)
+{
+    //2025-11-13 测试“渲染pdf页面为provider图像的功能”
+    SoupleManager::request_render_page(arg.toInt(),0,"test_page");
+}

@@ -79,6 +79,7 @@ public:
     virtual QString __dstr() const noexcept override {
         return QString("TableLine id=%1 name=%2").arg(id).arg(name);
     }
+    virtual void qt_paint(QPainter& painter,Page* page) override;
 private:
     //float topMargin = 0; //topMargin仅仅对第一行的TableLine有意义。
     int16_t row; //行索引 index from 0

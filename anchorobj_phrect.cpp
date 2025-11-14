@@ -12,8 +12,11 @@ QQuickItem* AnchorObj_PHRect::generateQmlItem()
     //return Helper::invokeQmlFunction<QQuickItem*>("generateObj","PH_Rect");
 }
 
-float AnchorObj_PHRect::showHScale(float hscale,float addx)
+float AnchorObj_PHRect::showHScale(float hscale,float addx,bool justQueryAddWidth)
 {
+    if(justQueryAddWidth) {
+        return width * (hscale - 1);
+    }
     if(Helper::isQmlItemValid(qmlItem)) {
         qmlItem->setX(x+addx);
         float aw = width * (hscale - 1);

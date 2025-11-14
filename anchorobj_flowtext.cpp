@@ -294,15 +294,19 @@ void AnchorObj_FlowText::getCursorFromLeft(int RN)
     qmlItem->setProperty("cursorPosition",0); //设置光标
 }
 
-float AnchorObj_FlowText::showHScale(float hscale,float addX)
+float AnchorObj_FlowText::showHScale(float hscale,float addX,bool justQueryAddWidth)
 {
-    if( ! Helper::isQmlItemValid(qmlItem) || text.length() == 0)
-        return 0.0;
-    qmlItem->setX(x+addX);
-    float addW = width * (hscale - 1.0);
-    QMetaObject::invokeMethod(qmlItem,"setLetterSpacing",QVariant(addW / text.length()));
-    qmlItem->setWidth(width * hscale);
-    return addW;
+    if(justQueryAddWidth) {
+        return width * (hscale - 1.0);
+    } else {
+        if( ! Helper::isQmlItemValid(qmlItem) || text.length() == 0)
+            return 0.0;
+        qmlItem->setX(x+addX);
+        float addW = width * (hscale - 1.0);
+        QMetaObject::invokeMethod(qmlItem,"setLetterSpacing",QVariant(addW / text.length()));
+        qmlItem->setWidth(width * hscale);
+        return addW;
+    }
 }
 
 int AnchorObj_FlowText::dealCommandFromQmlItem(int command,const QVariant& arg)
@@ -627,11 +631,23 @@ void AnchorObj_FlowText::dealLayout()
 
 
 void AnchorObj_FlowText::qt_paint(QPainter& painter,Page* page) {
-    painter.setFont(font);
+    if(text.length() == 0){
+        return;
+    }
     QFontMetricsF fm(font);
+    auto hline = this->hline->be<HorLine_Base*>();
+    float draw_x = x,hscale = 1.0f;
+    if(hline) {
+        // 使用应用了hscale的x坐标
+        draw_x = hline->getObjX_atHScale(this);
+        hscale = hline->getHScale();
+        qDebug() << "qt_paint(" << __dstr() << ": hscale=" << hscale;
+    }
+    font.setLetterSpacing(QFont::AbsoluteSpacing,
+                          (hscale-1.0f)*width/text.length());
     if(isStroke) { //需要描边
         QPainterPath path;
-        path.addText(QPointF{x,y - page->top_y+fm.ascent()},font,text);
+        path.addText(QPointF{draw_x,y - page->top_y+fm.ascent()},font,text);
         QPen pen(stroke_color,strokeWidth);
         painter.setPen(stroke_color);
         painter.setBrush(fill_color);
@@ -642,9 +658,11 @@ void AnchorObj_FlowText::qt_paint(QPainter& painter,Page* page) {
         //     f2.setBold(true);
         //     painter.setFont(f2);
         // }
+        painter.setFont(font);
         painter.setPen(stroke_color);
-        painter.drawText(QPointF{x,y - page->top_y+fm.ascent()},text);
+        painter.drawText(QPointF{draw_x,y - page->top_y+fm.ascent()},text);
     }
+    font.setLetterSpacing(QFont::AbsoluteSpacing,0);
 }
 
 void AnchorObj_FlowText::writeToPDFPage(FPDF_DOCUMENT document,FPDF_PAGE pdf_page, const Page* page)

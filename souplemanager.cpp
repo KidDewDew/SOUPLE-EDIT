@@ -27,6 +27,7 @@
 using namespace std;
 
 extern QQuickWindow* qmlWindow;
+extern MyImageProvider *image_provider;
 
 SoupleManager::SoupleManager() {}
 
@@ -621,27 +622,38 @@ void SoupleManager::tryCreateDecorationFrame() {
     ph_left->instance = instance;
 }
 
-void SoupleManager::request_render_page(int document_id,int page_index,
-                                            const QString& into_image_id,
-                                            QJSValue callback)
+bool SoupleManager::request_render_page(int document_id,int page_index,
+                                            const QString& into_image_id)
 {
-    if(all_documents.contains(document_id) == false) {
-        emit Helper::helper->errorMsg("错误","渲染的文档ID无效");
-        return;
+    if(document_id != currentDocumentID
+            && all_documents.contains(document_id) == false) {
+        QString ds;
+        for(int s : all_documents.keys())
+            ds.append(QString::number(s)+' ');
+        emit Helper::helper->errorMsg("错误",
+            QString("渲染的文档ID=%1无效,\n文档列表为:%2")
+            .arg(document_id).arg(ds));
+        return false;
     }
-    auto& doc = all_documents[document_id];
-    if(doc->page_inf.pages.size() <= page_index || page_index < 0) {
-        emit Helper::helper->errorMsg("错误","渲染的页面无效。");
-        return;
+    //auto& doc = all_documents[document_id];
+    auto &d_page_inf = getDocumentPages(document_id);
+    auto &d_all_objs = getDocumentObjs(document_id);
+    if(d_page_inf.pages.size() <= page_index || page_index < 0) {
+        emit Helper::helper->errorMsg("错误",QString("渲染的页面(索引=%1)无效。").arg(page_index));
+        return false;
     }
     std::vector<Obj*> page_objs;
-    Page* page = doc->page_inf.pages[page_index];
-    for(auto obj : doc->all_objs) {
+    Page* page = d_page_inf.pages[page_index];
+    for(auto obj : d_all_objs) {
         // 找出所有位于该页的obj
         if(obj->y+obj->height >= page->top_y && obj->y <= page->top_y+page->height) {
             page_objs.push_back(obj);
         }
     }
-    MyImageProvider::
-    Souple_PdfSaver::renederPage()
+    QImage image(page->width,page->height,QImage::Format_BGR888);
+    image.fill(QColor("white"));
+    QPainter painter(&image);
+    Souple_PdfSaver::renederPage(&painter,page,page_objs);
+    image_provider->addImage(into_image_id,image);
+    return true;
 }

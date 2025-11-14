@@ -83,7 +83,8 @@ public:
     }
     virtual float getRightX() const { return x + width; }
 
-    virtual float showHScale(float hscale,float addX) { return 0.0; }
+    // 按HScale缩放
+    virtual float showHScale(float hscale,float addX,bool justQueryAddWidth) { return 0.0; }
 
     // 该对象是否还可以继续切分
     virtual bool canSplit() const noexcept {

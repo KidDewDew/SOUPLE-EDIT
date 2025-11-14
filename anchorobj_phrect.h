@@ -35,7 +35,7 @@ public:
         return gi;
     }
 
-    virtual float showHScale(float hscale,float addx) override;
+    virtual float showHScale(float hscale,float addx,bool justQueryAddWidth) override;
 
     virtual void discard_qmlItem() override {
         uiPool_PHRect::returnItem(qmlItem);

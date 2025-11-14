@@ -106,6 +106,25 @@ public:
         return p;
     }
 
+    virtual float getHScale() const noexcept override {
+        return horizontal_scale;
+    }
+
+    virtual float getObjX_atHScale(AnchorObj* aim_obj) const noexcept override {
+        auto obj = leftObj;
+        float addX = 0;
+        while(obj) {
+            if(obj == aim_obj) { //发现aim_obj了
+                return aim_obj->x+addX;
+            }
+            if(obj->objInfo().anchorInfo.impact_hscale) {
+                addX += obj->showHScale(this->horizontal_scale,addX,true);
+            }
+            obj = obj->rightObj;
+        }
+        return aim_obj->x;
+    }
+
     virtual float getTopMargin() const override { return topMargin; }
     virtual void setNextLine(HorLine_Base* l) override {
         auto al = l->as<AnchorObj_HLine*>();

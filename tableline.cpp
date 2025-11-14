@@ -1,6 +1,7 @@
 #include "tableline.h"
 #include "souplemanager.h"
 #include "TableFactory.h"
+#include <QPainterPath>
 
 TableLine::TableLine() {
     while(hash_hline.contains("T"+QString::number(s_tline_count))) {
@@ -201,4 +202,31 @@ void TableLine::dealLayout()
         qmlItem->setProperty("tableActive",table_info->tableActive);
     }
 
+}
+
+void TableLine::qt_paint(QPainter& painter,Page* page)
+{
+    QPainterPath path;
+    QPen pen(QColor("black"),Helper::point2pixel(0.6));
+    float begin_x;
+    switch( table_info->alignMode ) {
+    case Helper::AlignLeft:
+        begin_x = x;
+        break;
+    case Helper::AlignHCenter:
+        begin_x = x + 0.5 * ( width - table_info->width );
+        break;
+    case Helper::AlignRight:
+        begin_x = x + width - table_info->width;
+        break;
+    }
+    auto ll = (HorLine_Base*)hline;
+    if(row == 0 || (ll && ll->getPCPos() < this->getPCPos()))
+    { //第1行需要绘制顶边或者处于栏顶s
+        path.moveTo(begin_x,y-page->top_y-table_info->rowHeights[row]);
+        path.lineTo(begin_x+table_info->width,y-page->top_y-table_info->rowHeights[row]);
+    }
+    path.moveTo(begin_x,y-page->top_y);
+    path.lineTo(begin_x,y-page->top_y-table_info->rowHeights[row]);
+    painter.strokePath(path,pen);
 }

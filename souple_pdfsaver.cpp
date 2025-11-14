@@ -152,3 +152,14 @@ void Souple_PdfSaver::imp_saveAs(const QString& pdfFileName)
 
     // FPDF_CloseDocument(pdf);
 }
+
+void Souple_PdfSaver::renederPage(QPainter* painter,Page* page,const std::vector<Obj*>& __page_objs)
+{
+    std::vector<Obj*> page_objs = __page_objs;
+    ranges::sort(page_objs,[](Obj*a,Obj*b){
+        return a->z > b->z;
+    });
+    for(auto obj : page_objs) {
+        obj->qt_paint(*painter,page);
+    }
+}

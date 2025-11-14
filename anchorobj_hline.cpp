@@ -402,7 +402,7 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
             obj = leftObj;
             while(obj) {
                 if(obj->objInfo().anchorInfo.impact_hscale) {
-                   obj->showHScale(1.0,0);
+                   obj->showHScale(1.0,0,true);
                 } else {
                     if(Helper::isQmlItemValid(obj->qmlItem)) {
                         obj->qmlItem->setX(obj->x);
@@ -421,7 +421,7 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
             float addX = 0;
             while(obj) {
                 if(obj->objInfo().anchorInfo.impact_hscale) {
-                    addX += obj->showHScale(this->horizontal_scale,addX);
+                    addX += obj->showHScale(this->horizontal_scale,addX,false);
                 } else {
                     if(Helper::isQmlItemValid(obj->qmlItem)) {
                         obj->qmlItem->setX(obj->qmlItem->x() + addX);

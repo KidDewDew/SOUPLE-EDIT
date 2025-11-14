@@ -25,7 +25,7 @@ public:
     virtual bool canSplit() const noexcept override {
         return text.length() > 1;
     }
-    virtual float showHScale(float hscale,float addx) override;
+    virtual float showHScale(float hscale,float addx,bool justQueryAddWidth) override;
     virtual void getCursorFromRight(int RN = 0) override;
     virtual void getCursorFromLeft(int RN = 0) override;
     virtual bool tryMergeRight() override; //尝试合并右边
