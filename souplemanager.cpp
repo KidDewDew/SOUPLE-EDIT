@@ -591,15 +591,15 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
             if(focusObject->isWindowType()) { //windowType表明它没有具体焦点
                 Qt::KeyboardModifiers km = ke->modifiers();
                 //if(selected_qmlItem_id
+                return true; //国旅
             }
         } else {
             Obj *who = MagicalCursor::at_who();
             if(QML_VALID(who) && who->qmlItem->hasFocus())
             { //检查它到底有没有焦点
-
+                return true;
             }
         }
-        return true;
         break;
     }
     default: return false;
