@@ -321,6 +321,10 @@ Window {
         })
     }
 
+    // function getSoupleEdit() {
+    //     return soupleEdit;
+    // }
+
     Dialog {
         id: dialog_loading
         anchors.centerIn: Overlay.overlay
@@ -367,6 +371,9 @@ Window {
             dialog_loading.close()
         }
         function onBeginSelection() { //开始选择
+            if(soupleEdit.selectedObj) {
+
+            }
             setPropertyPane(cp_selection_pane)
         }
         function onErrorMsg(title,msg) {
@@ -971,10 +978,10 @@ Window {
                                 text: "文本"
                                 onClicked: soupleEdit.tryInsertAnchorObj("FlowText")
                             }
-                            AddToolButton {
-                                text: "换行"
-                                onClicked: soupleEdit.tryInsertAnchorObj("PH_Right")
-                            }
+                            // AddToolButton {
+                            //     text: "换行"
+                            //     onClicked: soupleEdit.tryInsertAnchorObj("PH_Right")
+                            // }
                             AddToolButton {
                                 text: "段落"
                                 onClicked: soupleEdit.tryInsertAnchorObj("PH_Left")
@@ -1015,6 +1022,18 @@ Window {
                             AddToolButton {
                                 text: "Latex公式"
                                 onClicked: soupleEdit.tryInsertAnchorObj("Latex")
+                            }
+                            AddToolButton {
+                                text: "更多.."
+                                enableList: true
+                                listText: ["换行","弹簧","导航符"]
+                                onSelected: {
+                                    switch(index) {
+                                      case 0: soupleEdit.tryInsertAnchorObj("PH_Right"); break
+                                      case 1: soupleEdit.tryInsertAnchorObj("Spring"); break
+                                      case 2: soupleEdit.tryInsertAnchorObj("Nav"); break
+                                    }
+                                }
                             }
                             Text {
                                 text: "Free"; font.pixelSize: 11

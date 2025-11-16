@@ -36,6 +36,8 @@ public:
     //     return _global_info;
     // }
 
+    void doPHLeft() noexcept;
+
     virtual int dealCommandFromQmlItem(int command,const QVariant& arg) override;
 
     virtual const Obj_Global_Info& objInfo() const noexcept override {

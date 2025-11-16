@@ -31,6 +31,7 @@
         <file>icon_回车.svg</file>
         <file>icon_rotate.png</file>
         <file>icon_fontEdit.png</file>
+        <file>nav_down.svg</file>
     </qresource>
     <qresource prefix="/shader">
         <file alias="stroke.frag">Shader/stroke.frag.qsb</file>

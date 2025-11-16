@@ -23,11 +23,16 @@
 #include "frame_ofhlines.h"
 #include "souple_pdfsaver.h"
 #include "myimageprovider.h"
+#include "navline.h"
+#include "anchorobj_spring.h"
+#include "magicalcursor.h"
+#include <QGuiApplication>
 
 using namespace std;
 
 extern QQuickWindow* qmlWindow;
 extern MyImageProvider *image_provider;
+extern QGuiApplication *global_app;
 
 SoupleManager::SoupleManager() {}
 
@@ -56,8 +61,8 @@ void SoupleManager::imp_updateUI()  //更新ui
     // 计算预可见高度(in 像素)
     float pre_visible_height = Helper::cm2pixel(PRE_VISIBLE_RANGE_cm);
 
-    int selected_data_id = Helper::invokeQmlFunction<int>("getSelectedID"); //前端被选中的对象的data_id
-
+    //int selected_data_id = Helper::invokeQmlFunction<int>("getSelectedID"); //前端被选中的对象的data_id
+    selected_qmlItem_id = Helper::invokeQmlFunction<int>("getSelectedID");
     bool begin_deal_visible_ui = ! last_visible_dealui_obj;
 
     int n_deal = 0, n_deal_2 = 0; //更新操作计数
@@ -133,7 +138,7 @@ void SoupleManager::imp_updateUI()  //更新ui
                 it = all_visible_objs.erase(it);
         }  else if(( obj->y + obj->height + 200 < view_top
                              || obj->y - 200 > view_bottom )
-                   && obj->id != selected_data_id //被选中的ui对象有“免死金牌”
+                   && obj->id != selected_qmlItem_id //被选中的ui对象有“免死金牌”
                    ) { //不可见
             if(Helper::isQmlItemValid(obj->qmlItem)) {
                 obj->discard_qmlItem(); //移除qmlItem
@@ -305,6 +310,8 @@ void SoupleManager::imp_updateUI()  //更新ui
         Free_Rich::uiPool_FRich::scanPool();
         HorLine_Base::uiPool_BLine::scanPool();
         BlockInner_HorLine::uiPool_ILine::scanPool();
+        NavItem::uiPool_Nav::scanPool();
+        AnchorObj_Spring::uiPool_Spring::scanPool();
         qmlWindow->releaseResources();
     }
 
@@ -408,50 +415,93 @@ bool SoupleManager::createTable(int n_row,int n_col)
 
 Obj* SoupleManager::createObj(const QString& type)
 {
-    if(type.size() < 2) return nullptr;
     Obj* r = 0;
-    if(type[0] == 'F' && type[1] != 'l') {
-        if(type == "FPath") {
-            r = new Free_Path;
-        } else if(type == "FImage") {
-            r = new Free_Image;
-        } else if(type == "FText") {
-            r = new Free_Text;
-        } else if(type == "FRich") {
-            r = new Free_Rich;
-        } else if(type == "FBLine") {
-            r = new HorLine_Base;
-        } else if(type == "Frame") {
-            r = new Free_Frame;
+
+    if(type.length() < 2) return 0;
+
+    switch(type[0].toLatin1()) {
+    case 'F':
+        switch(type[1].toLatin1()) {
+        case 'P':
+            r = new Free_Path; // FPath
+            break;
+        case 'I':
+            r = new Free_Image; //FImage
+            break;
+        case 'T':
+            r = new Free_Text; //FText
+            break;
+        case 'R':
+            r = new Free_Rich; //FRich
+            break;
+        case 'r':
+            r = new Free_Frame; //Frame
+            break;
+        case 'B':
+            r = new HorLine_Base; //FBLine
+            break;
+        case 'l':
+            r = new AnchorObj_FlowText; //FlowText
+            break;
         }
-    }
-    if(type[0] == 'H') { //HLine
-        r = new AnchorObj_HLine;
-    } else if(type[0] == 'V') { //VLine
-        r = new AnchorObj_VLine;
-    } else if(type.length() > 4 && type[0] == 'F' && type[4] == 'T') { //FlowText
-        r = new AnchorObj_FlowText;
-    } else if(type == "PH_Right") { //PH_Right
-        r = new AnchorObj_PHRight;
-    } else if(type == "PH_Rect") {
-        r = new AnchorObj_PHRect;
-    } else if(type == "JZRect") {
+        break;
+
+    case 'H':
+        r = new AnchorObj_HLine; //HLine
+        break;
+
+    case 'P':
+        switch(type[1].toLatin1()) {
+        case 'H':
+            if(type == "PH_Right") { //PH_Right
+                r = new AnchorObj_PHRight;
+            } else if(type == "PH_Rect") {
+                r = new AnchorObj_PHRect;
+            } else if(type == "PH_Left") {
+                r = new AnchorObj_PHLeft;
+            }
+            break;
+        case 'a':
+            r = new AnchorObj_Path;
+            break;
+        }
+        break;
+
+    case 'I':
+        r = new AnchorObj_Image; //Image
+        break;
+
+    case 'G':
+        if(type == "GlueL") {
+            r = new AnchorObj_Glue;
+            r->be<AnchorObj_Glue*>()->glue_left = true;
+        } else if(type == "GlueR") {
+            r = new AnchorObj_Glue;
+            r->be<AnchorObj_Glue*>()->glue_left = false;
+        }
+        break;
+
+    case 'L':
+        r = new AnchorObj_LatexFormula; //Latex
+        break;
+
+    case 'V':
+        r = new AnchorObj_VLine; //VLine
+        break;
+
+    case 'J':
         r = new AnchorObj_JZRect;
-    } else if(type == "Path") {
-        r = new AnchorObj_Path;
-    } else if(type == "Image") {
-        r = new AnchorObj_Image;
-    } else if(type == "PH_Left") {
-        r = new AnchorObj_PHLeft;
-    } else if(type == "GlueL") {
-        r = new AnchorObj_Glue;
-        r->be<AnchorObj_Glue*>()->glue_left = true;
-    } else if(type == "GlueR") {
-        r = new AnchorObj_Glue;
-        r->be<AnchorObj_Glue*>()->glue_left = false;
-    } else if(type == "Latex") {
-        r = new AnchorObj_LatexFormula;
+        break;
+
+    case 'N':
+        r = new NavItem;
+        break;
+
+    case 'S':
+        r = new AnchorObj_Spring;
+        break;
     }
+
     if(r) {
         registerObj(r); //注册
     }
@@ -484,7 +534,7 @@ void SoupleManager::setShowHelpLine(bool show) noexcept {
 bool SoupleManager::STextInputEventFilter::eventFilter(QObject *watched, QEvent *event)
 {
     if(event->type() == QEvent::MouseButtonPress) {
-        QMouseEvent* me = dynamic_cast<QMouseEvent*>(event);
+        QMouseEvent* me = static_cast<QMouseEvent*>(event);
         QPointF p = SoupleManager::qml_soupleEdit->mapFromGlobal(me->globalPosition());
         SelectionManager::beginSelect(
             dynamic_cast<QQuickItem*>(watched)->property("data_id").toInt(),
@@ -499,8 +549,9 @@ bool SoupleManager::STextInputEventFilter::eventFilter(QObject *watched, QEvent 
 // 全局事件过滤器
 bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
 {
-    if (event->type() == QEvent::MouseMove) {
-        //qDebug() << "mouse move";
+    //qDebug() << "eventFilter " << event;
+    switch(event->type()) {
+    case QEvent::MouseMove:
         if(SelectionManager::hasBegun()) { //选择模式,=>鼠标按下状态=true
             QMouseEvent *me = dynamic_cast<QMouseEvent*>(event);
             //获取相对于SoupleEdit的坐标
@@ -508,26 +559,52 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
             SelectionManager::moveSelect(p.x(),p.y());
             return true; //过滤掉
         }
-    }
-    else if (event->type() == QEvent::MouseButtonRelease) {
+        break;
+    case QEvent::MouseButtonRelease:
         if(SelectionManager::hasBegun()) {
             SelectionManager::stopSelect(); //停止选择
         }
-    }
-    else if (event->type() == QEvent::MouseButtonPress) {
+        break;
+    case QEvent::MouseButtonPress:
         if(SelectionManager::isSelectionKeep) {
             QMouseEvent *me = dynamic_cast<QMouseEvent*>(event);
             if(me->button() == Qt::LeftButton) { //左键按下
                 //获取相对于SoupleEdit的坐标
                 QPointF p = SoupleManager::qml_soupleEdit->mapFromGlobal(me->globalPosition());
-                if(SoupleManager::qml_soupleEdit->contains(p)
-                    && p.y() >= SoupleManager::view_top
+                if(SoupleManager::qml_soupleEdit->contains(p)&&
+                    p.y() >= SoupleManager::view_top
                     && p.y() <= SoupleManager::view_bottom) {
                     SelectionManager::clearSelection();
                 }
             }
         }
+        break;
+    case QEvent::KeyPress:{
+        QKeyEvent *ke = (QKeyEvent*)event;
+        qDebug() << ke;
+        if(SelectionManager::isSelectStopButKeep()) {
+            //对选择内容进行键盘操作
+            //QObject* focusObject = global_app->focusObject(); //获取焦点对象
+            //qDebug() << "focus:" << focusObject;
+            QObject* focusObject = global_app->focusObject(); //获取焦点对象
+            qDebug() << "focus:" << focusObject;
+            if(focusObject->isWindowType()) { //windowType表明它没有具体焦点
+                Qt::KeyboardModifiers km = ke->modifiers();
+                //if(selected_qmlItem_id
+            }
+        } else {
+            Obj *who = MagicalCursor::at_who();
+            if(QML_VALID(who) && who->qmlItem->hasFocus())
+            { //检查它到底有没有焦点
+
+            }
+        }
+        return true;
+        break;
     }
+    default: return false;
+    }
+
     return false; // 返回false表示事件未被处理，继续传递
 }
 

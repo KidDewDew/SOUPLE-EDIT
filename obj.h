@@ -26,6 +26,11 @@ struct Obj_Global_Info {
     bool isHelperLine = false;
 };
 
+struct Obj_KeyEvent_Info {
+    bool selfDeal_backspace;
+    bool selfDeal_input;
+};
+
 
 // Obj是所有Souple对象的数据端(后端)的基类
 // 负责存储对象数据、定义对象行为以及管理ui对象
@@ -136,6 +141,12 @@ public:
     virtual const Obj_Global_Info& objInfo() const noexcept {
         static Obj_Global_Info gi = {.dealLayoutable = false};
         return gi;
+    }
+
+    virtual const Obj_KeyEvent_Info& keyInfo() const noexcept {
+        static Obj_KeyEvent_Info ki =
+            {.selfDeal_backspace=false,.selfDeal_input=false};
+        return ki;
     }
 
     template<typename T> //多态转换

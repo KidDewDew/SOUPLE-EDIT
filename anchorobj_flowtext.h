@@ -89,6 +89,12 @@ public:
         return gi;
     }
 
+    virtual const Obj_KeyEvent_Info& keyInfo() const noexcept override {
+        static Obj_KeyEvent_Info ki =
+            {.selfDeal_backspace=true,.selfDeal_input=true};
+        return ki;
+    }
+
     virtual void discard_qmlItem() override {
         //qmlItem->releaseResources();
         uiPool_flowText::returnItem(qmlItem);

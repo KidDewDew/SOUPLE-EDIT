@@ -24,23 +24,8 @@ void AnchorObj_PHLeft::updateDataToQmlItem(QQuickItem* item) {
     qmlItem->setProperty("showLevel",(bool)showLevel);
 };
 
-
-void AnchorObj_PHLeft::dealLayout()
+void AnchorObj_PHLeft::doPHLeft() noexcept
 {
-
-
-    //AnchorObj::dealLayout(); //处理基本的相对布局
-    //if(leftObj) x = leftObj->x + leftObj->width;
-    if(hline) {
-        y = hline->y; //2025/9/3修改，保证PH_Left不会受到换行影响导致Glue_Left换行。
-        x = hline->x;
-    }
-    if( Helper::isQmlItemValid(qmlItem) ) {
-        qmlItem->setWidth(10);
-        qmlItem->setHeight(6);
-        qmlItem->setPosition({x-10,y-6});
-    }
-
     //if( ! hline) return;
     //看看左边是不是有对象
     if(leftObj) {
@@ -82,6 +67,26 @@ void AnchorObj_PHLeft::dealLayout()
 
         //qDebug() << "last.nextLine = " << last_hline->logic_nextHLine;
     }
+}
+
+
+void AnchorObj_PHLeft::dealLayout()
+{
+
+
+    //AnchorObj::dealLayout(); //处理基本的相对布局
+    //if(leftObj) x = leftObj->x + leftObj->width;
+    if(hline) {
+        y = hline->y; //2025/9/3修改，保证PH_Left不会受到换行影响导致Glue_Left换行。
+        x = hline->x;
+    }
+    if( Helper::isQmlItemValid(qmlItem) ) {
+        qmlItem->setWidth(10);
+        qmlItem->setHeight(6);
+        qmlItem->setPosition({x-10,y-6});
+    }
+
+    doPHLeft();
 }
 
 AnchorObj* AnchorObj_PHLeft::dropRight(float dropWidth)

@@ -26,6 +26,7 @@ struct Turnback : public FlowAttacher {
         qDebug() << "TB" << "ts:" << time_stamp << "flow-pos:" << flow_position;
     }
 };
+
 // TurnbackManager
 // 撤回/重做管理类
 class TurnbackManager

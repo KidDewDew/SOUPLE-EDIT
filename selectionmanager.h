@@ -36,10 +36,12 @@ public:
         return !_hasBegun && isSelectionKeep;
     }
 
+    // 当前是否有内容被选择
     static inline bool hasSelection() noexcept {
         return isSelectionKeep;
     }
 
+    // 当前是否正在进行选择
     Q_INVOKABLE bool isSelecting() noexcept {
         return _hasBegun && isSelectionKeep;
     }

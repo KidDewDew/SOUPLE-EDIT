@@ -120,13 +120,20 @@ Item {
         return obj
     }
 
-    readonly property var type2cp: {"HLine":cp_hLine,"VLine":cp_vLine,"FPath":cp_FPath,"FImage":cp_FImage,
-                            "FText":cp_FText,"FlowText":cp_obj_textedit,"PH_Right":cp_phright,
-                            "PH_Rect":cp_phrect,"Image":cp_obj_image,"JZRect":cp_jzrect,
-                            "Path":cp_path,"PH_Left":cp_PHLeft,"BLine":cp_bline,"ILine":cp_iline,
-                            "TLine":cp_tline,"FUnit":cp_funit,"FRich":cp_FRich,"Page":cp_page,
-                            "GlueL":cp_glue,"GlueR":cp_glue,"PH_Glue":cp_glue,"Latex":cp_latex,
-                        "Frame":cp_frame}
+    readonly property var type2cp: {
+        "HLine":cp_hLine,"VLine":cp_vLine,
+        "FPath":cp_FPath,"FImage":cp_FImage,
+        "FText":cp_FText,"FlowText":cp_obj_textedit,
+        "PH_Right":cp_phright,"PH_Rect":cp_phrect,
+        "Image":cp_obj_image,"JZRect":cp_jzrect,
+        "Path":cp_path,"PH_Left":cp_PHLeft,
+        "BLine":cp_bline,"ILine":cp_iline,
+        "TLine":cp_tline,"FUnit":cp_funit,
+        "FRich":cp_FRich,"Page":cp_page,
+        "GlueL":cp_glue,"GlueR":cp_glue,
+        "PH_Glue":cp_glue,"Latex":cp_latex,
+        "Frame":cp_frame,"Nav":cp_nav,
+        "Spring":cp_spring}
 
     //创建并返回类型为type的Souple前端对象
     function newObj(type) {
@@ -646,6 +653,16 @@ Item {
     Component {
         id: cp_frame
         Obj_Frame {}
+    }
+
+    Component {
+        id: cp_nav
+        Obj_Nav {}
+    }
+
+    Component {
+        id: cp_spring
+        Obj_Spring {}
     }
 
     Editable_Bound {

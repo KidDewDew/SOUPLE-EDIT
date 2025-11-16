@@ -601,7 +601,7 @@ private:
     static inline QHash<int,std::shared_ptr<Document>> all_documents;
 
     static inline int currentDocumentID = -1; //-1代表：无文档
-
+    static inline int selected_qmlItem_id = -1; //被选中的qmlItem的id
 private:
     static inline std::vector<int> embedded_font_id_list; //该文档添加的字体id列表
 private slots:

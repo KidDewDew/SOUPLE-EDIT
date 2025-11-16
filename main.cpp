@@ -1,6 +1,10 @@
 
-/// 文件版本: 2025/8/18 23:18
+/// 文件版本: 2025/11/16
 /// 新版本: [无]
+
+/// 这里记录了一些重要代码的位置：
+/// 1.全局事件过滤器 位于SoupleManager.cpp
+
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -37,6 +41,7 @@ QQuickWindow* qmlWindow;
 QQmlApplicationEngine* engine;
 MyImageProvider *image_provider; //图像提供者
 Quick_Callback quick_callback;
+QGuiApplication *global_app;
 
 constexpr char nn[] = "FlowText";
 
@@ -154,6 +159,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+    ::global_app = &app;
 
     app.installNativeEventFilter(new MyWindowEvenetFilter);
     //使用opengl api进行渲染
@@ -286,8 +292,11 @@ int main(int argc, char *argv[])
     PlatformMethod::init(); //初始化跨平台方法类
 
     //安装全局事件过滤器，保证获取所有事件
+    //SoupleManager::installEventFilter(&app);
+    auto soupleEdit = qmlRoot->findChild<QQuickItem*>("qml_soupleEdit");
+    //soupleEdit->setFiltersChildMouseEvents(true);
+    SoupleManager::setQmlSoupleEdit(soupleEdit);
     SoupleManager::installEventFilter(&app);
-    SoupleManager::setQmlSoupleEdit(qmlRoot->findChild<QQuickItem*>("qml_soupleEdit"));
 
     //加载附件字体
     Helper::walk_dir("./back-fonts",[](const QString& filePath)->bool{

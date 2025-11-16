@@ -215,6 +215,10 @@ qt_add_qml_module(appSoupleEdit
         QML_FILES TTextField.qml
         QML_FILES Dialog_FileSelect.qml
         QML_FILES TStackView.qml
+        SOURCES navline.h navline.cpp
+        SOURCES anchorobj_spring.h anchorobj_spring.cpp
+        QML_FILES Obj_Nav.qml
+        QML_FILES Obj_Spring.qml
         #RESOURCES vcpkg.json
 )
 

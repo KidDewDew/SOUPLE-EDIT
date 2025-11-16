@@ -11,6 +11,7 @@
 #include "souple_pdfsaver.h"
 #include "turnbackmanager.h"
 #include "turnback_template.hpp"
+#include "magicalcursor.h"
 
 AnchorObj_FlowText::AnchorObj_FlowText()
 {
@@ -234,6 +235,7 @@ AnchorObj* AnchorObj_FlowText::dropLeft(float dropWidth)
     obj->strokeWidth = strokeWidth;
     obj->isStroke = isStroke;
     obj->isFill = isFill;
+    obj->width = pile_width;
     SoupleManager::registerObj(obj);
 
     moveFlowAttachers(-obj->text.length()); //移动attacher，但不用转移。
@@ -381,6 +383,10 @@ int AnchorObj_FlowText::dealCommandFromQmlItem(int command,const QVariant& arg)
                     ++i;
                 }
             };
+        break;
+    }
+    case Helper::CURSOR_CHANGE: { //光标移动
+        MagicalCursor::set_cursor(this,arg.toInt()); //告诉魔法光标
         break;
     }
     case Helper::FONT_SIZE_UP: {

@@ -10,6 +10,8 @@ Rectangle {
     property string source
     property string text
     property alias image: img
+    property bool down: marea.pressed
+    property bool hovered: marea.containsMouse
     Image {
         id: img
         anchors.fill: parent
@@ -17,12 +19,17 @@ Rectangle {
         scale: marea.pressed ? 0.95 : 1.0
         fillMode: Image.PreserveAspectFit
     }
+
     MouseArea {
         id: marea
         anchors.fill: parent
         hoverEnabled: true
         onClicked: {
             button.clicked()
+        }
+        onEntered: {
+            button.focus = true
+            selectedObj = button
         }
     }
 }

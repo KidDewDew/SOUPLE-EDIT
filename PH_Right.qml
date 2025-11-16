@@ -192,7 +192,7 @@ Rectangle {
 
     Keys.onPressed: function(e) {
         if(e.key == Qt.Key_Backspace) {
-            removeSelf()
+            //SoupleManager.
         } else { //否则需要转移到左边（如果可以）
             const of_obj = cp_obj_textedit.createObject(soupleEdit,{text:e.text})
             if(leftObj instanceof Obj_TextEdit) {

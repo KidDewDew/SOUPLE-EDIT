@@ -3,6 +3,9 @@
 #include "anchorobj_phright.h"
 #include "anchorobj_phleft.h"
 #include "anchorobj_image.h"
+#include <QGuiApplication>
+
+extern QGuiApplication *global_app;
 
 void SelectionManager::recalculateSelection() noexcept
 {

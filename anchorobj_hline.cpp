@@ -402,7 +402,7 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
             obj = leftObj;
             while(obj) {
                 if(obj->objInfo().anchorInfo.impact_hscale) {
-                   obj->showHScale(1.0,0,true);
+                   obj->showHScale(1.0,0,false);
                 } else {
                     if(Helper::isQmlItemValid(obj->qmlItem)) {
                         obj->qmlItem->setX(obj->x);

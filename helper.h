@@ -203,7 +203,8 @@ public:
                    BG_COLOR_UP,FILL_MODE_UP,RADIUS_UP,
                    RADIUS_1_UP,RADIUS_2_UP,RADIUS_3_UP,RADIUS_4_UP,
                    CREATE,SET_FOCUS,LEVEL_UP,SHOW_LEVEL_UP,
-                   FIRSTLINE_TAB_UP,ETC_TAB_UP};
+                   FIRSTLINE_TAB_UP,ETC_TAB_UP,CLICKED,
+                   CURSOR_CHANGE};
     enum SelectionCommand {
         SP_Family_Set,
         SP_FontSize_Add,SP_FontSize_Set,
