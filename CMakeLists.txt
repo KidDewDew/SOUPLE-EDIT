@@ -219,6 +219,10 @@ qt_add_qml_module(appSoupleEdit
         SOURCES anchorobj_spring.h anchorobj_spring.cpp
         QML_FILES Obj_Nav.qml
         QML_FILES Obj_Spring.qml
+        SOURCES nav_create.cpp
+        QML_FILES FontEdit.qml
+        QML_FILES Slider_and_ASB.qml
+        QML_FILES NavDirPreview.qml
         #RESOURCES vcpkg.json
 )
 

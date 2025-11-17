@@ -42,5 +42,6 @@
         <file>Expandable_LineText.qml</file>
         <file>GlowImageButton.qml</file>
         <file>TText.qml</file>
+        <file>FontEdit.qml</file>
     </qresource>
 </RCC>

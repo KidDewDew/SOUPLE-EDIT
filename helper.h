@@ -10,6 +10,7 @@
 #include <QFile>
 #include <exception>
 #include <QDir>
+#include <any>
 
 #ifdef WIN32
 #include <windows.h>
@@ -389,8 +390,13 @@ public:
         return url.fileName();
     }
 
-    //Q_INVOKABLE static QString getFileNameFromPath()
+    //Q_INVOKABLE static
 
+    //Q_INVOKABLE static QString getFileNameFromPath()
+    // 从大纲创建目录
+    Q_INVOKABLE static void createNavLines_fromLevels(QVariantMap args);
+
+    Q_INVOKABLE static void createNavLines_auto(QVariantMap args);
 
     //测试接口，在qml中手动触发。可以测试任何功能。
     Q_INVOKABLE static void doTest_1(QVariant arg);
@@ -426,6 +432,7 @@ public:
     static void invokeJSFunc(QJSValue func,const QVariantMap& arg) {
         QMetaObject::invokeMethod(Helper::helper,"__invokeJSFunc",func,arg);
     }
+
 
     //Q_INVOKABLE void whenWindowClosed();
 

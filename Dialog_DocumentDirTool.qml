@@ -1,24 +1,26 @@
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
-//对话框：文档目录工具
+//窗口：文档目录工具
 //提供两个创建(替换)目录方法：1.从段落大纲设置 2.自动识别大纲并设置目录
 ApplicationWindow {
     id: view
     color: theme.bg
     width:500
     height:345
-    title: "PDF目录实用工具 v1.0"
+    title: "嗖谷文档目录实用工具 v1.0"
     Material.foreground: theme.fg
     Material.background: theme.bg
     Material.primary: theme.bg
     Material.theme: isProtectEyeMode ? Material.Dark : Material.Light
+    // properties...
     property var docs: []
+    property int doc_index
+    property string hline_name
+
     function loadPDF() {
         Qt.createQmlObject(
-            `
-                import QtQuick
-                Dialog_FileSelect {
+            ` Dialog_FileSelect {
                     title: "选择一个PDF文件"
                     onAccepted: {
                         //先打开小助手窗口，并阻塞
@@ -49,15 +51,13 @@ ApplicationWindow {
 
     // 目录提取页面
     Component {
-        id: cp_page1
+        id: cp_page2
         Item {
             anchors.fill: parent
-            property int doc_index
-            property string hline_name
             Component.onCompleted: {
 
             }
-            RowLayout {
+            GridLayout {
                 id: wait_row
                 anchors.centerIn: parent
                 TText {
@@ -72,6 +72,152 @@ ApplicationWindow {
             }
         }
     }
+
+
+    // 目录样式设置页面
+    Component {
+        id: cp_page1
+        Item {
+            id: page1
+            anchors.fill: parent
+            Column {
+                z:1
+                x:6;y:12
+                spacing: 10
+                FlatButton {
+                    text: "返回"
+                    padding_vertical: 6
+                    onClicked: stack.pop()
+                    foldV:0.2
+                    accent: theme.accent_light
+                }
+                FlatButton {
+                    text: "确认"
+                    padding_vertical: 6
+                    onClicked: stack.pop()
+                    foldV:0.2
+                    accent: "#C7B977"
+                }
+            }
+            Component.onCompleted: {
+
+            }
+            Flickable {
+                contentHeight: grid.height
+                width:parent.width
+                height:parent.height-16
+                ScrollBar.vertical: ScrollBar {}
+                y:8
+                Control {
+                    id: grid
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    padding: 8
+                    background: Rectangle {
+                        color: Qt.lighter(theme.bg,1.3)
+                    }
+                    contentItem: GridLayout {
+                        columns: width<500?2:4
+                        implicitWidth: page1.width*0.8
+                        Repeater {
+                            model: 4
+                            Item {
+                                Layout.fillWidth: true;
+                                Layout.horizontalStretchFactor: 1.0
+                            }
+                        }
+                        TText {
+                            text: "目录级数"
+                        }
+                        MyDoubleSpinBox {
+                            step: 1
+                            suffix: "级"
+                            precision: 0
+                        }
+                        TText {
+                            text: "级别缩进"
+                        }
+                        MyDoubleSpinBox {
+                            step: 0.1
+                            suffix: "cm"
+                            precision: 2
+                        }
+                        TText {
+                            text: "字体"
+                            Layout.alignment: Qt.AlignTop
+                            Layout.topMargin: 5
+                        }
+                        FontEdit {
+                            Layout.alignment: Qt.AlignTop
+                        }
+                        TText {
+                            text: "目录线型"
+                        }
+                        TCombo {
+                            id: cbox_type
+                            model: ["无","点线","虚线","实线"]
+                        }
+                        TText {
+                            visible: cbox_type.currentIndex == 1 ||
+                                     cbox_type.currentIndex == 2
+                            text: "绘制间距(pt)"
+                        }
+                        Slider_and_ASB {
+                            id: slider_spacing
+                            visible: cbox_type.currentIndex == 1 ||
+                                     cbox_type.currentIndex == 2
+                            precision:1
+                            slider.from:0
+                            slider.to:10.0
+                            slider.stepSize:0.1
+                            value:1.0
+                            Layout.maximumWidth:230
+                        }
+                        TText {
+                            visible: cbox_type.currentIndex == 1
+                            text: "圆点半径(pt)"
+                        }
+                        Slider_and_ASB {
+                            id: slider_radius
+                            visible: cbox_type.currentIndex == 1
+                            precision:1
+                            slider.from:0.0
+                            slider.to:6.0
+                            slider.stepSize:0.1
+                            value:1.0
+                            Layout.maximumWidth:230
+                        }
+                        TText {
+                            visible: cbox_type.currentIndex == 2 ||
+                                     cbox_type.currentIndex == 3
+                            text: "线宽(pt)"
+                        }
+                        Slider_and_ASB {
+                            id: slider_lineWidth
+                            visible: cbox_type.currentIndex == 2 ||
+                                     cbox_type.currentIndex == 3
+                            precision:1
+                            slider.from:0
+                            slider.to:10.0
+                            slider.stepSize:0.1
+                            value:1.0
+                            Layout.maximumWidth:230
+                        }
+
+                        LineText {
+                            text: "预览"
+                            Layout.columnSpan:parent.columns
+                        }
+
+                        NavDirPreview {
+                            Layout.columnSpan:parent.columns
+                            Layout.fillWidth: true
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     // 初始页面
     Component {
@@ -128,7 +274,7 @@ ApplicationWindow {
             }
 
             TText {
-                text: "- 欢迎使用PDF目录实用工具 -"
+                text: "- 欢迎使用嗖谷文档目录实用工具 -"
                 Layout.columnSpan: 2
                 Layout.alignment: Qt.AlignHCenter
                 wrapMode: Text.WordWrap

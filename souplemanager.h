@@ -547,6 +547,7 @@ public:
         SoupleManager::qml_soupleEdit = qml_instance;
     }
 
+
 public:
     static inline float view_top, view_bottom;
     static inline SoupleManager *soupleManager;

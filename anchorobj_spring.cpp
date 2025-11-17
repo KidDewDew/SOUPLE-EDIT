@@ -1,5 +1,6 @@
 #include "anchorobj_spring.h"
 #include "horline_base.h"
+#include "anchorobj_glue.h"
 
 void AnchorObj_Spring::dealLayout() noexcept
 {
@@ -25,9 +26,13 @@ void AnchorObj_Spring::dealLayout() noexcept
         if(nextline->leftObj && nextline->leftObj->objInfo().anchorInfo.isSelfWidth) {
             auto shrink = nextline->leftObj->dropLeft(width);
             if(shrink) {
-                hline->insertOnRight(shrink);
-                //qDebug() << "shrink:" << shrink->__dstr();
-                width -= shrink->width;
+                if(shrink->objInfo().anchorInfo.isSelfWidth) {
+                    hline->insertOnRight(shrink);
+                    //qDebug() << "shrink:" << shrink->__dstr();
+                    width -= shrink->width;
+                } else {
+                    nextline->insertOnLeft(shrink);
+                }
             }
         }
     }

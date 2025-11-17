@@ -18,8 +18,7 @@ Item {
     property real precision: 2
     property real from: 0.0
     property real to: 2000.0
-    implicitWidth: but_sub.implicitWidth + tf.implicitWidth
-                   + text_suf.implicitWidth + but_add.implicitWidth + 6
+    implicitWidth: but_add.x+but_add.implicitWidth+6
     implicitHeight: tf.implicitHeight
 
     Component.onCompleted: value = initialValue
@@ -113,8 +112,7 @@ Item {
     AbstractButton {
         id: but_add
         anchors.verticalCenter: parent.verticalCenter
-        anchors.left: text_suf.right
-        anchors.leftMargin: 2
+        x: text_suf.x+Math.max(22,text_suf.width)+2
         enabled: parent.enabled
         width: 16
         height: 16

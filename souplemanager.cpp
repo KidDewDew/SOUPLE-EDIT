@@ -588,14 +588,14 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
             //qDebug() << "focus:" << focusObject;
             QObject* focusObject = global_app->focusObject(); //获取焦点对象
             qDebug() << "focus:" << focusObject;
-            if(focusObject->isWindowType()) { //windowType表明它没有具体焦点
+            if(!focusObject || focusObject->isWindowType()) { //windowType表明它没有具体焦点
                 Qt::KeyboardModifiers km = ke->modifiers();
                 //if(selected_qmlItem_id
                 return true; //国旅
             }
         } else {
             Obj *who = MagicalCursor::at_who();
-            if(QML_VALID(who) && who->qmlItem->hasFocus())
+            if(who && QML_VALID(who) && who->qmlItem->hasFocus())
             { //检查它到底有没有焦点
                 return true;
             }
