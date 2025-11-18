@@ -29,7 +29,8 @@ auto _sort_func_wordspec = [](shared_ptr<Pdf2Souple::PDFOBJ> a,shared_ptr<Pdf2So
  *        调用本函数前，保证 1)解析完页眉页脚 2)解析完表格Part 。
  * @return 是否成功解析成word类型页面
  */
-bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,std::shared_ptr<PDFPage> prev_page)
+bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
+                                 std::shared_ptr<PDFPage> prev_page)
 {
 
     SoupleManager::enableRegister = false; //禁用对象注册

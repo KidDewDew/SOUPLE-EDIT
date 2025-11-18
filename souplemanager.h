@@ -55,6 +55,9 @@ class SoupleManager : public QObject
         std::vector<float> sum_margins;
         //页面上边距+下边距的前缀和,[0] = page[0].topMargin, [1] = [0] + page[0].bottom_margin + page[1].top_margin
     };
+    enum {
+        Current_Document=-2
+    };
 public:
     Q_INVOKABLE float documentHeight() const {
         return edit_height;
@@ -473,6 +476,11 @@ public:
                 {"bottomMargin",page->bottomMargin}};
     }
 
+    // 获取当前文档id,返回-1表示当前无打开的Souple文档
+    Q_INVOKABLE static int getCurrentDocumentID() {
+        return currentDocumentID;
+    }
+
     Q_INVOKABLE static void requestChangePageColumnNum(int num) {
         Page* page = getPage(view_top);
         if(!page || page->page_type != Helper::Word_Page) return;
@@ -538,6 +546,11 @@ public:
         doc->redo_list = TurnbackManager::redo_list;
     }
 
+    // 获取整个文档的第一条水平线。
+    // 注意，通常，调用此函数前需要检查一下整个文档是否水平线连续，
+    // 从而确保FirstLine可以往下遍历
+    // 参数document_id默认值为-1,代表当前文档。
+    static HorLine_Base* getDocumentFirstLine(int document_id=Current_Document);
 
     static void notifyVisible(Obj* obj) noexcept {
         all_visible_objs.push_back(obj);

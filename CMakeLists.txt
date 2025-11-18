@@ -223,6 +223,7 @@ qt_add_qml_module(appSoupleEdit
         QML_FILES FontEdit.qml
         QML_FILES Slider_and_ASB.qml
         QML_FILES NavDirPreview.qml
+        SOURCES obj_start_sign.h
         #RESOURCES vcpkg.json
 )
 

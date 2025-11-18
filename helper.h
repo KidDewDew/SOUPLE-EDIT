@@ -404,6 +404,7 @@ public:
     // 从大纲创建目录
     Q_INVOKABLE static void createNavLines_fromLevels(QVariantMap args);
 
+    // 自动创建目录
     Q_INVOKABLE static void createNavLines_auto(QVariantMap args);
 
     //测试接口，在qml中手动触发。可以测试任何功能。
