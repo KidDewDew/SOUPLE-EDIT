@@ -611,6 +611,39 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
     return false; // 返回false表示事件未被处理，继续传递
 }
 
+void SoupleManager::saveCurrentDocument() {
+    if(currentDocumentID == -1)
+        return;
+    /** 回收所有可见对象 */
+    for(auto obj : all_visible_objs) {
+        if(Helper::isQmlItemValid(obj->qmlItem)) {
+            obj->discard_qmlItem();
+        } else obj->qmlItem = (QQuickItem*)Helper::NotCreated;
+    }
+    //all_visible_objs.clear();
+
+    auto doc = all_documents[currentDocumentID];
+    doc->start_sign = start_sign;
+    doc->all_objs = all_objs;
+    doc->all_visible_objs = all_visible_objs;
+    doc->edit_height = edit_height;
+    doc->edit_width = edit_width;
+    doc->hash_id_obj = hash_id_obj;
+    doc->page_inf = page_inf;
+    //doc->scan_iter = scan_iter;
+    //doc->scan_iter2 = scan_iter2;
+    //doc->scan_iter_visble = scan_iter_visble;
+    doc->view_top = view_top;
+    doc->view_bottom = view_bottom;
+    /** 记录类静态成员 */
+    doc->obj_s_all_id = Obj::s_all_id;
+    doc->hline_s_hline_count = AnchorObj_HLine::s_hline_count;
+    doc->tline_s_tline_count = TableLine::s_tline_count;
+    doc->horline_s_hash_hline = HorLine_Base::hash_hline;
+    doc->turnback_list = TurnbackManager::turnback_list;
+    doc->redo_list = TurnbackManager::redo_list;
+}
+
 bool SoupleManager::switchSoupleDocument(int switch_to_id) {
     qDebug() << "switchSoupleDocument(" << switch_to_id;
     if(currentDocumentID == switch_to_id) return true;
@@ -626,6 +659,7 @@ bool SoupleManager::switchSoupleDocument(int switch_to_id) {
     }
     saveCurrentDocument(); //保存当前文档
     auto doc = *pdoc;
+    start_sign = doc->start_sign;
     all_objs = doc->all_objs;
     all_visible_objs = doc->all_visible_objs;
     edit_width = doc->edit_width;
@@ -736,4 +770,17 @@ bool SoupleManager::request_render_page(int document_id,int page_index,
     Souple_PdfSaver::renederPage(&painter,page,page_objs);
     image_provider->addImage(into_image_id,image);
     return true;
+}
+
+HorLine_Base* SoupleManager::getDocumentFirstLine(int document_id)
+{
+    IF(((document_id == Current_Document or document_id == currentDocumentID)
+         and currentDocumentID == -1)
+       or (not all_documents.contains(document_id)))
+    THEN(return 0;)
+    auto ss = (document_id == Current_Document || document_id == currentDocumentID)
+                  ? start_sign : all_documents[document_id]->start_sign;
+    IF NOT(ss.valid() and ss->attach_hline.valid())
+    THEN(return nullptr;)
+    return ss->attach_hline.get();
 }

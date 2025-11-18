@@ -15,6 +15,7 @@
 #include "Obj_Page.h"
 #include "tableline.h"
 #include "turnbackmanager.h"
+#include "obj_start_sign.h"
 #ifdef Q_OS_WIN32
 #include <ranges>
 #endif
@@ -514,42 +515,12 @@ public:
         return all_documents[s]->page_inf;
     }
 
-    static void saveCurrentDocument() {
-        if(currentDocumentID == -1)
-            return;
-        /** 回收所有可见对象 */
-        for(auto obj : all_visible_objs) {
-            if(Helper::isQmlItemValid(obj->qmlItem)) {
-                obj->discard_qmlItem();
-            } else obj->qmlItem = (QQuickItem*)Helper::NotCreated;
-        }
-        //all_visible_objs.clear();
-
-        auto doc = all_documents[currentDocumentID];
-        doc->all_objs = all_objs;
-        doc->all_visible_objs = all_visible_objs;
-        doc->edit_height = edit_height;
-        doc->edit_width = edit_width;
-        doc->hash_id_obj = hash_id_obj;
-        doc->page_inf = page_inf;
-        //doc->scan_iter = scan_iter;
-        //doc->scan_iter2 = scan_iter2;
-        //doc->scan_iter_visble = scan_iter_visble;
-        doc->view_top = view_top;
-        doc->view_bottom = view_bottom;
-        /** 记录类静态成员 */
-        doc->obj_s_all_id = Obj::s_all_id;
-        doc->hline_s_hline_count = AnchorObj_HLine::s_hline_count;
-        doc->tline_s_tline_count = TableLine::s_tline_count;
-        doc->horline_s_hash_hline = HorLine_Base::hash_hline;
-        doc->turnback_list = TurnbackManager::turnback_list;
-        doc->redo_list = TurnbackManager::redo_list;
-    }
+    static void saveCurrentDocument();
 
     // 获取整个文档的第一条水平线。
     // 注意，通常，调用此函数前需要检查一下整个文档是否水平线连续，
     // 从而确保FirstLine可以往下遍历
-    // 参数document_id默认值为-1,代表当前文档。
+    // 参数document_id默认值为-2,代表当前文档。
     static HorLine_Base* getDocumentFirstLine(int document_id=Current_Document);
 
     static void notifyVisible(Obj* obj) noexcept {
@@ -594,6 +565,7 @@ private:
 
 
     struct Document {
+        Safe_Obj_Pointer<Obj_Start_Sign> start_sign;
         uint32_t obj_s_all_id;
         int hline_s_hline_count;
         QHash<QString,HorLine_Base*> horline_s_hash_hline;
@@ -616,6 +588,8 @@ private:
 
     static inline int currentDocumentID = -1; //-1代表：无文档
     static inline int selected_qmlItem_id = -1; //被选中的qmlItem的id
+
+    static inline Safe_Obj_Pointer<Obj_Start_Sign> start_sign;
 private:
     static inline std::vector<int> embedded_font_id_list; //该文档添加的字体id列表
 private slots:

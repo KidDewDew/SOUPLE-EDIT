@@ -11,6 +11,7 @@ class AnchorObj_PHLeft;
 class ParaInf {
     friend class AnchorObj_PHLeft;
 public:
+    bool multi_etc_tab;
     AnchorObj_PHLeft* phleft; //段落开始符
     float first_tab; //第一行缩进
     float etc_tab;   //其余行缩进
@@ -35,6 +36,15 @@ public:
     //     static AnchorObj_Global_Info _global_info = {.isSelfWidth = false,.isRealHeight=false};
     //     return _global_info;
     // }
+
+    virtual QVariant qmlGetData(int dataName) override {
+        switch(dataName) {
+        case Helper::ETC_TAB:
+            return et
+        default:
+            return AnchorObj::qmlGetData(dataName);
+        }
+    }
 
     void doPHLeft() noexcept;
 

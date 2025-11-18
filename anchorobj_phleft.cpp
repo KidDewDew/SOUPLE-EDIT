@@ -162,6 +162,7 @@ ParaInf AnchorObj_PHLeft::getParaInf() noexcept
     ParaInf para;
     para.phleft = this;
     para.first_tab = width;
+    para.multi_etc_tab = false;
     auto hline = ((HorLine_Base*)this->hline)->getNextLine();
     if(hline) {
         auto glue = hline->leftObj->as<AnchorObj_Glue*>();
@@ -171,7 +172,7 @@ ParaInf AnchorObj_PHLeft::getParaInf() noexcept
             para.etc_tab = 0;
         }
     } else {
-        para.etc_tab = para.first_tab;
+        para.etc_tab = para.first_tab;//30274
     }
     return para;
 }

@@ -7,6 +7,9 @@ import com.custom 1.0
 Rectangle {
     id: obj
     property int data_id
+    property real tab //缩进
+    property bool showLevel //是否显示level
+    property int level //级别
     onFocusChanged: {
         if(focus) selectedObj = obj
     }

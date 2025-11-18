@@ -78,6 +78,12 @@ do{\
 #define qDebug _NonDebug
 #endif
 
+#define IF if
+
+#define NOT(pred) (!(pred))
+
+#define THEN(codes) {codes}
+
 #define view_suffix(_suffix) std::views::transform([](auto& _a){ return _a##_suffix; })
 
 #define _Pred(condition) [](auto& e1,auto& e2){ return condition; }
