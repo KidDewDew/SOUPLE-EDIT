@@ -16,7 +16,7 @@ class AnchorObj_Spring: public AnchorObj
 {
 public:
     AnchorObj_Spring()
-    : showType(0),radius(0.8),lineWidth(1),
+        : showType(Helper::Dot_LinePattern),radius(0.8),lineWidth(1),
       spacing(3.0){
 
     }
@@ -50,7 +50,7 @@ public:
         }
     }
 public:
-    // showType 显示类型 -1:空白   0:点  1:虚线  2:实线
+    // showType 显示类型
     char showType;
     float radius,lineWidth; //点的半径 or 线宽
     float spacing;

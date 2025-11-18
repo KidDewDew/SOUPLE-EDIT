@@ -27,6 +27,9 @@ void Helper::init() //初始化
         } else dpi = 96.0; //缺省值: 96.0
     } //获取dpi END
     qDebug() << "1像素 = " << Helper::pixel2cm(1) << "厘米";
+    if(!QDir("./cache").exists()) {
+        QDir(".").mkdir("./cache");
+    }
     QFile file("./cache/database");
     if(file.exists()) {
         file.open(QIODevice::ReadOnly);

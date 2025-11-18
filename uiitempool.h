@@ -39,7 +39,7 @@ public:
             auto item = list_items_unused.back();
             //QMetaObject::invokeMethod(item, "die");
             //item->deleteLater();
-            item->releaseResources();
+            //item->releaseResources();
             item->deleteLater();
             list_items_unused.pop_back();
             __UIItemPool_Shared::delOne();
@@ -48,7 +48,7 @@ public:
                               list_items_unused.size()/2);
         while(delNum--) {
             auto item = list_items_unused.back();
-            item->releaseResources();
+            //item->releaseResources();
             item->deleteLater();
             list_items_unused.pop_back();
             __UIItemPool_Shared::delOne();

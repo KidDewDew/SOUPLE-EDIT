@@ -24,7 +24,7 @@ Control {
 
 
     background: Rectangle {
-        color: theme.bar
+        color: theme.bg
         border.color: theme.accent_light
         radius: 6
     }

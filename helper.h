@@ -246,6 +246,13 @@ public:
         No_Repeat
     };
 
+    enum LinePattern {
+        None_LinePattern,
+        Solid_LinePattern,
+        Dash_LinePattern,
+        Dot_LinePattern
+    };
+
     Q_ENUM( DataName )
     Q_ENUM( Command )
     Q_ENUM( SomeMore )
@@ -254,6 +261,7 @@ public:
     Q_ENUM( Align )
     Q_ENUM( PageType )
     Q_ENUM( FillMode )
+    Q_ENUM( LinePattern )
 
     explicit Helper(QObject *parent = nullptr);
 
@@ -400,6 +408,12 @@ public:
 
     //测试接口，在qml中手动触发。可以测试任何功能。
     Q_INVOKABLE static void doTest_1(QVariant arg);
+
+    Q_INVOKABLE static QChar number2chinese(int n) {
+        if(n < 0 || n > 10) return QChar('?');
+        static QString str = "零一二三四五六七八九十";
+        return str[n];
+    }
 
     // removeAll: 删除一个随机访问容器的所有某个值 O(n)
     template<typename T,typename V>

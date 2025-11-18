@@ -108,6 +108,7 @@ Item {
         anchors.leftMargin: 2
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: tf.right
+        color: theme.fg
     }
     AbstractButton {
         id: but_add

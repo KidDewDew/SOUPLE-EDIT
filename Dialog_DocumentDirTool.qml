@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
+import com.custom 1.0
+
 //窗口：文档目录工具
 //提供两个创建(替换)目录方法：1.从段落大纲设置 2.自动识别大纲并设置目录
 ApplicationWindow {
@@ -113,104 +115,161 @@ ApplicationWindow {
                     anchors.horizontalCenter: parent.horizontalCenter
                     padding: 8
                     background: Rectangle {
+                        implicitWidth: page1.width*0.8+10
                         color: Qt.lighter(theme.bg,1.3)
                     }
-                    contentItem: GridLayout {
-                        columns: width<500?2:4
-                        implicitWidth: page1.width*0.8
-                        Repeater {
-                            model: 4
-                            Item {
-                                Layout.fillWidth: true;
-                                Layout.horizontalStretchFactor: 1.0
+                    contentItem:FlexboxLayout {
+                        //implicitWidth: page1.width*0.8
+                        id: flex
+                        justifyContent: FlexboxLayout.JustifyCenter
+                        alignItems: FlexboxLayout.AlignEnd
+                        //wrap: FlexboxLayout.Wrap
+                        columnGap: 5
+                        rowGap: 5
+                        direction: FlexboxLayout.Column
+                        states: [
+                            State {
+                                when: page1.width < 560
+                                PropertyChanges {
+                                    flex.direction:FlexboxLayout.Column
+                                }
+                            },
+                            State {
+                                when: page1.width >= 560
+                                PropertyChanges {
+                                    flex.direction:FlexboxLayout.Row
+                                }
+                            }
+                        ]
+                        GridLayout {
+                            //columns: width<500?2:4
+                            columns: 2
+                            implicitWidth: 240
+                            Layout.fillWidth: page1.width<560?true:false
+                            Repeater {
+                                model: 2
+                                Item {
+                                    Layout.fillWidth: true;
+                                    Layout.horizontalStretchFactor: 1.0
+                                }
+                            }
+                            TText {
+                                text: "目录级数"
+                            }
+                            MyDoubleSpinBox {
+                                id: spin_levels
+                                step: 1
+                                suffix: "级"
+                                precision: 0
+                            }
+                            TText {
+                                text: "级别缩进"
+                            }
+                            MyDoubleSpinBox {
+                                id: spin_tab
+                                step: 0.1
+                                suffix: "cm"
+                                precision: 2
+                            }
+                            TText {
+                                text: "字体"
+                                Layout.alignment: Qt.AlignTop
+                                Layout.topMargin: 5
+                            }
+                            FontEdit {
+                                id: fontEdit
+                                Layout.alignment: Qt.AlignTop
+                            }
+                            TText {
+                                text: "目录线型"
+                            }
+                            TCombo {
+                                id: cbox_type
+                                model: ["无","点线","虚线","实线"]
+                                property int showType:
+                                    [Helper_Type.None_LinePattern,
+                                    Helper_Type.Dot_LinePattern,
+                                    Helper_Type.Dash_LinePattern,
+                                    Helper_Type.Solid_LinePattern][currentIndex]
+                            }
+                            TText {
+                                visible: cbox_type.currentIndex == 1 ||
+                                         cbox_type.currentIndex == 2
+                                text: "绘制间距(pt)"
+                            }
+                            Slider_and_ASB {
+                                id: slider_spacing
+                                visible: cbox_type.currentIndex == 1 ||
+                                         cbox_type.currentIndex == 2
+                                precision:1
+                                slider.from:0
+                                slider.to:10.0
+                                slider.stepSize:0.1
+                                value:1.0
+                                Layout.maximumWidth:230
+                            }
+                            TText {
+                                visible: cbox_type.currentIndex == 1
+                                text: "圆点半径(pt)"
+                            }
+                            Slider_and_ASB {
+                                id: slider_radius
+                                visible: cbox_type.currentIndex == 1
+                                precision:1
+                                slider.from:0.0
+                                slider.to:6.0
+                                slider.stepSize:0.1
+                                value:1.0
+                                Layout.maximumWidth:230
+                            }
+                            TText {
+                                visible: cbox_type.currentIndex == 2 ||
+                                         cbox_type.currentIndex == 3
+                                text: "线宽(pt)"
+                            }
+                            Slider_and_ASB {
+                                id: slider_lineWidth
+                                visible: cbox_type.currentIndex == 2 ||
+                                         cbox_type.currentIndex == 3
+                                precision:1
+                                slider.from:0
+                                slider.to:10.0
+                                slider.stepSize:0.1
+                                value:1.0
+                                Layout.maximumWidth:230
+                            }
+                            TText {
+                                visible: cbox_type.currentIndex == 2
+                                text: "虚线段宽(pt)"
+                            }
+                            Slider_and_ASB {
+                                id: slider_dashWidth
+                                visible: cbox_type.currentIndex == 2
+                                precision:1
+                                slider.from:0
+                                slider.to:10.0
+                                slider.stepSize:0.1
+                                value:1.0
+                                Layout.maximumWidth:230
                             }
                         }
-                        TText {
-                            text: "目录级数"
-                        }
-                        MyDoubleSpinBox {
-                            step: 1
-                            suffix: "级"
-                            precision: 0
-                        }
-                        TText {
-                            text: "级别缩进"
-                        }
-                        MyDoubleSpinBox {
-                            step: 0.1
-                            suffix: "cm"
-                            precision: 2
-                        }
-                        TText {
-                            text: "字体"
-                            Layout.alignment: Qt.AlignTop
-                            Layout.topMargin: 5
-                        }
-                        FontEdit {
-                            Layout.alignment: Qt.AlignTop
-                        }
-                        TText {
-                            text: "目录线型"
-                        }
-                        TCombo {
-                            id: cbox_type
-                            model: ["无","点线","虚线","实线"]
-                        }
-                        TText {
-                            visible: cbox_type.currentIndex == 1 ||
-                                     cbox_type.currentIndex == 2
-                            text: "绘制间距(pt)"
-                        }
-                        Slider_and_ASB {
-                            id: slider_spacing
-                            visible: cbox_type.currentIndex == 1 ||
-                                     cbox_type.currentIndex == 2
-                            precision:1
-                            slider.from:0
-                            slider.to:10.0
-                            slider.stepSize:0.1
-                            value:1.0
-                            Layout.maximumWidth:230
-                        }
-                        TText {
-                            visible: cbox_type.currentIndex == 1
-                            text: "圆点半径(pt)"
-                        }
-                        Slider_and_ASB {
-                            id: slider_radius
-                            visible: cbox_type.currentIndex == 1
-                            precision:1
-                            slider.from:0.0
-                            slider.to:6.0
-                            slider.stepSize:0.1
-                            value:1.0
-                            Layout.maximumWidth:230
-                        }
-                        TText {
-                            visible: cbox_type.currentIndex == 2 ||
-                                     cbox_type.currentIndex == 3
-                            text: "线宽(pt)"
-                        }
-                        Slider_and_ASB {
-                            id: slider_lineWidth
-                            visible: cbox_type.currentIndex == 2 ||
-                                     cbox_type.currentIndex == 3
-                            precision:1
-                            slider.from:0
-                            slider.to:10.0
-                            slider.stepSize:0.1
-                            value:1.0
-                            Layout.maximumWidth:230
-                        }
-
-                        LineText {
-                            text: "预览"
-                            Layout.columnSpan:parent.columns
-                        }
-
-                        NavDirPreview {
-                            Layout.columnSpan:parent.columns
+                        ColumnLayout {
                             Layout.fillWidth: true
+                            LineText {
+                                text: "预览"
+                                Layout.fillWidth: true
+                            }
+                            NavDirPreview {
+                                radius: Helper.point2pixel(slider_radius.value)
+                                lineWidth: Helper.point2pixel(slider_lineWidth.value)
+                                font: fontEdit.currentFont
+                                spacing: Helper.point2pixel(slider_spacing.value)
+                                levels: spin_levels.value
+                                levelTab: Helper.cm2pixel(spin_tab.value)
+                                dashWidth: Helper.point2pixel(slider_dashWidth.value)
+                                showType: cbox_type.showType
+                                Layout.fillWidth: true
+                            }
                         }
                     }
                 }

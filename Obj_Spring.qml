@@ -11,6 +11,7 @@ Rectangle {
     property real radius
     property real lineWidth
     property real spacing
+    property real dashWidth
     property int showType
     Component {
         id: cp_propertyBar
@@ -47,19 +48,33 @@ Rectangle {
             let draw_x = 0.0
             ctx.clearRect(0,0,width,height)
             ctx.fillStyle = "black"
-            //ctx.fillRect(0,0,width,height)
-            console.log("radius:",radius)
+            ctx.beginPath()
             switch(obj.showType) {
-            case 0: //点填充
+            case Helper_Type.Dot_LinePattern: //点填充
                 draw_x = spacing * 0.5
                 while(draw_x+radius*2 <= width) {
                     ctx.ellipse(draw_x+radius,height*0.5,
                                 radius*2,radius*2)
                     draw_x += radius*2+spacing
                 }
+                ctx.fill()
+                break;
+            case Helper_Type.Dash_LinePattern: //虚线填充
+                ctx.setLineDash([obj.dashWidth,obj.spacing])
+                ctx.lineWidth = obj.lineWidth
+                ctx.moveTo(0,height*0.5)
+                ctx.lineTo(width,height*0.5)
+                ctx.stroke()
+                break;
+            case Helper_Type.Dash_LinePattern: //solid填充
+                ctx.setLineDash(null)
+                ctx.lineWidth = obj.lineWidth
+                ctx.moveTo(0,height*0.5)
+                ctx.lineTo(width,height*0.5)
+                ctx.stroke()
                 break;
             }
-            ctx.fill()
+
         }
     }
 }
