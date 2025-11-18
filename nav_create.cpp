@@ -21,7 +21,7 @@ void Helper::createNavLines_fromLevels(QVariantMap args)
 {
     int doc_id = args["document_id"].toInt();
     auto& all_objs = SoupleManager::getDocumentObjs(doc_id);
-    vector<_NavNode*> nav_nodes; //1级节点列表
+    //vector<_NavNode*> nav_nodes; //1级节点列表
     vector<_NavNode*> nav_stack; //当前的遍历栈
     _NavNode __first_node{.level=0};
     nav_stack.push_back(&__first_node);
@@ -40,6 +40,17 @@ void Helper::createNavLines_fromLevels(QVariantMap args)
                 nav_stack.push_back(node);//进入下一级
                 ++ cur_level;
             }
+        }
+        else if(cur_level >= p->level) {
+            while(cur_level >= p->level) {
+                nav_stack.pop_back();
+                -- cur_level;
+            }
+            //until cur_level = p->level-1
+            _NavNode *node = new _NavNode;
+            node->level = p->level;
+            nav_stack.back()->children.push_back(node);
+            nav_stack.push_back(node);
         }
     }
 }

@@ -196,7 +196,7 @@ int main(int argc, char *argv[])
     Helper::helper->setParent(&app);
     Helper::init();
 
-    if(Helper::DB_Read("FirstStart",true) == false) {
+    if(Helper::DB_Read("FirstStart",true) == true) {
         //第一次使用
         QDir().mkpath("cache/pdf_image/"); //创建路径
         Helper::DB_Set("FirstStart",false);

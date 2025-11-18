@@ -702,7 +702,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
         //if(! __border_obj)
         // --- Step2.2 确定这个bg上是否有实际内容存在，但不需要记录
         //std::vector<pair<int,std::shared_ptr<PDFOBJ>>> inside_objs;
-        bool hasContent = true;
+        bool hasContent = false;
         for(auto[k,obj] : to_analyse_objs | views::enumerate) {
             if(!obj->visible || obj == __fill_obj || obj == __border_obj)
                 continue;

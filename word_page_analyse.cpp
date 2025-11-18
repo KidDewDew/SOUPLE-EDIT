@@ -1,6 +1,7 @@
 #include "pdf2souple.h"
 #include "wordpage_vline.h"
 #include "free_path.h"
+#include "obj_start_sign.h"
 
 using namespace std;
 
@@ -249,7 +250,6 @@ RETURN_OK:
     page->souple_page->page_type = Helper::Word_Page;
 
     // 处理对上一页的接续
-
     if(prev_page) {
         if(prev_page->the_last_hline_to_continue) {
             first_top_hline->setLogicLastHLine(prev_page->the_last_hline_to_continue);
@@ -267,6 +267,14 @@ RETURN_OK:
     SoupleManager::enableRegister=true;
     for(auto obj : SoupleManager::wait_register_obj_list)
         SoupleManager::registerObj(obj);
+
+    // 对于第1页，需要设置内容起点
+    if(page->page_index == 0) {
+        Obj_Start_Sign *ss = new Obj_Start_Sign;
+        SoupleManager::registerObj(ss);
+        ss->attach_hline = first_top_hline;
+        qDebug() << "create Obj_Start_Sign.";
+    }
 
     for(auto& column : page->souple_page->columns) {
         SoupleManager::registerObj(column.leftLine);

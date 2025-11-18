@@ -22,6 +22,7 @@ void AnchorObj_PHLeft::updateDataToQmlItem(QQuickItem* item) {
     AnchorObj::updateDataToQmlItem(item);
     qmlItem->setProperty("level",level);
     qmlItem->setProperty("showLevel",(bool)showLevel);
+    qmlItem->setProperty("tab",width); //首行缩进
 };
 
 void AnchorObj_PHLeft::doPHLeft() noexcept

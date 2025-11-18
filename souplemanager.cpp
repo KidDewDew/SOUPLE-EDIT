@@ -271,9 +271,12 @@ void SoupleManager::imp_updateUI()  //更新ui
             while(n_scan < TIMER_DEALUI_SCAN_NUM
                    && n_scan < all_objs.size()) {
                 auto& obj = *scan_iter2;
-                auto aobj = obj->as<AnchorObj_HLine*>();
-                if(aobj) {
-                    aobj->dealLayout();
+                //auto aobj = obj->as<AnchorObj_HLine*>();
+                //if(aobj->) {
+                //    aobj->dealLayout();
+                //}
+                if(obj->objInfo().dealLayoutable) { //[2025/7/30]修改 更具有广适性
+                    obj->dealLayout();
                 }
                 ++n_scan;
                 ++scan_iter2;
