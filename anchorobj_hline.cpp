@@ -729,3 +729,12 @@ void FitLine_for_AnchorObj_HLine::dealLayout() {
         else page = SoupleManager::getPage(y);
     }
 }
+
+HorLine_Base* AnchorObj_HLine::insertHLine_down(int hline_type)
+{
+    if(hline_type == HLT_Same || hline_type == HLT_Anchor) {
+        this->createNextLine();
+        return logic_nextHLine;
+    }
+    return nullptr;
+}

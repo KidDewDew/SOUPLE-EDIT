@@ -96,6 +96,12 @@ public:
         return length;
     }
 
+    enum {HLT_Same,HLT_Anchor,HLT_Inner};
+
+    virtual HorLine_Base* insertHLine_down(int hline_type) {
+        return nullptr;
+    }
+
     virtual PCPos getPCPos();
 
     float getPHLeftWidth() {

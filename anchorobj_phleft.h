@@ -39,8 +39,8 @@ public:
 
     virtual QVariant qmlGetData(int dataName) override {
         switch(dataName) {
-        case Helper::ETC_TAB:
-            return et
+        //case Helper::ETC_TAB:
+        //    return getPra
         default:
             return AnchorObj::qmlGetData(dataName);
         }

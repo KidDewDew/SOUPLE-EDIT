@@ -61,7 +61,7 @@ if(QML_VALID(qmlItem))qmlItem->setProperty(qmlProperty,value);\
 this->property = value;
 
 #define SCOPE_EXIT_DO(codes) \
-__ScopeExitDoClass{[](){\
+__ScopeExitDoClass{[&](){\
 do{\
     codes \
 }while(0);\
@@ -527,7 +527,7 @@ public:
         }
     }
 
-
+    //static void
 
 public:
 

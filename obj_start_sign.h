@@ -29,6 +29,11 @@ public:
             removeSelf(true);
             return;
         }
+        while(true) {
+            HorLine_Base* prevline = attach_hline->getPrevLine();
+            if(!prevline) break;
+            attach_hline = prevline;
+        }
         x = attach_hline->x;
         y = attach_hline->y;
         if(Helper::isQmlItemValid(qmlItem)) {

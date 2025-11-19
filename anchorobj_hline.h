@@ -182,6 +182,8 @@ public:
         return QString("AnchorObj_HLine id=%1 name=%2").arg(id).arg(name);
     }
 
+    virtual HorLine_Base* insertHLine_down(int hline_type) override;
+
     // 要求立刻计算水平放缩值（当保存pdf时，必须对每一个HLine调用该函数。）
     void forceCalculateHorizontalScale() noexcept;
 

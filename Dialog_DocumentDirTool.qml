@@ -96,7 +96,11 @@ ApplicationWindow {
                 FlatButton {
                     text: "确认"
                     padding_vertical: 6
-                    onClicked: stack.pop()
+                    onClicked: {
+                        Helper.createNavLines_fromLevels({
+                            "document_id":docs[doc_index].s
+                        })
+                    }
                     foldV:0.2
                     accent: "#C7B977"
                 }

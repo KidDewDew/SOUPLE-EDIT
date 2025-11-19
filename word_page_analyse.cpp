@@ -273,6 +273,7 @@ RETURN_OK:
         Obj_Start_Sign *ss = new Obj_Start_Sign;
         SoupleManager::registerObj(ss);
         ss->attach_hline = first_top_hline;
+        SoupleManager::start_sign = ss;
         qDebug() << "create Obj_Start_Sign.";
     }
 

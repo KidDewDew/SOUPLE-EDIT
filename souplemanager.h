@@ -47,6 +47,7 @@ class SoupleManager : public QObject
     Q_OBJECT
     friend class Souple_PdfSaver;
     friend class SelectionManager;
+    friend class Pdf2Souple;
     Q_PROPERTY(float documentWidth READ documentWidth NOTIFY documentWidthChanged FINAL)
     Q_PROPERTY(float documentHeight READ documentHeight NOTIFY documentHeightChanged FINAL)
     Q_PROPERTY(int pageCount READ getPageCount NOTIFY pageCountChanged FINAL)
@@ -111,6 +112,23 @@ public:
         auto it = hash_id_obj.find(id);
         if(it == hash_id_obj.end()) return 0;
         return *it;
+    }
+
+    static inline Obj* getObjById(int document_id,int id) noexcept {
+        if(document_id == currentDocumentID || document_id == Current_Document) {
+            auto it = hash_id_obj.find(id);
+            if(it == hash_id_obj.end()) return 0;
+            return *it;
+        } else {
+            IF NOT(all_documents.contains(document_id)) {
+                return nullptr;
+            } else {
+                auto& h = all_documents[document_id]->hash_id_obj;
+                auto it = h.find(id);
+                if(it == h.end()) return 0;
+                return *it;
+            }
+        }
     }
 
     //static inline void removeObj(Obj* obj) {  }
