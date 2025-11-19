@@ -718,8 +718,9 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
 // }
 
 void FitLine_for_AnchorObj_HLine::dealLayout() {
-    qDebug() << "fitline:y=" << y;
+    //qDebug() << "fitline:y=" << y;
     if(lastLine) {
+        //if(lastLine->canBe<FitLine_for_AnchorObj_HLine
         if(nextLine && abs(y-lastLine->y)>0.1) {
             SoupleManager::requestUpdateHLine(nextLine);
         }
@@ -732,9 +733,58 @@ void FitLine_for_AnchorObj_HLine::dealLayout() {
 
 HorLine_Base* AnchorObj_HLine::insertHLine_down(int hline_type)
 {
-    if(hline_type == HLT_Same || hline_type == HLT_Anchor) {
+    if(hline_type & (HLT_Same|HLT_Anchor)) {
         this->createNextLine();
         return logic_nextHLine;
     }
     return nullptr;
+}
+
+HorLine_Base* AnchorObj_HLine::insertHLine_up(int hline_type) {
+    if(hline_type & (HLT_Same|HLT_Anchor)) {
+        // [玄学操作^_^]：创建下标线，转移内容，然后返回自己即可
+        this->createNextLine();
+        logic_nextHLine->leftObj = leftObj;
+        logic_nextHLine->rightObj = rightObj;
+        leftObj = rightObj = nullptr;
+        return this;
+    } else if(hline_type & HLT_Inner) {
+
+    }
+    return nullptr;
+}
+
+// 向上连接
+// bool AnchorObj_HLine::connectHLine_up(HorLine_Base* new_line)
+// {
+//     //setPre
+//     return false;
+// }
+// bool AnchorObj_HLine::connectHLine_down(HorLine_Base* new_line)
+// {
+
+// }
+
+void AnchorObj_HLine::setPrevLine(HorLine_Base* l) {
+    if(!l) {
+        setAnchorLastHLine(0);
+        setLogicLastHLine(0);
+        return;
+    }
+    auto al = l->as<AnchorObj_HLine*>();
+    if(al) {
+        setAnchorLastHLine(al);
+        setLogicLastHLine(al);
+    } else {
+        //throw LLException("AnchorObj_HLine::setPrevLine(l): l必须是AnchorObj_HLine或其派生类。");
+        // 使用FitLine
+        FitLine_for_AnchorObj_HLine* fitline = new FitLine_for_AnchorObj_HLine;
+        // connect l->fitline
+        fitline->lastLine = l;
+        l->setNextLine(fitline);
+        // connect fitline->this
+        fitline->nextLine = this;
+        setAnchorLastHLine(fitline);
+        setLogicLastHLine(fitline);
+    }
 }

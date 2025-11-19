@@ -19,6 +19,27 @@ ApplicationWindow {
     property var docs: []
     property int doc_index
     property string hline_name
+    property bool isAuto
+
+    function verify_1() {
+        if(docs.length == 0) {
+            messageBox("提示","请点击红色加号按钮，添加一个文档。");
+            return false
+        }
+        if(doc_index < 0 || doc_index >= docs.length) {
+            return false;
+        }
+        if(hline_name == "") {
+            messageBox("提示","水平标线不能留空。");
+            return false
+        }
+        // 注：checkHLineValid返回false才表示通过。
+        if(spMgr.checkHLineValid(docs[doc_index].s,hline_name) == true) {
+            messageBox("错误",`不存在名为${hline_name}的水平线。`);
+            return false
+        }
+        return true
+    }
 
     function loadPDF() {
         Qt.createQmlObject(
@@ -97,9 +118,28 @@ ApplicationWindow {
                     text: "确认"
                     padding_vertical: 6
                     onClicked: {
-                        Helper.createNavLines_fromLevels({
-                            "document_id":docs[doc_index].s
-                        })
+                        var bundle =
+                        {
+                            "document_id":docs[doc_index].s,
+                            "hline_id":SoupleManager.getHLineIdByName(docs[doc_index].s,
+                                             hline_name),
+                            "levels":spin_levels.value,
+                            "showType":cbox_type.showType,
+                            "font":fontEdit.currentFont,
+                            "tab":Helper.cm2pixel(spin_tab.value),
+                            "spacing":Helper.point2pixel(slider_spacing.value),
+                            "dashWidth":Helper.point2pixel(slider_dashWidth.value),
+                            "radius":Helper.point2pixel(slider_radius.value),
+                            "lineWidth":Helper.point2pixel(slider_lineWidth.value),
+                            "isDown":true
+                        }
+
+                        if(isAuto) { //自动识别
+                            Helper.createNavLines_auto(bundle)
+                        } else { //从大纲提取
+                            Helper.createNavLines_fromLevels(bundle)
+                        }
+
                     }
                     foldV:0.2
                     accent: "#C7B977"
@@ -326,9 +366,10 @@ ApplicationWindow {
 
             Timer {
                 interval: 500 //每隔500ms更新一下当前的文档列表和光标
-                running: true
+                running: parent.visible
                 repeat: true
                 onTriggered: {
+                    // to-test: 在进入下个页面后，该Timer正确停止。
                     updateDocList() //更新文档列表
                     if(cb_autoHLine.checked) {
                         updateHLineFromCursor()
@@ -402,7 +443,12 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignHCenter|Qt.AlignTop
                 padding_vertical: 18
                 onClicked: {
-                    stack.push(cp_page1)
+                    hline_name = hline_selector.hline_name
+                    doc_index = combo_docs.currentIndex
+                    isAuto = false
+                    if(verify_1()) {
+                        stack.push(cp_page1)
+                    }
                 }
                 Layout.topMargin: 12
             }
@@ -411,7 +457,12 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignHCenter|Qt.AlignTop
                 padding_vertical: 18
                 onClicked: {
-                    stack.push(cp_page1)
+                    hline_name = hline_selector.hline_name
+                    doc_index = combo_docs.currentIndex
+                    isAuto = true
+                    if(verify_1()) {
+                        stack.push(cp_page1)
+                    }
                 }
                 Layout.topMargin: 12
             }

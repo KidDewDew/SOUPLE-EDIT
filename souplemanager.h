@@ -108,6 +108,7 @@ public:
         all_objs.push_back(obj);
     }
 
+
     static inline Obj* getObjById(int id) noexcept {
         auto it = hash_id_obj.find(id);
         if(it == hash_id_obj.end()) return 0;
@@ -243,11 +244,9 @@ public:
         return AnchorObj_HLine::hash_hline.size() > 0;
     }
 
-    Q_INVOKABLE static inline qint32 getHLineIdByName(const QString& name) {
-        auto it = AnchorObj_HLine::hash_hline.find(name);
-        if(it == AnchorObj_HLine::hash_hline.end()) return -1;
-        return (*it)->id;
-    }
+    Q_INVOKABLE static qint32 getHLineIdByName(const QString& name);
+
+    Q_INVOKABLE static qint32 getHLineIdByName(int doc_id,const QString& name);
 
     Q_INVOKABLE static inline void requestRemoveObj(qint32 id) {
         auto it = hash_id_obj.find(id);
@@ -347,6 +346,7 @@ public:
     }
 
     Q_INVOKABLE bool checkHLineValid(const QString& hline_name);
+    Q_INVOKABLE bool checkHLineValid(int doc_id,const QString& hline_name);
 
     Q_INVOKABLE void setShowHelpLine(bool show) noexcept;
 

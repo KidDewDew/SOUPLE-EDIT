@@ -126,24 +126,20 @@ public:
     }
 
     virtual float getTopMargin() const override { return topMargin; }
+
     virtual void setNextLine(HorLine_Base* l) override {
         auto al = l->as<AnchorObj_HLine*>();
         if(al) {
-            setLogicNextHLine(al);
-            al->setAnchorLastHLine(this);
+            //setLogicNextHLine(al);
+            //al->setAnchorLastHLine(this);
+            logic_nextHLine = al; //[2025/11/19]
         } else {
             throw LLException("AnchorObj_HLine::setNextLine(l): l必须是AnchorObj_HLine或其派生类。");
         }
     }
-    virtual void setPrevLine(HorLine_Base* l) override {
-        auto al = l->as<AnchorObj_HLine*>();
-        if(al) {
-            setAnchorLastHLine(al);
-            setLogicLastHLine(al);
-        } else {
-            throw LLException("AnchorObj_HLine::setPrevLine(l): l必须是AnchorObj_HLine或其派生类。");
-        }
-    }
+
+    virtual void setPrevLine(HorLine_Base* l) override;
+
     auto& getAnchorNextLine() const { return anchor_nextHLine; }
     auto getLogicNextLine() const { return logic_nextHLine; }
 
@@ -183,6 +179,12 @@ public:
     }
 
     virtual HorLine_Base* insertHLine_down(int hline_type) override;
+
+    virtual HorLine_Base* insertHLine_up(int hline_type) override;
+
+    //virtual bool connectHLine_up(HorLine_Base* new_line) override;
+
+    //virtual bool connectHLine_down(HorLine_Base* new_line) override;
 
     // 要求立刻计算水平放缩值（当保存pdf时，必须对每一个HLine调用该函数。）
     void forceCalculateHorizontalScale() noexcept;
@@ -250,6 +252,14 @@ public:
         nextLine = l;
     }
     void setPrevLine(HorLine_Base* l) noexcept override {
+        if(!l) {
+            lastLine = 0;
+            return;
+        }
+        // connect lastLine->l
+        if(lastLine) l->setPrevLine(lastLine);
+        // connect l->this
+        l->setNextLine(this);
         lastLine = l;
     }
     void dealLayout() override;

@@ -38,6 +38,7 @@ public:
     virtual void setNextLine(HorLine_Base* nextLine) noexcept override {
         this->nextLine = nextLine;
     }
+    virtual void setPrevLine(HorLine_Base* prevLine) noexcept override;
     virtual QString __dstr() const noexcept override {
         return QString("BlockInner_HLine %1").arg(id);
     }

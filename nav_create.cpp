@@ -3,6 +3,8 @@
 #include "navline.h"
 #include "anchorobj_phleft.h"
 #include "anchorobj_hline.h"
+#include "anchorobj_flowtext.h"
+#include "anchorobj_phright.h"
 
 using namespace std;
 
@@ -15,6 +17,7 @@ struct _NavNode {
     vector<_NavNode*> children;
 };
 
+int doc_id;
 QFont font;
 int showType;
 int levels;
@@ -28,7 +31,30 @@ HorLine_Base* lastHLine;
 
 void impl_dfs_createNavLines(_NavNode* node) {
     if(node->pointer_to) {
-
+        HorLine_Base* navline = 0;
+        if(! lastHLine) {
+            // 要创建的是起始行
+            auto sl = SoupleManager::getDocumentFirstLine(doc_id)
+                                   ->as<AnchorObj_HLine*>();
+            if(!sl) {
+                emit Helper::helper->errorMsg("错误",
+                            "未知错误@nav_create.cpp impl_dfs_createNavLines");
+                return;
+            }
+            navline = sl->insertHLine_up(HorLine_Base::HLT_Same);
+        } else {
+            navline = lastHLine->insertHLine_down(HorLine_Base::HLT_Same);
+        }
+        lastHLine = navline;
+        // here,navline CREATED
+        AnchorObj_FlowText *ft = new AnchorObj_FlowText;
+        AnchorObj_PHRight* br = new AnchorObj_PHRight;
+        SoupleManager::registerObj(ft);
+        SoupleManager::registerObj(br);
+        ft->text = "Nav";
+        ft->font.setPointSize(10);
+        navline->insertOnLeft(ft);
+        navline->insertOnRight(br);
     }
     for(_NavNode* child : node->children) {
         impl_dfs_createNavLines(child);
@@ -38,7 +64,12 @@ void impl_dfs_createNavLines(_NavNode* node) {
 // 根据_NavNode创建真正的目录
 void impl_createNavLines(QVariantMap args,vector<_NavNode*> nav_nodes) {
     qDebug() << "impl_createNavLines";
-    int doc_id = args["document_id"].toInt();
+
+    if(nav_nodes.empty()) {
+        emit Helper::helper->errorMsg("提示","未检测到任何目录项。\n无法创建目录。");
+        return;
+    }
+
     font = args["font"].value<QFont>();
     showType = args["showType"].toInt();
     levels = args["levels"].toInt();
@@ -63,18 +94,22 @@ void impl_createNavLines(QVariantMap args,vector<_NavNode*> nav_nodes) {
         lastHLine = at_hline;
         nextHLine = at_hline->getNextLine();
     } else {
-        nextHLine = lastHLine;
+        nextHLine = at_hline;
         lastHLine = at_hline->getPrevLine();
     }
 
     for(_NavNode* node : nav_nodes)
         impl_dfs_createNavLines(node);
+
+    if(nextHLine) {
+        nextHLine->setPrevLine(lastHLine); //缝合
+    }
 }
 
 void Helper::createNavLines_fromLevels(QVariantMap args)
 {
     qDebug() << "createNavLines_fromLevels(" << args;
-    int doc_id = args["document_id"].toInt();
+    doc_id = args["document_id"].toInt();
     auto& all_objs = SoupleManager::getDocumentObjs(doc_id);
     //vector<_NavNode*> nav_nodes; //1级节点列表
     vector<_NavNode*> nav_stack; //当前的遍历栈
@@ -90,7 +125,7 @@ void Helper::createNavLines_fromLevels(QVariantMap args)
 
     for(;hline;hline = hline->getNextLine())
     {
-        qDebug() << hline->__dstr();
+        //qDebug() << hline->__dstr();
         AnchorObj_PHLeft* p = hline->leftObj->as<AnchorObj_PHLeft*>();
         IF NOT(p) THEN(continue;)
         if(p->level == 0 || p->level < 0) continue;
@@ -100,7 +135,7 @@ void Helper::createNavLines_fromLevels(QVariantMap args)
                 _NavNode *node = new _NavNode;
                 node->level = cur_level+1;
                 nav_stack.back()->children.push_back(node);
-                node->parent->parent = nav_stack.back();
+                node->parent = nav_stack.back();
                 nav_stack.push_back(node);//进入下一级
                 ++ cur_level;
             }
@@ -126,8 +161,10 @@ void Helper::createNavLines_fromLevels(QVariantMap args)
     impl_createNavLines(args,nav_stack[0]->children);
 }
 
+// 自动识别目录
 void Helper::createNavLines_auto(QVariantMap args)
 {
     int doc_id = args["document_id"].toInt();
     auto& all_objs = SoupleManager::getDocumentObjs(doc_id);
+
 }

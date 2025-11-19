@@ -5,10 +5,13 @@
 #include <QFontMetrics>
 #include "uiitempool.h"
 
+class _NavNode;
+
 //流文本数据类
 class AnchorObj_FlowText : public AnchorObj
 {
     friend class Pdf2Souple;
+    friend void impl_dfs_createNavLines(_NavNode* node);
 public:
     AnchorObj_FlowText();
     virtual QQuickItem* generateQmlItem() override;
@@ -108,6 +111,7 @@ public:
     virtual QString __dstr() const noexcept override {
         return QString("FlowText \"%1\"").arg(text);
     }
+
 private:
     static inline constexpr char __UINAME__[] = "FlowText";
 private:

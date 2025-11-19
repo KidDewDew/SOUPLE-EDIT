@@ -54,6 +54,8 @@ private:
 // 检查一个qml指针是否有效
 #define QML_VALID(obj) (Helper::isQmlItemValid(obj->qmlItem))
 
+#define NEW_VAR(type,var_name,...) type* var_name = new type(__VA_ARGS__)
+
 #define OF(a,b)
 
 #define SYNC_SET(property,qmlProperty,value) \

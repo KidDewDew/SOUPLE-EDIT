@@ -22,7 +22,7 @@ void BlockInner_HorLine::dealLayout()
             removeSelf(true); //注：不用担心parent容器使用野指针。所有指针的释放，均在一次布局周期结束才可能进行。
             return;
         }
-        if(nextLine) { //空行要尝试收缩
+        if(nextLine && nextLine->leftObj) { //空行要尝试收缩
             auto drop = nextLine->leftObj->dropLeft(width);
             if(drop) { //收缩
                 insertOnRight(drop);
@@ -129,4 +129,29 @@ int BlockInner_HorLine::dealCommandFromQmlItem(int command,const QVariant& arg)
     // }
 
     return HorLine_Base::dealCommandFromQmlItem(command,arg);
+}
+
+void BlockInner_HorLine::setPrevLine(HorLine_Base* l) noexcept
+{
+    if(!l) {
+        if(hline) {
+            hline->be<HorLine_Base*>()->setNextLine(0);
+        }
+        hline = 0;
+    }
+    BlockInner_HorLine* l2 = l->as<BlockInner_HorLine*>();
+    if(l2) {
+        // 链表插入
+        l->hline = this->hline;
+        this->hline = l;
+        l2->nextLine = this;
+    } else {
+        //创建兼容线
+        NEW_VAR(FitLine_for_AnchorObj_HLine,fitline);
+        //connect fitline->this
+        this->hline = fitline;
+        fitline->nextLine = this;
+        //connect l->fitline
+        fitline->setPrevLine(l);
+    }
 }

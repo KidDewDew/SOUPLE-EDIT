@@ -53,7 +53,7 @@ public:
             list_items_unused.pop_back();
             __UIItemPool_Shared::delOne();
         }
-        qDebug() << UINAME << "回收，池大小：" << getPoolItemNum() << ",使用数量：" << used_num;
+        //qDebug() << UINAME << "回收，池大小：" << getPoolItemNum() << ",使用数量：" << used_num;
         //qDebug() << "曾经峰值：" << max_allocated_num;
         //for()
     }

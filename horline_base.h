@@ -6,6 +6,7 @@
 #include <deque>
 #include "anchorobj_glue.h"
 #include "anchorobj_phleft.h"
+#include "LLException.h"
 
 //水平标线基类，继承自AnchorObj
 class HorLine_Base : public AnchorObj
@@ -63,8 +64,13 @@ public:
         return 0;
     }
 
+    // 【注意】setNextLine和setPrevLine有很大区别
+    // setNextLine仅仅是简单的设置了下一条线，不会保证接续。
+    [[deprecated("该函数易导致歧义。请使用connectHLine_down/up或setPrevLine。")]]
     virtual void setNextLine(HorLine_Base* l) {}
 
+    // setPrevLine
+    // 【注意】setPrevLine会确保接续性，会自动处理接续。
     virtual void setPrevLine(HorLine_Base* l) {}
 
     virtual const Obj_Global_Info& objInfo() const noexcept override {
@@ -96,10 +102,41 @@ public:
         return length;
     }
 
-    enum {HLT_Same,HLT_Anchor,HLT_Inner};
+    enum {HLT_Same=1,HLT_Anchor=2,HLT_Inner=4};
 
+    // 在这条线下面创建一条接续的水平线
+    // @param hline_type 取HLT_???，表示创建的水平线类型。
     virtual HorLine_Base* insertHLine_down(int hline_type) {
         return nullptr;
+    }
+    // 在这条线上面创建一条接续的水平线
+    virtual HorLine_Base* insertHLine_up(int hline_type) {
+        return nullptr;
+    }
+
+    /* connectHLine_up和connectHLine_down
+     * 是对setPrevLine和setNextLine的调用+额外一些属性设置。
+     **/
+
+    // 向上连接new_line
+    bool connectHLine_up(HorLine_Base* new_line) noexcept {
+        try {
+            setPrevLine(new_line);
+            //new_line->setNextLine(this);
+        } catch(LLException& e) {
+            return false;
+        }
+        return true;
+    }
+    // 向下连接new_line
+    bool connectHLine_down(HorLine_Base* new_line) noexcept {
+        try {
+            new_line->setPrevLine(this);
+            //setNextLine(new_line);
+        } catch(LLException& e) {
+            return false;
+        }
+        return true;
     }
 
     virtual PCPos getPCPos();

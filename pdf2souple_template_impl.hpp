@@ -67,7 +67,8 @@ bool Pdf2Souple::createRich(const PDFPage* page,Iterable<HBlock> auto& blocks,Ob
         }
         if(lastHLine) {
             //lastHLine->nextLine = hline;
-            lastHLine->setNextLine(hline);
+            ///lastHLine->setNextLine(hline);
+            lastHLine->connectHLine_down(hline);
             hline->hline = lastHLine;
         }
         lastHLine = hline;

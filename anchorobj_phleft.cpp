@@ -8,7 +8,7 @@ AnchorObj_PHLeft::AnchorObj_PHLeft():level(0)
 }
 
 QQuickItem* AnchorObj_PHLeft::generateQmlItem(){
-    showLevel.addListener(this,[=](){
+    showLevel.addListener(this,[this](){
         if(Helper::isQmlItemValid(qmlItem)) {
             qmlItem->setProperty("level",level);
             qmlItem->setProperty("showLevel",true);
@@ -22,7 +22,7 @@ void AnchorObj_PHLeft::updateDataToQmlItem(QQuickItem* item) {
     AnchorObj::updateDataToQmlItem(item);
     qmlItem->setProperty("level",level);
     qmlItem->setProperty("showLevel",(bool)showLevel);
-    qmlItem->setProperty("tab",width); //首行缩进
+    qmlItem->setProperty("tab",Helper::pixel2cm(width)); //首行缩进
 };
 
 void AnchorObj_PHLeft::doPHLeft() noexcept
@@ -112,7 +112,7 @@ int AnchorObj_PHLeft::dealCommandFromQmlItem(int command,const QVariant& arg)
 {
     switch(command) {
     case Helper::SHOW_LEVEL_UP:
-        showLevel = arg.toBool(); //showLevel is a LiveValue.
+        AnchorObj_PHLeft::showLevel = arg.toBool(); //showLevel is a LiveValue.
         break;
     case Helper::LEVEL_UP:
         level = arg.toInt();

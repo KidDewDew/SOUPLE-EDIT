@@ -327,6 +327,8 @@ void SoupleManager::imp_updateUI()  //更新ui
 
 }
 
+// [[old]] 注该函数已经过时，但能正常使用。
+// 因为它对HLine进行了各种特判，现在推荐使用connectHLine_down/up方法来完成！
 bool SoupleManager::createTable_inner(int n_row,int n_col,BlockInner_HorLine* iline)
 {
     Obj* parent = iline->getParent();
@@ -346,19 +348,20 @@ bool SoupleManager::createTable_inner(int n_row,int n_col,BlockInner_HorLine* il
         }
         FitLine_for_AnchorObj_HLine* fit1 = new FitLine_for_AnchorObj_HLine,
                                     *fit2 = new FitLine_for_AnchorObj_HLine;
+        //SoupleManager::registerObj()
         fit1->leftLine = vline_left;
         fit1->rightLine = vline_right;
         fit2->leftLine = vline_left;
         fit2->rightLine = vline_right;
-        // iline->fit1->ti1->ti2->fit2->iline2
+        // iline->fit1->ti1->...->ti2->fit2->iline2
         ti->firstLine->setPrevLine(fit1);
-        ti->endLine->setNextLine(fit2);
+        ti->endLine->connectHLine_down(fit2);
         fit2->lastLine = ti->endLine;
         if(line2) fit2->nextLine = line2;
         fit1->lastLine = iline;
         fit1->nextLine = ti->firstLine;
         if(line2) line2->setPrevLine(fit2);
-        iline->setNextLine(fit1);
+        iline->connectHLine_down(fit1);
         return true;
     } catch(std::bad_any_cast& e) {
         return false;
@@ -368,6 +371,8 @@ bool SoupleManager::createTable_inner(int n_row,int n_col,BlockInner_HorLine* il
     }
 }
 
+// [[old]] 注该函数对innerline的处理方法已经过时，但能正常使用。
+// 因为它对HLine进行了各种特判，现在推荐使用connectHLine_down/up方法来完成！
 bool SoupleManager::createTable(int n_row,int n_col)
 {
     int selected_id = Helper::invokeQmlFunction<int>("getSelectedID");
@@ -515,6 +520,32 @@ bool SoupleManager::checkHLineValid(const QString& hline_name) {
     auto it = AnchorObj_HLine::hash_hline.find(hline_name);
     if(it == AnchorObj_HLine::hash_hline.end()) return Helper::Error_Invalid_Data;
     return 0;
+}
+
+bool SoupleManager::checkHLineValid(int doc_id,const QString& hline_name) {
+    return getHLineIdByName(doc_id,hline_name) == -1;
+}
+
+qint32 SoupleManager::getHLineIdByName(const QString& name) {
+    auto it = AnchorObj_HLine::hash_hline.find(name);
+    if(it == AnchorObj_HLine::hash_hline.end()) return -1;
+    return (*it)->id;
+}
+
+qint32 SoupleManager::getHLineIdByName(int doc_id,const QString& name) {
+    if(doc_id == currentDocumentID || doc_id == Current_Document) {
+        auto it = AnchorObj_HLine::hash_hline.find(name);
+        if(it == AnchorObj_HLine::hash_hline.end()) return -1;
+        return (*it)->id;
+    }
+    IF NOT(all_documents.contains(doc_id))
+    {
+        return -1;
+    }
+    auto& h = all_documents[doc_id]->horline_s_hash_hline;
+    auto it = h.find(name);
+    if(it == h.end()) return -1;
+    return (*it)->id;
 }
 
 void SoupleManager::setShowHelpLine(bool show) noexcept {

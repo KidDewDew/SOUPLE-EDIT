@@ -24,7 +24,7 @@ public:
         return gi;
     }
     virtual void dealLayout() override final {
-        qDebug() << "SS:dealLayout()";
+        //qDebug() << "SS:dealLayout()";
         if( ! attach_hline.valid()) {
             removeSelf(true);
             return;

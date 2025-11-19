@@ -86,7 +86,8 @@ int Free_Rich::dealCommandFromQmlItem(int command,const QVariant& arg)
             HorLine_Base *lastLine = findLastLine();
             SoupleManager::registerObj(line);
             line->hline = lastLine;
-            lastLine->setNextLine(line);
+            //lastLine->setNextLine(line);
+            lastLine->connectHLine_down(line);
             line->topMargin = lastLine->getTopMargin() < 1e-6 ?
                                   4 : lastLine->getTopMargin();
             line->parent = this;
