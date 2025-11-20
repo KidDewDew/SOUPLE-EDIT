@@ -23,7 +23,7 @@ AnchorObj_FlowText::AnchorObj_FlowText()
 
 QQuickItem* AnchorObj_FlowText::generateQmlItem()
 {
-    qDebug() << "FlowText(" << text << ") generateQmlItem()";
+    //qDebug() << "FlowText(" << text << ") generateQmlItem()";
     return uiPool_flowText::fetchItem();
     //return Helper::invokeQmlFunction<QQuickItem*>("generateObj","FlowText");
 }
@@ -318,6 +318,7 @@ int AnchorObj_FlowText::dealCommandFromQmlItem(int command,const QVariant& arg)
     case Helper::TEXT_UP: {
         QString old_text = text;
         text = arg.toString();
+        calcWidth();
         if(!hline || text == old_text) break;
         //break;
         Turnback* tb = TurnbackManager::addTurnback(Turnback::AC_Content_Flow);

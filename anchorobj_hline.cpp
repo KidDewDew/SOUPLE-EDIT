@@ -746,6 +746,11 @@ HorLine_Base* AnchorObj_HLine::insertHLine_up(int hline_type) {
         this->createNextLine();
         logic_nextHLine->leftObj = leftObj;
         logic_nextHLine->rightObj = rightObj;
+        auto obj = leftObj;
+        while(obj) {
+            obj->hline = logic_nextHLine;
+            obj = obj->rightObj;
+        }
         leftObj = rightObj = nullptr;
         return this;
     } else if(hline_type & HLT_Inner) {

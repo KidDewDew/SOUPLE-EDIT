@@ -324,6 +324,11 @@ public:
         emit helper->requestTrimCache();
     }
 
+    Q_INVOKABLE static inline bool isChineseChar(QChar c) {
+        ushort u = c.unicode();
+        return u>=0x4E00 && u<=0x9FA5;
+    }
+
     //移动端选择文件
     Q_INVOKABLE static void mobile_selectFile(QJSValue callback) {
         PlatformMethod::selectFile(callback);

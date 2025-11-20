@@ -78,4 +78,6 @@ public:
     static inline LiveValue<bool> showLevel = true; //是否显示段落级别
 };
 
+SOUPLE_REGISTER_CLASS(AnchorObj_PHLeft,DATE_ID(202511202144))
+
 #endif // ANCHOROBJ_PHLEFT_H

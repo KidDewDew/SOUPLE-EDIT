@@ -174,7 +174,13 @@ float Helper::levenshtein(const QString& str1,const QString& str2) noexcept
 
 QStringList Helper::getFontFamilyList()
 {
-    return QFontDatabase::families();
+    auto r = QFontDatabase::families();
+    ranges::sort(r,[](QString& s1,QString& s2){
+        if(!isChineseChar(s1[0]) && isChineseChar(s2[0])) return true;
+        if(isChineseChar(s1[0]) && !isChineseChar(s2[0])) return false;
+        return s1 < s2;
+    });
+    return r;
 }
 
 void Helper::doTest_1(QVariant arg)

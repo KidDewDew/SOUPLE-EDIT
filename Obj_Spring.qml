@@ -66,7 +66,7 @@ Rectangle {
                 ctx.lineTo(width,height*0.5)
                 ctx.stroke()
                 break;
-            case Helper_Type.Dash_LinePattern: //solid填充
+            case Helper_Type.Solid_LinePattern: //solid填充
                 ctx.setLineDash(null)
                 ctx.lineWidth = obj.lineWidth
                 ctx.moveTo(0,height*0.5)

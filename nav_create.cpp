@@ -6,6 +6,8 @@
 #include "anchorobj_flowtext.h"
 #include "anchorobj_phright.h"
 #include "anchorobj_spring.h"
+#include "anchorobj_jzrect.h"
+#include "anchorobj_glue.h"
 
 using namespace std;
 
@@ -31,6 +33,8 @@ float dashWidth;
 HorLine_Base* lastHLine;
 
 void impl_dfs_createNavLines(_NavNode* node) {
+    if(node->level > levels) //超过要求的级数了
+        return;
     if(node->pointer_to) {
         HorLine_Base* navline = 0;
         if(! lastHLine) {
@@ -55,7 +59,8 @@ void impl_dfs_createNavLines(_NavNode* node) {
         AnchorObj_Spring* spring = new AnchorObj_Spring;  //中间的弹簧
         SoupleManager::registerObjs(nav,ft,ft2,spring);
         // 赋予属性--->
-        nav->nav_at = node->pointer_to;
+        nav->nav_at = node->pointer_to; // 导航点
+        nav->width = node->level * tab; //段落符的宽度 ~即首行缩进
         ft->font = ::font;
         ft2->font = ::font;
         spring->showType = showType;
@@ -69,6 +74,8 @@ void impl_dfs_createNavLines(_NavNode* node) {
         } else {
             ft2->text = QString::number(to_page->index+1);
         }
+        ft->calcWidth();
+        ft2->calcWidth();
         // 连接、放置对象。connect_l2r_atHLine函数...
         AnchorObj::connect_l2r_atHLine(navline,nav,ft,spring,ft2);
     }
@@ -119,6 +126,27 @@ void impl_createNavLines(QVariantMap args,vector<_NavNode*> nav_nodes) {
 
     if(nextHLine) {
         nextHLine->setPrevLine(lastHLine); //缝合
+    }
+
+    // 创建“目录”标题
+    HorLine_Base* line = lastHLine;
+    while(line) {
+        auto l2 = line->getPrevLine();
+        if(!l2 || ! l2->leftObj->canBe<NavItem>()) {
+            auto new_line = line->insertHLine_up(HorLine_Base::HLT_Same);
+            if(!new_line) {
+                break;
+            }
+            AnchorObj_FlowText* text = new AnchorObj_FlowText;
+            AnchorObj_JZRect* jz = new AnchorObj_JZRect;
+            SoupleManager::registerObjs(text,jz);
+            text->text = "目录";
+            text->font = ::font;
+            text->font.setPointSizeF(14);
+            AnchorObj::connect_l2r_atHLine(new_line,jz,text);
+            break;
+        }
+        line = l2;
     }
 }
 
@@ -182,5 +210,27 @@ void Helper::createNavLines_auto(QVariantMap args)
 {
     int doc_id = args["document_id"].toInt();
     auto& all_objs = SoupleManager::getDocumentObjs(doc_id);
+    enum {
+        Arabic,Roman,Chinese,English_Char
+    };
+    //特征,描述一个目录项的特征
+    struct Feature {
+        char number_type; //标号类型
+        int number; //标号
+        float tab; //左缩进
+        QString prefix; //前缀
+        QString suffix; //后缀
+    };
 
+    auto hline = SoupleManager::getDocumentFirstLine(doc_id);
+    if(!hline) {
+        emit Helper::helper->errorMsg("错误","该文档未指定起始行！\n请补充起始行。");
+        return;
+    }
+
+    for(;hline;hline = hline->getNextLine())
+    {
+        if(!hline->leftObj) continue;
+        auto glue = hline->leftObj->as<AnchorObj_Glue*>();
+    }
 }

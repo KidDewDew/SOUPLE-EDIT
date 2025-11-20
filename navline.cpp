@@ -9,7 +9,7 @@ void NavItem::dealLayout() noexcept
         y = hline->y;
     }
     if(Helper::isQmlItemValid(qmlItem)) {
-        qmlItem->setPosition({x-qmlItem->width(),
+        qmlItem->setPosition({x-qmlItem->width()+width,
                               y-qmlItem->height()*0.5});
     }
     AnchorObj_PHLeft::doPHLeft();

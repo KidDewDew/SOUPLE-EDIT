@@ -203,21 +203,6 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
             hline = hline->logic_lastHLine;
         }
 
-        hline = last_hline;
-
-        while(hline != top_hline) {
-            //检查<上一行>是否需要插入换行符
-            if(typeid(*hline) != typeid(AnchorObj_HLine)) { //其他类型的标线不插入
-                hline = hline->logic_lastHLine ? hline->logic_lastHLine : hline->hline->as<AnchorObj_HLine*>();
-                continue;
-            }
-            tryLastHlineAppendBreak(hline,ori_right);
-            tryInsertPHLeft(hline); //尝试插入PH_Left
-            hline = hline->logic_lastHLine;
-        }
-
-        Pdf2Souple::dealHLines_2(top_hline); //deal2
-
         //连接上一栏最后一条hline
         if(last_column_hline && top_hline) {
             if(typeid(*last_column_hline) == typeid(AnchorObj_HLine)) {
@@ -228,8 +213,24 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
             }
             top_hline->topMargin =
                 std::max(page->souple_page->getBottomLineY() - last_column_hline->getContentBottom() + 0.01f,
-                                            last_column_hline->topMargin);
+                         last_column_hline->topMargin);
         }
+
+        hline = last_hline;
+
+        while(true) {
+            //检查<上一行>是否需要插入换行符
+            if(typeid(*hline) != typeid(AnchorObj_HLine)) { //其他类型的标线不插入
+                hline = hline->logic_lastHLine ? hline->logic_lastHLine : hline->hline->as<AnchorObj_HLine*>();
+                continue;
+            }
+            tryLastHlineAppendBreak(hline,ori_right);
+            tryInsertPHLeft(hline); //尝试插入PH_Left
+            if(hline == top_hline) break;
+            hline = hline->logic_lastHLine;
+        }
+
+        Pdf2Souple::dealHLines_2(top_hline); //deal2
 
         last_column_hline = last_hline;
     }
@@ -257,6 +258,9 @@ RETURN_OK:
             Pdf2Souple::setSpanPageHLineTopMargin(first_top_hline,
                                                   prev_page->the_last_hline_to_continue,
                                                   *prev_page.get());
+            tryLastHlineAppendBreak(first_top_hline,
+                                    prev_page->the_last_hline_to_continue->getRightX());
+            tryInsertPHLeft(first_top_hline); //尝试插入PH_Left
         } else {
             //...
         }

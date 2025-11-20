@@ -10,6 +10,7 @@
 #include "DecorationInterface.h"
 #include "ExportHeader.h"
 #include <any>
+#include "serialization.h"
 
 #define DEBUG
 
@@ -41,6 +42,8 @@ struct Obj_KeyEvent_Info {
  *  selectionGetData 用于SelectionManager请求选择属性数据
  *  getAnyData 用于c++对象间请求数据，用于“很少”发生的请求。它的功能最强。
  * */
+
+
 
 /**
  * 另外，dealCommandFromQmlItem函数不仅可以处理qml对象的命令，c++对象也可以相互调用。
@@ -185,40 +188,47 @@ public:
     // 向bytes从at处写入，并更新at
     // n为目前bytes剩余的空间大小
     // 返回：true:成功 false:需要更多空间来存储
-    virtual bool serialize(char* bytes,int rest_length,int& at) {
-        return true;
+    //virtual bool serialize(char* bytes,int rest_length,int& at) {
+    //    return true;
+    //}
+
+    // 序列化函数
+    template<typename Serial>
+    void serialize(Serial& serial) {
+        serial / id / x / y / z;
     }
 
-    Obj* unserialize(const char* bytes,int& at) { return 0; }
+    // 反序列化
+    //virtual Obj* unserialize(const char* bytes,int& at) { return 0; }
 
     // 序列化类型表
-    enum {
-        Serialize_AnchorObj_FlowText = 1,
-        Serialize_AnchorObj_Glue = 2,
-        Serialize_AnchorObj_HLine = 3,
-        Serialize_AnchorObj_Image = 4,
-        Serialize_AnchorObj_JZRect = 5,
-        Serialize_AnchorObj_LatexFormula = 6,
-        Serialize_AnchorObj_Path = 7,
-        Serialize_AnchorObj_PHLeft = 8,
-        Serialize_AnchorObj_PHRect = 9,
-        Serialize_AnchorObj_PHRight= 10,
-        Serialize_AnchorObj_Rich = 11,
-        Serialize_AnchorObj_VLine = 12,
-        Serialize_BlockInner_HorLine = 13,
-        Serialize_Frame_ofHLines = 14,
-        Serialize_Free_Image = 15,
-        Serialize_Free_Path = 16,
-        Serialize_Free_TableUnit = 17,
-        Serialize_Free_Text = 18,
-        Serialize_HorLine_Base = 19,
-        Serialize_Obj_Page = 20,
-        Serialize_TableLine = 21,
-        Serialize_WordPage_VLine = 22
-    };
+    // enum {
+    //     Serialize_AnchorObj_FlowText = 1,
+    //     Serialize_AnchorObj_Glue = 2,
+    //     Serialize_AnchorObj_HLine = 3,
+    //     Serialize_AnchorObj_Image = 4,
+    //     Serialize_AnchorObj_JZRect = 5,
+    //     Serialize_AnchorObj_LatexFormula = 6,
+    //     Serialize_AnchorObj_Path = 7,
+    //     Serialize_AnchorObj_PHLeft = 8,
+    //     Serialize_AnchorObj_PHRect = 9,
+    //     Serialize_AnchorObj_PHRight= 10,
+    //     Serialize_AnchorObj_Rich = 11,
+    //     Serialize_AnchorObj_VLine = 12,
+    //     Serialize_BlockInner_HorLine = 13,
+    //     Serialize_Frame_ofHLines = 14,
+    //     Serialize_Free_Image = 15,
+    //     Serialize_Free_Path = 16,
+    //     Serialize_Free_TableUnit = 17,
+    //     Serialize_Free_Text = 18,
+    //     Serialize_HorLine_Base = 19,
+    //     Serialize_Obj_Page = 20,
+    //     Serialize_TableLine = 21,
+    //     Serialize_WordPage_VLine = 22
+    // };
 
     // 反序列化: 从bytes[at]处读取一个Obj，并更新at
-    static inline Obj* unserialize_all(const char* bytes,int& at);
+    //static inline Obj* unserialize_all(const char* bytes,int& at);
 
     // 返回一个debug字符串
     virtual QString __dstr() const noexcept {

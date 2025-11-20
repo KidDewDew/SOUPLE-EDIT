@@ -11,6 +11,10 @@ ImageButton {
     source: "qrc:/image/nav_down.svg"
     color: (hovered||down) ? "#eee" : "transparent"
     property int data_id
+    property real tab //缩进
+    property bool showLevel //是否显示level
+    property int level //级别
+    property alias cp_propertyBar: cp_propertyBar
     Component {
         id: cp_propertyBar //属性栏
         GridLayout {

@@ -34,4 +34,6 @@ public:
     typedef UIItemPool<__NAME__,40> uiPool_JZRect;
 };
 
+SOUPLE_REGISTER_CLASS(AnchorObj_JZRect,DATE_ID(202511202139))
+
 #endif // ANCHOROBJ_JZRECT_H

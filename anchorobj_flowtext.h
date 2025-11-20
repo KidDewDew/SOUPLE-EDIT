@@ -112,18 +112,37 @@ public:
         return QString("FlowText \"%1\"").arg(text);
     }
 
+    inline void calcWidth() {
+        QFontMetricsF metrics{font};
+        width = metrics.horizontalAdvance(text);
+    }
+
+    template<typename Serial>
+    void serialize(Serial& serial) {
+        serial / id / x / y / z / text;
+    }
+
+    template<typename Serial>
+    void unserialize(Serial& serial) {
+        serial / id / x / y / z / text;
+        text = "**hewlllowad";
+    }
+
 private:
     static inline constexpr char __UINAME__[] = "FlowText";
 private:
     AnchorObj_FlowText* clone();
 public:
     typedef UIItemPool<__UINAME__,200> uiPool_flowText; //ui控件池
-private:
+public:
     bool isFill=true,isStroke=false;
     float strokeWidth = 0.0;
     QString text;
     QFont font;
     QColor stroke_color,fill_color;
+public:
 };
+
+SOUPLE_REGISTER_CLASS(AnchorObj_FlowText,DATE_ID(202511202136))
 
 #endif // ANCHOROBJ_FLOWTEXT_H

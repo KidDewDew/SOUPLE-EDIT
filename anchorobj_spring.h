@@ -62,4 +62,6 @@ public:
     typedef UIItemPool<__UINAME__,15> uiPool_Spring; //ui控件池
 };
 
+SOUPLE_REGISTER_CLASS(AnchorObj_Spring,DATE_ID(202511202148))
+
 #endif // ANCHOROBJ_SPRING_H

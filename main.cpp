@@ -384,5 +384,9 @@ int main(int argc, char *argv[])
     //     UIItemPool<nn,20>::scanPool();
     // });
 
+    QByteArray bytes;
+    QDataStream ds(&bytes,QIODevice::ReadWrite);
+    AnchorObj_HLine* h = new AnchorObj_HLine;
+    souple::serialization::serialize(h,ds);
     return app.exec();
 }

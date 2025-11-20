@@ -79,9 +79,9 @@ public:
     template <typename...Ts>
     static inline void connect_l2r_atHLine(AnchorObj*_hline,Ts...objs) {
         _hline->insertOnRight(
-            std::tuple_element<sizeof...(objs)-1,Ts...>(std::tuple(objs...)));
+            std::get<sizeof...(objs)-1>(std::tuple(objs...)));
         _hline->insertOnLeft(
-            std::tuple_element<0,Ts...>(std::tuple(objs...)));
+            std::get<0>(std::tuple(objs...)));
         ((objs->hline = _hline),...);
         connect_l2r(objs...);
     }

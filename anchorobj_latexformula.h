@@ -54,4 +54,6 @@ protected:
     QString latex_code; //latex代码
 };
 
+SOUPLE_REGISTER_CLASS(AnchorObj_LatexFormula,DATE_ID(202511202140))
+
 #endif // ANCHOROBJ_LATEXFORMULA_H

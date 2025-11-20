@@ -1442,9 +1442,12 @@ bool Pdf2Souple::tryInsertPHLeft(HorLine_Base* hline)
 
     //[2]如果上一行有换行
     if(lastLine->rightObj && lastLine->rightObj->canBe<AnchorObj_PHRight>()) {
-        if(abs(lastLine->getPHLeftWidth() - hline->getPHLeftWidth()) > 5) {
-            need = true;
-        }
+        need = true;
+    }
+
+    // [3] tab变大
+    if(hline->getPHLeftWidth() - lastLine->getPHLeftWidth() > 3) {
+        need = true;
     }
 
     if(need) { //需要插入PH_Left

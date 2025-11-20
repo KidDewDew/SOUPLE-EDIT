@@ -43,4 +43,6 @@ public:
     typedef UIItemPool<__UINAME__,150> uiPool_Path; //ui控件池
 };
 
+SOUPLE_REGISTER_CLASS(AnchorObj_Path,DATE_ID(202511202145))
+
 #endif // ANCHOROBJ_PATH_H

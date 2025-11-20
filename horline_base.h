@@ -401,7 +401,7 @@ public:
     static inline QHash<QString,HorLine_Base*> hash_hline;
     const Page *page = 0; //记录所属页面，当然派生类也可以忽略;
     float contentTop = 0.0, contentBottom = 0.0; //所有位于该hline上的obj相对于hline.y的top_y和bottom_y
-
+    float left_tab = 0.0;
     //(暂时)位于该hline的所有附着符    //Turnback动作
     //所有hline必须正确传递附着符   //turnback
     // std::deque<FlowAttacher*> flowAttacher_list; [错误的设计]

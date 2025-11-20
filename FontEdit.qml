@@ -46,6 +46,9 @@ Control {
         }
         TCombo {
             id: combo_fonts
+            onCurrentTextChanged: {
+                currentFont.family = currentText
+            }
         }
         TText {
            font.pointSize: 11

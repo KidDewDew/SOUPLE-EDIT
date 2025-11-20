@@ -47,5 +47,6 @@ public:
     typedef UIItemPool<__UINAME__,20> uiPool_PHGlue; //ui控件池
 };
 
+SOUPLE_REGISTER_CLASS(AnchorObj_Glue,DATE_ID(202511202137))
 
 #endif // ANCHOROBJ_GLUE_H

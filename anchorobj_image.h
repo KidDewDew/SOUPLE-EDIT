@@ -42,4 +42,6 @@ public:
     typedef UIItemPool<__UINAME__,20> uiPool_Image; //ui控件池
 };
 
+SOUPLE_REGISTER_CLASS(AnchorObj_Image,DATE_ID(202511202138))
+
 #endif // ANCHOROBJ_IMA
