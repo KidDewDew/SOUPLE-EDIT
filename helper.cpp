@@ -172,6 +172,11 @@ float Helper::levenshtein(const QString& str1,const QString& str2) noexcept
     return similarity;
 }
 
+QStringList Helper::getFontFamilyList()
+{
+    return QFontDatabase::families();
+}
+
 void Helper::doTest_1(QVariant arg)
 {
     //2025-11-13 测试“渲染pdf页面为provider图像的功能”

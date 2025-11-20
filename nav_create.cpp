@@ -5,6 +5,7 @@
 #include "anchorobj_hline.h"
 #include "anchorobj_flowtext.h"
 #include "anchorobj_phright.h"
+#include "anchorobj_spring.h"
 
 using namespace std;
 
@@ -47,14 +48,29 @@ void impl_dfs_createNavLines(_NavNode* node) {
         }
         lastHLine = navline;
         // here,navline CREATED
-        AnchorObj_FlowText *ft = new AnchorObj_FlowText;
-        AnchorObj_PHRight* br = new AnchorObj_PHRight;
-        SoupleManager::registerObj(ft);
-        SoupleManager::registerObj(br);
-        ft->text = "Nav";
-        ft->font.setPointSize(10);
-        navline->insertOnLeft(ft);
-        navline->insertOnRight(br);
+        // 下面填充内容------>
+        NavItem *nav = new NavItem;  //导航符(段落的派生类型)
+        AnchorObj_FlowText *ft = new AnchorObj_FlowText,  //左文字
+                           *ft2 = new AnchorObj_FlowText; //右文字：页码
+        AnchorObj_Spring* spring = new AnchorObj_Spring;  //中间的弹簧
+        SoupleManager::registerObjs(nav,ft,ft2,spring);
+        // 赋予属性--->
+        nav->nav_at = node->pointer_to;
+        ft->font = ::font;
+        ft2->font = ::font;
+        spring->showType = showType;
+        spring->lineWidth = lineWidth;
+        spring->radius = radius;
+        spring->spacing = spacing;
+        spring->dashWidth = dashWidth;
+        Page* to_page = SoupleManager::getPage(doc_id,node->pointer_to->y);
+        if(! to_page) {
+            ft2->text = "?";
+        } else {
+            ft2->text = QString::number(to_page->index+1);
+        }
+        // 连接、放置对象。connect_l2r_atHLine函数...
+        AnchorObj::connect_l2r_atHLine(navline,nav,ft,spring,ft2);
     }
     for(_NavNode* child : node->children) {
         impl_dfs_createNavLines(child);

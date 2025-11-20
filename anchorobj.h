@@ -63,6 +63,28 @@ public:
 
     virtual AnchorObj *getLastObj() const;
 
+    // connect_l2r(至少两个对象才可以使用)
+    // 从左到右逐个连接，模板展开。【注】没有递归开销
+    template <typename...Ts>
+    static inline void connect_l2r(AnchorObj* a,AnchorObj* b,Ts...objs) {
+        b->leftObj = a;
+        a->rightObj = b;
+        if constexpr(sizeof...(objs) > 0) {
+            connect_l2r(b,objs...);
+        }
+    }
+
+    // connect_l2r_atHLine
+    // 把一组对象放到hline上(至少2个对象)
+    template <typename...Ts>
+    static inline void connect_l2r_atHLine(AnchorObj*_hline,Ts...objs) {
+        _hline->insertOnRight(
+            std::tuple_element<sizeof...(objs)-1,Ts...>(std::tuple(objs...)));
+        _hline->insertOnLeft(
+            std::tuple_element<0,Ts...>(std::tuple(objs...)));
+        ((objs->hline = _hline),...);
+        connect_l2r(objs...);
+    }
 
     uchar vAlignMode = Helper::AlignVCenter;
     float vAlignOffset = 0.0;

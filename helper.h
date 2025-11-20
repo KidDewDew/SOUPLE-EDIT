@@ -424,6 +424,8 @@ public:
         return str[n];
     }
 
+    Q_INVOKABLE static QStringList getFontFamilyList();
+
     // removeAll: 删除一个随机访问容器的所有某个值 O(n)
     template<typename T,typename V>
         requires requires(T t,V v){

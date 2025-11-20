@@ -39,6 +39,7 @@ public:
         item->setProperty("lineWidth",lineWidth);
         item->setProperty("showType",showType);
         item->setProperty("spacing",spacing);
+        item->setProperty("dashWidth",dashWidth);
     };
     virtual QVariant qmlGetData(int dataName) override {
         switch(dataName) {
@@ -53,7 +54,7 @@ public:
     // showType 显示类型
     char showType;
     float radius,lineWidth; //点的半径 or 线宽
-    float spacing;
+    float spacing,dashWidth;
     //QFont font; //使用的字体(对于showType 0)
 private:
     static constexpr char __UINAME__[] = "Spring";

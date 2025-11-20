@@ -108,6 +108,17 @@ public:
         all_objs.push_back(obj);
     }
 
+    // 一次性注册多个objs，模板展开;
+    template<typename...Ts>
+    static inline void registerObjs(Ts...objs) { //注册obj
+        if( ! enableRegister) {
+            (wait_register_obj_list.push_back(objs),...);
+            return;
+        }
+        ((hash_id_obj[objs->id] = objs),...);
+        (all_objs.push_back(objs),...);
+    }
+
 
     static inline Obj* getObjById(int id) noexcept {
         auto it = hash_id_obj.find(id);
@@ -418,6 +429,16 @@ public:
 #endif
         if(it == page_inf.sum_heights.end()) return nullptr;
         //if(it == page_inf.sum_heights.end()) return page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
+        return page_inf.pages[it - page_inf.sum_heights.begin()];
+    }
+
+    static inline Page* getPage(int doc_id,float y) {
+        if(doc_id == Current_Document || doc_id == currentDocumentID) {
+            return getPage(y);
+        }
+        auto& page_inf = all_documents[doc_id]->page_inf;
+        auto it = std::ranges::lower_bound(page_inf.sum_heights,y);
+        if(it == page_inf.sum_heights.end()) return nullptr;
         return page_inf.pages[it - page_inf.sum_heights.begin()];
     }
 
