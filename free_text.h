@@ -23,6 +23,13 @@ public:
         return FreeObj::qmlGetData(dataName);
     }
 
+    virtual std::any getAnyData(std::string key) noexcept override {
+        if(key == "text") {
+            return text;
+        }
+        return {};
+    }
+
     void qt_paint(QPainter& painter,Page* page) override {};
     virtual void discard_qmlItem() override {
         uiPool_FText::returnItem(qmlItem);

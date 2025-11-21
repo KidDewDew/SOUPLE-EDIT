@@ -35,6 +35,13 @@ public:
         qmlItem = 0;
     }
     void qt_paint(QPainter& painter,Page* page) override;
+
+    template<typename Serial>
+    void serialize(Serial& serial) {
+        AnchorObj::serialize(serial);
+        serial / SOUPLE_PP(source);
+    }
+
 private:
     QString source = ""; //缺省source
     static constexpr char __UINAME__[] = "Image";

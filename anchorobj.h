@@ -86,6 +86,13 @@ public:
         connect_l2r(objs...);
     }
 
+    template<typename Serial>
+    void serialize(Serial& serial) {
+        serial / SOUPLE_PP(id) /SOUPLE_PP(z)
+            / SOUPLE_PP(vAlignMode)
+            / SOUPLE_PP(vAlignOffset);
+    }
+
     uchar vAlignMode = Helper::AlignVCenter;
     float vAlignOffset = 0.0;
     AnchorObj *leftObj = 0, *rightObj = 0; //左右obj

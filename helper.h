@@ -284,6 +284,7 @@ public:
         return dpi;
     }
 
+
     Q_INVOKABLE static inline qreal pixel2cm(qreal val) //像素 转 厘米
     {
         return val / (dpi / 2.54);

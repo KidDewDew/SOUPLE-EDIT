@@ -31,6 +31,8 @@
 #include <QFontDatabase>
 #include <QFontInfo>
 #include <QFont>
+#include <QDataStream>
+#include <QColor>
 #ifdef WIN32
 #include <windows.h>
 #include <dwmapi.h>
@@ -46,8 +48,6 @@ QGuiApplication *global_app;
 constexpr char nn[] = "FlowText";
 
 #pragma comment(lib, "dwmapi.lib")
-
-
 
 /**
  * @brief The MyWindowEvenetFilter class
@@ -343,6 +343,8 @@ int main(int argc, char *argv[])
 
     /**初始化 END**/
 
+    /*以下是各种测试代码**/
+
     // QPdfWriter w("C:\\Users\\guest0\\Desktop\\eee.pdf");
     // w.setResolution(Helper::getDPI());
     // //w.setPageSize(QPageSize{QSize{400,800}});
@@ -384,9 +386,64 @@ int main(int argc, char *argv[])
     //     UIItemPool<nn,20>::scanPool();
     // });
 
-    QByteArray bytes;
-    QDataStream ds(&bytes,QIODevice::ReadWrite);
-    AnchorObj_HLine* h = new AnchorObj_HLine;
-    souple::serialization::serialize(h,ds);
+    // QByteArray bytes;
+    // QDataStream ds(&bytes,QIODevice::ReadWrite);
+    // AnchorObj_FlowText* ft = new AnchorObj_FlowText;
+    // ft->text = "你好啊";
+    // ft->font.setFamily("宋体");
+    // ft->font.setPointSizeF(22);
+    // ft->stroke_color = "#123456";
+    // QString str;
+    // souple::serialization::serialize_xml(ft,&str);
+    // souple::serialization::serialize(ft,ds);
+    // qDebug() << str.length() << str;
+    // qDebug() << bytes.size() << bytes;
+
+    // QDataStream ds2(&bytes,QIODevice::ReadOnly);
+    // Obj* ft2 = (Obj*)souple::serialization::unserialize(ds2);
+    // qDebug() << ft2->__dstr();
+
+    QRegularExpression re("^(?<prefix>.*?)"
+                          //match 几十几、十几、几十
+                          "(?:(?<chinese_tens>[一二三四五六七八九]?十[一二三四五六七八九]?)|"
+                          //macth 几
+                          "(?<chinese_single>[一二三四五六七八九])|"
+                          //match 数字序号 1  1.2 1.2.10
+                          "(?:(?<arabic_prefix>(\\d+\\.)*)(?<arabic>\\d+))|"
+                          //match 小写字母
+                          "(?<lower_letter>(?<=\\s|\\(|（|^)[a-z](?=\\s|\\)|）|\\.|$))|"
+                          //match 大写字母
+                          "(?<upper_letter>(?<=\\s|\\(|（|^)[A-Z](?=\\s|\\)|）|\\.|$)))"
+                          //后缀
+                          "(?<suffix>\\S*)");
+
+    QString str[] = {
+"第四十二章",
+"一、",
+"（十二）",
+"1 概要"
+,"1.2.10 另一种集合提取线条的方法"
+,"(1) 啊撒大声地"
+,"(6) 导致的问题"
+,"（a）导致的问题"
+,"（E）导致的问题"
+,"Part 2 导致的问题"
+,"I. 针对上述问题提出的方法"
+,"VI. 针对上述问题提出的方法"
+,"I. 针对上述问题提出的方法"};
+
+    for(auto s : str) {
+        auto m = re.match(s);
+        QString chinese_tens = m.captured("chinese_tens");
+        QString chinese_single = m.captured("chinese_single");
+        qDebug() << m.captured("prefix") <<
+            chinese_tens << chinese_single
+                 << m.captured("arabic")
+                 << m.captured("arabic_prefix")
+         << m.captured("lower_letter")
+         << m.captured("upper_letter")
+                 << m.captured("suffix");
+    }
+
     return app.exec();
 }

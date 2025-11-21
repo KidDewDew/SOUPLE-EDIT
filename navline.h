@@ -24,6 +24,13 @@ public:
         item->setSize({22,18});
     };
     virtual int dealCommandFromQmlItem(int command,const QVariant& arg) override;
+
+    template<typename Serial>
+    void serialize(Serial& serial) {
+        AnchorObj_PHLeft::serialize(serial);
+        serial / SOUPLE_PP(nav_at->id);
+    }
+
 public:
     Safe_Obj_Pointer<Obj> nav_at; //导航定位到
 private:
@@ -32,5 +39,6 @@ public:
     typedef UIItemPool<__UINAME__,15> uiPool_Nav; //ui控件池
 };
 
+SOUPLE_REGISTER_CLASS(NavItem,DATE_ID(202511211521))
 
 #endif // NAVLINE_H

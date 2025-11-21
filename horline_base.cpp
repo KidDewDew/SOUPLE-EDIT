@@ -100,3 +100,24 @@ void HorLine_Base::autoSetPara() {
     glue_left->width = phw;
     insertOnLeft(glue_left);
 }
+
+QString HorLine_Base::get_merged_line_text(bool addSpace) const noexcept
+{
+    QString str;
+    auto obj = leftObj;
+    bool to_addspace = false;
+    while(obj) {
+        std::any text = obj->getAnyData("text");
+        if(text.has_value()) {
+            if(addSpace && to_addspace) {
+                str.append(' ');
+                to_addspace = false;
+            }
+            str.append(std::any_cast<QString>(text));
+        } else {
+            to_addspace = true;
+        }
+        obj = obj->rightObj;
+    }
+    return str;
+}

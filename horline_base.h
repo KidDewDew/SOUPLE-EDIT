@@ -151,6 +151,10 @@ public:
         return 0.0;
     }
 
+    // 获取这一行的拼接出的文本。末尾若有换行，则添加换行符\n。
+    // 若中间有断开，且addSpace=true，则添加空格
+    QString get_merged_line_text(bool addSpace = true) const noexcept;
+
     // 自动设置段落属性
     void autoSetPara();
 

@@ -44,6 +44,15 @@ public:
         else return "qrc:/image/icon_Image.png";
     }
     //void qt_paint(QPainter& painter,Page* page) override;
+
+    template<typename Serial>
+    void serialize(Serial& serial) {
+        AnchorObj::serialize(serial);
+        serial / SOUPLE_PP(image_id)
+            / SOUPLE_PP(font_size)
+            / SOUPLE_PP(latex_code);
+    }
+
 private:
     static constexpr char __UINAME__[] = "Latex";
 public:

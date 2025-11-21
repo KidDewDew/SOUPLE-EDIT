@@ -195,7 +195,10 @@ public:
     // 序列化函数
     template<typename Serial>
     void serialize(Serial& serial) {
-        serial / id / x / y / z;
+        serial /SOUPLE_PP(id)
+            /SOUPLE_PP(x)
+            /SOUPLE_PP(y)
+            /SOUPLE_PP(z);
     }
 
     // 反序列化

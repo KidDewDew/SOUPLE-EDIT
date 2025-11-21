@@ -51,6 +51,13 @@ public:
         return {};
     }
 
+    virtual std::any getAnyData(std::string key) noexcept override {
+        if(key == "text") {
+            return text;
+        }
+        return {};
+    }
+
     virtual void positionToIndex(float x1,float x2,int& begin_index,int& end_index)
         noexcept override
     {
@@ -119,13 +126,14 @@ public:
 
     template<typename Serial>
     void serialize(Serial& serial) {
-        serial / id / x / y / z / text;
-    }
-
-    template<typename Serial>
-    void unserialize(Serial& serial) {
-        serial / id / x / y / z / text;
-        text = "**hewlllowad";
+        serial / SOUPLE_PP(id)
+            / SOUPLE_PP(text)
+            / SOUPLE_PP(font)
+            / SOUPLE_PP(isFill)
+            / SOUPLE_PP(isStroke)
+            / SOUPLE_PP(strokeWidth)
+            / SOUPLE_PP(stroke_color)
+            / SOUPLE_PP(fill_color);
     }
 
 private:

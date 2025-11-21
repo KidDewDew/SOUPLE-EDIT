@@ -20,15 +20,16 @@ struct _NavNode {
     vector<_NavNode*> children;
 };
 
-int doc_id;
-QFont font;
-int showType;
-int levels;
-float tab;
-float radius;
-float spacing;
-float lineWidth;
-float dashWidth;
+// file global vars
+static int doc_id;
+static QFont font;
+static int showType;
+static int levels;
+static float tab;
+static float radius;
+static float spacing;
+static float lineWidth;
+static float dashWidth;
 // 遍历nav_nodes
 HorLine_Base* lastHLine;
 
@@ -205,22 +206,55 @@ void Helper::createNavLines_fromLevels(QVariantMap args)
     impl_createNavLines(args,nav_stack[0]->children);
 }
 
+inline int chinese2number(QChar c) {
+    switch(c.unicode()) {
+        case 0x4E00: return 1; break;
+        case 0x4E8C: return 2; break;
+        case 0x4E09: return 3; break;
+        case 0x56DB: return 4; break;
+        case 0x4E94: return 5; break;
+        case 0x516D: return 6; break;
+        case 0x4E03: return 7; break;
+        case 0x516B: return 8; break;
+        case 0x4E5D: return 9; break;
+        case 0x5341: return 10; break;
+        default:
+            throw LLException(u"nav_create::chinese2number: unknown input="+c);
+    }
+}
+
+inline QString extractSuffix(const QString& suffix) {
+    if(suffix.isEmpty()) return {};
+    if(suffix[0] == ')' || suffix[0].unicode() == 0xFF09 //中文'）'
+        || suffix[0] == '.') return suffix.sliced(1);
+    return suffix;
+}
+
 // 自动识别目录
 void Helper::createNavLines_auto(QVariantMap args)
 {
     int doc_id = args["document_id"].toInt();
     auto& all_objs = SoupleManager::getDocumentObjs(doc_id);
     enum {
-        Arabic,Roman,Chinese,English_Char
+        Arabic,Roman,Chinese,Lower_Char,Upper_Char
     };
     //特征,描述一个目录项的特征
     struct Feature {
         char number_type; //标号类型
         int number; //标号
+        int arabic_level; //数字序号级别: 1:1级 1.1:2级 ...
         float tab; //左缩进
         QString prefix; //前缀
         QString suffix; //后缀
     };
+
+    struct PreNav { //导航项
+        int level;
+        AnchorObj_PHLeft* ph_left;
+        Feature feature;
+    };
+
+    vector<PreNav> prenavs; //预处理的prenav
 
     auto hline = SoupleManager::getDocumentFirstLine(doc_id);
     if(!hline) {
@@ -228,9 +262,77 @@ void Helper::createNavLines_auto(QVariantMap args)
         return;
     }
 
+    /**   举例：
+     * 一、xxx         1
+     *   (1)...       2
+     *   (2)...       2
+     *     1 xxx      3
+     *     2 xxx      3
+     * 二、xxx         1
+     *   1 xxx        2
+     *   1.1 xxx      3
+     *   2 xxx        2
+     *   2.1 xxx      3
+     *   2.1.2 xxx    4
+     *   (a)...       5
+     *   (b)...       5
+     *   3 xxx        2
+     */
+
     for(;hline;hline = hline->getNextLine())
     {
         if(!hline->leftObj) continue;
-        auto glue = hline->leftObj->as<AnchorObj_Glue*>();
+        float tab = hline->getPHLeftWidth();
+        QString text = hline->get_merged_line_text(true);
+        if(text.isEmpty()) continue;
+        static QRegularExpression re("^(?<prefix>.*?)"
+                              //match 几十几、十几、几十
+                              "(?:(?<chinese_tens>[一二三四五六七八九]?十[一二三四五六七八九]?)|"
+                              //macth 几
+                              "(?<chinese_single>[一二三四五六七八九])|"
+                              //match 数字序号 1  1.2 1.2.10
+                              "(?:(?<arabic_prefix>(\\d+\\.)*)(?<arabic>\\d+))|"
+                              //match 小写字母
+                              "(?<lower_letter>(?<=\\s|\\(|（|^)[a-z](?=\\s|\\)|）|\\.|$))|"
+                              //match 大写字母
+                              "(?<upper_letter>(?<=\\s|\\(|（|^)[A-Z](?=\\s|\\)|）|\\.|$)))"
+                              //后缀
+                              "(?<suffix>\\S*)");
+        auto m = re.match(text);
+        if(! m.hasMatch()) continue;
+        QString prefix = m.captured("prefix"),
+            chinese_tens = m.captured("chinese_tens"),
+            chinese_single = m.captured("chinese_single"),
+            arabic_prefix = m.captured("arabic_prefix"),
+            arabic = m.captured("arabic"),
+            lower_letter = m.captured("lower_letter"),
+            upper_letter = m.captured("upper_letter"),
+            suffix = m.captured("suffix");
+        Feature feature;
+        // 计算特征
+        feature.prefix = prefix;
+        if(!chinese_tens.isEmpty() || !chinese_single.isEmpty()) {
+            feature.number_type = Chinese;
+            if(!chinese_single.isEmpty()) {
+                feature.number = chinese2number(chinese_single[0]);
+            } else {
+                if(chinese_tens.length() == 0)
+                    feature.number = 10;
+                else if(chinese2number(chinese_tens[0]) == 10)
+                    feature.number = 10 + chinese2number(chinese_tens[1]);
+                else
+                    feature.number = chinese2number(chinese_tens[0])*10+
+                                     (chinese_tens.length()==3 ? chinese2number(chinese_tens[2]):0);
+            }
+        }
+        else if(!arabic.isEmpty()) {
+
+        }
+        else if(!lower_letter.isEmpty()) {
+
+        }
+        else if(!upper_letter.isEmpty()) {
+
+        }
     }
 }

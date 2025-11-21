@@ -69,6 +69,14 @@ public:
     // [!notice]该方法返回的ParaInf中的etc_tab不一定等于段落的真实etc_tab。
     static std::optional<ParaInf> findBelongPara(HorLine_Base* hline);
     //static
+
+    template<typename Serial>
+    void serialize(Serial& serial) {
+        serial / SOUPLE_PP(id)
+            / SOUPLE_PP(level)
+            / SOUPLE_PK("first_tab",width);
+    }
+
 public:
     int level; //段落级别 0代表尚未有级别。
 private:
