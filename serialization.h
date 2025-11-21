@@ -38,7 +38,7 @@ class Register_ID_Repeat_Error : std::exception {};
 #define SOUPLE_PKC(key,id) souple::serialization::KVC(key,id)
 
 // 使用该宏来注册序列化类型
-#define SOUPLE_REGISTER_CLASS(_class_name,_id) \
+#define SOUPLE_REGISTER_CLASS2(_class_name,_id) \
 struct _class_name##_souple_register_inf {\
 static inline int _ =\
 ([](){\
@@ -71,9 +71,14 @@ return (void*)obj;\
 
 namespace souple {
 
-    namespace serialization {
+    template<typename T,class Serial>
+    concept NoUnSerialize = !requires(T* t,Serial& serial) {
+        t->unserialize(serial);
+    };
 
-        inline QString escapeXml(const QString& input) {
+    class serialization {
+    public:
+        static inline QString escapeXml(const QString& input) {
             QString result;
             result.reserve(input.length() * 1.2); // 预留一些额外空间以提高性能
 
@@ -91,18 +96,15 @@ namespace souple {
             return result;
         }
 
-        template<class T>
-        inline QString to_string(const T& t) {
-            return QString(t);
+        static inline QString to_string(const QString& t) {
+            return t;
         }
 
-        template<>
-        inline QString to_string<QColor>(const QColor& t) {
+        static inline QString to_string(const QColor& t) {
             return t.name();
         }
 
-        template<>
-        inline QString to_string<QFont>(const QFont& font) {
+        static inline QString to_string(const QFont& font) {
             QJsonObject json;
             json.insert("family",font.family());
             json.insert("pointSizeF",font.pointSizeF());
@@ -112,9 +114,8 @@ namespace souple {
             return QJsonDocument(json).toJson(QJsonDocument::Compact);
         }
 
-        #define NUMBER_TO_STRING(type)\
-        template<>\
-        inline QString to_string<type>(const type& t) {\
+#define NUMBER_TO_STRING(type)\
+        static inline QString to_string(const type& t) {\
             return QString::number(t);\
         }
 
@@ -246,11 +247,6 @@ namespace souple {
             QString* str;
         };
 
-        template<typename T,class Serial>
-        concept NoUnSerialize = !requires(T* t,Serial& serial) {
-            t->unserialize(serial);
-        };
-
         template <class T,class Serial>
             requires requires(T* t,Serial& serial) {
                 t->serialize(serial);
@@ -278,18 +274,18 @@ namespace souple {
             std::function<void*(Serial_Input&)> unserialize; //反序列化
         };
 
-        inline QHash<short, serialization_class_info>& get_serialization_class_map() {
+        static inline QHash<short, serialization_class_info>& get_serialization_class_map() {
             static QHash<short, serialization_class_info> instance;
             return instance;
         }
 
-        inline QHash<std::string, serialization_class_info>& get_typename_id_map() {
+        static inline QHash<std::string, serialization_class_info>& get_typename_id_map() {
             static QHash<std::string, serialization_class_info> instance;
             return instance;
         }
 
         template<typename T>
-        inline void serialize(T* obj,QDataStream& ds) {
+        static inline void serialize(T* obj,QDataStream& ds) {
             Serial_Output serial_output(&ds);
             auto it_si = get_typename_id_map().find(typeid(*obj).name());
             if(it_si == get_typename_id_map().end()) {
@@ -301,7 +297,7 @@ namespace souple {
             it_si->serialize(obj,serial_output);
         }
 
-        inline void* unserialize(QDataStream& ds) {
+        static inline void* unserialize(QDataStream& ds) {
             Serial_Input serial_input(&ds);
             short id;
             ds >> id;
@@ -321,7 +317,7 @@ namespace souple {
         // }
 
         template<bool br=true,typename T>
-        inline void serialize_xml(T* obj,QString* xml) {
+        static inline void serialize_xml(T* obj,QString* xml) {
             Serial_Output_XML<br> serial_output(xml);
             auto it_si = get_typename_id_map().find(typeid(*obj).name());
             if(it_si == get_typename_id_map().end()) {
@@ -337,7 +333,7 @@ namespace souple {
             if constexpr(br) xml->append(u"</%1>\n"_qs.arg(it_si->class_name));
             else xml->append(u"</%1>"_qs.arg(it_si->class_name));
         }
-    }
+    };
 }
 
 #endif // SERIALIZATION_H

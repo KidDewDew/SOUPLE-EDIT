@@ -444,6 +444,10 @@ int main(int argc, char *argv[])
          << m.captured("upper_letter")
                  << m.captured("suffix");
     }
-
-    return app.exec();
+    try {
+        return app.exec();
+    }catch(std::exception& e) {
+        MessageBoxA(0,"未处理的异常",e.what(),MB_OK);
+        return 1;
+    }
 }

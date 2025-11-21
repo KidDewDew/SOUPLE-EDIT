@@ -186,5 +186,9 @@ QStringList Helper::getFontFamilyList()
 void Helper::doTest_1(QVariant arg)
 {
     //2025-11-13 测试“渲染pdf页面为provider图像的功能”
-    SoupleManager::request_render_page(arg.toInt(),0,"test_page");
+    //SoupleManager::request_render_page(arg.toInt(),0,"test_page");
+    //2025-11-22 测试全局异常检测
+    vector<int> c;
+    c[4] = 10;
+    qDebug() << c[4];
 }

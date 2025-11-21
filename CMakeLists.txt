@@ -7,7 +7,12 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 23)
 
-set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} -fconcepts-diagnostics-depth=3")
+#set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} -fconcepts-diagnostics-depth=3 -fstats")
+
+set(CMAKE_BUILD_PARALLEL_LEVEL 8)
+
+set(CMAKE_UNITY_BUILD ON)
+set(CMAKE_UNITY_BUILD_BATCH_SIZE 10)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick PrintSupport)
 
@@ -226,6 +231,7 @@ qt_add_qml_module(appSoupleEdit
         SOURCES obj_start_sign.h
         QML_FILES Obj_StartSign.qml
         SOURCES serialization.h
+        SOURCES serialization.cpp
         #RESOURCES vcpkg.json
 )
 

@@ -226,8 +226,45 @@ inline int chinese2number(QChar c) {
 inline QString extractSuffix(const QString& suffix) {
     if(suffix.isEmpty()) return {};
     if(suffix[0] == ')' || suffix[0].unicode() == 0xFF09 //中文'）'
-        || suffix[0] == '.') return suffix.sliced(1);
+        || suffix[0] == '.' || suffix[0].unicode() == 0x3001)
+        return suffix[0];
+    int i = 0;
+    while(i < suffix.length()) {
+        if(suffix[i].unicode() == 0x3001
+            || suffix[i] == ':'
+            || suffix[i].unicode() == 0xFF1A) {
+            return suffix.sliced(0,i+1);
+        }
+        ++i;
+    }
     return suffix;
+}
+
+struct WordCount {
+    int chineseChars;    // 汉字数量
+    int englishWords;    // 英文单词数量
+    int all_words;
+};
+
+WordCount countWords(const QString& text) {
+    WordCount result = {0, 0, 0};
+    // 统计汉字
+    for (const QChar& ch : text) {
+        if (ch.script() == QChar::Script_Han) {
+            result.chineseChars++;
+        }
+    }
+    // 统计英文单词（使用正则表达式）
+    QRegularExpression englishWordRe("\\b[a-zA-Z]+\\b");
+    QRegularExpressionMatchIterator it = englishWordRe.globalMatch(text);
+
+    while (it.hasNext()) {
+        it.next();
+        result.englishWords++;
+    }
+    result.all_words = result.englishWords + result.chineseChars;
+
+    return result;
 }
 
 // 自动识别目录
@@ -242,10 +279,14 @@ void Helper::createNavLines_auto(QVariantMap args)
     struct Feature {
         char number_type; //标号类型
         int number; //标号
-        int arabic_level; //数字序号级别: 1:1级 1.1:2级 ...
+        int arabic_level; //数字序号级别: 1:0级 1.1:1级 ...
         float tab; //左缩进
         QString prefix; //前缀
         QString suffix; //后缀
+        QString __dstr() const noexcept {
+            return QString("Feature(type=%1 number=%2 arabic_level=%3 tab=%4 prefix=%5 suffix=%6")
+                .arg((int)number_type).arg(number).arg(arabic_level).arg(tab).arg(prefix).arg(suffix);
+        }
     };
 
     struct PreNav { //导航项
@@ -285,6 +326,10 @@ void Helper::createNavLines_auto(QVariantMap args)
         float tab = hline->getPHLeftWidth();
         QString text = hline->get_merged_line_text(true);
         if(text.isEmpty()) continue;
+
+        // 这一行是否是段落起始行，这会影响到之后的判断
+        bool hasPHLeft = hline->leftObj->canBe<AnchorObj_PHLeft>();
+
         static QRegularExpression re("^(?<prefix>.*?)"
                               //match 几十几、十几、几十
                               "(?:(?<chinese_tens>[一二三四五六七八九]?十[一二三四五六七八九]?)|"
@@ -308,15 +353,20 @@ void Helper::createNavLines_auto(QVariantMap args)
             lower_letter = m.captured("lower_letter"),
             upper_letter = m.captured("upper_letter"),
             suffix = m.captured("suffix");
+
         Feature feature;
         // 计算特征
         feature.prefix = prefix;
+        feature.suffix = extractSuffix(suffix);
         if(!chinese_tens.isEmpty() || !chinese_single.isEmpty()) {
+            if(countWords(prefix).all_words > 3 ||
+                countWords(feature.suffix).all_words > 3 ||
+                !prefix.isEmpty() && suffix.isEmpty()) continue;
             feature.number_type = Chinese;
             if(!chinese_single.isEmpty()) {
                 feature.number = chinese2number(chinese_single[0]);
             } else {
-                if(chinese_tens.length() == 0)
+                if(chinese_tens.length() == 1)
                     feature.number = 10;
                 else if(chinese2number(chinese_tens[0]) == 10)
                     feature.number = 10 + chinese2number(chinese_tens[1]);
@@ -326,13 +376,27 @@ void Helper::createNavLines_auto(QVariantMap args)
             }
         }
         else if(!arabic.isEmpty()) {
-
+            auto cw = countWords(prefix);
+            if(cw.chineseChars > 4 || cw.englishWords > 2
+                || cw.chineseChars&&cw.englishWords) continue;
+            feature.number_type = Arabic;
+            feature.number = arabic.toInt();
+            feature.prefix += arabic_prefix;
+            if(!arabic_prefix.isEmpty()) {
+                feature.arabic_level = arabic_prefix.count('.');
+            }
         }
         else if(!lower_letter.isEmpty()) {
-
+            if(feature.suffix.isEmpty() || !prefix.isEmpty()) continue;
+            feature.number_type = Lower_Char;
+            feature.number = lower_letter[0].toLatin1() - 'a';
         }
         else if(!upper_letter.isEmpty()) {
-
+            if(feature.suffix.isEmpty() || !prefix.isEmpty()) continue;
+            feature.number_type = Upper_Char;
+            feature.number = lower_letter[0].toLatin1() - 'A';
         }
+
+        qDebug() << feature.__dstr();
     }
 }
