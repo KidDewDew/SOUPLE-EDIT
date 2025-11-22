@@ -326,14 +326,11 @@ ApplicationWindow {
     Component {
         id: cp_page0
         GridLayout {
-            //anchors.fill: parent
-            x:0;y:0
-            width:parent.width
-            height:parent.height
+            anchors.fill: parent
             columns: 2
             columnSpacing: 10
-            anchors.topMargin: 9
-            anchors.bottomMargin: 6
+            anchors.topMargin: 16
+            anchors.bottomMargin: 12
 
             Component.onCompleted: {
                 updateDocList(true)

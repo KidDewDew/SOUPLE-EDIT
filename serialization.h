@@ -38,7 +38,7 @@ class Register_ID_Repeat_Error : std::exception {};
 #define SOUPLE_PKC(key,id) souple::serialization::KVC(key,id)
 
 // 使用该宏来注册序列化类型
-#define SOUPLE_REGISTER_CLASS2(_class_name,_id) \
+#define SOUPLE_REGISTER_CLASS(_class_name,_id) \
 struct _class_name##_souple_register_inf {\
 static inline int _ =\
 ([](){\

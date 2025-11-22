@@ -26,7 +26,12 @@ public:
         uiPool_Spring::returnItem(qmlItem);
         qmlItem = 0;
     }
-
+    virtual std::any getAnyData(std::string key) noexcept override {
+        if(key == "text") {
+            return QString("........");
+        }
+        return {};
+    }
     virtual AnchorObj* dropRight(float dropWidth) override; //尝试截断并丢弃右边
     virtual AnchorObj* dropLeft(float dropWidth) override;  //尝试截断并丢弃左边
 

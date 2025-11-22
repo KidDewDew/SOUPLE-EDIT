@@ -49,6 +49,24 @@ constexpr char nn[] = "FlowText";
 
 #pragma comment(lib, "dwmapi.lib")
 
+void my_terminate()
+{
+    try {
+        throw;
+    }
+    catch(LLException& e) {
+        auto ba = e.getInfo().toLocal8Bit();
+        MessageBoxA(0,ba.constData(),"Error: Uncaught Exception!",MB_OK);
+        exit(1);
+    }
+    catch(std::exception& e) {
+        MessageBoxA(0,e.what(),"Error: Uncaught Exception!",MB_OK);
+        exit(1);
+    }
+    MessageBoxA(0,"Unknown Error","Error: Program to terminate.",MB_OK);
+    exit(1);
+}
+
 /**
  * @brief The MyWindowEvenetFilter class
  *        该类用于处理原生平台窗口消息，需要在main函数里，把该类的实例绑定到主窗口。
@@ -147,6 +165,7 @@ public:
 int main(int argc, char *argv[])
 {
 
+    set_terminate(my_terminate);
     /// Qt 6.9.2 bug: threaded渲染模式下vsync异常
     /// 解决方法：强制使用Opengl后端。
     qputenv("QSG_RENDER_LOOP", "threaded");
@@ -403,51 +422,7 @@ int main(int argc, char *argv[])
     // Obj* ft2 = (Obj*)souple::serialization::unserialize(ds2);
     // qDebug() << ft2->__dstr();
 
-    QRegularExpression re("^(?<prefix>.*?)"
-                          //match 几十几、十几、几十
-                          "(?:(?<chinese_tens>[一二三四五六七八九]?十[一二三四五六七八九]?)|"
-                          //macth 几
-                          "(?<chinese_single>[一二三四五六七八九])|"
-                          //match 数字序号 1  1.2 1.2.10
-                          "(?:(?<arabic_prefix>(\\d+\\.)*)(?<arabic>\\d+))|"
-                          //match 小写字母
-                          "(?<lower_letter>(?<=\\s|\\(|（|^)[a-z](?=\\s|\\)|）|\\.|$))|"
-                          //match 大写字母
-                          "(?<upper_letter>(?<=\\s|\\(|（|^)[A-Z](?=\\s|\\)|）|\\.|$)))"
-                          //后缀
-                          "(?<suffix>\\S*)");
 
-    QString str[] = {
-"第四十二章",
-"一、",
-"（十二）",
-"1 概要"
-,"1.2.10 另一种集合提取线条的方法"
-,"(1) 啊撒大声地"
-,"(6) 导致的问题"
-,"（a）导致的问题"
-,"（E）导致的问题"
-,"Part 2 导致的问题"
-,"I. 针对上述问题提出的方法"
-,"VI. 针对上述问题提出的方法"
-,"I. 针对上述问题提出的方法"};
 
-    for(auto s : str) {
-        auto m = re.match(s);
-        QString chinese_tens = m.captured("chinese_tens");
-        QString chinese_single = m.captured("chinese_single");
-        qDebug() << m.captured("prefix") <<
-            chinese_tens << chinese_single
-                 << m.captured("arabic")
-                 << m.captured("arabic_prefix")
-         << m.captured("lower_letter")
-         << m.captured("upper_letter")
-                 << m.captured("suffix");
-    }
-    try {
-        return app.exec();
-    }catch(std::exception& e) {
-        MessageBoxA(0,"未处理的异常",e.what(),MB_OK);
-        return 1;
-    }
+    return app.exec();
 }

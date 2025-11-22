@@ -1,5 +1,6 @@
 #include "horline_base.h"
 #include "souplemanager.h"
+#include "anchorobj_phrect.h"
 
 HorLine_Base::HorLine_Base() {
     z = Helper::Text;
@@ -113,9 +114,13 @@ QString HorLine_Base::get_merged_line_text(bool addSpace) const noexcept
                 str.append(' ');
                 to_addspace = false;
             }
-            str.append(std::any_cast<QString>(text));
+            try {
+                str.append(std::any_cast<QString>(text));
+            } catch(std::bad_any_cast& e) {}
         } else {
-            to_addspace = true;
+            //if(!obj->canBe<AnchorObj_PHRect>() || obj->width > 15) {
+                to_addspace = true;
+            //}
         }
         obj = obj->rightObj;
     }

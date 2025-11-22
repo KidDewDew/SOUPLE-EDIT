@@ -33,6 +33,33 @@ static float dashWidth;
 // 遍历nav_nodes
 HorLine_Base* lastHLine;
 
+struct WordCount {
+    int chineseChars;    // 汉字数量
+    int englishWords;    // 英文单词数量
+    int all_words;
+};
+
+WordCount countWords(const QString& text) {
+    WordCount result = {0, 0, 0};
+    // 统计汉字
+    for (const QChar& ch : text) {
+        if (ch.script() == QChar::Script_Han) {
+            result.chineseChars++;
+        }
+    }
+    // 统计英文单词（使用正则表达式）
+    QRegularExpression englishWordRe("\\b[a-zA-Z]+\\b");
+    QRegularExpressionMatchIterator it = englishWordRe.globalMatch(text);
+
+    while (it.hasNext()) {
+        it.next();
+        result.englishWords++;
+    }
+    result.all_words = result.englishWords + result.chineseChars;
+
+    return result;
+}
+
 void impl_dfs_createNavLines(_NavNode* node) {
     if(node->level > levels) //超过要求的级数了
         return;
@@ -69,12 +96,14 @@ void impl_dfs_createNavLines(_NavNode* node) {
         spring->radius = radius;
         spring->spacing = spacing;
         spring->dashWidth = dashWidth;
+        QString line_text = node->hline->get_merged_line_text(true);
         Page* to_page = SoupleManager::getPage(doc_id,node->pointer_to->y);
         if(! to_page) {
             ft2->text = "?";
         } else {
             ft2->text = QString::number(to_page->index+1);
         }
+        ft->text = line_text;
         ft->calcWidth();
         ft2->calcWidth();
         // 连接、放置对象。connect_l2r_atHLine函数...
@@ -240,54 +269,70 @@ inline QString extractSuffix(const QString& suffix) {
     return suffix;
 }
 
-struct WordCount {
-    int chineseChars;    // 汉字数量
-    int englishWords;    // 英文单词数量
-    int all_words;
+enum {
+    Arabic,Roman,Chinese,Lower_Char,Upper_Char
 };
 
-WordCount countWords(const QString& text) {
-    WordCount result = {0, 0, 0};
-    // 统计汉字
-    for (const QChar& ch : text) {
-        if (ch.script() == QChar::Script_Han) {
-            result.chineseChars++;
-        }
+//特征,描述一个目录项的特征
+struct Feature {
+    char number_type; //标号类型
+    int number; //标号
+    int arabic_level; //数字序号级别: 1:0级 1.1:1级 ...
+    float tab; //左缩进
+    QString prefix; //前缀
+    QString suffix; //后缀
+    QString __dstr() const noexcept {
+        return QString("Feature(type=%1 number=%2 arabic_level=%3 tab=%4 prefix=%5 suffix=%6")
+        .arg((int)number_type).arg(number).arg(arabic_level).arg(tab).arg(prefix).arg(suffix);
     }
-    // 统计英文单词（使用正则表达式）
-    QRegularExpression englishWordRe("\\b[a-zA-Z]+\\b");
-    QRegularExpressionMatchIterator it = englishWordRe.globalMatch(text);
+};
 
-    while (it.hasNext()) {
-        it.next();
-        result.englishWords++;
+// 返回前缀类型
+inline int prefixType(const QString& prefix) {
+    if(prefix == "") return 0;
+    if(prefix == "（" || prefix == "(") return 1;
+    return 2;
+}
+
+// f1 -> f2
+inline bool checkFeatures(const Feature& f1,const Feature& f2)
+{
+    if(f1.number_type != f2.number_type) return false;
+    if(f1.number+1 != f2.number) return false;
+    if(f1.number_type == Arabic) {
+        if(f1.arabic_level != f2.arabic_level) return false;
+        if(prefixType(f1.prefix) != prefixType(f2.prefix)) return false;
+        if(f1.suffix != f2.suffix) return false;
+    } else {
+        if(f1.prefix != f2.prefix || f1.suffix != f2.suffix) return false;
     }
-    result.all_words = result.englishWords + result.chineseChars;
+    return true;
+}
 
-    return result;
+QHash<_NavNode*,Feature> *node_feaures;
+
+// 修建掉有前缀或后缀但没有兄弟节点的节点
+void dfs_trimNavTree(_NavNode* node,int trimv) {
+    node->level -= trimv;
+    if(node->children.empty()) return;
+    int new_trimv = trimv;
+    while(node->children.size() == 1) {
+        //auto& feature = *(node_feaures->find(node->children[0]));
+        node = node->children[0];
+        new_trimv ++;
+    }
+    if(node->children.empty()) return;
+    for(auto child : node->children) {
+        dfs_trimNavTree(child,new_trimv);
+    }
 }
 
 // 自动识别目录
 void Helper::createNavLines_auto(QVariantMap args)
 {
-    int doc_id = args["document_id"].toInt();
+    qDebug() << "createNavLines_auto(" << args;
+    doc_id = args["document_id"].toInt();
     auto& all_objs = SoupleManager::getDocumentObjs(doc_id);
-    enum {
-        Arabic,Roman,Chinese,Lower_Char,Upper_Char
-    };
-    //特征,描述一个目录项的特征
-    struct Feature {
-        char number_type; //标号类型
-        int number; //标号
-        int arabic_level; //数字序号级别: 1:0级 1.1:1级 ...
-        float tab; //左缩进
-        QString prefix; //前缀
-        QString suffix; //后缀
-        QString __dstr() const noexcept {
-            return QString("Feature(type=%1 number=%2 arabic_level=%3 tab=%4 prefix=%5 suffix=%6")
-                .arg((int)number_type).arg(number).arg(arabic_level).arg(tab).arg(prefix).arg(suffix);
-        }
-    };
 
     struct PreNav { //导航项
         int level;
@@ -295,7 +340,11 @@ void Helper::createNavLines_auto(QVariantMap args)
         Feature feature;
     };
 
-    vector<PreNav> prenavs; //预处理的prenav
+    ::node_feaures = new QHash<_NavNode*,Feature>;
+
+    vector<pair<_NavNode*,Feature>> nav_stack; //当前的遍历栈
+    _NavNode __first_node{.level=0};
+    nav_stack.push_back({&__first_node,{}});
 
     auto hline = SoupleManager::getDocumentFirstLine(doc_id);
     if(!hline) {
@@ -363,6 +412,9 @@ void Helper::createNavLines_auto(QVariantMap args)
                 countWords(feature.suffix).all_words > 3 ||
                 !prefix.isEmpty() && suffix.isEmpty()) continue;
             feature.number_type = Chinese;
+            QString trimstr = prefix.trimmed();
+            if(trimstr == "图" || trimstr == "表"
+                || trimstr == "图表" || trimstr == "表格") continue;
             if(!chinese_single.isEmpty()) {
                 feature.number = chinese2number(chinese_single[0]);
             } else {
@@ -379,6 +431,8 @@ void Helper::createNavLines_auto(QVariantMap args)
             auto cw = countWords(prefix);
             if(cw.chineseChars > 4 || cw.englishWords > 2
                 || cw.chineseChars&&cw.englishWords) continue;
+            QString trimstr = prefix.trimmed().toLower();
+            if(trimstr == "fig" || trimstr == "figure") continue;
             feature.number_type = Arabic;
             feature.number = arabic.toInt();
             feature.prefix += arabic_prefix;
@@ -397,6 +451,58 @@ void Helper::createNavLines_auto(QVariantMap args)
             feature.number = lower_letter[0].toLatin1() - 'A';
         }
 
+        if(feature.number > 99) {
+            continue;
+        }
+
         qDebug() << feature.__dstr();
+        _NavNode *nav = new _NavNode;
+        // 从栈中查找和自己接续的项
+        _NavNode *parent_nav = 0;
+        bool isNewBranch = false;
+        for(auto&[old_nav,old_feature] : nav_stack | views::reverse) {
+            if(old_nav->level == 0) {
+                parent_nav = nav_stack.back().first;
+                isNewBranch = true;
+                //qDebug() << "parent=back";
+                break;
+            }
+            else if(checkFeatures(old_feature,feature)) {
+                parent_nav = old_nav->parent;
+                //qDebug() << "sister:" << old_feature.__dstr();
+                break;
+            }
+        }
+        if(isNewBranch) {
+            if(feature.number > 1) {
+                continue; //新分支必须从0或1开始计数。
+            }
+        }
+        nav->level = parent_nav->level+1;
+        nav->hline = hline;
+        nav->parent = parent_nav;
+
+        if(hasPHLeft) {
+            nav->pointer_to = hline->leftObj;
+        } else {
+            AnchorObj* first_has_text_obj = hline->leftObj;
+            while(true) {
+                if(first_has_text_obj->getAnyData("text").has_value()) {
+                    break;
+                }
+                first_has_text_obj = first_has_text_obj->rightObj;
+            }
+            nav->pointer_to = first_has_text_obj;
+        }
+        while(nav_stack.back().first != parent_nav) nav_stack.pop_back();
+        nav_stack.back().first->children.push_back(nav);
+        nav_stack.push_back({nav,feature});
+        (*node_feaures)[nav] = feature; //保存一下
     }
+
+    dfs_trimNavTree(nav_stack[0].first,0);
+
+    // 创建navlines
+    impl_createNavLines(args,nav_stack[0].first->children);
+    delete node_feaures;
 }

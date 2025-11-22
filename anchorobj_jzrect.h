@@ -27,7 +27,12 @@ public:
         uiPool_JZRect::returnItem(qmlItem);
         qmlItem = 0;
     }
-
+    // virtual std::any getAnyData(std::string key) noexcept override {
+    //     if(key == "text") {
+    //         return "------>";
+    //     }
+    //     return {};
+    // }
 private:
     static inline constexpr char __NAME__[] = "JZRect";;
 public:
