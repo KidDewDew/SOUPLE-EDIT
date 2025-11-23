@@ -37,6 +37,8 @@ void Pdf2Souple::impl_analyseTable(
 {
     /** 第一步，解析objs中的表格 */
 
+    qDebug() << "impl_analyseTable(";
+
     // 注意，要求获取的线条的x1 y1 x2 y2必须考虑到线宽，不能忽略线宽！
     struct Line_Obj_Record {
         bool hasBelong = false;
@@ -181,7 +183,8 @@ void Pdf2Souple::impl_analyseTable(
             for(int c = i+1; c < j; ++c) {
                 auto h_left = h_borders[c-1];
                 auto h_cur = h_borders[c];
-                if(abs(h_left->x2 - h_cur->x1) < line_same_offset) {
+                if(abs(h_left->x2 - h_cur->x1) < line_same_offset
+                    || h_left->x2 > h_cur->x1) {
                     //需要合并
                     h_borders[c-1] = nullptr;
                     h_cur->x1 = h_left->x1; //合并到右边的h_border
@@ -212,17 +215,17 @@ void Pdf2Souple::impl_analyseTable(
             for(int c = i; c < j; ++c) {
                 qDebug() << v_borders[c]->x1 << v_borders[c]->x2 << v_borders[c]->y1 <<
                     v_borders[c]->y2;
-
             }
             // 合并
             int k = 1;
             for(int c = i+1; c < j; ++c) {
-                auto v_left = v_borders[c-1];
+                auto v_top = v_borders[c-1];
                 auto v_cur = v_borders[c];
-                if(abs(v_left->y2 - v_cur->y1) < line_same_offset) {
+                if(abs(v_top->y2 - v_cur->y1) < line_same_offset
+                    || v_top->y2 > v_cur->y1) {
                     //需要合并
                     v_borders[c-1] = nullptr;
-                    v_cur->y1 = v_left->y1; //合并到右边的v_border
+                    v_cur->y1 = v_top->y1; //合并到右边的v_border
                     qDebug() << "合并v_border";
                 } else {
                     ++k;

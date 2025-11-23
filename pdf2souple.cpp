@@ -20,6 +20,7 @@ using namespace std;
 static uchar *buf_image = 0;
 
 #define Only_Test_FirstPage false
+#define Print_Path_Read true //是否输出路径的原始数据
 
 //loadPdf: 异步加载pdf，并把souple存放在SoupleSerializer中
 void Pdf2Souple::loadPdf(const QString& pdf_filename)
@@ -154,11 +155,11 @@ void Pdf2Souple::imp_loadPdf(const QString& filename)
         pdfpage_list.push_back(page);
         old_page = page;
 #if Only_Test_FirstPage == true
-        break; //只需要读取一页做测试，就去除前面的注释。
+        break; //只需要读取一页做测试，就define该宏为true
 #endif
     }
 
-    mergeAndCreateTables(pdfpage_list);
+    mergeAndCreateTables(pdfpage_list); //合并临时表格、创建表格
 
     FPDF_CloseDocument(document);
 }
@@ -214,7 +215,7 @@ void Pdf2Souple::imp_analysePdfPage(shared_ptr<PDFPage> page,shared_ptr<PDFPage>
     //end step 1
 
 
-    imp_path_doSomeMerge(page->all_objs);
+    //imp_path_doSomeMerge(page->all_objs);
 
 
     //在筛去自由元素后，
@@ -263,14 +264,17 @@ void Pdf2Souple::imp_analysePdfPage(shared_ptr<PDFPage> page,shared_ptr<PDFPage>
 
     page->souple_page = export_page;
 
+
+    /**  [2025/11/22 added] 合并邻接矩形为一个path、切分一些path为线条 */
+    imp_path_doSomeMerge(page->all_objs);
+
     /** 解析表格 */
     analyseTable(page.get(),old_page.get());
-
-
 
     /** 优先尝试解析成 Word类型页面，格式化页面 */
     if(analyseWordPage(page,old_page)) return;
 
+    // [以下200行代码]
     //step 2
     sort(page->all_objs.begin(), page->all_objs.end(), _sort_func);
 
@@ -746,44 +750,66 @@ shared_ptr<Pdf2Souple::PDFOBJ> Pdf2Souple::readPdfObj(FPDF_PAGEOBJECT fpdf_pageo
             return nullptr; //不填充也不描边~完全隐藏~当作不存在
         }
 
+        // 对path做一些trim
+        if(like_noStroke) {
+            obj_path->lineWidth = 0.0f;
+            obj_path->stroke = false;
+            obj_path->strokeColor = QColor::fromRgb(0,0,0,0);
+        }
+
+        if(like_noFill) {
+            obj_path->fill = false;
+            obj_path->fillColor = QColor::fromRgb(0,0,0,0);
+        }
+
+#if Print_Path_Read
+        qDebug() << "new path: " << obj_path->rect;
+        qDebug() << "lineWidth: " << obj_path->lineWidth;
+#endif
+
         for(int i = 0; i < path_segment_num; ++i)
         {
             auto path_segment = FPDFPath_GetPathSegment(fpdf_pageobj,i);
             int type = FPDFPathSegment_GetType(path_segment);
             float sx,sy;
-            //qDebug() << "new path: " << obj_path->rect;
-            //qDebug() << "lineWidth: " << obj_path->lineWidth;
+
             switch(type) {
             case FPDF_SEGMENT_MOVETO: { //移动画笔 moveTo
                 FPDFPathSegment_GetPoint(path_segment,&sx,&sy);
                 sx = Helper::point2pixel(sx)*matrix.a+tx,
                     sy = page_height - Helper::point2pixel(sy)*matrix.d - ty;
-                //qDebug() << "moveTo " << sx << "," << sy;
-                obj_path->list_path_actions.push_back({.type=Path_Action::MoveTo,.x=sx,.y=sy});
+#if Print_Path_Read
+                qDebug() << "moveTo " << sx << "," << sy;
+#endif
+                obj_path->list_path_actions.push_back(Path_Action(Path_Action::MoveTo,sx,sy));
                 break;
             } //0:69  1:106.5  2:151.5
             case FPDF_SEGMENT_LINETO: { //直线 lineTo
                 FPDFPathSegment_GetPoint(path_segment,&sx,&sy);
                 sx = Helper::point2pixel(sx)*matrix.a+tx,
                     sy = page_height - Helper::point2pixel(sy)*matrix.d - ty;
-                //qDebug() << "lineTo " << sx << "," << sy;
-                obj_path->list_path_actions.push_back({.type=Path_Action::LineTo,.x=sx,.y=sy});
+#if Print_Path_Read
+                qDebug() << "lineTo " << sx << "," << sy;
+#endif
+                obj_path->list_path_actions.push_back(Path_Action(Path_Action::LineTo,sx,sy));
                 break;
             }
             case FPDF_SEGMENT_BEZIERTO: { //贝塞尔曲线
                 //贝塞尔曲线需要3个点，即这里要读取3次
+#if Print_Path_Read
                 qDebug() << "bezierTo";
+#endif
                 FPDFPathSegment_GetPoint(path_segment,&sx,&sy);
                 sx = Helper::point2pixel(sx)*matrix.a+tx,
                     sy = page_height - Helper::point2pixel(sy)*matrix.d - ty;
-                obj_path->list_path_actions.push_back({.type=Path_Action::BezierTo,.x=sx,.y=sy});
+                obj_path->list_path_actions.push_back({Path_Action::BezierTo,sx,sy});
                 //qDebug() << "bezier0: " << sx << "," << sy;
                 for(uint8_t j = 0; j < 2; ++j){
                     path_segment = FPDFPath_GetPathSegment(fpdf_pageobj,++i);
                     FPDFPathSegment_GetPoint(path_segment,&sx,&sy);
                     sx = Helper::point2pixel(sx)*matrix.a+tx,
                         sy = page_height - Helper::point2pixel(sy)*matrix.d - ty;
-                    obj_path->list_path_actions.push_back({.type=Path_Action::BezierTo,.x=sx,.y=sy});
+                    obj_path->list_path_actions.push_back({Path_Action::BezierTo,sx,sy});
                     //qDebug() << "bezier+: " << sx << "," << sy;
                 }
                 break;
@@ -888,6 +914,7 @@ void Pdf2Souple::imp_dealText(FPDF_TEXTPAGE textpage,std::vector<shared_ptr<PDFO
         str = QString::fromUtf16(buf);
         if(str == "\n" || str == "\r"
             || str == ' ') continue; //space \r \n是pdfium自己给出的提示字符，无意义
+        //又注：事实表明，pdf文档中几乎不会出现有意义的空格。就是真的是空格，[也没关系(无影响)]。
         fontsize = FPDFText_GetFontSize(textpage,i);
         FPDFText_GetMatrix(textpage,i,&matrix);
         FPDFText_GetStrokeColor(textpage,i,&strokeColor.R,&strokeColor.G,&strokeColor.B,&strokeColor.A);
@@ -971,7 +998,7 @@ void Pdf2Souple::imp_dealText(FPDF_TEXTPAGE textpage,std::vector<shared_ptr<PDFO
         //qDebug() << "strokeColor = " << strokeColor.R << strokeColor.G << strokeColor.B << strokeColor.A;
         //qDebug() << "fillColor = " << fillColor.R << fillColor.G << fillColor.B << fillColor.A;
 
-        //[ 暂时不考虑文字还能虚线描边 ]
+        //[ 暂时不考虑文字还能[虚线]描边 ]
         int dash_count = FPDFPageObj_GetDashCount(text_obj);
         //qDebug() << "dash_count = " << dash_count;
 
@@ -1697,53 +1724,153 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
         PDFOBJ_PATH* path_obj;
     };
     std::vector<Path> path_lines;
+    qDebug() << "Pdf2Souple::imp_path_doSomeMerge BEGIN";
     for(size_t i = 0; i < objList.size(); ++i) {
         auto& pdfobj = objList[i];
         auto path = dynamic_cast<PDFOBJ_PATH*>(pdfobj.get());
         if(! path) continue;
-        float x1,y1,x2,y2;
+        //float x1,y1,x2,y2;
         uint8_t numLines;
         // 这里的语法由TT_Str定义，为纯编译期计算。
         // 可以通过编译期字符串自由、直观地传递模板参数
-        if(path->toSolidRect $$("forceFill=false,extendLineWidth=false")(x1,y1,x2,y2,&numLines)) { //矩形
+        vector<PDFOBJ_PATH::Line> lines;
+        if(path->toLinesIfRect(lines)) { //矩形
+            numLines = lines.size();
             if(numLines == 4) {
-                if(path->fill == true) { //当作一条线
-                    path_lines.push_back(Path{(uint32_t)i,path});
-                } else { //当作四条线
-                    shared_ptr<PDFOBJ_PATH> p1 = make_shared<PDFOBJ_PATH>(),
-                        p2 = make_shared<PDFOBJ_PATH>(),
-                        p3 = make_shared<PDFOBJ_PATH>(),
-                        p4 = make_shared<PDFOBJ_PATH>();
-                    //注意path的rect是不考虑线宽的！
-                    p1->rect = {x1,y1,0,0};
-                    p1->list_path_actions.append(Path_Action{Path_Action::MoveTo,x1,y1});
-                    p1->list_path_actions.append(Path_Action{Path_Action::LineTo,x1,y2});
-                    p2->rect = {x2,y1,0,y2-y1};
-                    p2->list_path_actions.append(Path_Action{Path_Action::MoveTo,x2,y1});
-                    p2->list_path_actions.append(Path_Action{Path_Action::LineTo,x2,y2});
-                    p3->rect = {x1,y1,x2-x1,0};
-                    p3->list_path_actions.append(Path_Action{Path_Action::MoveTo,x1,y1});
-                    p3->list_path_actions.append(Path_Action{Path_Action::LineTo,x2,y1});
-                    p4->rect = {x1,y2,x2-x1,0};
-                    p4->list_path_actions.append(Path_Action{Path_Action::MoveTo,x1,y2});
-                    p4->list_path_actions.append(Path_Action{Path_Action::LineTo,x2,y2});
-                    //objList.append_range(std::array{p1,p2,p3,p4});
-                    objList.push_back(p1);
-                    objList.push_back(p2);
-                    objList.push_back(p3);
-                    objList.push_back(p4);
-                    objList[i] = {}; //删除该路径
+                // if(path->fill == true) { //当作一条线
+                //     path_lines.push_back(Path{(uint32_t)i,path});
+                // } else { //当作四条线
+                //注意path的rect是不考虑线宽的！
+                for(auto& line : lines) {
+                    shared_ptr<PDFOBJ_PATH> p = make_shared<PDFOBJ_PATH>();
+                    p->rect = {line.x1,line.y1,line.x2-line.x1,line.y2-line.y1};
+                    p->stroke = false;
+                    p->fill = true;
+                    p->strokeColor = QColor::fromRgb(0,0,0,0);
+                    p->fillColor = path->fill ? path->fillColor : path->strokeColor;
+                    // 切出的路径都创建为无描边的矩形即可
+                    p->list_path_actions.assign({
+                        Path_Action{Path_Action::MoveTo,line.x1,line.y1},
+                        Path_Action{Path_Action::LineTo,line.x2,line.y1},
+                        Path_Action{Path_Action::LineTo,line.x2,line.y2},
+                        Path_Action{Path_Action::LineTo,line.x1,line.y2},
+                        Path_Action{Path_Action::LineTo,line.x1,line.y1}
+                    });
+                    objList.push_back(p);
                 }
+                //【注意】，这新增的4条线，之后自然会被遍历到的！
+                // 所以这里不用添加到path_lines
+                objList[i] = {}; //删除该路径
+                //}
             } else if(numLines == 1) {
                 path_lines.push_back(Path{(uint32_t)i,path});
             }
         }
     }
 
+    /** 至此，一切边框矩形已经被切成4条矩形了 */
+    // 考虑合并接续的矩形为一个path，直接进行n^2遍历查找需要合并的矩形
+
+    // 按y坐标排序，优先处理垂直方向的合并
+    std::ranges::sort(path_lines,[](Path& p1,Path& p2) {
+        return p1.path_obj->rect.top() < p2.path_obj->rect.top();
+    });
+    for(int i = 0, n = path_lines.size(); i < n; ++i)
+    {
+        auto& p1 = path_lines[i];
+        if(p1.index == -1) continue; //该path已经被合并啦
+        bool has_merged{false};
+        float new_bottom=p1.path_obj->rect.bottom()+p1.path_obj->lineWidth*0.5f;
+        qDebug() << "Path-VMerge-source: " << p1.path_obj->rect;
+        for(int j = i+1; j < n; ++j) {
+            auto& p2 = path_lines[j];
+            if(p2.index == -1) continue;
+            // 注意，这里比较坐标时可要考虑lineWidth!
+            // 因为path_obj的rect是中心框，减去了0.5*lineWidth的
+            if(abs(p1.path_obj->rect.center().x()-p2.path_obj->rect.center().x())<2.0f
+                && abs(p1.path_obj->rect.width()-p2.path_obj->rect.width())<2.0f //水平对齐
+                && new_bottom+2.0f
+                       >= p2.path_obj->rect.top()-p2.path_obj->lineWidth*0.5f //垂直邻接(或交叠)
+                && (qDebug()<<"lookLike",p1.path_obj->isLookLike_ifrect(p2.path_obj))
+                ) {
+                //ok 它被合并了
+                has_merged = true;
+                new_bottom = p2.path_obj->rect.bottom()+p2.path_obj->lineWidth*0.5f;
+                //同时从文档流中移除它
+                objList[p2.index] = {};
+                p2.index = -1; //标记死亡
+                qDebug() << "Path-VMerge+1";
+            }
+        }
+        if(has_merged) {
+            qDebug() << "Path-VMerge:END";
+            p1.path_obj->rect.setBottom(new_bottom-p1.path_obj->lineWidth*0.5f);
+            p1.path_obj->list_path_actions.clear();
+            p1.path_obj->list_path_actions.assign({
+                Path_Action(Path_Action::MoveTo,p1.path_obj->rect.left(),p1.path_obj->rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),p1.path_obj->rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),new_bottom-p1.path_obj->lineWidth*0.5f),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),new_bottom-p1.path_obj->lineWidth*0.5f),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.top())
+            });
+            //p1.path_obj->list_path_actions
+        }
+    }
+    // 移除所有失效的path
+    Helper::removeAllIf(path_lines,[](Path& p){
+        return p.index == -1;
+    });
+    // 按x坐标排序，处理水平方向的合并
+    std::ranges::sort(path_lines,[](Path& p1,Path& p2) {
+        return p1.path_obj->rect.left() < p2.path_obj->rect.left();
+    });
+    for(int i = 0, n = path_lines.size(); i < n; ++i)
+    {
+        auto& p1 = path_lines[i];
+        if(p1.index == -1) continue; //该path已经被合并啦
+        bool has_merged{false};
+        float new_right=p1.path_obj->rect.right()+p1.path_obj->lineWidth*0.5f;
+        qDebug() << "Path-HMerge-source: " << p1.path_obj->rect;
+        for(int j = i+1; j < n; ++j) {
+            auto& p2 = path_lines[j];
+            if(p2.index == -1) continue;
+            if(abs(p1.path_obj->rect.center().y()-p2.path_obj->rect.center().y())<2.0f
+                && abs(p1.path_obj->rect.height()-p2.path_obj->rect.height())<2.0f //水平对齐
+                && new_right+2.0f
+                       >= p2.path_obj->rect.left()-p2.path_obj->lineWidth*0.5f //垂直邻接(或交叠)
+                && (qDebug()<<"lookLike",p1.path_obj->isLookLike_ifrect(p2.path_obj))
+                ) {
+                //ok 它被合并了
+                has_merged = true;
+                new_right = p2.path_obj->rect.right()+p2.path_obj->lineWidth*0.5f;
+                //同时从文档流中移除它
+                objList[p2.index] = {};
+                p2.index = -1; //标记死亡
+                qDebug() << "Path-HMerge+1";
+            }
+        }
+        if(has_merged) {
+            qDebug() << "Path-HMerge:END";
+            p1.path_obj->rect.setRight(new_right-p1.path_obj->lineWidth*0.5f);
+            p1.path_obj->list_path_actions.clear();
+            p1.path_obj->list_path_actions.assign({
+                Path_Action(Path_Action::MoveTo,p1.path_obj->rect.left(),p1.path_obj->rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),p1.path_obj->rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),p1.path_obj->rect.bottom()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.bottom()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.top())
+            });
+            //p1.path_obj->list_path_actions
+        }
+    }
+    // 移除所有失效的path
+    Helper::removeAllIf(path_lines,[](Path& p){
+        return p.index == -1;
+    });
+
     int _n2 = 0;
     for(auto ptr : objList)
         if(ptr) objList[_n2++] = ptr;
-
     objList.resize(_n2);
-
+    qDebug() << "Pdf2Souple::imp_path_doSomeMerge END$";
 }

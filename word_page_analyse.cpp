@@ -54,7 +54,8 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
         { auto path = dynamic_pointer_cast<PDFOBJ_PATH>(obj);
         if(path) {
             float x1,y1,x2,y2;
-            if(path->toSolidRect(x1,y1,x2,y2)) {
+            [[maybe_unused]] unsigned char numLines;
+            if(path->toSolidRect(x1,y1,x2,y2,&numLines)) {
                 if(x2 - x1 < Helper::cm2pixel(Column_Line_Max_Width_cm)
                     && y2 - y1 > page->page_height * Column_Line_Min_Height_Scale) {
                     break; // 这也许是一条分栏分隔线。

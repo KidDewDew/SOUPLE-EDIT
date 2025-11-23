@@ -110,6 +110,9 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
         }
 #if Debug_RectAnalyse == true
         qDebug() << "常规方法解析成功。numLines: " << numLines;
+        for(auto& line : lines) {
+            qDebug() << line.x1 << line.y1 << line.x2 << line.y2;
+        }
 #endif
         return true;
     }
@@ -137,7 +140,7 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
             break;
         case Path_Action::LineTo:
 #if Debug_RectAnalyse == true
-            qDebug() << "LineTo: " << a.x << a.y << "Last: " << last_x << last_y;
+            //qDebug() << "LineTo: " << a.x << a.y << "Last: " << last_x << last_y;
 #endif
             if(abs(a.x-last_x) < abs(a.y-last_y)) {
                 if(abs(a.x-last_x) < Helper::cm2pixel(Straight_Offset_cm)
@@ -592,6 +595,7 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
 // 解析framepart rich area
 // 该函数是主动解析内容框。
 // 解析之前，确保该页面已经解析过“表格”了
+// 此外，该函数不会进行矩形合并，请确保已经进行了恰当的矩形合并。
 void Pdf2Souple::analyse_framepart_or_rich_or_area(
     PDFPage* page,
     RandomAccessCont<std::shared_ptr<PDFOBJ>> auto& to_analyse_objs,
@@ -630,7 +634,9 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
         QColor borderColor;
         QRectF rect;
         int border_id,fill_id;
-        std::shared_ptr<PDFOBJ_PATH> __border_obj;
+        // 如您所想，出于各种原因，边框到这儿都被割裂为线条啦
+        // 但这里仍然会去考虑完整边框对象的，增加一些冗余。
+        vector<std::shared_ptr<PDFOBJ_PATH>> __border_obj;
         std::shared_ptr<PDFOBJ> __fill_obj;
     };
 
@@ -761,6 +767,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
     for(__Bg& bg : __bg_list) {
         if(! bg.visible) continue;
         // 如果一个bg左边和右边都没有任何obj，则认为该bg是FramePart
+        // 正是因此，该函数不需要知道页面的分栏的情况。
         // 否则认为是Rich
         std::vector<std::shared_ptr<PDFOBJ>> inside_objs;
         bool isFrame = true;

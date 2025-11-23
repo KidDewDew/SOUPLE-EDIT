@@ -155,7 +155,7 @@ Canvas {
     }
 
     onPathChanged: {
-        console.log("路径已更新，新路径长度:", path.length);
+        //console.log("路径已更新，新路径长度:", path.length);
         requestPaint();
     }
 
@@ -218,7 +218,7 @@ Canvas {
             width: 800
             height: 600
             title: "Path Editor"
-            transientParent: obj.window
+            //transientParent: obj.window
             flags: Qt.Window | Qt.WindowTitleHint | Qt.WindowMinimizeButtonHint |
                    Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
 

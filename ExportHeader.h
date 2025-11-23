@@ -109,6 +109,8 @@ struct Path_Action {
     enum {MoveTo=0,LineTo,BezierTo,Unknown};
     uchar type;
     float x,y;
+    Path_Action(uchar type,float x,float y)
+        :type(type),x(x),y(y){}
     QVariantMap toVM() const {
         return {{"x",x},{"y",y},{"t",enum2str()}};
     }

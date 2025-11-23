@@ -447,6 +447,21 @@ public:
         cont.resize(n);
     }
 
+    // removeAllIf: 删除一个随机访问容器的所有某个满足某个条件的值
+    template<class T,class Pred>
+        requires requires(T t,Pred p) {
+            requires RandomAccessCont<T,typename T::value_type>;
+            {t.resize(0)};
+            {p(t[0])}->std::same_as<bool>;
+        }
+    static void removeAllIf(T& cont,Pred pred) {
+        typename T::size_type n = 0;
+        for(typename T::size_type i = 0; i < cont.size(); ++i) {
+            if(!pred(cont[i])) cont[n++] = std::move(cont[i]);
+        }
+        cont.resize(n);
+    }
+
     //显示【选择】板
     static void showChooseBoard(int id,QPoint position,int dir,const QString& question,const QStringList& options,Quick_Callback callback) noexcept {
         //invokeQmlFunction<void>("showChooseBoard",question,options,callback);

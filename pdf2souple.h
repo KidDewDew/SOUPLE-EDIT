@@ -242,9 +242,25 @@ public:
 
         // toLines
         // @brief 尝试把该路径转换为一条或多条线条，前提是该路径近似是矩形（包括圆角矩形、奇形怪状的矩形）
+        // 注：该方法返回的Line默认是考虑了线宽的！
         // 显然，该方法的能力强于toSolidRect方法，能够识别一切近似矩形。缺点:...
         template<TT_Str tt = TStr(" ")>
         bool toLinesIfRect(CanPushback<Line> auto& lines);
+
+        QColor getLookColor() const noexcept {
+            if(fill) return fillColor;
+            return strokeColor;
+        }
+
+        // 判断path2和自己的样式是不是一样（看起来一样）
+        bool isLookLike_ifrect(const PDFOBJ_PATH* path2) {
+            // qDebug() << this->fill << path2->fill;
+            // qDebug() << this->stroke << path2->stroke;
+            // qDebug() << this->fillColor << path2->fillColor;
+            // qDebug() << this->strokeColor << path2->strokeColor;
+            if(this->getLookColor() != path2->getLookColor()) return false;
+            return true;
+        }
 
         // 转换为实心矩形(一根线也算作实心矩形)，返回是否转换l成功。
         template<TT_Str tt = TStr(" ")>
@@ -252,13 +268,17 @@ public:
             switch(list_path_actions.size()) {
             case 1: {
                 if(list_path_actions[0].type != Path_Action::LineTo) return false;
-                if(numLines) *numLines = 1;
+                *numLines = 1;
                 break;
             }
             case 2: {
                 if(list_path_actions[0].type != Path_Action::MoveTo
                     || list_path_actions[1].type != Path_Action::LineTo) return false;
-                if(numLines) *numLines = 1;
+                if(abs(list_path_actions[0].x - list_path_actions[0].x) > 1.0f
+                    && abs(list_path_actions[0].y - list_path_actions[0].y) > 1.0f) {
+                    return false;
+                }
+                *numLines = 1;
                 break;
             }
             case 3: {
@@ -274,8 +294,8 @@ public:
                     x_set.insert(round(a.x));
                     y_set.insert(round(a.y));
                 }
-                if(x_set.size() == 2 && y_set.size() == 2) {
-                    if(numLines) *numLines = 4;
+                if(x_set.size() <= 2 && y_set.size() <= 2) {
+                    *numLines = 4;
                     break;
                 }
                 else return false;
@@ -293,8 +313,28 @@ public:
                     x_set.insert(round(a.x/2));
                     y_set.insert(round(a.y/2));
                 }
-                if(x_set.size() == 2 && y_set.size() == 2) { //矩形判断
-                    if(numLines) *numLines = 4;
+                if(x_set.size() <= 2 && y_set.size() <= 2) { //矩形判断
+                    *numLines = 4;
+                    break;
+                }
+                else return false;
+            }
+            case 5: {
+                if constexpr (tt.getBoolArg("forceFill",true) == true) {
+                    if(fill == false) return false;
+                }
+                if(list_path_actions[0].type != Path_Action::MoveTo
+                    || list_path_actions[1].type != Path_Action::LineTo
+                    || list_path_actions[2].type != Path_Action::LineTo
+                    || list_path_actions[3].type != Path_Action::LineTo
+                    || list_path_actions[4].type != Path_Action::LineTo) return false;
+                std::set<int> x_set, y_set;
+                for(auto& a : list_path_actions) {
+                    x_set.insert(round(a.x/2));
+                    y_set.insert(round(a.y/2));
+                }
+                if(x_set.size() <= 2 && y_set.size() <= 2) { //矩形判断
+                    *numLines = 4;
                     break;
                 }
                 else return false;
@@ -302,12 +342,16 @@ public:
             default:
                 return false;
             }
+            if(*numLines == 4) {
+                *numLines = 1;
+            }
             if constexpr(tt.getBoolArg("extendLineWidth",true)) {
                 x1 = rect.left()-lineWidth*0.5, y1 = rect.top()-lineWidth*0.5,
                 x2 = rect.right()+lineWidth*0.5, y2 = rect.bottom()+lineWidth*0.5;
             } else {
                 x1 = rect.left(), y1 = rect.top(), x2 = rect.right(), y2 = rect.bottom();
             }
+            qDebug() << "toSolidRect Completed:ok,numlines=" << (numLines?*numLines:-1);
             return true;
         }
     };
