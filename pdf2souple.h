@@ -49,6 +49,8 @@
 #define GLUE_RIGHT_SAME_MIN_NUM 2    //最小多少行...才可以添加Glue_Right
 #define PH_RIGHT_OFFSET_cm 0.052
 #define MAX_LINE_WIDTH_pt 4    //认为线宽最多4pt
+#define LINE_INTERSECT_OFFSET 5 //多大间距认为线条相交
+#define LINE_SAME_OFFSET_cm 0.06625 //两条线坐标相同的误差
 //#define BGRECT_ANALYSE_MIN
 #endif
 
@@ -497,6 +499,13 @@ public:
 
     // 合并跨栏跨页的frames
     static void mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPage>> auto& pages);
+
+    // 找出一条路径所有的邻居路径
+    // @TArg参数 onlyLine 是否只查找“线条”类型的邻居。
+    template<TT_Str TArg = "onlyLine=false">
+    static std::vector<std::pair<int,std::shared_ptr<PDFOBJ_PATH>>>
+        find_neighbors_of_path(Iterable<std::shared_ptr<PDFOBJ>> auto& all_objs,
+                           int path_i,std::shared_ptr<PDFOBJ_PATH> path);
 
     //static void
 

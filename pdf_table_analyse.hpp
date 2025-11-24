@@ -9,8 +9,6 @@
 #include <concepts>
 #include "TableFactory.h"
 
-#define LINE_INTERSECT_OFFSET 5 //多大间距认为线条相交
-#define LINE_SAME_OFFSET_cm 0.06625 //两条线坐标相同的误差
 #define TABLEPART_WIDTH_SAME_OFFSET_cm 0.1
 #define COLUMN_LINE_SAME_OFFSET_cm 0.1
 

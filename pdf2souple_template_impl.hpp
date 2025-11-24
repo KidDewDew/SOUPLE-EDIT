@@ -603,7 +603,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
     RandomAccessCont<std::shared_ptr<PDFOBJ_Rich_or_Area>> auto& rich_or_areas,
     RandomAccessCont<std::shared_ptr<PDFOBJ_FramePart>> auto& frame_parts)
 {
-    // --- Step1 找出可能作为背景的obj，并排序
+    // --- Step1 找出可能作为背景、或背景边框的obj，并排序
     std::vector<std::pair<int,std::shared_ptr<PDFOBJ>>> maybe_bg_list;
     for(auto[i,obj] : to_analyse_objs | views::enumerate) {
         if(dynamic_pointer_cast<PDFOBJ_PATH>(obj) ||
@@ -643,6 +643,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
     std::vector<__Bg> __bg_list;
 
     for(auto[i,bg] : maybe_bg_list) {
+        // 这里的visible==false是指：这个对象已经被使用了，已经成为了__Bg的一部分。
         if(bg->visible == false) continue;
 
         if(std::min(bg->rect.width(),bg->rect.height())
@@ -650,9 +651,10 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
 
         // --- Step2.1 确定__border和__fill
 
-        int __border_obj_pos,__fill_obj_pos;
+        int __fill_obj_pos;
+        vector<int> __border_obj_pos;
         float __lineWidth = 0.0;
-        std::shared_ptr<PDFOBJ_PATH> __border_obj = {};
+        vector<std::shared_ptr<PDFOBJ_PATH>> __border_objs = {};
         std::shared_ptr<PDFOBJ> __fill_obj = {};
         if(auto path_bg = dynamic_pointer_cast<PDFOBJ_PATH>(bg);
             path_bg) { // 路径类型的背景
@@ -662,8 +664,8 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
             if(canBeRect) {
                 if(rect_lines.size() == 4) { // this is border-rect: no-fill
                     // seq of rect_lines(4): 左 右 上 下
-                    __border_obj = path_bg;
-                    __border_obj_pos = i;
+                    __border_objs.push_back(path_bg);
+                    __border_obj_pos.push_back(i);
                     __lineWidth = rect_lines[0].x2 - rect_lines[0].x1; //描边宽度
                     //尝试找fill-bg内容，可能是PATH或Image
                     for(int j = i+1; j < maybe_bg_list.size(); ++j) {
@@ -690,9 +692,77 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                             }
                         }
                     }
-                } else if(rect_lines.size() == 1){ // this is fill-bg
+                } else if(rect_lines.size() == 1){ // this is fill-bg or single-border
+                    if(path_bg->rect.width() < Helper::point2pixel(MAX_LINE_WIDTH_pt)
+                        || path_bg->rect.height() < Helper::point2pixel(MAX_LINE_WIDTH_pt)) {
+                        //认为这是一个被切开的边框线，按道理由fill部分来处理它
+                        // 但是，有的边框它没有fill内容啊，因此这里至少得检查一下有没有fill
+                        // 那还不如顺便在这里把Bg提出来，fill对border的解析作为冗余设计
+                        auto neighbors =
+                            find_neighbors_of_path<TStr("onlyLine=true")>
+                            (
+                                maybe_bg_list|views::transform([](auto& p){return p.second;}),
+                                -1,path_bg
+                            );
+                        // 邻居+自身数量<=4~无法组成边框，更别提fill-part.
+                        if(neighbors.size() <= 4) continue;
+                        // 遍历所有邻居，找出left\right\top\bottom\fill part
+                        float top=path_bg->rect.top(),
+                            left=path_bg->rect.left(),
+                            right=path_bg->rect.right(),
+                            bottom=path_bg->rect.bottom();
+                        for(auto[k,neighbor]:neighbors) {
+                            top = std::min(top,neighbor->rect.top());
+                            bottom = std::max(bottom,neighbor->rect.bottom());
+                            left = std::min(left,neighbor->rect.left());
+                            right = std::max(right,neighbor->rect.right());
+                        }
+                        // 根据top bottom left right来找5个组成部分
+
+                    }
+                    // 否则，认为这就是fill_bg.
+                    // 显然，对于这个fill_obj,得尝试找它的边框。
+                    // 作为冗余设计，这里不仅考虑单边线，还会考虑完整边框。
                     __fill_obj = bg;
                     __fill_obj_pos = i;
+                    //这里的查找需要从头进行遍历
+                    for(auto[j,bg2] : maybe_bg_list) {
+                        if( ! bg2->visible) continue;
+                        if(bg2.get() == bg.get()) continue;
+                        auto path_bg2 = dynamic_pointer_cast<PDFOBJ_PATH>(bg2);
+                        if(! path_bg2) continue;
+                        float mlw = Helper::point2pixel(MAX_LINE_WIDTH_pt);
+                        [[maybe_unused]] vector<PDFOBJ_PATH::Line> lines;
+                        if(bg2->rect.width() < mlw)
+                        {
+                            // this is vborder
+                            if(abs(bg2->rect.height()-bg->rect.height()) < mlw
+                                && abs(bg2->rect.center().y()-bg->rect.center().y()) < mlw
+                                &&
+                                (bg2->rect.left() <= bg->rect.left()+1.5f
+                                    || bg2->rect.right() >= bg->rect.right()-1.5f)
+
+                                && path_bg2->toLinesIfRect(lines)) {
+                                // 确认是左or右 border
+                                __border_objs.push_back(path_bg2);
+                                __border_obj_pos.push_back(i);
+                            }
+                        } else if(bg2->rect.height() < mlw) {
+                            // this is hborder
+                            if(abs(bg2->rect.width()-bg->rect.width()) < mlw
+                                && abs(bg2->rect.center().x()-bg->rect.center().x()) < mlw
+                                && (bg2->rect.top() <= bg->rect.top()+1.5f
+                                    || bg2->rect.bottom() >+ bg->rect.bottom()-1.5f)
+                                && path_bg2->toLinesIfRect(lines)) {
+                                // 确认是上or下 border
+                                __border_objs.push_back(path_bg2);
+                                __border_obj_pos.push_back(i);
+                            }
+                        } else {
+                            // 怀疑是完整边框
+                            // to-do
+                        }
+                    }
                 }
             } //canBeRect
         }//path_bg
@@ -704,16 +774,22 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
 
         ///Here: __fill_obj是可能的填充对象，__border_obj是可能的描边对象
 
-        if(!__fill_obj && !__border_obj) continue;
+        if(!__fill_obj && __border_objs.empty()) continue;
 
         //if(! __border_obj)
         // --- Step2.2 确定这个bg上是否有实际内容存在，但不需要记录
         //std::vector<pair<int,std::shared_ptr<PDFOBJ>>> inside_objs;
         bool hasContent = false;
         for(auto[k,obj] : to_analyse_objs | views::enumerate) {
-            if(!obj->visible || obj == __fill_obj || obj == __border_obj)
+            if(!obj->visible || obj == __fill_obj)
                 continue;
-            if(bg->rect.contains(obj->rect)) {
+            for(auto& __border_obj : __border_objs) {
+                if(obj == __border_obj) continue;
+            }
+            if(bg->rect.left()-2.0f <= obj->rect.left()
+                && bg->rect.top()-2.0f <= obj->rect.top()
+                && bg->rect.right()+2.0f >= obj->rect.right()
+                && bg->rect.bottom()+2.0f >= obj->rect.bottom()) {
                 hasContent = true;
             }
         }
@@ -721,7 +797,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
         if(hasContent) { //真正确定它是内容框的背景，记录__Bg
             __Bg &__bg = (__bg_list.push_back({}),__bg_list.back()); //note:逗号表达式
             __bg.__fill_obj = __fill_obj;
-            __bg.__border_obj = __border_obj;
+            __bg.__border_obj = __border_objs;
             __bg.fill_id = __fill_obj_pos;
             __bg.border_id = __border_obj_pos;
             __bg.rect = bg->rect;
@@ -740,14 +816,16 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                 __bg.fillMode = Helper::FillMode::No_Fill;
                 __bg.fillColor = "transparent"; //透明
             }
-            if(__border_obj) {
-                __border_obj->visible = false;
+            if(!__border_objs.empty()) {
+                for(auto _obj : __border_objs)
+                { _obj->visible = false; }
                 __bg.lineWidth = __lineWidth;
                 // 判断使用strokeColor还是fillColor作为边框色
-                if(__border_obj->fill && __border_obj->fillColor.alphaF()>0.1)
-                    __bg.borderColor = __border_obj->fillColor;
-                else if(__border_obj->stroke) __bg.borderColor = __border_obj->strokeColor;
-                else __bg.borderColor = __border_obj->fillColor;;
+                //if(__border_obj->fill && __border_obj->fillColor.alphaF()>0.1)
+                //    __bg.borderColor = __border_obj->fillColor;
+                //else if(__border_obj->stroke) __bg.borderColor = __border_obj->strokeColor;
+                //else __bg.borderColor = __border_obj->fillColor;;
+                __bg.borderColor = __border_objs[0]->getLookColor();
             }
         }
 
@@ -756,6 +834,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
     for(__Bg& bg : __bg_list) {
         qDebug() << "- analyse __Bg:" << bg.fillColor << bg.fillSrc
                  << bg.lineWidth << bg.borderColor;
+        qDebug() << "- - - borders.num=" << bg.__border_obj.size();
     }
 
     // --- Step3 检测交叉的path、image，把它们解析为area.
@@ -802,6 +881,47 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
 void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPage>> auto& pages)
 {
 
+}
+
+template<TT_Str TArg>
+std::vector<std::pair<int,std::shared_ptr<Pdf2Souple::PDFOBJ_PATH>>>
+Pdf2Souple::find_neighbors_of_path(Iterable<std::shared_ptr<PDFOBJ>> auto& all_objs,
+                       int path_i,std::shared_ptr<PDFOBJ_PATH> path0)
+{
+    // 最坏情况O(n^3) 即所有路径一字排开连接。然而由于[路径合并预处理]的存在，这种情况几乎不会出现。
+    // 通常时间复杂度为O(kn)，k一般小于5^2=25。而n也一般<30。因此没必要优化。(并查集...)
+    vector<std::pair<int,std::shared_ptr<Pdf2Souple::PDFOBJ_PATH>>> neighbors;
+    std::set<Pdf2Souple::PDFOBJ_PATH*> _set;
+    neighbors.push_back({path_i,path0});
+    _set.insert(path0.get());
+    const float offset = Helper::cm2pixel(LINE_SAME_OFFSET_cm);
+    while(true) {
+        bool hasNew = false;
+        for(auto[i,obj] : all_objs | std::views::enumerate)
+        {
+            if( ! obj->visible) continue;
+            auto path = dynamic_pointer_cast<PDFOBJ_PATH>(obj);
+            if constexpr(TArg.getBoolArg("onlyLine")) {
+                vector<PDFOBJ_PATH::Line> lines;
+                if(!path->toLinesIfRect(lines)) continue;
+                if(lines.size() > 1) continue;
+            }
+            if(!path) continue;
+            if(_set.count(obj->get())) continue;
+            for(auto&[j,path1] : neighbors) {
+                if(path->rect.right()+offset < path1->rect.left()
+                    ||path->rect.bottom()+offset < path1->rect.top()
+                    ||path->rect.left()-offset > path1->rect.left()
+                    ||path->rect.top()-offset > path1->rect.top()) continue;
+                neighbors.push_back({i,path});
+                _set.insert(path.get());
+                hasNew = true;
+                break;
+            }
+        }
+        if(!hasNew) break;
+    }
+    return neighbors;
 }
 
 #endif // PDF2SOUPLE_TEMPLATE_IMPL_HPP
