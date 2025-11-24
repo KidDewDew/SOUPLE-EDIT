@@ -1744,6 +1744,7 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
                 for(auto& line : lines) {
                     shared_ptr<PDFOBJ_PATH> p = make_shared<PDFOBJ_PATH>();
                     p->rect = {line.x1,line.y1,line.x2-line.x1,line.y2-line.y1};
+                    p->render_id = path->render_id; //保持同样的渲染顺序
                     p->stroke = false;
                     p->fill = true;
                     p->strokeColor = QColor::fromRgb(0,0,0,0);
@@ -1813,6 +1814,7 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
                 Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),new_bottom-p1.path_obj->lineWidth*0.5f),
                 Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.top())
             });
+            qDebug() << "VMerge合并后：" << p1.path_obj->rect;
             //p1.path_obj->list_path_actions
         }
     }
@@ -1861,6 +1863,7 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
                 Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.top())
             });
             //p1.path_obj->list_path_actions
+            qDebug() << "HMerge合并后：" << p1.path_obj->rect;
         }
     }
     // 移除所有失效的path

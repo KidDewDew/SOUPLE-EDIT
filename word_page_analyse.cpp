@@ -131,7 +131,7 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
     std::vector<std::shared_ptr<PDFOBJ_Rich_or_Area>> rich_or_areas;
     std::vector<std::shared_ptr<PDFOBJ_FramePart>> frameparts;
     for(int i = 0; i < columns.size(); ++i) {
-        // 解析rich、area、framepart
+        // 分别对每个栏 解析rich、area、framepart
         analyse_framepart_or_rich_or_area(page.get(),c_objs[i],rich_or_areas,frameparts);
     }
 
@@ -241,6 +241,9 @@ TURNBACK: //撤回流程
         delete col.leftLine;
         delete col.rightLine;
     }
+    for(auto& fp : frameparts) {
+        fp->turnback(); //撤回FramePart。
+    }
     columns.clear();
     ranges::destroy(SoupleManager::wait_register_obj_list); //注：ranges::destroy ~ delete ...
     SoupleManager::wait_register_obj_list.clear();
@@ -249,6 +252,8 @@ TURNBACK: //撤回流程
 RETURN_OK:
     /** 成功布局为WORD页面 */
     page->souple_page->page_type = Helper::Word_Page;
+
+    page->frame_parts = frameparts; //记录FrameParts.
 
     // 处理对上一页的接续
     if(prev_page) {

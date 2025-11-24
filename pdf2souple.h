@@ -135,10 +135,14 @@ public:
         float radius; //圆角半径
         QColor borderColor;
         std::vector<std::shared_ptr<PDFOBJ>> invisible_items;
+        PDFPage* of_page;
+
         // 撤回
         void turnback() noexcept {
-            for(auto& pdfobj : invisible_items)
+            for(auto& pdfobj : invisible_items) {
                 pdfobj->visible = true;
+                of_page->all_objs.push_back(pdfobj);
+            }
         }
         void print() override {
             qDebug() << "FramePart:" << rect << fillColor << borderColor;
@@ -484,7 +488,7 @@ public:
     static void mergeAndCreateTables(Iterable<std::shared_ptr<Pdf2Souple::PDFPage>> auto& pages);
 
     // 解析页面中的割裂的“跨栏跨页背景框”、可以预先确定的富内容框、area框
-    // 需要给出“页面分栏信息”。
+    // frame_parts
     // 注意，解析出的frame_parts允许回撤；
     // 解析frame_parts时，函数会设置其背景框pdfobj的visible为false
     // * 该函数会把解析出的rich、area放入文档流，即to_analyse_objs
@@ -504,7 +508,7 @@ public:
     // @TArg参数 onlyLine 是否只查找“线条”类型的邻居。
     template<TT_Str TArg = "onlyLine=false">
     static std::vector<std::pair<int,std::shared_ptr<PDFOBJ_PATH>>>
-        find_neighbors_of_path(Iterable<std::shared_ptr<PDFOBJ>> auto& all_objs,
+        find_neighbors_of_path(const Iterable<const std::shared_ptr<PDFOBJ>> auto& all_objs,
                            int path_i,std::shared_ptr<PDFOBJ_PATH> path);
 
     //static void

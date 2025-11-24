@@ -277,4 +277,5 @@ install(TARGETS appSoupleEdit
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-#include(C:/Users/guest0/Downloads/poppler-25.03.0.tar/poppler-25.03.0/poppler-25.03.0/qt6/src)
+#include(C:/Users/guest0/Downloads/poppler-25.03.0.tar/poppler-25.03.0/poppler-25.03.0/qt6/src
+add_subdirectory(souple_pdf)
