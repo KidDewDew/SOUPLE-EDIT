@@ -3,6 +3,7 @@
 
 #include "pdf2souple.h"
 #include "souplemanager.h"
+#include "frame_ofhlines.h"
 #include <span>
 
 #define Debug_RectAnalyse true
@@ -1091,8 +1092,49 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
     // 给每个FramePart找出它的top和bottom水平线
     for(auto& page : pages) {
         for(auto& framepart : page->frame_parts) {
-            findFrameTopAndBottomLine(all_hlines,framepart.get(),page->page_top_margin);
+            bool found = findFrameTopAndBottomLine(all_hlines,framepart.get(),page->page_top_margin);
+            if(!found) {
+                qDebug() << "Not Found top&bottom lines for a framepart in page" << page->page_index;
+            }
         }
+    }
+
+    struct Pre_Frame {
+        HorLine_Base *startLine, *endLine;
+        PDFOBJ_FramePart* head; //第一个framepart
+    };
+
+    std::map<HorLine_Base*,Pre_Frame> endline2framepart;
+
+    // 对每个framepart进行遍历和create
+    for(std::shared_ptr<PDFOBJ_FramePart>& framepart : pages|MEMBER(frame_parts)|views::join) {
+        HorLine_Base* prevLine = framepart->topLine->getPrevLine();
+        if(prevLine && endline2framepart.count(prevLine)) {
+            Pre_Frame prevFrame = endline2framepart[prevLine];
+            //检查一下，是否要和这个Frame合并哦
+            if(prevFrame.head->fillMode == framepart->fillMode
+                && (prevFrame.head->fillMode != Helper::Color_Fill
+                    || prevFrame.head->fillColor == framepart->fillColor
+                        && prevFrame.head->borderColor == framepart->borderColor
+                        && abs(prevFrame.head->lineWidth - framepart->lineWidth) < 0.2f)
+                && (prevFrame.head->fillMode != Helper::Image_Fill
+                    || prevFrame.head->fillSrc == framepart->fillSrc)
+                && (abs(prevFrame.head->fillSrc - framepart->radius) < 0.2f)
+                )
+            {
+                //得合并
+                prevFrame.endLine = framepart->bottomLine;
+                endline2framepart.erase(prevLine);
+                endline2framepart[prevFrame.endLine] = prevFrame; //重新记录它
+                continue;
+            }
+        }
+        // 至此，表明：未合并。
+        Pre_Frame preframe; //创建Pre_Frame
+        preframe.startLine = framepart->topLine;
+        preframe.endLine = framepart->bottomLine;
+        preframe.head = framepart;
+        endline2framepart[preframe.endLine] = preframe;
     }
 
     qDebug() << "## Pdf2Souple::mergeAndCreateFrames END";

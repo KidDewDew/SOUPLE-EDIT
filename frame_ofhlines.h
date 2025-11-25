@@ -34,6 +34,7 @@ class Frame_ofHLines: public Free_Frame
 {
     friend class AnchorObj_PHLeft_as_FrameBegin;
     friend class AnchorObj_PHRight_as_FrameEnd;
+    friend class Pdf2Souple;
 public:
     Frame_ofHLines(std::shared_ptr<Frame_ofHLines_Instance>,PCPos pc_pos={}) noexcept;
     void setPCPos(PCPos pc_pos) noexcept {

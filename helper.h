@@ -11,6 +11,7 @@
 #include <exception>
 #include <QDir>
 #include <any>
+#include "souple_aux.h"
 
 #ifdef WIN32
 #include <windows.h>

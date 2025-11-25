@@ -232,6 +232,7 @@ qt_add_qml_module(appSoupleEdit
         QML_FILES Obj_StartSign.qml
         SOURCES serialization.h
         SOURCES serialization.cpp
+        SOURCES souple_aux.h
         #RESOURCES vcpkg.json
 )
 
