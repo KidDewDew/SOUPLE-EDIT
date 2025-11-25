@@ -31,6 +31,7 @@ public:
     }
     virtual const Obj_Global_Info& objInfo() const noexcept override {
         static Obj_Global_Info gi = {.dealLayoutable = false,.allowSelect = true,.allowPartSelect = false,
+                                     .isTransparent = true,
                                      .anchorInfo = {.isSelfWidth = true,.isRealHeight = false,.impact_hscale = false}};
         return gi;
     }

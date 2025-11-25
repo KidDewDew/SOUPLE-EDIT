@@ -251,6 +251,13 @@ public:
             float x1,y1,x2,y2;
         };
 
+        // float getLineWidth_ifLine() noexcept {
+        //     float solid = std::min(rect.width(),rect.height());
+        //     if(stroke) {
+        //         return
+        //     }
+        // }
+
         // toLines
         // @brief 尝试把该路径转换为一条或多条线条，前提是该路径近似是矩形（包括圆角矩形、奇形怪状的矩形）
         // 注：该方法返回的Line默认是考虑了线宽的！

@@ -141,7 +141,7 @@ public:
 
     virtual PCPos getPCPos();
 
-    float getPHLeftWidth() {
+    float getPHLeftWidth() noexcept {
         if(leftObj == 0) return 0;
         if(auto ph = leftObj->as<AnchorObj_Glue*>(); ph && ph->glue_left) {
             return ph->width;
@@ -149,6 +149,22 @@ public:
             return ph->width;
         }
         return 0.0;
+    }
+
+    float getLeftTransparentWidth() noexcept {
+        auto obj = leftObj;
+        float w = 0.0f;
+        while(obj && obj->objInfo().isTransparent == true)
+            w += obj->width, obj = obj->rightObj;
+        return w;
+    }
+
+    float getRightTransparentWidth() noexcept {
+        auto obj = leftObj;
+        float w = 0.0f;
+        while(obj && obj->objInfo().isTransparent == true)
+            w += obj->width, obj = obj->leftObj;
+        return w;
     }
 
     // 获取这一行的拼接出的文本。末尾若有换行，则添加换行符\n。

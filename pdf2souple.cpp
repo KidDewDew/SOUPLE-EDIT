@@ -1370,6 +1370,9 @@ void Pdf2Souple::layoutHLine(std::shared_ptr<PDFPage> page, AnchorObj_HLine* hli
 
         last_right = obj->rect.right(); //更新右边缘
     }
+
+    hline->x = leftLine->x;
+
     if(PDF_Load_Args::layoutHLine_adjustWidth) {
         if(rightLine->x - leftLine->x + 1 < adjust_width) {
             //需要调整vline位置
@@ -1377,8 +1380,8 @@ void Pdf2Souple::layoutHLine(std::shared_ptr<PDFPage> page, AnchorObj_HLine* hli
         }
     }
 
+    hline->width = rightLine->x - leftLine->x;
     last_hline = hline; //更新上一行
-
 }
 
 bool Pdf2Souple::tryLastHlineAppendBreak(HorLine_Base* hline,HorLine_Base* last_hline)

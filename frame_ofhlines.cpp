@@ -190,5 +190,7 @@ Frame_ofHLines_Instance::createFrame(HorLine_Base* startLine,HorLine_Base* endLi
     if(h2->rightObj && h2->rightObj->as<AnchorObj_PHRight*>())
         h2->rightObj->removeSelf(true);
     h2->insertOnRight(ph_right);
+    instance->ph_begin = ph_left;
+    instance->ph_end = ph_right;
     return instance;
 }

@@ -18,6 +18,7 @@
 struct Obj_Global_Info {
     bool dealLayoutable = false; //dealLayout()函数是否包含内容
     bool allowSelect = true,allowPartSelect = false; //是否允许选择；是否允许部分选择
+    bool isTransparent = false;
     struct  {
         bool isSelfWidth = true; //是否自己决定自己的宽度，而不是由别的因素决定（典型如右占位符，其isSelfWidth = false)
         bool isRealHeight = true;

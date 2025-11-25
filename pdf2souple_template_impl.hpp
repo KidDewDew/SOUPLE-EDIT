@@ -725,12 +725,15 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                         pair<int,std::shared_ptr<PDFOBJ_PATH>>
                             topBorder,bottomBorder,leftBorder,rightBorder,
                             fillPart;
+                        float maxLineWidth = 0.0f;
                         for(auto[k,neighbor]:neighbors) {
                             if(neighbor->rect.top() < top
                                 && neighbor->rect.width() > Helper::point2pixel(MAX_LINE_WIDTH_pt)
                                 && neighbor->rect.height() < Helper::point2pixel(MAX_LINE_WIDTH_pt)) {
                                 top = neighbor->rect.top();
                                 topBorder = std::pair{(k>=0?maybe_bg_list[k].first:i),neighbor};
+                                maxLineWidth = std::max<double>(maxLineWidth,
+                                                        neighbor->rect.height());
                             }
                             if(neighbor->rect.bottom() > bottom
                                 && neighbor->rect.width() > Helper::point2pixel(MAX_LINE_WIDTH_pt)
@@ -738,12 +741,16 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                             {
                                 bottom = neighbor->rect.bottom();
                                 bottomBorder = std::pair{(k>=0?maybe_bg_list[k].first:i),neighbor};
+                                maxLineWidth = std::max<double>(maxLineWidth,
+                                                        neighbor->rect.height());
                             }
                             if(neighbor->rect.left() < left
                                 && neighbor->rect.height() > Helper::point2pixel(MAX_LINE_WIDTH_pt)
                                 && neighbor->rect.width() < Helper::point2pixel(MAX_LINE_WIDTH_pt)) {
                                 left = neighbor->rect.left();
                                 leftBorder = std::pair{(k>=0?maybe_bg_list[k].first:i),neighbor};
+                                maxLineWidth = std::max<double>(maxLineWidth,
+                                                        neighbor->rect.width());
                             }
                             if(neighbor->rect.right() > right
                                 && neighbor->rect.height() > Helper::point2pixel(MAX_LINE_WIDTH_pt)
@@ -751,6 +758,8 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                             {
                                 right = neighbor->rect.right();
                                 rightBorder = std::pair{(k>=0?maybe_bg_list[k].first:i),neighbor};
+                                maxLineWidth = std::max<double>(maxLineWidth,
+                                                        neighbor->rect.width());
                             }
                         }
                         // 注意，这些邻居中可能会有内部路径对象，需要过滤掉
@@ -758,16 +767,39 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                                 && topBorder.second && bottomBorder.second) {
                             continue; //无法 构成 完整边框
                         }
+
+                        float innerw = right-left-2*maxLineWidth,
+                            innerh = bottom-top-2*maxLineWidth;
+
+                        vector<pair<int,shared_ptr<PDFOBJ_PATH>>> candidate_for_fillpart;
+
                         // 来找找fill-part
                         for(auto[k,neighbor] : neighbors) {
                             if(neighbor == leftBorder.second
                                 || neighbor == rightBorder.second
                                 || neighbor == topBorder.second
                                 || neighbor == bottomBorder.second) continue;
-                            if(std::abs(neighbor->rect.width()-right+left) <= 1.8f
-                                && std::abs(neighbor->rect.height()-bottom+top) <= 1.8f) {
-                                fillPart = std::pair{(k>=0?maybe_bg_list[k].first:i),neighbor};
-                                break;
+                            if(std::abs(neighbor->rect.width()-innerw) <= 2.0f
+                                && std::abs(neighbor->rect.height()-innerh) <= 2.0f) {
+                                //fillPart = ;
+                                candidate_for_fillpart.push_back(
+                                    std::pair{(k>=0?maybe_bg_list[k].first:i),neighbor}
+                                );
+                                //break;
+                            } else {
+                                qDebug() << "**: "
+                                         << neighbor->rect.width()
+                                         << right-left << neighbor->rect.height()
+                                         << bottom - top;
+                            }
+                        }
+
+                        if( ! candidate_for_fillpart.empty()) {
+                            fillPart = candidate_for_fillpart[0];
+                            for(auto& p : candidate_for_fillpart) {
+                                if(p.second->rect.width() > fillPart.second->rect.width()) {
+                                    fillPart = p;
+                                }
                             }
                         }
 
@@ -776,9 +808,13 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                                               topBorder.second,bottomBorder.second});
                         __border_obj_pos.assign({leftBorder.first,rightBorder.first,
                                                  topBorder.first,bottomBorder.first});
+
                         if(fillPart.second) {
                             __fill_obj = fillPart.second;
                             __fill_obj_pos = fillPart.first;
+                            qDebug() << "fillPart=" << fillPart.first;
+                        } else {
+                            qDebug() << "No FillPart Found";
                         }
 
                         __lineWidth = topBorder.second->rect.height(); //设置线宽
@@ -911,6 +947,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
     for(__Bg& bg : __bg_list) {
         qDebug() << "- analyse __Bg:" << bg.fillColor << bg.fillSrc
                  << bg.lineWidth << bg.borderColor;
+        qDebug() << bg.rect;
         qDebug() << "- - - borders.num=" << bg.__border_obj.size();
         for(int i : bg.border_ids) {
             qDebug() << "border-id+=" << i;
@@ -932,18 +969,28 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
         std::vector<std::shared_ptr<PDFOBJ>> inside_objs;
         bool isFrame = true;
         for(auto& obj : to_analyse_objs) {
-            //if(!obj || obj->visible == false) continue;
+            if(!obj) continue;
+            if(obj == bg.__fill_obj) continue;
+            for(auto& _border : bg.__border_obj) {
+                if(obj == _border) goto L1;
+            }
+
+            if(obj->rect.bottom() <= bg.rect.top()
+                || obj->rect.top() >= bg.rect.bottom())
+                continue;
+
             if(obj->rect.left()+3 < bg.rect.left()
                 || obj->rect.right()-3 > bg.rect.right()) {
                 isFrame = false;
-            } else {
+            } else if(obj->visible) {
                 inside_objs.push_back(obj);
             }
+        L1: continue;
         }
         qDebug() << bg.border_ids.size() << bg.fill_id;
         //if(bg.__border_obj) to_analyse_objs[bg.border_id] = {};
-        for(int bi : bg.border_ids) to_analyse_objs[bi] = {};
-        if(bg.__fill_obj) to_analyse_objs[bg.fill_id] = {};
+        //for(int bi : bg.border_ids) to_analyse_objs[bi] = {};
+        //if(bg.__fill_obj) to_analyse_objs[bg.fill_id] = {};
         if(isFrame) { //认为是FramePart
             qDebug() << "解析=>FramePart.";
             std::shared_ptr<PDFOBJ_FramePart> fp = std::make_shared<PDFOBJ_FramePart>();
@@ -972,7 +1019,9 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
         }
     }
 
-    Helper::removeAll(to_analyse_objs,std::shared_ptr<PDFOBJ>{}); // 删除涉及到的对象
+    Helper::removeAllIf(to_analyse_objs,[](auto& obj) {
+        return !obj || !obj->visible;
+    }); // 删除涉及到的对象
     qDebug() << "Pdf2Souple::analyse_framepart_or_rich_or_area END$";
 }
 
@@ -1032,19 +1081,28 @@ bool Pdf2Souple::findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto&
     // 为什么？考虑嵌套rich框，嵌套。。。会导致一个区域会有多种宽度的水平标线
     HorLine_Base* hline_ofMaxWidth = 0;
     auto it = it_top;
+    qDebug() << "findFrameTopAndBottomLine( framepart.rect=" << framepart->rect;
     while(it != sorted_hlines.end()
            && (*it)->y >= framepart->rect.top()+page_y
-           && (*it)->y <= framepart->rect.bottom()+page_y
-           && (*it)->x >= framepart->rect.left()
-           && (*it)->x+(*it)->width <= framepart->rect.right()) {
-        if(!hline_ofMaxWidth || (*it)->width > hline_ofMaxWidth->width) {
-            hline_ofMaxWidth = *it;
+           && (*it)->y <= framepart->rect.bottom()+page_y) {
+        qDebug() << "at " << (*it)->__dstr() << (*it)->x << (*it)->y << (*it)->width;
+        HorLine_Base* hline = *it;
+        float leftX_sub = hline->x + hline->getLeftTransparentWidth();
+        float rightX_sub = hline->x + hline->width - hline->getRightTransparentWidth();
+        qDebug() << "l,r:sub=" << leftX_sub << rightX_sub;
+        if(leftX_sub+2.0f >= framepart->rect.left()
+            || rightX_sub-2.0f <= framepart->rect.right())
+        {
+            if(!hline_ofMaxWidth || hline->width > hline_ofMaxWidth->width) {
+                hline_ofMaxWidth = hline;
+            }
         }
         ++ it;
     }
 
     // 没有任何inside的hline
     if(! hline_ofMaxWidth) {
+        qDebug() << "Failed: not found hline_ofMaxWidth";
         return false;
     }
 
@@ -1111,6 +1169,7 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
 
     // 对每个framepart进行遍历和create
     for(std::shared_ptr<PDFOBJ_FramePart>& framepart : pages|MEMBER(frame_parts)|views::join) {
+        if(!framepart->topLine || !framepart->bottomLine) continue;
         HorLine_Base* prevLine = framepart->topLine->getPrevLine();
         if(prevLine && endline2framepart.count(prevLine)) {
             Pre_Frame prevFrame = endline2framepart[prevLine];
