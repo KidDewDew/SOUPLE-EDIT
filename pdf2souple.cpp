@@ -159,7 +159,11 @@ void Pdf2Souple::imp_loadPdf(const QString& filename)
 #endif
     }
 
-    mergeAndCreateTables(pdfpage_list); //合并临时表格、创建表格
+    //合并临时表格、创建表格
+    mergeAndCreateTables(pdfpage_list);
+
+    //合并FrameParts，创建装饰框
+    mergeAndCreateFrames(pdfpage_list);
 
     FPDF_CloseDocument(document);
 }
@@ -1503,6 +1507,7 @@ AnchorObj* Pdf2Souple::PDFOBJ_TEXT::toAnchorObj(HorLine_Base* hline,float page_t
     flowtext->font = toFont();
     flowtext->z = render_id; //渲染id作为z坐标
     flowtext->x = rect.left();
+    flowtext->y = rect.top() + page_top_margin;
     flowtext->width = rect.width(); //为了之后的布局调整，需要设置坐标信息
     flowtext->isFill = isFill;
     flowtext->isStroke = isStroke;
@@ -1529,6 +1534,7 @@ AnchorObj* Pdf2Souple::PDFOBJ_IMAGE::toAnchorObj(HorLine_Base* hline,float page_
     image->width = rect.width();
     image->height = rect.height(); //宽高<=>缩放
     image->x = rect.left(); //为了之后的布局调整，需要设置坐标信息
+    image->y = rect.top() + page_top_margin;
     //图像默认底部对齐
     image->vAlignMode = Helper::AlignBottom;
     image->vAlignOffset =
@@ -1551,6 +1557,7 @@ AnchorObj* Pdf2Souple::PDFOBJ_PATH::toAnchorObj(HorLine_Base* hline,float page_t
     path->height = rect.height();
     path->x = rect.left();
     path->z = render_id;
+    path->y = rect.top() + page_top_margin;
     //形状默认中心对齐
     path->vAlignMode = Helper::AlignVCenter;
     path->vAlignOffset = rect.top() + rect.height()/2

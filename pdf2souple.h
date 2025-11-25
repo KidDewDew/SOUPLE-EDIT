@@ -125,7 +125,7 @@ public:
     /**
      * @brief The PDFOBJ_FramePart class
      *        存储解析过程中的Frame背景框的部分
-     *        与PDFOBJ_TablePart类似。
+     *        这种情况与PDFOBJ_TablePart类似。
      */
     struct PDFOBJ_FramePart : public PDFOBJ {
         char fillMode; //背景填充类型
@@ -136,6 +136,10 @@ public:
         QColor borderColor;
         std::vector<std::shared_ptr<PDFOBJ>> invisible_items;
         PDFPage* of_page;
+
+        // 以下属性，在merge和create时才会赋予。
+        HorLine_Base* topLine = 0, *bottomLine = 0;
+        float topMargin,bottomMargin;
 
         // 撤回
         void turnback() noexcept {
@@ -205,6 +209,7 @@ public:
             rich_obj->vAlignMode = Helper::AlignBottom;
             rich_obj->vAlignOffset = rich_obj->y + rich_obj->height + page_top_margin
                                      - hline->y;
+            rich_obj->y = rect.top() + page_top_margin;
             return rich_obj;
         }
     };
@@ -395,22 +400,29 @@ private:
 
     static QRectF getTextFullBound(QFontMetricsF fm,const QString& text,const QRectF& tight_rect);
 
+    // 解析pdf的主过程函数
     static void imp_loadPdf(const QString& pdf_filename);
 
+    // 解析pdf的一页
     static void imp_analysePdfPage(std::shared_ptr<PDFPage> page,std::shared_ptr<PDFPage> prev_page);
 
+    // 尝试解析pdf的某页为word风格page
     static bool analyseWordPage(std::shared_ptr<PDFPage> page,std::shared_ptr<PDFPage> prev_page);
 
+    // 解析页眉页脚
     static void analyseHeader(std::shared_ptr<PDFPage> page);
 
+    // 根据pdfium对象创建PDFOBJ，只适用非文本类型。
     static std::shared_ptr<PDFOBJ> readPdfObj(FPDF_PAGEOBJECT fpdf_pageobj,FPDF_TEXTPAGE textpage,float page_width,float page_height);
 
     // static std::vector<std::shared_ptr<PDFOBJ>> imp_findPDFOBJAlignON(int onWhat,
     //                                     std::vector<std::shared_ptr<PDFOBJ>>& all_objs,
     //                                     int index,uchar sign = 0);
 
+    // 处理文本层
     static void imp_dealText(FPDF_TEXTPAGE textpage,std::vector<std::shared_ptr<PDFOBJ>>& list,float page_width,float page_height);
 
+    // 预处理：路径切分、合并
     static void imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objList);
 
     //判断两个矩形是否垂直方向上相交
@@ -500,6 +512,9 @@ public:
         //const RandomAccessCont<float> auto& column_lines,
         RandomAccessCont<std::shared_ptr<PDFOBJ_Rich_or_Area>> auto& rich_or_areas,
         RandomAccessCont<std::shared_ptr<PDFOBJ_FramePart>> auto& frame_parts);
+
+    static bool findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto& sorted_hlines,
+                                          PDFOBJ_FramePart* framepart,float page_y);
 
     // 合并跨栏跨页的frames
     static void mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPage>> auto& pages);

@@ -596,7 +596,7 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
 // 该函数是主动解析内容框。
 // 解析之前，确保该页面已经解析过“表格”了
 // 此外，该函数不会进行矩形合并，请确保已经进行了恰当的矩形合并。
-// tip: 该函数的实现比较繁琐，修改时，请多做测试。
+// tip: 该函数的实现包含较多的冗余设计，修改时注意不要只修改一半。
 void Pdf2Souple::analyse_framepart_or_rich_or_area(
     PDFPage* page,
     RandomAccessCont<std::shared_ptr<PDFOBJ>> auto& to_analyse_objs,
@@ -952,6 +952,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
             fp->of_page = page;
             // 设置rect
             fp->rect.setRect(bg.rect);
+            //fp->rect.moveTop(fp->rect.top()+page->)
             // 设置各种属性
             fp->fillColor = bg.fillColor;
             fp->borderColor = bg.borderColor;
@@ -969,12 +970,6 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
 
     Helper::removeAll(to_analyse_objs,std::shared_ptr<PDFOBJ>{}); // 删除涉及到的对象
     qDebug() << "Pdf2Souple::analyse_framepart_or_rich_or_area END$";
-}
-
-// 合并跨栏跨页的frames
-void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPage>> auto& pages)
-{
-
 }
 
 template<TT_Str TArg>
@@ -1018,6 +1013,89 @@ Pdf2Souple::find_neighbors_of_path(const Iterable<const std::shared_ptr<PDFOBJ>>
     }
     qDebug() << "Pdf2Souple::find_neighbors_of_path END neighbors.num=" << neighbors.size();
     return neighbors;
+}
+
+
+bool Pdf2Souple::findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto& sorted_hlines,
+                               Pdf2Souple::PDFOBJ_FramePart* framepart,float page_y)
+{
+    // 1.1 找到第一条位于framepart顶线的下方的hline
+    auto it_top = ranges::lower_bound(sorted_hlines,framepart->rect.top()+page_y,
+                                      [](HorLine_Base* hline,qreal y){
+                                          return hline->y < y;
+                                      });
+    if(it_top == sorted_hlines.end()) return false; //failed
+    // 1.2 往下继续找，找出被framepart包含的最宽的hline;
+    // 为什么？考虑嵌套rich框，嵌套。。。会导致一个区域会有多种宽度的水平标线
+    HorLine_Base* hline_ofMaxWidth = 0;
+    auto it = it_top;
+    while(it != sorted_hlines.end()
+           && it->y >= framepart->rect.top()+page_y
+           && it->y <= framepart->rect.bottom()+page_y
+           && it->x >= framepart->rect.left()
+           && it->x+it->width <= framepart->rect.right()) {
+        if(!hline_ofMaxWidth || it->width > hline_ofMaxWidth->width) {
+            hline_ofMaxWidth = *it;
+        }
+        ++ it;
+    }
+
+    // 没有任何inside的hline
+    if(! hline_ofMaxWidth) {
+        return false;
+    }
+
+    // 1.3 现在找到了最宽的inside-hline，再根据它得到top/bottom hline
+    HorLine_Base *topHLine, *bottomHLine;
+    topHLine = bottomHLine = hline_ofMaxWidth;
+    while(true) {
+        auto prevLine = topHLine->getPrevLine();
+        if(! prevLine) break;
+        if(prevLine->y < framepart->rect.top()) break;
+        if(prevLine->x < framepart->rect.left()
+            || prevLine->x+prevLine->width > framepart->rect.right()) break;
+        topHLine = prevLine;
+    }
+    while(true) {
+        auto nextLine = bottomHLine->getNextLine();
+        if(! nextLine) break;
+        if(nextLine->y > framepart->rect.bottom()) break;
+        if(nextLine->x < framepart->rect.left()
+            || nextLine->x+nextLine->width > framepart->rect.right()) break;
+        bottomHLine = nextLine;
+    }
+
+    std::tie(framepart->topLine,
+             framepart->bottomLine) = {topHLine,bottomHLine};
+    return true;
+}
+
+// 合并跨栏跨页的frames
+// 显然，这里的frames是最外层的frame.因为内层的frame直接就创建为Frame了
+void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPage>> auto& pages)
+{
+    qDebug() << "## Pdf2Souple::mergeAndCreateFrames BEGIN";
+    std::set<PDFOBJ_FramePart*> hasDeal; //已经被处理过的FramePart
+
+    // 找出所有水平线,并按y坐标排序
+    vector<HorLine_Base*> all_hlines;
+    for(auto obj : SoupleManager::all_objs) {
+        auto hline = obj->as<HorLine_Base*>();
+        if(hline) all_hlines.push_back(hline);
+    }
+
+    if(all_hlines.empty()) return;
+
+    ranges::sort(all_hlines,[](auto& a,auto& b){return a->y < b->y;});
+
+    // 给每个FramePart找出它的top和bottom水平线
+    for(auto& page : pages) {
+        for(auto& framepart : page->frame_parts) {
+            findFrameTopAndBottomLine(all_hlines,framepart.get(),page->page_top_margin);
+        }
+    }
+
+    qDebug() << "## Pdf2Souple::mergeAndCreateFrames END";
 }
 
 #endif // PDF2SOUPLE_TEMPLATE_IMPL_HPP
