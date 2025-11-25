@@ -24,7 +24,7 @@ std::add_lvalue_reference_t<std::remove_reference_t<T>> toPointerLike(T& t) {
 }
 
 template<class T>
-    requires requires { !like_pointer<T>; }
+    requires (!like_pointer<T>)
 auto toPointerLike(T& t) {
     return &t;
 }

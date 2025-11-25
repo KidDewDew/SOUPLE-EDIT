@@ -948,11 +948,14 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
             qDebug() << "解析=>FramePart.";
             std::shared_ptr<PDFOBJ_FramePart> fp = std::make_shared<PDFOBJ_FramePart>();
             //fp要记录因为它而隐藏了哪些对象
-            fp->invisible_items.assign(bg.__border_obj);
+            //fp->invisible_items.assign(bg.__border_obj);
+            for(auto& obj : bg.__border_obj) {
+                fp->invisible_items.push_back(static_pointer_cast<PDFOBJ>(obj));
+            }
             if(bg.__fill_obj) fp->invisible_items.push_back(bg.__fill_obj);
             fp->of_page = page;
             // 设置rect
-            fp->rect.setRect(bg.rect);
+            fp->rect = bg.rect;
             //fp->rect.moveTop(fp->rect.top()+page->)
             // 设置各种属性
             fp->fillColor = bg.fillColor;
@@ -1022,20 +1025,19 @@ bool Pdf2Souple::findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto&
 {
     // 1.1 找到第一条位于framepart顶线的下方的hline
     auto it_top = ranges::lower_bound(sorted_hlines,framepart->rect.top()+page_y,
-                                      [](HorLine_Base* hline,qreal y){
-                                          return hline->y < y;
-                                      });
+                                      std::ranges::less{},
+                                      [](HorLine_Base* hline){ return hline->y; });
     if(it_top == sorted_hlines.end()) return false; //failed
     // 1.2 往下继续找，找出被framepart包含的最宽的hline;
     // 为什么？考虑嵌套rich框，嵌套。。。会导致一个区域会有多种宽度的水平标线
     HorLine_Base* hline_ofMaxWidth = 0;
     auto it = it_top;
     while(it != sorted_hlines.end()
-           && it->y >= framepart->rect.top()+page_y
-           && it->y <= framepart->rect.bottom()+page_y
-           && it->x >= framepart->rect.left()
-           && it->x+it->width <= framepart->rect.right()) {
-        if(!hline_ofMaxWidth || it->width > hline_ofMaxWidth->width) {
+           && (*it)->y >= framepart->rect.top()+page_y
+           && (*it)->y <= framepart->rect.bottom()+page_y
+           && (*it)->x >= framepart->rect.left()
+           && (*it)->x+(*it)->width <= framepart->rect.right()) {
+        if(!hline_ofMaxWidth || (*it)->width > hline_ofMaxWidth->width) {
             hline_ofMaxWidth = *it;
         }
         ++ it;
@@ -1102,6 +1104,7 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
     struct Pre_Frame {
         HorLine_Base *startLine, *endLine;
         PDFOBJ_FramePart* head; //第一个framepart
+        PDFOBJ_FramePart* tail;
     };
 
     std::map<HorLine_Base*,Pre_Frame> endline2framepart;
@@ -1119,13 +1122,15 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
                         && abs(prevFrame.head->lineWidth - framepart->lineWidth) < 0.2f)
                 && (prevFrame.head->fillMode != Helper::Image_Fill
                     || prevFrame.head->fillSrc == framepart->fillSrc)
-                && (abs(prevFrame.head->fillSrc - framepart->radius) < 0.2f)
+                && (abs(prevFrame.head->radius - framepart->radius) < 0.2f)
                 )
             {
                 //得合并
+                prevFrame.tail = framepart.get();
                 prevFrame.endLine = framepart->bottomLine;
-                endline2framepart.erase(prevLine);
+                endline2framepart.erase(prevLine); //记得erase一下
                 endline2framepart[prevFrame.endLine] = prevFrame; //重新记录它
+                qDebug() << "frame merged.";
                 continue;
             }
         }
@@ -1133,8 +1138,28 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
         Pre_Frame preframe; //创建Pre_Frame
         preframe.startLine = framepart->topLine;
         preframe.endLine = framepart->bottomLine;
-        preframe.head = framepart;
+        preframe.head = preframe.tail = framepart.get();
         endline2framepart[preframe.endLine] = preframe;
+    }
+
+    // 从Pre_Frame创建出Frame_ofHLines...p.s.这里为什么不用auto，因为clang推断不出这里的类型啊，后面就给不出代码提示。。
+    for(Pre_Frame& pre_frame : endline2framepart | views::values)
+    {
+        qDebug() << "create Frame_ofHLines";
+        auto instance = Frame_ofHLines_Instance::createFrame(
+            pre_frame.startLine,pre_frame.endLine);
+        instance->background_type = pre_frame.head->fillMode;
+        instance->background_color = pre_frame.head->fillColor;
+        instance->background_src = pre_frame.head->fillSrc;
+        instance->lineWidth = pre_frame.head->lineWidth;
+        instance->radius = pre_frame.head->radius;
+        instance->border_color = pre_frame.head->borderColor;
+        instance->leftPadding = pre_frame.startLine->x - pre_frame.head->rect.left();
+        instance->rightPadding = pre_frame.head->rect.right() - pre_frame.startLine->getRightX();
+        instance->topPadding = pre_frame.startLine->getContentTop()
+                    - (pre_frame.head->rect.top()+pre_frame.head->of_page->page_top_margin);
+        instance->bottomPadding = pre_frame.endLine->getContentBottom()
+                    - (pre_frame.tail->rect.bottom()+pre_frame.tail->of_page->page_top_margin);
     }
 
     qDebug() << "## Pdf2Souple::mergeAndCreateFrames END";

@@ -24,7 +24,7 @@ class AnchorObj_PHLeft_as_FrameBegin: public AnchorObj_PHLeft
 public:
     virtual void dealLayout() override;
 public:
-    std::shared_ptr<Frame_ofHLines_Instance> instance;
+    Frame_ofHLines_Instance* instance = 0;
 };
 
 // Frame_ofHLines
@@ -35,15 +35,16 @@ class Frame_ofHLines: public Free_Frame
     friend class AnchorObj_PHLeft_as_FrameBegin;
     friend class AnchorObj_PHRight_as_FrameEnd;
     friend class Pdf2Souple;
+    friend class Frame_ofHLines_Instance;
 public:
-    Frame_ofHLines(std::shared_ptr<Frame_ofHLines_Instance>,PCPos pc_pos={}) noexcept;
+    Frame_ofHLines(Frame_ofHLines_Instance*,PCPos pc_pos={}) noexcept;
     void setPCPos(PCPos pc_pos) noexcept {
         this->pc_pos = pc_pos;
     }
     virtual void dealLayout() override;
     virtual int dealCommandFromQmlItem(int command,const QVariant& arg) override;
 protected:
-    std::shared_ptr<Frame_ofHLines_Instance> instance; //共享实例
+    Frame_ofHLines_Instance *instance = 0; //共享实例
     // Safe_Obj_Pointer<HorLine_Base> hline_start,hline_end;
     //std::vector<Safe_Obj_Pointer<Free_Frame>> free_frames; //生成的free_frame列表
     PCPos pc_pos; //栏位置
@@ -51,7 +52,11 @@ protected:
 
 
 // 一个Frame_ofHLines的实例
-struct Frame_ofHLines_Instance {
+class Frame_ofHLines_Instance : public Obj,
+                                public std::enable_shared_from_this<Frame_ofHLines_Instance>
+{
+    friend class Frame_ofHLines;
+public:
     enum {
         Color_Bg,Pattern_Bg,Img_Bg
     };
@@ -63,8 +68,22 @@ struct Frame_ofHLines_Instance {
     LiveValue<QColor> border_color;      //边框颜色
     LiveValue<QColor> background_color;  //背景色
     LiveValue<QString> background_src;   //背景图片
-    Safe_Obj_Pointer<AnchorObj_PHLeft_as_FrameBegin> ph_begin;
+    Safe_Obj_Pointer<AnchorObj_PHLeft> ph_begin;
     Safe_Obj_Pointer<AnchorObj_PHRight_as_FrameEnd> ph_end;
     std::vector<Safe_Obj_Pointer<Frame_ofHLines>> frames;
+
+    void dealLayout() override final;
+
+    virtual QQuickItem* generateQmlItem() override { return 0; }
+    virtual const Obj_Global_Info& objInfo() const noexcept override {
+        static Obj_Global_Info gi = {.dealLayoutable = true};
+        return gi;
+    }
+
+public:
+
+    static Frame_ofHLines_Instance*
+    createFrame(HorLine_Base* startLine,HorLine_Base* endLine);
+
 };
 #endif // FRAME_OFHLINES_H

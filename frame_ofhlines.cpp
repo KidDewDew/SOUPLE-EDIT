@@ -5,7 +5,7 @@
 using namespace std;
 
 Frame_ofHLines::Frame_ofHLines(
-    std::shared_ptr<Frame_ofHLines_Instance> _instance,PCPos pc_pos) noexcept
+    Frame_ofHLines_Instance* _instance,PCPos pc_pos) noexcept
     : instance(_instance),pc_pos(pc_pos)
 {
     background_type = instance->background_type;
@@ -107,37 +107,42 @@ void Frame_ofHLines::dealLayout()
     // }
 }
 
-void AnchorObj_PHLeft_as_FrameBegin::dealLayout()
+void Frame_ofHLines_Instance::dealLayout()
 {
-    AnchorObj_PHLeft::dealLayout();
-    if(!instance || !instance->ph_end.valid()) {
-        qDebug() << "!instance || !instance->ph_end.valid()";
+    if(!ph_end.valid() || !ph_begin.valid()) {
+        qDebug() << "!ph_end.valid() || !ph_begin.valid()";
+        removeSelf(true);
         return;
     }
-    auto hline = this->hline->be<HorLine_Base*>();
+    auto hline = this->ph_begin->hline->be<HorLine_Base*>();
     HorLine_Base* start_hline = hline,
-        *end_hline = instance->ph_end->hline->be<HorLine_Base*>();
+        *end_hline = this->ph_end->hline->be<HorLine_Base*>();
     int frame_at = 0;
+
+    if(hline) {
+        y = hline->y; //这样更新更准确
+    }
+
     while(hline) {
         auto nextLine = hline->getNextLine();
         if(!nextLine || nextLine->getPCPos() > hline->getPCPos()
             || hline == end_hline) { //换栏or换页
             // 安排一个frame去覆盖[start_hline,hline]
             Frame_ofHLines *frame = 0;
-            if(instance->frames.size() < frame_at+1) {
+            if(this->frames.size() < frame_at+1) {
                 //创建frame实例
-                frame = new Frame_ofHLines(instance);
-                frame->instance = instance;
-                instance->frames.push_back(frame);
+                frame = new Frame_ofHLines(this);
+                frame->instance = this;
+                this->frames.push_back(frame);
                 SoupleManager::registerObj(frame);
                 qDebug() << "创建Frame";
             } else {
-                frame = instance->frames[frame_at].get();
+                frame = this->frames[frame_at].get();
             }
 
-            frame->x = hline->x - instance->leftPadding;
-            frame->width = hline->width + instance->leftPadding + instance->rightPadding;
-            frame->y = start_hline->getContentTop() - instance->topPadding;
+            frame->x = hline->x - this->leftPadding;
+            frame->width = hline->width + this->leftPadding + this->rightPadding;
+            frame->y = start_hline->getContentTop() - this->topPadding;
             frame->height = hline->getContentBottom() - frame->y;
             if(QML_VALID(frame)) {
                 frame->qmlItem->setSize({frame->width,frame->height});
@@ -151,7 +156,39 @@ void AnchorObj_PHLeft_as_FrameBegin::dealLayout()
         hline = nextLine;
     }
     // 隐藏多余的frame
-    for(auto& frame : instance->frames | views::drop(frame_at)) {
+    for(auto& frame : this->frames | views::drop(frame_at)) {
         if(QML_VALID(frame)) frame->discard_qmlItem();
     }
+}
+
+void AnchorObj_PHLeft_as_FrameBegin::dealLayout()
+{
+    AnchorObj_PHLeft::dealLayout();
+    if(!instance) {
+        qDebug() << "!instance";
+        return;
+    }
+    instance->dealLayout();
+}
+
+Frame_ofHLines_Instance*
+Frame_ofHLines_Instance::createFrame(HorLine_Base* startLine,HorLine_Base* endLine)
+{
+    auto& h1 = startLine, &h2 = endLine;
+    Frame_ofHLines_Instance* instance = new Frame_ofHLines_Instance;
+    auto ph_left = startLine->leftObj->as<AnchorObj_PHLeft*>();
+    if(!ph_left) {
+        ph_left = new AnchorObj_PHLeft_as_FrameBegin;
+        SoupleManager::registerObj(ph_left);
+        h1->insertOnLeft(ph_left);
+        ph_left->be<AnchorObj_PHLeft_as_FrameBegin*>()->instance = instance;
+    } else {
+        SoupleManager::registerObj(instance);
+    }
+    AnchorObj_PHRight_as_FrameEnd* ph_right = new AnchorObj_PHRight_as_FrameEnd;
+    SoupleManager::registerObj(ph_right);
+    if(h2->rightObj && h2->rightObj->as<AnchorObj_PHRight*>())
+        h2->rightObj->removeSelf(true);
+    h2->insertOnRight(ph_right);
+    return instance;
 }

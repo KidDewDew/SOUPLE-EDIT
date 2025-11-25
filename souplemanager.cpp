@@ -744,7 +744,7 @@ void SoupleManager::tryCreateDecorationFrame() {
     }
     qDebug() << "选中区间：" << h1 << h2;
     //装饰框范围：[h1,h2]
-    shared_ptr<Frame_ofHLines_Instance> instance = make_shared<Frame_ofHLines_Instance>();
+    Frame_ofHLines_Instance *instance = new Frame_ofHLines_Instance;
     AnchorObj_PHLeft_as_FrameBegin* ph_left = new AnchorObj_PHLeft_as_FrameBegin;
     AnchorObj_PHRight_as_FrameEnd* ph_right = new AnchorObj_PHRight_as_FrameEnd;
     if(h1->leftObj && h1->leftObj->as<AnchorObj_PHLeft*>())

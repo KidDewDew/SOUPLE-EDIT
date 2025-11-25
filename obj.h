@@ -153,9 +153,11 @@ public:
     }
 
     template<typename T> //多态转换
+    requires std::is_pointer_v<T>
     inline T as() noexcept { return dynamic_cast<T>(this); }
 
     template<typename T> //多态转换(const)
+    requires std::is_pointer_v<T>
     inline auto as() const noexcept
     { return dynamic_cast<
         std::add_pointer_t<
@@ -164,10 +166,12 @@ public:
      >(this); }
 
     template<typename T> //静态转换
+        requires std::is_pointer_v<T>
     inline T be() noexcept { return static_cast<T>(this); }
 
     template<typename T> //静态转换(const)
     inline auto be() const noexcept
+    requires std::is_pointer_v<T>
     { return static_cast<
             std::add_pointer_t<
                 std::add_const_t<std::remove_pointer_t<T>>
