@@ -143,7 +143,7 @@ void Frame_ofHLines_Instance::dealLayout()
             frame->x = hline->x - this->leftPadding;
             frame->width = hline->width + this->leftPadding + this->rightPadding;
             frame->y = start_hline->getContentTop() - this->topPadding;
-            frame->height = hline->getContentBottom() - frame->y;
+            frame->height = hline->getContentBottom() + this->bottomPadding - frame->y;
             if(QML_VALID(frame)) {
                 frame->qmlItem->setSize({frame->width,frame->height});
                 frame->qmlItem->setPosition({frame->x,frame->y});
@@ -158,6 +158,7 @@ void Frame_ofHLines_Instance::dealLayout()
     // 隐藏多余的frame
     for(auto& frame : this->frames | views::drop(frame_at)) {
         if(QML_VALID(frame)) frame->discard_qmlItem();
+        frame->y = -1e6; //把它放到负数位置，就不会产生qmlItem了。
     }
 }
 

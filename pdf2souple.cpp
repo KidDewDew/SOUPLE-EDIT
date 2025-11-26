@@ -1247,6 +1247,7 @@ void Pdf2Souple::analyseHeader(std::shared_ptr<PDFPage> page)
 
 void Pdf2Souple::tryInsertPH_onHLineLeft(HorLine_Base* hline)
 {
+    if(hline->canBe<TableLine>()) return;
     if(hline->leftObj) {
         float left_rect_width = hline->leftObj->x - hline->x;
         if(left_rect_width > 1e-2) { //左边有空白
@@ -1386,7 +1387,14 @@ void Pdf2Souple::layoutHLine(std::shared_ptr<PDFPage> page, AnchorObj_HLine* hli
 
 bool Pdf2Souple::tryLastHlineAppendBreak(HorLine_Base* hline,HorLine_Base* last_hline)
 {
-    if(last_hline && hline->leftObj) {
+    if(!last_hline) return false;
+    if(hline->canBe<TableLine>() && ! last_hline->canBe<TableLine>()) {
+        AnchorObj_PHRight *phright = new AnchorObj_PHRight;
+        SoupleManager::registerObj(phright);
+        last_hline->insertOnRight(phright);
+        return true;
+    }
+    if(hline->leftObj) {
         auto back_obj = last_hline->rightObj;
         bool needBreak = false;
         if(! back_obj) { //上一行为空，显然需要插入换行符
@@ -1465,6 +1473,7 @@ bool Pdf2Souple::tryLastHlineAppendBreak(AnchorObj_HLine* hline,float raw_right)
 // 尝试插入段落记号...
 bool Pdf2Souple::tryInsertPHLeft(HorLine_Base* hline)
 {
+    if(hline->canBe<TableLine>()) return false;
     auto lastLine = hline->getPrevLine();
     if(lastLine == 0) return false;
     bool need = false;
@@ -1846,10 +1855,13 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
         for(int j = i+1; j < n; ++j) {
             auto& p2 = path_lines[j];
             if(p2.index == -1) continue;
-            if(abs(p1.path_obj->rect.center().y()-p2.path_obj->rect.center().y())<2.0f
-                && abs(p1.path_obj->rect.height()-p2.path_obj->rect.height())<2.0f //水平对齐
+
+            //[重要offset] 0.3f: 判断垂直相交
+            if(abs(p1.path_obj->rect.center().y()-p2.path_obj->rect.center().y())<0.3f
+                && abs(p1.path_obj->rect.height()-p2.path_obj->rect.height())<2.0f //垂直对齐
                 && new_right+2.0f
-                       >= p2.path_obj->rect.left()-p2.path_obj->lineWidth*0.5f //垂直邻接(或交叠)
+                       >= p2.path_obj->rect.left()-p2.path_obj->lineWidth*0.5f //水平邻接(或少量交叠)
+                && new_right < p2.path_obj->rect.right()
                 && (qDebug()<<"lookLike",p1.path_obj->isLookLike_ifrect(p2.path_obj))
                 ) {
                 //ok 它被合并了

@@ -55,25 +55,55 @@ bool Pdf2Souple::createRich(const PDFPage* page,Iterable<HBlock> auto& blocks,Ob
     std::vector<BlockInner_HorLine *> hlines;
 
     for(auto[i,bk] : blocks | views::enumerate) {
-        BlockInner_HorLine *hline = new BlockInner_HorLine;
-        SoupleManager::registerObj(hline);
-        hline->parent = parent;
-        hline->z = parent->z + 1;
-        generateHorLine(page,hline,bk,rich_left,rich_width);
-        if(i == 0) {
-            *firstLine = hline;
-            if(fixed_rect) {
-                hline->topMargin = hline->getContentTop() - rich_top;
-            } else hline->topMargin = 0;
+        if(bk.objs.empty()) continue;
+        if(std::shared_ptr<PDFOBJ_TablePart> table =
+            dynamic_pointer_cast<PDFOBJ_TablePart>(bk.objs[0]); table) {
+            //对表格part进行特判
+            //获取rich的vline.
+            std::any any_vline = parent->getAnyData("vline");
+            assert(any_vline.has_value());
+            auto[leftLine,rightLine] =
+                std::any_cast<pair<AnchorObj_VLine*,AnchorObj_VLine*>>(any_vline);
+            assert(leftLine && rightLine);
+            if(i == 0) {
+                auto tl = table->tablelines.at(0);
+                *firstLine = table->tablelines.at(0);
+                if(fixed_rect) {
+                    tl->topMargin = tl->getContentTop() - rich_top;
+                } else tl->topMargin = 0;
+            } else if(lastHLine) {
+                table->tablelines.at(0)->connectHLine_up(lastHLine);
+            }
+
+            for(auto tableline : table->tablelines) {
+                tableline->leftLine = leftLine;
+                tableline->rightLine = rightLine;
+                tableline->page = page->souple_page;
+                SoupleManager::registerObj(tableline);
+            }
+
+            lastHLine = table->tablelines.back();
+        } else {
+            BlockInner_HorLine *hline = new BlockInner_HorLine;
+            SoupleManager::registerObj(hline);
+            hline->parent = parent;
+            hline->z = parent->z + 1;
+            generateHorLine(page,hline,bk,rich_left,rich_width);
+            if(i == 0) {
+                *firstLine = hline;
+                if(fixed_rect) {
+                    hline->topMargin = hline->getContentTop() - rich_top;
+                } else hline->topMargin = 0;
+            } else
+            if(lastHLine) {
+                //lastHLine->nextLine = hline;
+                ///lastHLine->setNextLine(hline);
+                lastHLine->connectHLine_down(hline);
+                hline->hline = lastHLine;
+            }
+            lastHLine = hline;
+            hlines.push_back(hline);
         }
-        if(lastHLine) {
-            //lastHLine->nextLine = hline;
-            ///lastHLine->setNextLine(hline);
-            lastHLine->connectHLine_down(hline);
-            hline->hline = lastHLine;
-        }
-        lastHLine = hline;
-        hlines.push_back(hline);
     }
 
     //换行 居中占位 Glue...
@@ -397,8 +427,10 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
 
     qDebug() << "impl_createHBlocks_specForWord:" << lineXOffset<<lineYOffset;
 
-
     std::vector<std::shared_ptr<PDFOBJ>> objs{raw_objs.begin(),raw_objs.end()};
+
+    if(objs.empty()) return true;
+
     ranges::sort(objs,_Pred(e1->rect.center().y() < e2->rect.center().y())); //按y坐标排序
 
     for(auto& obj : objs) {
@@ -1044,12 +1076,12 @@ Pdf2Souple::find_neighbors_of_path(const Iterable<const std::shared_ptr<PDFOBJ>>
         {
             if( ! obj->visible) continue;
             auto path = dynamic_pointer_cast<PDFOBJ_PATH>(obj);
+            if(!path) continue;
             if constexpr(TArg.getBoolArg("onlyLine")) {
                 vector<PDFOBJ_PATH::Line> lines;
                 if(!path->toLinesIfRect(lines)) continue;
                 if(lines.size() > 1) continue;
             }
-            if(!path) continue;
             if(_set.count(path.get())) continue;
             for(auto&[j,path1] : neighbors) {
                 if(path->rect.right()+offset < path1->rect.left()
@@ -1085,11 +1117,11 @@ bool Pdf2Souple::findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto&
     while(it != sorted_hlines.end()
            && (*it)->y >= framepart->rect.top()+page_y
            && (*it)->y <= framepart->rect.bottom()+page_y) {
-        qDebug() << "at " << (*it)->__dstr() << (*it)->x << (*it)->y << (*it)->width;
+        //qDebug() << "at " << (*it)->__dstr() << (*it)->x << (*it)->y << (*it)->width;
         HorLine_Base* hline = *it;
         float leftX_sub = hline->x + hline->getLeftTransparentWidth();
         float rightX_sub = hline->x + hline->width - hline->getRightTransparentWidth();
-        qDebug() << "l,r:sub=" << leftX_sub << rightX_sub;
+        //qDebug() << "l,r:sub=" << leftX_sub << rightX_sub;
         if(leftX_sub+2.0f >= framepart->rect.left()
             || rightX_sub-2.0f <= framepart->rect.right())
         {
@@ -1113,16 +1145,20 @@ bool Pdf2Souple::findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto&
         auto prevLine = topHLine->getPrevLine();
         if(! prevLine) break;
         if(prevLine->y < framepart->rect.top()) break;
-        if(prevLine->x < framepart->rect.left()
-            || prevLine->x+prevLine->width > framepart->rect.right()) break;
+        float leftX_sub = prevLine->x + prevLine->getLeftTransparentWidth();
+        float rightX_sub = prevLine->x + prevLine->width - prevLine->getRightTransparentWidth();
+        if(leftX_sub+2.0f < framepart->rect.left()
+            || rightX_sub-2.0f > framepart->rect.right()) break;
         topHLine = prevLine;
     }
     while(true) {
         auto nextLine = bottomHLine->getNextLine();
         if(! nextLine) break;
         if(nextLine->y > framepart->rect.bottom()) break;
-        if(nextLine->x < framepart->rect.left()
-            || nextLine->x+nextLine->width > framepart->rect.right()) break;
+        float leftX_sub = nextLine->x + nextLine->getLeftTransparentWidth();
+        float rightX_sub = nextLine->x + nextLine->width - nextLine->getRightTransparentWidth();
+        if(leftX_sub+2.0f < framepart->rect.left()
+            || rightX_sub-2.0f > framepart->rect.right()) break;
         bottomHLine = nextLine;
     }
 
@@ -1155,6 +1191,9 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
             bool found = findFrameTopAndBottomLine(all_hlines,framepart.get(),page->page_top_margin);
             if(!found) {
                 qDebug() << "Not Found top&bottom lines for a framepart in page" << page->page_index;
+            } else {
+                qDebug() << "topLine=" << framepart->topLine->__dstr();
+                qDebug() << "bottomLine=" << framepart->bottomLine->__dstr();
             }
         }
     }
@@ -1217,8 +1256,9 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
         instance->rightPadding = pre_frame.head->rect.right() - pre_frame.startLine->getRightX();
         instance->topPadding = pre_frame.startLine->getContentTop()
                     - (pre_frame.head->rect.top()+pre_frame.head->of_page->page_top_margin);
-        instance->bottomPadding = pre_frame.endLine->getContentBottom()
-                    - (pre_frame.tail->rect.bottom()+pre_frame.tail->of_page->page_top_margin);
+        instance->bottomPadding =
+                    (pre_frame.tail->rect.bottom()+pre_frame.tail->of_page->page_top_margin)
+                    -pre_frame.endLine->getContentBottom();
     }
 
     qDebug() << "## Pdf2Souple::mergeAndCreateFrames END";

@@ -575,6 +575,7 @@ public:
 
     static inline QList<QString> original_font_list;
     static inline std::unordered_set<QString> original_font_set;
+
     // 替代字体family <pdf内嵌字体名称(去掉子集前缀)，替代的family>
     struct Font_Substitution {
         bool light, bold, italic; //是否需要设置替代字体的一些属性

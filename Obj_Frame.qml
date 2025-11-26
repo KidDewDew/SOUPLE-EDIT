@@ -8,13 +8,20 @@ Rectangle {
     //很多的free-qmlitem都有这个标志: isFree
     //表示这个Item是不是真的Free-Obj
     property bool isFree: true
-    property int data_id
+    property int data_id:-1
     property alias cp_propertyBar: cp_propertyBar
     property bool isSelected: false
     property bool allowEditBound: true
     property bool allowChangePosition: true
     property bool allowChangeSize: true
     //radius color borde
+
+    onData_idChanged: {
+        if(data_id == -1) return
+        border.width = spMgr.qmlGetData(data_id,Helper_Type.STROKE_WIDTH)
+        border.color = spMgr.qmlGetData(data_id,Helper_Type.STROKE_COLOR)
+        radius = spMgr.qmlGetData(data_id,Helper_Type.RADIUS)
+    }
 
     Component {
         id: cp_propertyBar //属性栏

@@ -35,7 +35,7 @@ void Pdf2Souple::impl_analyseTable(
 {
     /** 第一步，解析objs中的表格 */
 
-    qDebug() << "impl_analyseTable(";
+    qDebug() << "impl_analyseTable(inside=" << tt.getBoolArg("inside",false);
 
     // 注意，要求获取的线条的x1 y1 x2 y2必须考虑到线宽，不能忽略线宽！
     struct Line_Obj_Record {
@@ -91,9 +91,14 @@ void Pdf2Souple::impl_analyseTable(
 
     qDebug() << "lineObjs.count = " << line_objs.count();
 
+    ranges::sort(line_objs,[](auto& l1,auto& l2){
+        return l1.y1 < l2.y1;
+    });
+
     for(int i = 0; i < line_objs.size(); ++i) {
-        auto& line = line_objs[i];
+        Line_Obj_Record& line = line_objs[i];
         if(line.hasBelong) continue;
+        if(line.path_obj->visible == false) continue; //该路径已经被单元格解析时使用了
         // line是一条线(实心矩形),找出与它邻接的所有线(实心矩形)
         QList<Line_Obj_Record*> h_borders,v_borders;
         if(line.y2 - line.y1 > line.x2 - line.x1) v_borders.push_back(&line);
@@ -151,11 +156,16 @@ void Pdf2Souple::impl_analyseTable(
         std::vector<size_t> border_pdfobj_id_list;
 
         for(auto border : std::ranges::views::join(std::array{h_borders,v_borders})) {
-            if(border->obj_index >= 0) { //记录边框的pdfobj，便于合并后删除
+            if(border->obj_index >= 0
+                && border->hasBelong) //hasBelong=true
+            { //记录属于[本次待解析表格]的边框的pdfobj，便于合并后删除
                 border_pdfobj_id_list.push_back(border->obj_index);
             }
         }
 
+        qDebug() << "本表格的边框包含" << border_pdfobj_id_list.size() << "个pdfobj";
+        qDebug() << "合并前hborders.num =" << h_borders.size();
+        qDebug() << "合并前vborders.num =" << v_borders.size();
 
         /** 合并看上去连续的边线(比如latex导出的表格喜欢把一条完整的线割断) */
         // 一定要在删除pdfobj后再合并！
@@ -318,7 +328,11 @@ void Pdf2Souple::impl_analyseTable(
         //pdf_table->tablelines.append_range(tablepart->tablelines);
 
         tablepart->rect.setRect(table_left,table_top,width2,height2);
-        page->table_parts.push_back(tablepart);
+
+        // 最外层的tablepart需要在page中记录
+        if constexpr(tt.getBoolArg("inside",false) == false) {
+            page->table_parts.push_back(tablepart);
+        }
 
         tablepart->row_units.resize(tablepart->tablelines.size());
 
@@ -409,11 +423,35 @@ void Pdf2Souple::impl_analyseTable(
 
                     // qDebug() << " - - 确定单元格: rect(" << unit->x << unit->y << unit->width << unit->height;
 
-                    QList<Pdf2Souple::HBlock> hblocks;
-                    Pdf2Souple::createHBlocks(objs_inUnit,page->page_width,hblocks,false);
+                    // 拷贝一份
+                    vector<std::shared_ptr<PDFOBJ>> copy_objs_inUnit = objs_inUnit;
+
+                    //创建HBlocks之前，需要对单元格内部进行一些处理
+                    //解析嵌套表格，TT参数inside设为true
+                    qDebug() << "objs_inUnit.size=" << objs_inUnit.size();
+                    impl_analyseTable<TStr("inside=true")>(page,objs_inUnit);
+                    //解析内部frame、rich、area
+                    std::vector<std::shared_ptr<PDFOBJ_Rich_or_Area>> rich_or_areas;
+                    analyse_framepart_or_rich_or_area(page,objs_inUnit,
+                                                      rich_or_areas,
+                                                      page->frame_parts);
                     unit->firstLine = 0;
-                    Pdf2Souple::createRich(page,hblocks,unit,&unit->vAlignMode,&unit->contentHeight,
-                                           &unit->firstLine,QRectF{unit->x,unit_top,unit->width,unit_height});
+                    if(objs_inUnit.size() > 0) {
+                        QList<Pdf2Souple::HBlock> hblocks;
+                        Pdf2Souple::createHBlocks_specForWord(objs_inUnit,hblocks);
+                        //[old]~Pdf2Souple::createHBlocks(objs_inUnit,page->page_width,hblocks,false);
+                        Pdf2Souple::createRich(page,hblocks,unit,&unit->vAlignMode,&unit->contentHeight,
+                                               &unit->firstLine,QRectF{unit->x,unit_top,unit->width,unit_height});
+                        //删除hblocks
+                    }
+
+                    //为什么前面已经从文档流删除了所有objs_inTable，这里还要设置visible=false呢？
+                    //因为，对于还有一些对象持有它的shared_ptr。考虑嵌套表格。
+                    qDebug() << "set objs_inUnit invisible:";
+                    for(auto& obj : copy_objs_inUnit) {
+                        obj->print();
+                        obj->visible = false; //标注为失效。
+                    }
                     tablepart->row_units[row_i].push_back(unit); //记录单元格
                 }
                 left_x = vborder->cx();
@@ -428,7 +466,7 @@ void Pdf2Souple::impl_analyseTable(
 
         //如果"inside=true"，需要立即创建表格实例。
         if constexpr(tt.getBoolArg("inside",false) == true) {
-
+            TableInfo* ti = createTableFromTableParts(std::array<PDFOBJ_TablePart*,1>{tablepart.get()},-1);
         }
 
     }
@@ -439,6 +477,8 @@ void Pdf2Souple::impl_analyseTable(
     for(auto ptr : /*page->all_objs*/objs)
         if(ptr) /*page->all_objs*/objs[_n2++] = ptr;
     /*page->all_objs*/objs.resize(_n2);
+
+    qDebug() << "impl_analyseTable END";
 }
 
 /**
@@ -457,7 +497,7 @@ void Pdf2Souple::analyseTable(Pdf2Souple::PDFPage* page, Pdf2Souple::PDFPage* ol
 
 template<TT_Str tt /*= TStr("enable_table_row_num=false")*/>
 TableInfo* Pdf2Souple::createTableFromTableParts
-    (Iterable<Pdf2Souple::PDFOBJ_TablePart*> auto& tablepart_list,
+    (const Iterable<Pdf2Souple::PDFOBJ_TablePart*> auto& tablepart_list,
         int table_row_num)
 {
 
@@ -508,8 +548,10 @@ TableInfo* Pdf2Souple::createTableFromTableParts
     }
 
     // grid_filled: 记录表格各个单元格是否被“占据”
-    unsigned char *grid_filled = (unsigned char*)operator new(ti->colCount() * table_row_num);
-    memset(grid_filled,0x0,ti->colCount() * table_row_num);
+    //unsigned char *grid_filled = (unsigned char*)operator new(ti->colCount() * table_row_num);
+    //memset(grid_filled,0x0,ti->colCount() * table_row_num);
+
+    unsigned char *grid_filled = new unsigned char[ti->colCount() * table_row_num]();
 
     //tablepart_list[0]->tablelines
     ti->firstLine = tablepart_list.front()->tablelines.front();
@@ -609,7 +651,7 @@ TableInfo* Pdf2Souple::createTableFromTableParts
     //表格宽度
     ti->width = accumulate(ti->colWidths.begin(),ti->colWidths.end(),0);
 
-    operator delete(grid_filled,ti->colCount() * ti->rowCount()); //free
+    delete[] grid_filled; //free
 
     return ti;
 }

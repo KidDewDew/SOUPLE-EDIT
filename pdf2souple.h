@@ -491,7 +491,7 @@ public:
     // @return TableInfo*。可以忽略，已经自动完成了所有注册action。
     template<TT_Str tt = TStr("enable_table_row_num=false")>
     static TableInfo* createTableFromTableParts(
-        Iterable<Pdf2Souple::PDFOBJ_TablePart*> auto& tablepart_list,
+        const Iterable<Pdf2Souple::PDFOBJ_TablePart*> auto& tablepart_list,
         int table_row_num);
 
     // T参数"inside":是否是在内部提取表格
