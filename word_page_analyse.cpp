@@ -170,7 +170,7 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
                     SoupleManager::wait_register_obj_list.push_back(tableline);
                 }
                 auto first_tline = table->tablelines.front();
-                //qDebug() << "word-analyse: 表格线" << first_tline->name;
+                qDebug() << "word-analyse: 表格线" << first_tline->name;
                 if(last_hline) {
                     first_tline->setAnchorLastHLine(last_hline);
                 }

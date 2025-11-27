@@ -239,6 +239,7 @@ public:
     };
 
     struct PDFOBJ_PATH : public PDFOBJ {
+        QRectF t_rect; //路径紧边框
         QList<Path_Action> list_path_actions;
         bool fill, stroke;
         QColor fillColor,strokeColor;
@@ -282,96 +283,7 @@ public:
 
         // 转换为实心矩形(一根线也算作实心矩形)，返回是否转换l成功。
         template<TT_Str tt = TStr(" ")>
-        bool toSolidRect(float& x1,float& y1,float& x2, float& y2, uint8_t* numLines = 0) const {
-            switch(list_path_actions.size()) {
-            case 1: {
-                if(list_path_actions[0].type != Path_Action::LineTo) return false;
-                *numLines = 1;
-                break;
-            }
-            case 2: {
-                if(list_path_actions[0].type != Path_Action::MoveTo
-                    || list_path_actions[1].type != Path_Action::LineTo) return false;
-                if(abs(list_path_actions[0].x - list_path_actions[0].x) > 1.0f
-                    && abs(list_path_actions[0].y - list_path_actions[0].y) > 1.0f) {
-                    return false;
-                }
-                *numLines = 1;
-                break;
-            }
-            case 3: {
-                if constexpr (tt.getBoolArg("forceFill",true) == true) {
-                    if(fill == false) return false;
-                }
-                if(list_path_actions[0].type != Path_Action::LineTo
-                    || list_path_actions[1].type != Path_Action::LineTo
-                    || list_path_actions[2].type != Path_Action::LineTo) return false;
-                std::set<int> x_set, y_set;
-                x_set.insert(0); y_set.insert(0);
-                for(auto& a : list_path_actions) {
-                    x_set.insert(round(a.x));
-                    y_set.insert(round(a.y));
-                }
-                if(x_set.size() <= 2 && y_set.size() <= 2) {
-                    *numLines = 4;
-                    break;
-                }
-                else return false;
-            }
-            case 4: {
-                if constexpr (tt.getBoolArg("forceFill",true) == true) {
-                    if(fill == false) return false;
-                }
-                if(list_path_actions[0].type != Path_Action::MoveTo
-                    || list_path_actions[1].type != Path_Action::LineTo
-                    || list_path_actions[2].type != Path_Action::LineTo
-                    || list_path_actions[3].type != Path_Action::LineTo) return false;
-                std::set<int> x_set, y_set;
-                for(auto& a : list_path_actions) {
-                    x_set.insert(round(a.x/2));
-                    y_set.insert(round(a.y/2));
-                }
-                if(x_set.size() <= 2 && y_set.size() <= 2) { //矩形判断
-                    *numLines = 4;
-                    break;
-                }
-                else return false;
-            }
-            case 5: {
-                if constexpr (tt.getBoolArg("forceFill",true) == true) {
-                    if(fill == false) return false;
-                }
-                if(list_path_actions[0].type != Path_Action::MoveTo
-                    || list_path_actions[1].type != Path_Action::LineTo
-                    || list_path_actions[2].type != Path_Action::LineTo
-                    || list_path_actions[3].type != Path_Action::LineTo
-                    || list_path_actions[4].type != Path_Action::LineTo) return false;
-                std::set<int> x_set, y_set;
-                for(auto& a : list_path_actions) {
-                    x_set.insert(round(a.x/2));
-                    y_set.insert(round(a.y/2));
-                }
-                if(x_set.size() <= 2 && y_set.size() <= 2) { //矩形判断
-                    *numLines = 4;
-                    break;
-                }
-                else return false;
-            }
-            default:
-                return false;
-            }
-            if(*numLines == 4) {
-                *numLines = 1;
-            }
-            if constexpr(tt.getBoolArg("extendLineWidth",true)) {
-                x1 = rect.left()-lineWidth*0.5, y1 = rect.top()-lineWidth*0.5,
-                x2 = rect.right()+lineWidth*0.5, y2 = rect.bottom()+lineWidth*0.5;
-            } else {
-                x1 = rect.left(), y1 = rect.top(), x2 = rect.right(), y2 = rect.bottom();
-            }
-            qDebug() << "toSolidRect Completed:ok,numlines=" << (numLines?*numLines:-1);
-            return true;
-        }
+        bool toSolidRect(float& x1,float& y1,float& x2, float& y2, uint8_t* numLines = 0) const;
     };
 
     struct Souple_Area { //Souple区域

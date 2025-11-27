@@ -100,9 +100,13 @@ void TableLine::dealLayout()
         //     }
         // }
 
+        //qDebug() << "tableline.lr:" << leftLine->__dstr() << rightLine->__dstr();
+
         AnchorObj_HLine::dealAnchor(lastLine);
         AnchorObj_HLine::dealSpan(lastLine,y+contentTop,y);
         AnchorObj_HLine::check_after_dealSpan();
+
+        //qDebug() << "tableline.lr2:" << leftLine->__dstr() << rightLine->__dstr();
         // if(page) {
         //     bool bGotoNextPage = false;
         //     if(y > page->getBottomLineY()) {

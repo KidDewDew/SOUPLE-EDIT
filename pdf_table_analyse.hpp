@@ -52,6 +52,24 @@ void Pdf2Souple::impl_analyseTable(
             auto offset = Helper::cm2pixel(LINE_SAME_OFFSET_cm);
             if(x2 + offset < l2.x1 || l2.x2 + offset < x1
                 || y2 + offset < l2.y1 || l2.y2 + offset < y1) return false;
+            if(width() > height()) {
+                //this is 水平线条
+                if(l2.width() > l2.height()) {
+                    //同为水平线条
+                    if(x1 <= l2.x1 && x2 >= l2.x2) return false;
+                    if(l2.x1 <= x1 && l2.x2 >= x2) return false;
+                } else {
+                    if(l2.y2 < y1 || l2.y1 > y2) return false;
+                }
+            } else {
+                if(l2.width() <= l2.height()) {
+                    //同为垂直线条
+                    if(y1 <= l2.y1 && y2 >= l2.y2) return false;
+                    if(l2.y1 <= y1 && l2.y2 >= y2) return false;
+                } else {
+                    if(y2 < l2.y1 || y1 > l2.y2) return false;
+                }
+            }
             return true;
         }
     };
@@ -76,13 +94,14 @@ void Pdf2Souple::impl_analyseTable(
                 rec.x2 = line.x2;
                 rec.y1 = line.y1;
                 rec.y2 = line.y2;
+                qDebug() << "线条x1,x2,y1,y2=" << rec.x1 << rec.x2 << rec.y1 << rec.y2;
                 if(rec.x2 - rec.x1 < rec.y2 - rec.y1) {
-                    // 线宽小于4pt
-                    if(rec.x2 - rec.x1 <= Helper::point2pixel(4))
+                    // 线宽小于5pt
+                    if(rec.x2 - rec.x1 <= Helper::point2pixel(5))
                         line_objs.push_back(std::move(rec));
                 } else {
-                    // 线高小于4pt
-                    if(rec.y2 - rec.y1 <= Helper::point2pixel(4))
+                    // 线高小于5pt
+                    if(rec.y2 - rec.y1 <= Helper::point2pixel(5))
                         line_objs.push_back(std::move(rec));
                 }
             }
@@ -439,7 +458,7 @@ void Pdf2Souple::impl_analyseTable(
                     if(objs_inUnit.size() > 0) {
                         QList<Pdf2Souple::HBlock> hblocks;
                         Pdf2Souple::createHBlocks_specForWord(objs_inUnit,hblocks);
-                        //[old]~Pdf2Souple::createHBlocks(objs_inUnit,page->page_width,hblocks,false);
+                        //Pdf2Souple::createHBlocks(objs_inUnit,page->page_width,hblocks,false);
                         Pdf2Souple::createRich(page,hblocks,unit,&unit->vAlignMode,&unit->contentHeight,
                                                &unit->firstLine,QRectF{unit->x,unit_top,unit->width,unit_height});
                         //删除hblocks

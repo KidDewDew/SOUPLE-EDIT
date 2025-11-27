@@ -709,6 +709,10 @@ shared_ptr<Pdf2Souple::PDFOBJ> Pdf2Souple::readPdfObj(FPDF_PAGEOBJECT fpdf_pageo
 
         obj_path->rect = {left,top,right-left,bottom-top};
 
+        // 计算紧边框
+        float tight_x1 = 1e9,tight_y1 = 1e9,
+            tight_x2 = -1e9,tight_y2 = -1e9;
+
         //qDebug() << "rect = " << obj_path->rect;
 
         FS_MATRIX matrix;
@@ -819,7 +823,14 @@ shared_ptr<Pdf2Souple::PDFOBJ> Pdf2Souple::readPdfObj(FPDF_PAGEOBJECT fpdf_pageo
                 break;
             }
             } //switch END
+
+            tight_x1 = std::min(tight_x1,sx);
+            tight_y1 = std::min(tight_y1,sy);
+            tight_x2 = std::max(tight_x2,sx);
+            tight_y2 = std::max(tight_y2,sy);
         }
+
+        obj_path->t_rect = QRectF{tight_x1,tight_y1,tight_x2-tight_x1,tight_y2-tight_y1};
 
         return obj_path;
     } //Read Path End
@@ -1759,12 +1770,13 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
                 // if(path->fill == true) { //当作一条线
                 //     path_lines.push_back(Path{(uint32_t)i,path});
                 // } else { //当作四条线
-                //注意path的rect是不考虑线宽的！
+                //[作废]注意path的rect是不考虑线宽的！
                 for(auto& line : lines) {
                     shared_ptr<PDFOBJ_PATH> p = make_shared<PDFOBJ_PATH>();
                     p->rect = {line.x1,line.y1,line.x2-line.x1,line.y2-line.y1};
                     p->render_id = path->render_id; //保持同样的渲染顺序
                     p->stroke = false;
+                    p->lineWidth = 0.0f;
                     p->fill = true;
                     p->strokeColor = QColor::fromRgb(0,0,0,0);
                     p->fillColor = path->fill ? path->fillColor : path->strokeColor;
@@ -1791,31 +1803,35 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
     /** 至此，一切边框矩形已经被切成4条矩形了 */
     // 考虑合并接续的矩形为一个path，直接进行n^2遍历查找需要合并的矩形
 
+    // 您会发现，下面使用的都是path的t_rect，即路径紧边框。而非rect。
+    // 您应该注意到，t_rect是不包含lineWidth的。这一点必须牢记。
+
     // 按y坐标排序，优先处理垂直方向的合并
     std::ranges::sort(path_lines,[](Path& p1,Path& p2) {
-        return p1.path_obj->rect.top() < p2.path_obj->rect.top();
+        return p1.path_obj->t_rect.top() < p2.path_obj->t_rect.top();
     });
     for(int i = 0, n = path_lines.size(); i < n; ++i)
     {
         auto& p1 = path_lines[i];
         if(p1.index == -1) continue; //该path已经被合并啦
         bool has_merged{false};
-        float new_bottom=p1.path_obj->rect.bottom()+p1.path_obj->lineWidth*0.5f;
+        float new_bottom=p1.path_obj->t_rect.bottom()+p1.path_obj->lineWidth/**0.5f*/;
         qDebug() << "Path-VMerge-source: " << p1.path_obj->rect;
         for(int j = i+1; j < n; ++j) {
             auto& p2 = path_lines[j];
             if(p2.index == -1) continue;
             // 注意，这里比较坐标时可要考虑lineWidth!
             // 因为path_obj的rect是中心框，减去了0.5*lineWidth的
-            if(abs(p1.path_obj->rect.center().x()-p2.path_obj->rect.center().x())<2.0f
-                && abs(p1.path_obj->rect.width()-p2.path_obj->rect.width())<2.0f //水平对齐
+            if(abs(p1.path_obj->t_rect.center().x()-p2.path_obj->t_rect.center().x())<2.0f
+                && abs(p1.path_obj->t_rect.width()-p2.path_obj->t_rect.width())<2.0f //水平对齐
                 && new_bottom+2.0f
-                       >= p2.path_obj->rect.top()-p2.path_obj->lineWidth*0.5f //垂直邻接(或交叠)
+                       >= p2.path_obj->t_rect.top()-p2.path_obj->lineWidth/**0.5f*/ //垂直邻接(或交叠)
+                && new_bottom < p2.path_obj->t_rect.bottom()
                 && (qDebug()<<"lookLike",p1.path_obj->isLookLike_ifrect(p2.path_obj))
                 ) {
                 //ok 它被合并了
                 has_merged = true;
-                new_bottom = p2.path_obj->rect.bottom()+p2.path_obj->lineWidth*0.5f;
+                new_bottom = p2.path_obj->t_rect.bottom()+p2.path_obj->lineWidth/**0.5f*/;
                 //同时从文档流中移除它
                 objList[p2.index] = {};
                 p2.index = -1; //标记死亡
@@ -1824,14 +1840,21 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
         }
         if(has_merged) {
             qDebug() << "Path-VMerge:END";
-            p1.path_obj->rect.setBottom(new_bottom-p1.path_obj->lineWidth*0.5f);
+            p1.path_obj->t_rect.setBottom(new_bottom-p1.path_obj->lineWidth/**0.5f*/);
+            p1.path_obj->rect.setBottom(new_bottom);
             p1.path_obj->list_path_actions.clear();
+
             p1.path_obj->list_path_actions.assign({
-                Path_Action(Path_Action::MoveTo,p1.path_obj->rect.left(),p1.path_obj->rect.top()),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),p1.path_obj->rect.top()),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),new_bottom-p1.path_obj->lineWidth*0.5f),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),new_bottom-p1.path_obj->lineWidth*0.5f),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.top())
+                Path_Action(Path_Action::MoveTo,p1.path_obj->t_rect.left(),
+                                                p1.path_obj->t_rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.right(),
+                                                p1.path_obj->t_rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.right(),
+                                                new_bottom-p1.path_obj->lineWidth),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.left(),
+                                                new_bottom-p1.path_obj->lineWidth),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.left(),
+                                                p1.path_obj->rect.top())
             });
             qDebug() << "VMerge合并后：" << p1.path_obj->rect;
             //p1.path_obj->list_path_actions
@@ -1850,23 +1873,23 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
         auto& p1 = path_lines[i];
         if(p1.index == -1) continue; //该path已经被合并啦
         bool has_merged{false};
-        float new_right=p1.path_obj->rect.right()+p1.path_obj->lineWidth*0.5f;
+        float new_right=p1.path_obj->t_rect.right()+p1.path_obj->lineWidth/**0.5f*/;
         qDebug() << "Path-HMerge-source: " << p1.path_obj->rect;
         for(int j = i+1; j < n; ++j) {
             auto& p2 = path_lines[j];
             if(p2.index == -1) continue;
 
             //[重要offset] 0.3f: 判断垂直相交
-            if(abs(p1.path_obj->rect.center().y()-p2.path_obj->rect.center().y())<0.3f
-                && abs(p1.path_obj->rect.height()-p2.path_obj->rect.height())<2.0f //垂直对齐
+            if(abs(p1.path_obj->t_rect.center().y()-p2.path_obj->t_rect.center().y())<0.3f
+                && abs(p1.path_obj->t_rect.height()-p2.path_obj->t_rect.height())<2.0f //垂直对齐
                 && new_right+2.0f
-                       >= p2.path_obj->rect.left()-p2.path_obj->lineWidth*0.5f //水平邻接(或少量交叠)
-                && new_right < p2.path_obj->rect.right()
+                       >= p2.path_obj->t_rect.left()-p2.path_obj->lineWidth/**0.5f*/ //水平邻接(或少量交叠)
+                && new_right < p2.path_obj->t_rect.right()
                 && (qDebug()<<"lookLike",p1.path_obj->isLookLike_ifrect(p2.path_obj))
                 ) {
                 //ok 它被合并了
                 has_merged = true;
-                new_right = p2.path_obj->rect.right()+p2.path_obj->lineWidth*0.5f;
+                new_right = p2.path_obj->t_rect.right()+p2.path_obj->lineWidth/**0.5f*/;
                 //同时从文档流中移除它
                 objList[p2.index] = {};
                 p2.index = -1; //标记死亡
@@ -1875,14 +1898,20 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
         }
         if(has_merged) {
             qDebug() << "Path-HMerge:END";
-            p1.path_obj->rect.setRight(new_right-p1.path_obj->lineWidth*0.5f);
+            p1.path_obj->t_rect.setRight(new_right-p1.path_obj->lineWidth/**0.5f*/);
+            p1.path_obj->rect.setRight(new_right);
             p1.path_obj->list_path_actions.clear();
             p1.path_obj->list_path_actions.assign({
-                Path_Action(Path_Action::MoveTo,p1.path_obj->rect.left(),p1.path_obj->rect.top()),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),p1.path_obj->rect.top()),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.right(),p1.path_obj->rect.bottom()),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.bottom()),
-                Path_Action(Path_Action::LineTo,p1.path_obj->rect.left(),p1.path_obj->rect.top())
+                Path_Action(Path_Action::MoveTo,p1.path_obj->t_rect.left(),
+                                                p1.path_obj->t_rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.right(),
+                                                p1.path_obj->t_rect.top()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.right(),
+                                                p1.path_obj->t_rect.bottom()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.left(),
+                                                p1.path_obj->t_rect.bottom()),
+                Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.left(),
+                                                p1.path_obj->t_rect.top())
             });
             //p1.path_obj->list_path_actions
             qDebug() << "HMerge合并后：" << p1.path_obj->rect;

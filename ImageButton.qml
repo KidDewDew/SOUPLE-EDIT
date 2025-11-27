@@ -28,8 +28,8 @@ Rectangle {
             button.clicked()
         }
         onEntered: {
-            button.focus = true
-            selectedObj = button
+            //button.focus = true
+            //selectedObj = button
         }
     }
 }

@@ -6,7 +6,7 @@
 #include "frame_ofhlines.h"
 #include <span>
 
-#define Debug_RectAnalyse true
+#define Debug_RectAnalyse false
 
 ///为了实现模板函数定义和声明的分离，可以像这样采用头文件互相包含(记得避免循环包含)。
 
@@ -60,11 +60,23 @@ bool Pdf2Souple::createRich(const PDFPage* page,Iterable<HBlock> auto& blocks,Ob
             dynamic_pointer_cast<PDFOBJ_TablePart>(bk.objs[0]); table) {
             //对表格part进行特判
             //获取rich的vline.
+            qDebug() << "createRich: tablepart";
             std::any any_vline = parent->getAnyData("vline");
             assert(any_vline.has_value());
             auto[leftLine,rightLine] =
                 std::any_cast<pair<AnchorObj_VLine*,AnchorObj_VLine*>>(any_vline);
             assert(leftLine && rightLine);
+            qDebug() << leftLine->__dstr() << rightLine->__dstr();
+
+            // [注意] 必须在connectHLine_up之前赋予leftLine和rightLine
+            for(auto tableline : table->tablelines) {
+                qDebug() << "endow:" << tableline->__dstr();
+                tableline->leftLine = leftLine;
+                tableline->rightLine = rightLine;
+                tableline->page = page->souple_page;
+                SoupleManager::registerObj(tableline);
+            }
+
             if(i == 0) {
                 auto tl = table->tablelines.at(0);
                 *firstLine = table->tablelines.at(0);
@@ -73,13 +85,6 @@ bool Pdf2Souple::createRich(const PDFPage* page,Iterable<HBlock> auto& blocks,Ob
                 } else tl->topMargin = 0;
             } else if(lastHLine) {
                 table->tablelines.at(0)->connectHLine_up(lastHLine);
-            }
-
-            for(auto tableline : table->tablelines) {
-                tableline->leftLine = leftLine;
-                tableline->rightLine = rightLine;
-                tableline->page = page->souple_page;
-                SoupleManager::registerObj(tableline);
             }
 
             lastHLine = table->tablelines.back();
@@ -130,14 +135,14 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
     qDebug() << "PDFOBJ_PATH::toLinesIfRect(";
 #endif
 
-    if(toSolidRect<TStr("extendLineWidth=false,forceFill=false")>(x1,y1,x2,y2,&numLines)) {
+    if(toSolidRect<TStr("extendLineWidth=true,forceFill=false")>(x1,y1,x2,y2,&numLines)) {
         if(numLines == 1)
-            lines.push_back(Line{x1-lineWidth*0.5f,y1-lineWidth*0.5f,x2+lineWidth*0.5f,y2+lineWidth*0.5f});
+            lines.push_back(Line{x1,y1,x2,y2});
         else if(numLines == 4) {
-            lines.push_back(Line{x1-lineWidth*0.5f,y1-lineWidth*0.5f,x2+lineWidth*0.5f,y1+lineWidth*0.5f});
-            lines.push_back(Line{x1-lineWidth*0.5f,y2-lineWidth*0.5f,x2+lineWidth*0.5f,y2+lineWidth*0.5f});
-            lines.push_back(Line{x1-lineWidth*0.5f,y1-lineWidth*0.5f,x1+lineWidth*0.5f,y2+lineWidth*0.5f});
-            lines.push_back(Line{x2-lineWidth*0.5f,y1-lineWidth*0.5f,x2+lineWidth*0.5f,y2+lineWidth*0.5f});
+            lines.push_back(Line{x1,y1,x2,y1});
+            lines.push_back(Line{x1,y2,x2,y2});
+            lines.push_back(Line{x1,y1,x1,y2});
+            lines.push_back(Line{x2,y1,x2,y2});
         }
 #if Debug_RectAnalyse == true
         qDebug() << "常规方法解析成功。numLines: " << numLines;
@@ -154,6 +159,13 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
     constexpr float Straight_Offset_cm = 0.06;
     constexpr float Center_Offset_cm = 0.16;
 
+    /** 注意：pdfium库得出的Path的Bound-rect通常不准确，不能依赖rect来做矩形解析！
+     ***/
+    x1 = 1e9;
+    y1 = 1e9;
+    x2 = -1e9;
+    y2 = -1e9;
+
     std::vector<float> vlines,hlines;
     float last_x = rect.left(),last_y = rect.top();
 
@@ -163,6 +175,12 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
 
     for(size_t i = 0; i < list_path_actions.size(); ) {
         auto& a = list_path_actions[i];
+
+        x1 = std::min(x1,a.x);
+        x2 = std::max(x2,a.x);
+        y1 = std::min(y1,a.y);
+        y2 = std::max(y2,a.y);
+
         switch(a.type) {
         case Path_Action::MoveTo:
             last_x = a.x;
@@ -218,10 +236,10 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
     ranges::sort(hlines);
     ranges::sort(vlines);
 
-    if(abs(hlines[0] - rect.top()) > 2
-        || abs(hlines.back() - rect.bottom()) > 2
-        || abs(vlines[0]-rect.left()) > 2
-        || abs(vlines.back()-rect.right()) > 2
+    if(abs(hlines[0] - y1 /*rect.top()*/) > 2
+        || abs(hlines.back() - y2 /*rect.bottom()*/) > 2
+        || abs(vlines[0] - x1 /*rect.left()*/) > 2
+        || abs(vlines.back() - x2 /*rect.right()*/) > 2
     ) {
 #if Debug_RectAnalyse == true
         qDebug() << "Failed: 外边框不是矩形";
@@ -233,27 +251,27 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
 
     if(hlines.size() == 2) { //单边框
         if(this->fill) {
-            lines.push_back(Line{(float)rect.left()-ttlw*0.5f,
-                                 (float)rect.top()-ttlw*0.5f,
-                                 (float)rect.right()+ttlw*0.5f,
-                                 (float)rect.bottom()+ttlw*0.5f});
+            lines.push_back(Line{/*(float)rect.left()-ttlw*0.5f*/x1-ttlw,
+                                 /*(float)rect.top()-ttlw*0.5f*/y1-ttlw,
+                                 /*(float)rect.right()+ttlw*0.5f*/x2+ttlw,
+                                 /*(float)rect.bottom()+ttlw*0.5f*/y2+ttlw});
         } else if(this->stroke) {
-            lines.push_back(Line{(float)rect.left()-ttlw*0.5f,
-                                 (float)rect.top()-ttlw*0.5f,
-                                 (float)rect.left()+ttlw*0.5f,
-                                 (float)rect.bottom()+ttlw*0.5f}); //左
-            lines.push_back(Line{(float)rect.right()-ttlw*0.5f,
-                                 (float)rect.top()-ttlw*0.5f,
-                                 (float)rect.right()+ttlw*0.5f,
-                                 (float)rect.bottom()+ttlw*0.5f}); //右
-            lines.push_back(Line{(float)rect.left()-ttlw*0.5f,
-                                 (float)rect.top()-ttlw*0.5f,
-                                 (float)rect.right()+ttlw*0.5f,
-                                 (float)rect.top()+ttlw*0.5f}); //上
-            lines.push_back(Line{(float)rect.left()-ttlw*0.5f,
-                                 (float)rect.bottom()-ttlw*0.5f,
-                                 (float)rect.left()+ttlw*0.5f,
-                                 (float)rect.bottom()+ttlw*0.5f}); //下
+            lines.push_back(Line{/*(float)rect.left()-ttlw*0.5f*/x1-ttlw,
+                                 /*(float)rect.top()-ttlw*0.5f*/y1-ttlw,
+                                 /*(float)rect.left()+ttlw*0.5f*/x1+ttlw,
+                                 /*(float)rect.bottom()+ttlw*0.5f*/y2+ttlw}); //左
+            lines.push_back(Line{/*(float)rect.right()-ttlw*0.5f*/x2-ttlw,
+                                 /*(float)rect.top()-ttlw*0.5f*/y1-ttlw,
+                                 /*(float)rect.right()+ttlw*0.5f*/x2+ttlw,
+                                 /*(float)rect.bottom()+ttlw*0.5f*/y2+ttlw}); //右
+            lines.push_back(Line{/*(float)rect.left()-ttlw*0.5f*/x1-ttlw,
+                                 /*(float)rect.top()-ttlw*0.5f*/y1-ttlw,
+                                 /*(float)rect.right()+ttlw*0.5f*/x2+ttlw,
+                                 /*(float)rect.top()+ttlw*0.5f*/y1+ttlw}); //上
+            lines.push_back(Line{/*(float)rect.left()-ttlw*0.5f*/x1-ttlw,
+                                 /*(float)rect.bottom()-ttlw*0.5f*/y2-ttlw,
+                                 /*(float)rect.left()+ttlw*0.5f*/x1+ttlw,
+                                 /*(float)rect.bottom()+ttlw*0.5f*/y2+ttlw}); //下
         } else {
 #if Debug_RectAnalyse == true
             qDebug() << "Failed: 单边框-no fill or stroke";
@@ -262,39 +280,39 @@ bool Pdf2Souple::PDFOBJ_PATH::toLinesIfRect(CanPushback<Line> auto& lines)
         }
     } else { // ~~ if(hlines.size() == 4)
         if(this->fill == false) {
-            lines.push_back(Line{(float)rect.left()-ttlw*0.5f,
-                                 (float)rect.top()-ttlw*0.5f,
-                                 (float)rect.left()+ttlw*0.5f,
-                                 (float)rect.bottom()+ttlw*0.5f}); //左
-            lines.push_back(Line{(float)rect.right()-ttlw*0.5f,
-                                 (float)rect.top()-ttlw*0.5f,
-                                 (float)rect.right()+ttlw*0.5f,
-                                 (float)rect.bottom()+ttlw*0.5f}); //右
-            lines.push_back(Line{(float)rect.left()-ttlw*0.5f,
-                                 (float)rect.top()-ttlw*0.5f,
-                                 (float)rect.right()+ttlw*0.5f,
-                                 (float)rect.top()+ttlw*0.5f}); //上
-            lines.push_back(Line{(float)rect.left()-ttlw*0.5f,
-                                 (float)rect.bottom()-ttlw*0.5f,
-                                 (float)rect.left()+ttlw*0.5f,
-                                 (float)rect.bottom()+ttlw*0.5f}); //下
+            lines.push_back(Line{/*(float)rect.left()-ttlw*0.5f*/x1-ttlw,
+                                 /*(float)rect.top()-ttlw*0.5f*/y1-ttlw,
+                                 /*(float)rect.left()+ttlw*0.5f*/x1+ttlw,
+                                 /*(float)rect.bottom()+ttlw*0.5f*/y2+ttlw}); //左
+            lines.push_back(Line{/*(float)rect.right()-ttlw*0.5f*/x2-ttlw,
+                                 /*(float)rect.top()-ttlw*0.5f*/y1-ttlw,
+                                 /*(float)rect.right()+ttlw*0.5f*/x2+ttlw,
+                                 /*(float)rect.bottom()+ttlw*0.5f*/y2+ttlw}); //右
+            lines.push_back(Line{/*(float)rect.left()-ttlw*0.5f*/x1-ttlw,
+                                 /*(float)rect.top()-ttlw*0.5f*/y1-ttlw,
+                                 /*(float)rect.right()+ttlw*0.5f*/x2+ttlw,
+                                 /*(float)rect.top()+ttlw*0.5f*/y1+ttlw}); //上
+            lines.push_back(Line{/*(float)rect.left()-ttlw*0.5f*/x1-ttlw,
+                                 /*(float)rect.bottom()-ttlw*0.5f*/y2-ttlw,
+                                 /*(float)rect.left()+ttlw*0.5f*/x1+ttlw,
+                                 /*(float)rect.bottom()+ttlw*0.5f*/y2+ttlw}); //下
         } else {
-            lines.push_back(Line{ vlines[0]-ttlw*0.5f,
-                                 hlines[0]-ttlw*0.5f,
-                                 vlines[1]+ttlw*0.5f,
-                                 hlines[3]+ttlw*0.5f}); //左
-            lines.push_back(Line{vlines[2]-ttlw*0.5f,
-                                 hlines[0]-ttlw*0.5f,
-                                 vlines[3]+ttlw*0.5f,
-                                 hlines[3]+ttlw*0.5f}); //右
-            lines.push_back(Line{vlines[0]-ttlw*0.5f,
-                                 hlines[0]-ttlw*0.5f,
-                                 vlines[3]+ttlw*0.5f,
-                                 hlines[1]+ttlw*0.5f}); //上
-            lines.push_back(Line{vlines[0]-ttlw*0.5f,
-                                 hlines[2]-ttlw*0.5f,
-                                 vlines[3]+ttlw*0.5f,
-                                 hlines[3]+ttlw*0.5f}); //下
+            lines.push_back(Line{ vlines[0]-ttlw/**0.5f*/,
+                                 hlines[0]-ttlw/**0.5f*/,
+                                 vlines[1]+ttlw/**0.5f*/,
+                                 hlines[3]+ttlw/**0.5f*/}); //左
+            lines.push_back(Line{vlines[2]-ttlw/**0.5f*/,
+                                 hlines[0]-ttlw/**0.5f*/,
+                                 vlines[3]+ttlw/**0.5f*/,
+                                 hlines[3]+ttlw/**0.5f*/}); //右
+            lines.push_back(Line{vlines[0]-ttlw/**0.5f*/,
+                                 hlines[0]-ttlw/**0.5f*/,
+                                 vlines[3]+ttlw/**0.5f*/,
+                                 hlines[1]+ttlw/**0.5f*/}); //上
+            lines.push_back(Line{vlines[0]-ttlw/**0.5f*/,
+                                 hlines[2]-ttlw/**0.5f*/,
+                                 vlines[3]+ttlw/**0.5f*/,
+                                 hlines[3]+ttlw/**0.5f*/}); //下
         }
     }
 #if Debug_RectAnalyse == true
@@ -1262,6 +1280,118 @@ void Pdf2Souple::mergeAndCreateFrames(Iterable<std::shared_ptr<Pdf2Souple::PDFPa
     }
 
     qDebug() << "## Pdf2Souple::mergeAndCreateFrames END";
+}
+
+template<TT_Str tt>
+bool Pdf2Souple::PDFOBJ_PATH::toSolidRect(float& x1,float& y1,float& x2, float& y2,
+                                          uint8_t* numLines) const
+{
+    switch(list_path_actions.size()) {
+    case 1: {
+        if(list_path_actions[0].type != Path_Action::LineTo) return false;
+        *numLines = 1;
+        break;
+    }
+    case 2: {
+        if(list_path_actions[0].type != Path_Action::MoveTo
+            || list_path_actions[1].type != Path_Action::LineTo) return false;
+        if(abs(list_path_actions[0].x - list_path_actions[0].x) > 1.0f
+            && abs(list_path_actions[0].y - list_path_actions[0].y) > 1.0f) {
+            return false;
+        }
+        *numLines = 1;
+        break;
+    }
+    case 3: {
+        if constexpr (tt.getBoolArg("forceFill",true) == true) {
+            if(fill == false) return false;
+        }
+        if(list_path_actions[0].type != Path_Action::LineTo
+            || list_path_actions[1].type != Path_Action::LineTo
+            || list_path_actions[2].type != Path_Action::LineTo) return false;
+        std::set<int> x_set, y_set;
+        x_set.insert(0); y_set.insert(0);
+        for(auto& a : list_path_actions) {
+            x_set.insert(round(a.x));
+            y_set.insert(round(a.y));
+        }
+        if(x_set.size() <= 2 && y_set.size() <= 2) {
+            *numLines = 4;
+            break;
+        }
+        else return false;
+    }
+    case 4: {
+        if constexpr (tt.getBoolArg("forceFill",true) == true) {
+            if(fill == false) return false;
+        }
+        if(list_path_actions[0].type != Path_Action::MoveTo
+            || list_path_actions[1].type != Path_Action::LineTo
+            || list_path_actions[2].type != Path_Action::LineTo
+            || list_path_actions[3].type != Path_Action::LineTo) return false;
+        std::set<int> x_set, y_set;
+        for(auto& a : list_path_actions) {
+            x_set.insert(round(a.x/2));
+            y_set.insert(round(a.y/2));
+        }
+        if(x_set.size() <= 2 && y_set.size() <= 2) { //矩形判断
+            *numLines = 4;
+            break;
+        }
+        else return false;
+    }
+    case 5: {
+        if constexpr (tt.getBoolArg("forceFill",true) == true) {
+            if(fill == false) return false;
+        }
+        if(list_path_actions[0].type != Path_Action::MoveTo
+            || list_path_actions[1].type != Path_Action::LineTo
+            || list_path_actions[2].type != Path_Action::LineTo
+            || list_path_actions[3].type != Path_Action::LineTo
+            || list_path_actions[4].type != Path_Action::LineTo) return false;
+        std::set<int> x_set, y_set;
+        for(auto& a : list_path_actions) {
+            x_set.insert(round(a.x/2));
+            y_set.insert(round(a.y/2));
+        }
+        if(x_set.size() <= 2 && y_set.size() <= 2) { //矩形判断
+            *numLines = 4;
+            break;
+        }
+        else return false;
+    }
+    default:
+        return false;
+    }
+
+    x1 = 1e9;
+    x2 = -1e9;
+    y1 = 1e9;
+    y2 = -1e9;
+
+    for(auto& a : list_path_actions) {
+        x1 = std::min(x1,a.x);
+        x2 = std::max(x2,a.x);
+        y1 = std::min(y1,a.y);
+        y2 = std::max(y2,a.y);
+    }
+
+    if(*numLines == 4) {
+        *numLines = 1;
+    }
+    if constexpr(tt.getBoolArg("extendLineWidth",true)) {
+        //x1 = rect.left(), y1 = rect.top(), x2 = rect.right(), y2 = rect.bottom();
+        x1 -= lineWidth;
+        x2 += lineWidth;
+        y1 -= lineWidth;
+        y2 += lineWidth;
+    } else {
+        //x1 = rect.left()+lineWidth*0.5, y1 = rect.top()+lineWidth*0.5,
+        //    x2 = rect.right()-lineWidth*0.5, y2 = rect.bottom()-lineWidth*0.5;
+
+    }
+    qDebug() << "toSolidRect Completed:ok,numlines=" << (numLines?*numLines:-1);
+    return true;
 }
 
 #endif // PDF2SOUPLE_TEMPLATE_IMPL_HPP

@@ -193,8 +193,8 @@ public:
 protected:
     void check_after_dealSpan() {
         if(page && page->page_type == Helper::Word_Page) {
-            auto word_leftLine = leftLine->be<WordPage_VLine*>();
-            if(word_leftLine->page_index != page->index) {
+            auto word_leftLine = leftLine->as<WordPage_VLine*>();
+            if(word_leftLine && word_leftLine->page_index != page->index) {
                 leftLine = page->columns.front().leftLine->be<AnchorObj_VLine*>();
                 rightLine = page->columns.front().rightLine->be<AnchorObj_VLine*>();
             }
@@ -254,6 +254,13 @@ public:
     void setPrevLine(HorLine_Base* l) noexcept override {
         if(!l) {
             lastLine = 0;
+            return;
+        }
+        if(l->exactlyBe<FitLine_for_AnchorObj_HLine>()) {
+            //两条兼容性合并为1条即可
+            lastLine = l->be<FitLine_for_AnchorObj_HLine*>()->lastLine;
+            l->be<FitLine_for_AnchorObj_HLine*>()->nextLine = this;
+            l->removeSelf(true);
             return;
         }
         // connect lastLine->l

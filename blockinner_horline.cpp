@@ -142,8 +142,10 @@ void BlockInner_HorLine::setPrevLine(HorLine_Base* l) noexcept
     BlockInner_HorLine* l2 = l->as<BlockInner_HorLine*>();
     if(l2) {
         // 链表插入
-        l->hline = this->hline;
         this->hline = l;
+        if(l2->nextLine) {
+            l2->nextLine->hline = 0;
+        }
         l2->nextLine = this;
     } else {
         //创建兼容线

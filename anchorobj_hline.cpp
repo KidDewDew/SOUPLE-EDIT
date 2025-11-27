@@ -170,6 +170,11 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
         if(leftLine->isWordPageLine()) {
             if(anchor_lastHLine && anchor_lastHLine->page
                 && anchor_lastHLine->leftLine != leftLine) { //不在同一栏
+                qDebug() << "anchor_lastHLine->leftLine != leftLine";
+                qDebug() << anchor_lastHLine->__dstr();
+                qDebug() << this->__dstr();
+                qDebug() << anchor_lastHLine->leftLine << leftLine;
+                qDebug() << anchor_lastHLine->leftLine->__dstr() << leftLine->__dstr();
                 auto prev_column = page->getPrevColumn(leftLine);
                 //if(!prev_column) { //不在同一页
                 if(!prev_column) {
@@ -785,6 +790,8 @@ void AnchorObj_HLine::setPrevLine(HorLine_Base* l) {
         // 使用FitLine
         FitLine_for_AnchorObj_HLine* fitline = new FitLine_for_AnchorObj_HLine;
         // connect l->fitline
+        fitline->leftLine = this->leftLine;
+        fitline->rightLine = this->rightLine;
         fitline->lastLine = l;
         l->setNextLine(fitline);
         // connect fitline->this

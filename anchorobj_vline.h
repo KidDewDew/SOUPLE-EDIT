@@ -36,6 +36,9 @@ public:
         static Obj_Global_Info gi = {.isHelperLine = true};
         return gi;
     }
+    virtual QString __dstr() const noexcept override {
+        return QString("AnchorObj_VLine id=%1 isWordPageLine=%2").arg(id).arg(isWordPageLine());
+    }
 protected:
     QString name;
     static inline QHash<QString,AnchorObj_VLine*> hash_vline;
