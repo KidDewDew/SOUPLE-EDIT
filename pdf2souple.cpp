@@ -1928,3 +1928,16 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
     objList.resize(_n2);
     qDebug() << "Pdf2Souple::imp_path_doSomeMerge END$";
 }
+
+AnchorObj* Pdf2Souple::PDFOBJ_PrePHRect::toAnchorObj(HorLine_Base* hline,float page_top_margin,float& adjustWidth)
+{
+    AnchorObj_PHRect *phrect = new AnchorObj_PHRect;
+    SoupleManager::registerObj(phrect);
+    phrect->z = render_id; //渲染id作为z坐标
+    phrect->width = rect.width();
+    phrect->x = rect.left(); //为了之后的布局调整，需要设置坐标信息
+    phrect->y = rect.top() + page_top_margin;
+    adjustWidth = phrect->width;
+    //hline->insertOnRight(image);
+    return phrect;
+}

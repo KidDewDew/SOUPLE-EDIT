@@ -44,7 +44,7 @@ Rectangle {
         if(focus) selectedObj = obj
     }
 
-    border.color: "#B5B5B5"
+    border.color: "transparent"
     border.width: 0.8
     color: selected ? "#161F80" : "transparent"
 

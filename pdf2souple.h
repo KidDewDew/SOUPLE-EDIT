@@ -122,6 +122,23 @@ public:
         //virtual void property_sync() {} //属性追溯
     };
 
+
+    /**
+     * @brief The PDFOBJ_PrePHRect class
+     *        [2025/11/28新添加]
+     * 为了保证文本的行完整性(不被列切分算法切开)，
+     * 允许在解析之初向文档流中就加入PHRect。之后必然被创建为AnchorObj_PHRect.
+     */
+    struct PDFOBJ_PrePHRect : public PDFOBJ
+    {
+        virtual void print() override {
+            qDebug() << "PDFOBJ_PHRect 预占位矩形. width=" << rect.width();
+        }
+        virtual AnchorObj* toAnchorObj(HorLine_Base* hline,float page_top_margin,float& adjustWidth)
+            override;
+    };
+
+
     /**
      * @brief The PDFOBJ_FramePart class
      *        存储解析过程中的Frame背景框的部分
@@ -201,6 +218,7 @@ public:
             qDebug() << "PDFOBJ: Rich;";
         }
         virtual AnchorObj* toAnchorObj(HorLine_Base* hline,float page_top_margin,float& adjustWidth)
+        override
         {
             adjustWidth = rich_obj->width;
             rich_obj->x = rect.left();
@@ -221,7 +239,8 @@ public:
         float strokeWidth; //描边宽度
         QFont font;
         QColor stroke_color,fill_color;
-        void print() { qDebug() << "TEXT" << text; }
+        void print() override
+        { qDebug() << "TEXT" << text; }
         const QFont& toFont() const {
             return font;
         }
@@ -229,22 +248,27 @@ public:
         virtual FreeObj* toFreeObj() override;
     };
 
+    //图像
     struct PDFOBJ_IMAGE : public PDFOBJ {
         //.?.?.?.
         //QImage image;
         QString source;
-        void print() { qDebug() << "IMAGE"; }
+        void print() override { qDebug() << "IMAGE"; }
         virtual AnchorObj* toAnchorObj(HorLine_Base* hline,float page_top_margin,float& adjustWidth) override;
         virtual FreeObj* toFreeObj() override;
     };
 
+    //路径
     struct PDFOBJ_PATH : public PDFOBJ {
         QRectF t_rect; //路径紧边框
         QList<Path_Action> list_path_actions;
         bool fill, stroke;
         QColor fillColor,strokeColor;
         float lineWidth;
-        void print() { qDebug() << "PATH of " << list_path_actions.size() << " actions."; }
+        void print() override
+        {
+            qDebug() << "PATH of " << list_path_actions.size() << " actions.";
+        }
         AnchorObj* toAnchorObj(HorLine_Base* hline,float,float& adjustWidth) final override;
         FreeObj* toFreeObj() final override;
 

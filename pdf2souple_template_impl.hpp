@@ -6,7 +6,11 @@
 #include "frame_ofhlines.h"
 #include <span>
 
+//是否输出对矩形解析的debug
 #define Debug_RectAnalyse false
+
+//是否输出对背景框的解析debug
+#define Debug_Bg true
 
 ///为了实现模板函数定义和声明的分离，可以像这样采用头文件互相包含(记得避免循环包含)。
 
@@ -430,7 +434,8 @@ template<TT_Str tt>
 bool Pdf2Souple::createHBlocks_specForWord(const RandomAccessCont<std::shared_ptr<PDFOBJ>> auto& raw_objs,
                                       CanPushback<HBlock> auto& blocks)
 {
-    return impl_createHBlocks_specForWord(raw_objs,blocks,Y_LINEOBJ_MAX_MARGIN,X_LINEOBJ_MAX_MARGIN);
+    //return impl_createHBlocks_specForWord(raw_objs,blocks,Y_LINEOBJ_MAX_MARGIN,X_LINEOBJ_MAX_MARGIN);
+    return impl_createHBlocks_specForWord(raw_objs,blocks,2,-10);
 }
 
 
@@ -449,7 +454,7 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
 
     if(objs.empty()) return true;
 
-    ranges::sort(objs,_Pred(e1->rect.center().y() < e2->rect.center().y())); //按y坐标排序
+    ranges::sort(objs,_Pred(e1->rect.top() < e2->rect.top())); //按y坐标排序
 
     for(auto& obj : objs) {
         //qDebug() << "左" << obj->rect.left() << "右" << obj->rect.right();
@@ -485,13 +490,15 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
                 right = std::max(right,(float)objs[k]->rect.right());
             }
 
+            //[2025/11/28]改进列切分算法：先切出所有列。
+            //            最终如果列数>2，则
+
             int last_j = last_i;
             for(int j = last_i+1; j <= i; ++j) {
                 //qDebug() << "j_> " <<j << "rightest: " << rightest;
                 //if(j < i) qDebug() << "left" << objs[j]->rect.left();
                 if(j == i || objs[j]->rect.left()+lineXOffset >= rightest) {
                     //objs[last_j,j-1]构成一列
-
                     //qDebug() << "j: " <<j << "rightest: " << rightest;
                     //if(j < i) qDebug() << "left: " << objs[j]->rect.left();
 
@@ -582,10 +589,11 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
                                                            yoff,
                                                            xoff);
                         } else {
+                            //如果有进展，那么接下来，要收缩条件。
                             impl_createHBlocks_specForWord(std::span{&objs[last_j],(size_t)j-last_j},
                                                            rich_bks,
-                                                           lineYOffset,
-                                                           lineXOffset);
+                                                           /*lineYOffset*/2.0f,
+                                                           /*lineXOffset*/-10);
                         }
                         if(rich_bks.size() == 1) { //认为是单行结构
                             for(auto obj : rich_bks[0].objs)
@@ -765,8 +773,8 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                                 maybe_bg_list|views::transform([](auto& p){return p.second;}),
                                 -1,path_bg
                             );
-                        // 邻居+自身数量<=4~无法组成边框，更别提fill-part.
-                        if(neighbors.size() <= 4) continue;
+                        // 邻居+自身数量<4~无法组成边框，更别提fill-part.
+                        if(neighbors.size() < 4) continue;
                         // 遍历所有邻居，找出left\right\top\bottom\fill part
                         float top=1e9,
                             left=1e9,
@@ -815,6 +823,11 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                         // 注意，这些邻居中可能会有内部路径对象，需要过滤掉
                         if NOT(leftBorder.second && rightBorder.second
                                 && topBorder.second && bottomBorder.second) {
+                            #if Debug_Bg
+                            qDebug() << "failed: 无完整边框。"
+                                     << bool(leftBorder.second) << bool(rightBorder.second)
+                                     << bool(topBorder.second) << bool(bottomBorder.second);
+                            #endif
                             continue; //无法 构成 完整边框
                         }
 
@@ -862,10 +875,14 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                         if(fillPart.second) {
                             __fill_obj = fillPart.second;
                             __fill_obj_pos = fillPart.first;
+                        #if Debug_Bg == true
                             qDebug() << "fillPart=" << fillPart.first;
                         } else {
                             qDebug() << "No FillPart Found";
                         }
+                        #else
+                        }
+                        #endif
 
                         __lineWidth = topBorder.second->rect.height(); //设置线宽
                         bg_rect = {left,top,right-left,bottom-top};
@@ -874,7 +891,9 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
                         // 否则，认为这就是fill_bg.
                         // 显然，对于这个fill_obj,得尝试找它的边框。
                         // 作为冗余设计，这里不仅考虑单边线，还会考虑完整边框。
+                        #if Debug_Bg == true
                         qDebug() << "## find a Fill-Obj";
+                        #endif
                         __fill_obj = bg;
                         __fill_obj_pos = i;
                         bg_rect = bg->rect;
@@ -932,7 +951,12 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
 
         ///Here: __fill_obj是可能的填充对象，__border_obj是可能的描边对象
 
-        if(!__fill_obj && __border_objs.empty()) continue;
+        if(!__fill_obj && __border_objs.empty()) {
+            #if Debug_Bg == true
+            qDebug() << "!__fill_obj && __border_objs.empty()";
+            #endif
+            continue;
+        }
 
         //if(! __border_obj)
         // --- Step2.2 确定这个bg上是否有实际内容存在，但不需要记录
@@ -944,13 +968,18 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
             for(auto& __border_obj : __border_objs) {
                 if(obj == __border_obj) continue;
             }
-            if(bg->rect.left()-2.0f <= obj->rect.left()
-                && bg->rect.top()-2.0f <= obj->rect.top()
-                && bg->rect.right()+2.0f >= obj->rect.right()
-                && bg->rect.bottom()+2.0f >= obj->rect.bottom()) {
+            if(bg_rect.left()-2.0f <= obj->rect.left()
+                && bg_rect.top()-2.0f <= obj->rect.top()
+                && bg_rect.right()+2.0f >= obj->rect.right()
+                && bg_rect.bottom()+2.0f >= obj->rect.bottom()) {
                 hasContent = true;
+                break;
             }
         }
+
+#if Debug_Bg == true
+        qDebug() << "hasContent=" << hasContent;
+#endif
 
         if(hasContent) { //真正确定它是内容框的背景，记录__Bg
             __Bg &__bg = (__bg_list.push_back({}),__bg_list.back()); //note:逗号表达式
@@ -994,6 +1023,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
 
     }
 
+#if Debug_Bg == true
     for(__Bg& bg : __bg_list) {
         qDebug() << "- analyse __Bg:" << bg.fillColor << bg.fillSrc
                  << bg.lineWidth << bg.borderColor;
@@ -1003,6 +1033,7 @@ void Pdf2Souple::analyse_framepart_or_rich_or_area(
             qDebug() << "border-id+=" << i;
         }
     }
+#endif
 
     // --- Step3 检测交叉的path、image，把它们解析为area.
     // to-do 如果表格检测足够好，理论上area出现的概率很小
@@ -1162,7 +1193,7 @@ bool Pdf2Souple::findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto&
     while(true) {
         auto prevLine = topHLine->getPrevLine();
         if(! prevLine) break;
-        if(prevLine->y < framepart->rect.top()) break;
+        if(prevLine->y < framepart->rect.top()+page_y) break;
         float leftX_sub = prevLine->x + prevLine->getLeftTransparentWidth();
         float rightX_sub = prevLine->x + prevLine->width - prevLine->getRightTransparentWidth();
         if(leftX_sub+2.0f < framepart->rect.left()
@@ -1172,7 +1203,7 @@ bool Pdf2Souple::findFrameTopAndBottomLine(RandomAccessCont<HorLine_Base*> auto&
     while(true) {
         auto nextLine = bottomHLine->getNextLine();
         if(! nextLine) break;
-        if(nextLine->y > framepart->rect.bottom()) break;
+        if(nextLine->y > framepart->rect.bottom()+page_y) break;
         float leftX_sub = nextLine->x + nextLine->getLeftTransparentWidth();
         float rightX_sub = nextLine->x + nextLine->width - nextLine->getRightTransparentWidth();
         if(leftX_sub+2.0f < framepart->rect.left()
