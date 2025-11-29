@@ -85,10 +85,10 @@ void SoupleManager::imp_updateUI()  //更新ui
 
         //qDebug() << queue_hline_wait_update.size();
 
-        qDebug() << "queue.size=" << queue_hline_wait_update.size();
-        for(auto hline : queue_hline_wait_update) {
-            qDebug() << hline->__dstr();
-        }
+        // qDebug() << "queue.size=" << queue_hline_wait_update.size();
+        // for(auto hline : queue_hline_wait_update) {
+        //     qDebug() << hline->__dstr();
+        // }
 
         while(n_deal < TIMER_DEALUI_MAX_NUM_PER_TIMEOUT
                && ! queue_hline_wait_update.empty()  )
