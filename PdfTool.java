@@ -7,11 +7,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
+import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import org.apache.pdfbox.cos.COSDictionary;
 import org.apache.pdfbox.cos.COSDocument;
@@ -31,16 +33,17 @@ import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
 
 
-
-
 public class PdfTool {
 
-	private static Pattern pat_cmap = Pattern.compile("<([0-9a-fA-F]+)>\\s*<([0-9a-fA-F]+)>");
+	//private static Pattern pat_cmap = Pattern.compile("<([0-9a-fA-F]+)>\\s*<([0-9a-fA-F]+)>");
+	
+	private static Pattern pat_cmap = Pattern.compile("<([0-9a-fA-F]+)>");
 	
 	public static void main(String[] args) throws IOException 
 	{
-		extractEmbeddedFonts("C:\\Users\\guest0\\Desktop\\pdf\\pdf_reference_1.7(1).pdf",
+		extractEmbeddedFonts("C:\\Users\\guest0\\Desktop\\作业一刘硕2327406019.pdf",
 				"C:\\Users\\guest0\\Desktop\\ftest");
+		//System.out.print(json);
 	}
 	
 	/**
@@ -108,8 +111,10 @@ public class PdfTool {
 		
 		if(document == null) 
 			return "";
+		
 		COSDocument cosDocument = document.getDocument();
 		List<COSObject> font_objs = cosDocument.getObjectsByType(COSName.FONT);
+		
 		//遍历所有pdf内嵌字体
 		for(COSObject font_obj : font_objs) 
 		{
@@ -124,12 +129,17 @@ public class PdfTool {
 			PDFont font = null;
 			try {
 				font = PDFontFactory.createFont(dict);
-				System.out.println(font);
+				//System.out.println(font);
 			} catch(Exception e) {
-				continue; //发生异常意味着该obj是decendant font
+				continue;
+				 //发生异常意味着该obj是decendant font
 			}
 			
-			System.out.println(dict);
+			if(font.isDamaged()) { //读取失败
+				continue;
+			}
+			
+			//System.out.println(font.isDamaged());
 			
 			if(font != null) {
 				
@@ -173,15 +183,46 @@ public class PdfTool {
 				//System.out.println(cmap_text);
 				StringBuilder cmap_sb = new StringBuilder();
 				//咱们要把cmap_text里面的有用的东西提取出来
-				Matcher matcher = pat_cmap.matcher(cmap_text);
-				if(matcher.find()) {
-					while(true) {
-						cmap_sb.append(matcher.group(1));
-						cmap_sb.append(',');
-						cmap_sb.append(matcher.group(2));
-						if(matcher.find()) cmap_sb.append('\n');
-						else break;
+//				Matcher matcher = pat_cmap.matcher(cmap_text);
+//				System.out.println(cmap_text);
+//				if(matcher.find()) {
+//					while(true) {
+//						cmap_sb.append(matcher.group(1));
+//						cmap_sb.append(',');
+//						cmap_sb.append(matcher.group(2));
+//						if(matcher.find()) cmap_sb.append('\n');
+//						else break;
+//					}
+//				}
+				
+				boolean firstLine = true;
+				for(String line : cmap_text.split("\n")) {
+					Matcher matcher = pat_cmap.matcher(line);
+					ArrayList<String> list = new ArrayList<String>();
+					while(matcher.find()) {
+						list.add(matcher.group(1));
 					}
+					if(list.size() < 2) continue;
+					if(list.size() <= 3) {
+						cmap_sb.append(list.get(0));
+						cmap_sb.append(',');
+						cmap_sb.append(list.get(list.size()-1));
+						cmap_sb.append('\n');
+					} else {
+						// <0000> <0001> [<dddd> ... <dddd>]
+						int from = hexStringToInt(list.get(0));
+						for(int i = 2; i < list.size(); ++i) {
+							cmap_sb.append(intToHexString(from,true));
+							cmap_sb.append(',');
+							cmap_sb.append(list.get(i));
+							cmap_sb.append('\n');
+							++ from;
+						}
+					}
+				}
+				
+				if(cmap_sb.length() > 0) {
+					cmap_sb.deleteCharAt(cmap_sb.length() - 1);
 				}
 				
 				json_object.put("CMapFile",save_path+"\\"+fontName+".cmap");
@@ -201,4 +242,129 @@ public class PdfTool {
 		
 		return json.toString();
     }
+	
+	
+	/**
+	 * 将十六进制字符串转换为整数
+	 * @param hexStr 十六进制字符串（支持大小写，无前缀）
+	 * @return 对应的整数值
+	 * @throws NumberFormatException 如果字符串不是有效的十六进制格式
+	 */
+	public static int hexStringToInt(String hexStr) {
+	    if (hexStr == null || hexStr.isEmpty()) {
+	        throw new NumberFormatException("Hex string is null or empty");
+	    }
+	    
+	    // 处理可能的负号
+	    boolean isNegative = false;
+	    if (hexStr.charAt(0) == '-') {
+	        isNegative = true;
+	        hexStr = hexStr.substring(1);
+	    }
+	    
+	    if (hexStr.isEmpty()) {
+	        throw new NumberFormatException("Hex string contains only minus sign");
+	    }
+	    
+	    // 转换为大写，统一处理（十六进制不区分大小写）
+	    hexStr = hexStr.toUpperCase();
+	    int result = 0;
+	    
+	    for (int i = 0; i < hexStr.length(); i++) {
+	        char c = hexStr.charAt(i);
+	        int digit;
+	        
+	        if (c >= '0' && c <= '9') {
+	            digit = c - '0';
+	        } else if (c >= 'A' && c <= 'F') {
+	            digit = 10 + (c - 'A');
+	        } else {
+	            throw new NumberFormatException("Invalid hex character: " + c);
+	        }
+	        
+	        result = result * 16 + digit;
+	    }
+	    
+	    return isNegative ? -result : result;
+	}
+	
+	/**
+	 * 将整数转换为十六进制字符串
+	 * @param number 要转换的整数
+	 * @param uppercase 是否使用大写字母（true-大写，false-小写）
+	 * @return 十六进制字符串（无前缀）
+	 */
+	public static String intToHexString(int number, boolean uppercase) {
+	    if (number == 0) {
+	        return "0";
+	    }
+	    
+	    // 处理负数使用补码表示
+	    long num = number & 0xFFFFFFFFL;
+	    StringBuilder hexBuilder = new StringBuilder();
+	    
+	    // 十六进制字符集
+	    char[] hexChars = uppercase ? 
+	        new char[]{'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'} :
+	        new char[]{'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+	    
+	    // 转换为十六进制
+	    while (num > 0) {
+	        int digit = (int)(num % 16);
+	        hexBuilder.append(hexChars[digit]);
+	        num = num / 16;
+	    }
+	    
+	    return hexBuilder.reverse().toString();
+	}
+
+	/**
+	 * 重载方法，默认使用小写
+	 */
+	public static String intToHexString(int number) {
+	    return intToHexString(number, false);
+	}
+	
 }
+
+
+//import org.apache.poi.xwpf.usermodel.*;
+//
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//
+//public class PdfTool {
+//    public static void main(String[] args) throws IOException {
+//        // 1. 创建空文档
+//        XWPFDocument document = new XWPFDocument();
+//        
+//        // 2. 创建段落
+//        XWPFParagraph title = document.createParagraph();
+//        title.setAlignment(ParagraphAlignment.CENTER);
+//        
+//        // 3. 创建文本运行并设置样式
+//        XWPFRun titleRun = title.createRun();
+//        titleRun.setText("Apache POI示例文档");
+//        titleRun.setBold(true);
+//        titleRun.setFontSize(16);
+//        
+//        // 4. 添加正文段落
+//        XWPFParagraph body = document.createParagraph();
+//        body.setAlignment(ParagraphAlignment.LEFT);
+//        body.setIndentationFirstLine(600); // 首行缩进
+//        
+//        XWPFRun bodyRun = body.createRun();
+//        bodyRun.setText("这是使用Apache POI创建的Word文档。");
+//        bodyRun.addBreak(); // 换行
+//        bodyRun.setText("POI支持丰富的文本格式设置。");
+//        
+//        // 5. 保存文档
+//        try (FileOutputStream out = new FileOutputStream("E:/SimpleDocument.docx")) {
+//            document.write(out);
+//        }
+//        
+//        document.close();
+//        System.out.println("文档创建成功！");
+//    }
+//}
+//

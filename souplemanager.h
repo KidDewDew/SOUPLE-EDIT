@@ -262,6 +262,9 @@ public:
 #endif
         //if(hline)
         //    qDebug() << "requestUpdateHLine(" << hline->id;
+        // for(auto obj_inqueue : queue_hline_wait_update) {
+        //     if(hline == obj_inqueue) return;
+        // }
         queue_hline_wait_update.push_front(hline);
     }
 
@@ -643,6 +646,8 @@ private:
 
     static inline int currentDocumentID = -1; //-1代表：无文档
     static inline int selected_qmlItem_id = -1; //被选中的qmlItem的id
+
+    //static inline std::unordered_set<int> inQueue;
 
     static inline Safe_Obj_Pointer<Obj_Start_Sign> start_sign;
 private:

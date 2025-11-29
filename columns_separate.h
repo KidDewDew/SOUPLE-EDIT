@@ -1,11 +1,15 @@
 #ifndef COLUMNS_SEPARATE_H
 #define COLUMNS_SEPARATE_H
 
+#include "anchorobj_hline.h"
+
 // 分栏区间分隔线
-class ColumnsSeparate {
+class ColumnsSeparate : public AnchorObj_HLine
+{
 public:
-    bool   is_flex; //是否可以随内容移动
-    float  y;      //分隔线的y坐标
+    QQuickItem* generateQmlItem() {
+        return 0; // no qml item.
+    }
 };
 
 #endif // COLUMNS_SEPARATE_H
