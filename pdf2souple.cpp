@@ -272,6 +272,9 @@ void Pdf2Souple::imp_analysePdfPage(shared_ptr<PDFPage> page,shared_ptr<PDFPage>
     /**  [2025/11/22 added] 合并邻接矩形为一个path、切分一些path为线条 */
     imp_path_doSomeMerge(page->all_objs);
 
+    /** 解析附加的文本属性 **/
+    analyse_text_attach_properties(page->all_objs);
+
     /** 解析表格 */
     analyseTable(page.get(),old_page.get());
 
@@ -1082,12 +1085,29 @@ void Pdf2Souple::imp_dealText(FPDF_TEXTPAGE textpage,std::vector<shared_ptr<PDFO
             curText->text += QString::fromUtf16(buf);
         } else { //不连续
             list.push_back(curText->toPDFOBJ());
+            //看看要不要插入PrePHRect
+            if(
+                curText->rect.right + TEXT_MERGE_OFFSET < rect.left
+                && rect.left-curText->rect.right < Helper::cm2pixel(0.4)
+                && abs(curText->rect.top - rect.top) < 0.5
+                && abs(curText->rect.bottom - rect.bottom) < 0.5) {
+                auto prerect = std::make_shared<PDFOBJ_PrePHRect>();
+                prerect->rect = QRectF(curText->rect.right,
+                                       (rect.top+rect.bottom)*0.5f-1.0f,rect.left-curText->rect.right,
+                                       2.0f);
+                prerect->render_id = 0;
+                prerect->visible = true;
+                //prerect->page_obj = text
+                list.push_back(prerect);
+            }
             delete curText;
             curText = new Text{.text=str,.font = font,.rect = rect,
                     .stroke_color = QColor::fromRgb(strokeColor.R,strokeColor.G,strokeColor.B,strokeColor.A),
-                            .fill_color = QColor::fromRgb(fillColor.R,fillColor.G,fillColor.B,fillColor.A),
-                            .strokeWidth = strokeWidth,
-                            .isFill = isFill,.isStroke = isStroke,.ascent_y = (float)ascent_y};
+                    .fill_color = QColor::fromRgb(fillColor.R,fillColor.G,fillColor.B,fillColor.A),
+                    .strokeWidth = strokeWidth,
+                    .isFill = isFill,
+                    .isStroke = isStroke,
+                    .ascent_y = (float)ascent_y};
         }
     }
     if(curText) {
@@ -1941,3 +1961,22 @@ AnchorObj* Pdf2Souple::PDFOBJ_PrePHRect::toAnchorObj(HorLine_Base* hline,float p
     //hline->insertOnRight(image);
     return phrect;
 }
+
+void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFOBJ>>& objList)
+{
+    struct CharStyle {
+        bool underline = false;
+        bool underpoint = false;
+        bool deleteline = false;
+        bool upperline = false;
+
+    };
+    QFont f;
+    //f. h
+    struct Text {
+        int index;
+        PDFOBJ_TEXT* obj_text;
+        std::vector<CharStyle> char_styles; //每个字符的样式
+    };
+}
+

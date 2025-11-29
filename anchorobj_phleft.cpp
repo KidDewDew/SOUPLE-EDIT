@@ -54,7 +54,7 @@ void AnchorObj_PHLeft::doPHLeft() noexcept
             return;
         }
         //SoupleManager::requestUpdateHLine(mid_hline); //引导刷新(不引导也没事，就是要等点时间。。
-        SoupleManager::requestUpdateHLine(_hline);
+        SoupleManager::requestUpdateHLine(mid_hline);
         //往mid_hline上转移对象
         //float leftWidth = 0.0;
         while(leftObj) {

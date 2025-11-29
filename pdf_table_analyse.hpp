@@ -12,6 +12,8 @@
 #define TABLEPART_WIDTH_SAME_OFFSET_cm 0.1
 #define COLUMN_LINE_SAME_OFFSET_cm 0.1
 
+#define Debug_TableAnalyse true
+
 //本文件提供对pdf解析表格的函数
 
 enum {NotEndPage = 0,IsEndPage = 1};
@@ -162,6 +164,8 @@ void Pdf2Souple::impl_analyseTable(
         float height = h_borders.back()->cy() - h_borders.front()->cy();
         float width2 = v_borders.back()->x2 - v_borders.front()->x1;
         float height2 = h_borders.back()->y2 - h_borders.front()->y1;
+        //float table_left = v_borders.front()->cx();
+        //float table_top = h_borders.front()->cy();
         float table_left = v_borders.front()->cx();
         float table_top = h_borders.front()->cy();
 
@@ -355,7 +359,13 @@ void Pdf2Souple::impl_analyseTable(
 
         tablepart->row_units.resize(tablepart->tablelines.size());
 
+#if Debug_TableAnalyse == true
         qDebug() << "解析部分表格: 行数" << tablepart->tablelines.size();
+        for(auto& tl : tablepart->tablelines) {
+            qDebug() << "+tableline.page_y=" << tl->y - page->page_top_margin;
+        }
+#endif
+
 
         // 添加各行单元格
         int hi = 1;
@@ -363,10 +373,12 @@ void Pdf2Souple::impl_analyseTable(
             auto line_top = tableline->y - tableline->height;
             auto& line_bottom = tableline->y; //对局部变量使用引用来“取别名”。
             std::vector<Free_TableUnit*> units;
-            float left_x = table_left;
+            //left_x严格=当前左v_border的右边x坐标
+            float left_x = table_left + v_borders[0]->width();
             int hendi = hi;  // [hi,hendi) ~ 位于tableline行的h_border索引区间
-            while(hendi < h_borders.size() && abs(tableline->y - page->page_top_margin - h_borders[hendi]->cy())
-                                                   < Helper::cm2pixel(LINE_SAME_OFFSET_cm)
+            while(hendi < h_borders.size()
+                   && abs(tableline->y - page->page_top_margin - h_borders[hendi]->cy())
+                        < Helper::cm2pixel(LINE_SAME_OFFSET_cm)
                    ) {
                 hendi += 1;
             }
@@ -385,10 +397,15 @@ void Pdf2Souple::impl_analyseTable(
                 }
             }
 
+            #if Debug_TableAnalyse == true
+            qDebug() << "行=hborders[" << hi << "," << hendi << ")";
+            qDebug() << "objs_inLine.num = " << objs_inLine.size();
+            #endif
+
             for(auto vborder : v_borders | std::views::drop(1)) {
                 // 从左往右，找出所有覆盖本行的垂直表格线，即可划分出单元格。
-                if(vborder->y1 + page->page_top_margin >= line_bottom -  tableline->height/2
-                    || vborder->y2 + page->page_top_margin <= line_top + tableline->height/2)
+                if(vborder->y1 + page->page_top_margin - 0.4f >= line_bottom -  tableline->height/2
+                    || vborder->y2 + page->page_top_margin + 0.4f <= line_top + tableline->height/2)
                     continue; //未覆盖
 
                 //qDebug() << "垂直切割：" << vborder->y1 + page->page_top_margin
@@ -398,11 +415,14 @@ void Pdf2Souple::impl_analyseTable(
                 //此时，不需要确定单元格的高度。只需确定单元格的left、right及归属行。
                 bool hasBottomBorder = false; //下边有没有边框呢？没有的话，跳过~此单元格归属于下面的某行。
                 for(auto hborder : std::span(h_borders).subspan(hi,hendi-hi)) { //span: 一种轻型容器
-                    if(hborder->x1 <= left_x && hborder->x2 >= vborder->cx())
+                    if(hborder->x1 <= left_x+0.3f && hborder->x2+0.3f >= vborder->x1)
                     {
                         hasBottomBorder = true;
-                        break; }
+                        break;
+                    }
                 }
+
+                qDebug() << "hasBottomBorder:" << hasBottomBorder;
 
                 if(hasBottomBorder) { //该单元格为本行所有
                     auto unit = new Free_TableUnit;
@@ -473,7 +493,7 @@ void Pdf2Souple::impl_analyseTable(
                     }
                     tablepart->row_units[row_i].push_back(unit); //记录单元格
                 }
-                left_x = vborder->cx();
+                left_x = vborder->x2;
             }
 
             // 我们要把objs_inLine里面剩下的obj(~由于单元格合并导致)还给objs_inTable

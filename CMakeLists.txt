@@ -233,6 +233,7 @@ qt_add_qml_module(appSoupleEdit
         SOURCES serialization.h
         SOURCES serialization.cpp
         SOURCES souple_aux.h
+        SOURCES columns_separate.h
         #RESOURCES vcpkg.json
 )
 

@@ -520,6 +520,7 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
 
     if(hasDrop && logic_nextHLine) {
         //logic_nextHLine->moveFlowAttacher(drop_contentLength); //移动附着符
+        //if(SoupleManager::getUpdateQueueFirst())
         SoupleManager::requestUpdateHLine(logic_nextHLine); //传递更新信号 [2025/7/16修改]
     }
 

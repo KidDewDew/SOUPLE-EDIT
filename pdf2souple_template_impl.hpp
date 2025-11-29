@@ -527,7 +527,8 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
 
                             // 按y坐标排序
                             ranges::sort(rl,[](QRectF& r1,QRectF& r2){
-                                return r1.center().y() < r2.center().y();
+                                //return r1.center().y() < r2.center().y();
+                                return r1.top() < r2.top();
                             });
                             float L=lineYOffset,R=1e5;
                             while(abs(L-R)>1e-2) {

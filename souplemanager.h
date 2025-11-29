@@ -22,12 +22,17 @@
 
 #define Soup_Mgr SoupleManager
 
+//处理一次布局的timer间隔
 constexpr int TIMER_DEALUI_INTERVAL = 30;
+//每次处理的队列内hline最大数量
 constexpr int TIMER_DEALUI_MAX_NUM_PER_TIMEOUT = 600;
+//每次处理(预)可见数量
 constexpr int TIMER_DEALUI_VISIBLE_NUM = 40;
-constexpr int TIMER_SCANUI_VISIBLE_NUM = 200;
+//constexpr int TIMER_SCANUI_VISIBLE_NUM = 200; //[作废]
 constexpr int SCAN_POOL_INTERVAL = 4000;
+//扫描可见对象数量
 constexpr int TIMER_SCAN_NUM_PER_TIMEOUT = 2000; //old_value: 2000
+//缓慢地处理全部对象布局数量
 constexpr int TIMER_DEALUI_SCAN_NUM = 30;
 constexpr int SELECTION_DEAL_INTERVAL = 400;
 constexpr float PRE_VISIBLE_RANGE_cm = 21.16; //预可见高度：21.16cm
@@ -51,11 +56,17 @@ class SoupleManager : public QObject
     Q_PROPERTY(float documentWidth READ documentWidth NOTIFY documentWidthChanged FINAL)
     Q_PROPERTY(float documentHeight READ documentHeight NOTIFY documentHeightChanged FINAL)
     Q_PROPERTY(int pageCount READ getPageCount NOTIFY pageCountChanged FINAL)
+
+
+
     struct _PAGE_INF {
         std::vector<Page*> pages; //页面列表，按顺序排列
         std::vector<float> sum_heights; //页面高度前缀和,[0]=page[.., [1] = pages[0].height, ...，用于快速定位obj所在页面
         std::vector<float> sum_margins;
         //页面上边距+下边距的前缀和,[0] = page[0].topMargin, [1] = [0] + page[0].bottom_margin + page[1].top_margin
+
+        //[2025/11/29 add] 分栏分隔线
+        //std::list<ColumnsSeparate> columns_separates;
     };
     enum {
         Current_Document=-2
@@ -238,15 +249,20 @@ public:
         //qDebug() << "updateViewSize(" << top << ',' << bottom;
     }
 
+    // 获取更新队列的第一个对象
+    static inline Obj* getUpdateQueueFirst() {
+        return queue_hline_wait_update.back();
+    }
+
     static inline void requestUpdateHLine(Obj* hline) {
         if(!queue_hline_wait_update.empty()
-             && queue_hline_wait_update.back() == hline) return;
+             && queue_hline_wait_update.front() == hline) return;
 #ifdef DEBUG
-        //qDebug() << "requestUpdateHLine(" << hline->getName();
+        //qDebug() << "requestUpdateHLine(" << hline->__dstr();
 #endif
         //if(hline)
         //    qDebug() << "requestUpdateHLine(" << hline->id;
-        queue_hline_wait_update.push_back(hline);
+        queue_hline_wait_update.push_front(hline);
     }
 
     //static inline QString

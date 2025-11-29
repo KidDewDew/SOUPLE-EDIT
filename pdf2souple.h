@@ -240,7 +240,9 @@ public:
         QFont font;
         QColor stroke_color,fill_color;
         void print() override
-        { qDebug() << "TEXT" << text; }
+         {
+            qDebug() << "TEXT" << text;
+         }
         const QFont& toFont() const {
             return font;
         }
@@ -253,7 +255,9 @@ public:
         //.?.?.?.
         //QImage image;
         QString source;
-        void print() override { qDebug() << "IMAGE"; }
+        void print() override {
+            qDebug() << "IMAGE";
+        }
         virtual AnchorObj* toAnchorObj(HorLine_Base* hline,float page_top_margin,float& adjustWidth) override;
         virtual FreeObj* toFreeObj() override;
     };
@@ -364,6 +368,9 @@ private:
 
     // 处理文本层
     static void imp_dealText(FPDF_TEXTPAGE textpage,std::vector<std::shared_ptr<PDFOBJ>>& list,float page_width,float page_height);
+
+    //解析文本的一些附着属性，包括下划线、上划线、删除线、着重号。
+    static void analyse_text_attach_properties(std::vector<std::shared_ptr<PDFOBJ>>& objList);
 
     // 预处理：路径切分、合并
     static void imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objList);

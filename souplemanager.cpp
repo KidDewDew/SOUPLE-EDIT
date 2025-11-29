@@ -85,6 +85,11 @@ void SoupleManager::imp_updateUI()  //更新ui
 
         //qDebug() << queue_hline_wait_update.size();
 
+        qDebug() << "queue.size=" << queue_hline_wait_update.size();
+        for(auto hline : queue_hline_wait_update) {
+            qDebug() << hline->__dstr();
+        }
+
         while(n_deal < TIMER_DEALUI_MAX_NUM_PER_TIMEOUT
                && ! queue_hline_wait_update.empty()  )
         {
@@ -96,7 +101,7 @@ void SoupleManager::imp_updateUI()  //更新ui
 
             last_deal_obj = hline;
 
-            //qDebug() << "queue " << hline->id;
+            //qDebug() << "queue " << hline->__dstr();
             //if(hline->y + hline->height + 500 < view_top
             //    || hline->y - 500 > view_bottom) { //超出可见范围的hline降低处理优先级
             //    if(TIMER_DEALUI_MAX_NUM_PER_TIMEOUT - n_deal < queue_hline_wait_update.length())
@@ -255,6 +260,10 @@ void SoupleManager::imp_updateUI()  //更新ui
                 auto obj = *scan_iter_visble;
 
                 if(obj->objInfo().dealLayoutable) { //[2025/7/30]修改 更具有广适性
+                    if(!queue_hline_wait_update.empty()
+                        && queue_hline_wait_update.front() == obj) {
+                        queue_hline_wait_update.pop_front(); //[2025/11/29 add]
+                    }
                     obj->dealLayout();
                     ++ n_deal_visble;
                 }
@@ -276,6 +285,10 @@ void SoupleManager::imp_updateUI()  //更新ui
                 //    aobj->dealLayout();
                 //}
                 if(obj->objInfo().dealLayoutable) { //[2025/7/30]修改 更具有广适性
+                    if(!queue_hline_wait_update.empty()
+                        && queue_hline_wait_update.front() == obj) {
+                        queue_hline_wait_update.pop_front(); //[2025/11/29 add]
+                    }
                     obj->dealLayout();
                 }
                 ++n_scan;

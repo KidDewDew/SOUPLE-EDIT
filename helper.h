@@ -147,6 +147,14 @@ constexpr uint8_t operator""_8bits(const char* str,size_t n) {
     return value;
 }
 
+// constexpr uint8_t operator""_cm(const char* str,size_t n) {
+//     uint8_t value = 0;
+//     for(size_t i = 0; i < 8; ++i) {
+//         value = (value<<1) + (str[i]-'0');
+//     }
+//     return value;
+// }
+
 constexpr uint8_t operator""_16bits(const char* str,size_t n) {
     uint16_t value = 0;
     for(size_t i = 0; i < 16; ++i) {
