@@ -759,6 +759,12 @@ Window {
                             rightPadding: 0
                         }
                         TabButton {
+                            text: "布局"
+                            height: 40
+                            leftPadding: 0
+                            rightPadding: 0
+                        }
+                        TabButton {
                             text: "视图"
                             height: 40
                             leftPadding: 0
@@ -1229,6 +1235,26 @@ Window {
                                 Layout.preferredWidth: 70
                                 Material.accent: "#3C8761"
                                 model: ["0°","90°","180°","270°"]
+                            }
+                        }
+
+                        RowLayout { //“布局”工具栏
+                            spacing: toolBar_2l.dynamic_spacing
+                            anchors.verticalCenter: parent.verticalCenter
+                            AddToolButton {
+                                Layout.leftMargin: 8
+                                text: "选中内容分栏"
+                                enableList: true
+                                listText: ["单栏","两栏","三栏","两栏-偏左","两栏-偏右"]
+                                onSelected: function(index,str) {
+                                    switch(index) {
+                                    case 0: SoupleManager.requestSetContentColumns(1); break;
+                                    case 1: SoupleManager.requestSetContentColumns(2); break;
+                                    case 2: SoupleManager.requestSetContentColumns(3); break;
+                                    case 3: SoupleManager.requestSetContentColumns(2,"偏左"); break;
+                                    case 4: SoupleManager.requestSetContentColumns(2,"偏右"); break;
+                                    }
+                                }
                             }
                         }
 

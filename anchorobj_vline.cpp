@@ -1,8 +1,9 @@
 #include "anchorobj_vline.h"
 #include "anchorobj_hline.h"
 #include "helper.h"
+#include "souplemanager.h"
 
-AnchorObj_VLine::AnchorObj_VLine() {
+AnchorObj_VLine::AnchorObj_VLine():isWordLine(false) {
     while(hash_vline.contains("V"+QString::number(s_vline_count))) {
         ++s_vline_count;
     }
@@ -10,6 +11,7 @@ AnchorObj_VLine::AnchorObj_VLine() {
     hash_vline[name] = this; //记录hline
     height = 100;
     z = Helper::Layer_Z::Top; //绝对置顶
+    next_column = {0,0};
 }
 
 QQuickItem* AnchorObj_VLine::generateQmlItem() //创建用于ui的qml元素
@@ -63,4 +65,13 @@ void AnchorObj_VLine::notifyHLineYChanged(AnchorObj_HLine* hline)
         height = hline->y - y;
         if( Helper::isQmlItemValid(qmlItem) ) qmlItem->setHeight(height);
     }
+}
+
+void AnchorObj_VLine::createNextColumn() noexcept
+{
+    if(! page->next_page) {
+        if(! SoupleManager::addInheritPage()) return;
+    }
+    if(page->next_page->columns.empty()) return;
+    next_column = page->next_page->columns.front();
 }

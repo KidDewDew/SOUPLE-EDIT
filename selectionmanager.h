@@ -98,6 +98,7 @@ public:
     // 获取选择的内容所在的hline区间，
     // 该函数时间复杂度极高，O(N(all of objs))
     // @return pair<第一个hline，最后一个hline>
+    // @return pair<0,0> 代表获取失败
     static std::pair<HorLine_Base*,HorLine_Base*> getSelectedHLineRange();
 private:
 

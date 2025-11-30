@@ -36,6 +36,11 @@ void TableLine::dealLayout()
 {
     //qDebug() << "TableLine::dealLayout()" << "y: " << y;
     if(!table_info) return;
+
+    if(!page) {
+        page = SoupleManager::getPage(*this);
+    }
+
     //return;
     float old_y = y;
 
@@ -156,7 +161,7 @@ void TableLine::dealLayout()
         if( Helper::isQmlItemValid(qmlItem) ) qmlItem->setY(y - qmlItem->height()/2);
     }
 
-    if(! page || abs(y-old_y) > 1e-2) {
+    if(/*! page || */abs(y-old_y) > 1e-2) {
         page = SoupleManager::getPage(*this);
     }
 

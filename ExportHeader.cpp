@@ -71,15 +71,28 @@ void Page::setWordPageColumnNum(int num) {
             PageColumn column;
             column.leftLine = new WordPage_VLine;
             column.rightLine = new WordPage_VLine;
+
+            // 设置page属性 [任意分栏add]
+            column.leftLine->be<WordPage_VLine*>()->page = this;
+            column.rightLine->be<WordPage_VLine*>()->page = this;
+
             column.leftLine->be<WordPage_VLine*>()->page_index
                 = column.rightLine->be<WordPage_VLine*>()->page_index
                 = this->index;
+
             column.leftLine->be<WordPage_VLine*>()->column_id
                 = column.rightLine->be<WordPage_VLine*>()->column_id
                 = columns.size()-1;
+
             SoupleManager::registerObj(column.leftLine);
             SoupleManager::registerObj(column.rightLine);
             columns.push_back(column);
+        }
+
+        // 设置next_column属性 [任意分栏add]
+        for(int i = 0; i < columns.size()-1; ++i) {
+            columns[i].leftLine->be<WordPage_VLine*>()->next_column
+                = columns[i+1];
         }
     }
     initColumnWidthAndSpacing();

@@ -430,24 +430,27 @@ public:
 
     //获取obj所在的页面信息
     static inline const Page* getPage(const Obj& obj) {
+        if(page_inf.pages.empty()) return 0;
 #ifdef Q_OS_WIN32
         auto it = std::ranges::lower_bound(page_inf.sum_heights,obj.y);
 #else
         auto it = std::lower_bound(page_inf.sum_heights.begin(),page_inf.sum_heights.end(),obj.y);
 #endif
-        if(it == page_inf.sum_heights.end()) return nullptr;
-        //if(it == page_inf.sum_heights.end()) return page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
+        //if(it == page_inf.sum_heights.end()) return nullptr;
+        if(it == page_inf.sum_heights.end()) return page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
         return page_inf.pages[it - page_inf.sum_heights.begin()];
     }
 
     static inline Page* getPage(float y) {
+        if(page_inf.pages.empty()) return 0;
 #ifdef Q_OS_WIN32
         auto it = std::ranges::lower_bound(page_inf.sum_heights,y);
 #else
         auto it = std::lower_bound(page_inf.sum_heights.begin(),page_inf.sum_heights.end(),y);
 #endif
-        if(it == page_inf.sum_heights.end()) return nullptr;
-        //if(it == page_inf.sum_heights.end()) return page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
+        //if(it == page_inf.sum_heights.end()) return nullptr;
+        if(it == page_inf.sum_heights.end())
+            return page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
         return page_inf.pages[it - page_inf.sum_heights.begin()];
     }
 
@@ -562,6 +565,10 @@ public:
         if(!hline) return "invalid";
         return hline->getName();
     }
+
+    // 请求为当前选中的内容进行内容分栏
+    Q_INVOKABLE static void requestSetContentColumns(int columns_num,
+                                                     const QString& aux_text = "");
 
     static std::list<Obj*>& getDocumentObjs(int s) {
         if(s == currentDocumentID) return all_objs;

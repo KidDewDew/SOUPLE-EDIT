@@ -26,6 +26,7 @@
 #include "navline.h"
 #include "anchorobj_spring.h"
 #include "magicalcursor.h"
+#include "columns_separate.h"
 #include <QGuiApplication>
 
 using namespace std;
@@ -827,4 +828,81 @@ HorLine_Base* SoupleManager::getDocumentFirstLine(int document_id)
     IF NOT(ss.valid() and ss->attach_hline.valid())
     THEN(return nullptr;)
     return ss->attach_hline.get();
+}
+
+void SoupleManager::requestSetContentColumns(int columns_num,const QString& aux_text)
+{
+
+    if(columns_num <= 0 || columns_num > 4) {
+        emit Helper::helper->errorMsg("提示","内容分栏最多允许分4栏。");
+        return;
+    }
+
+    auto[startHLine0,endHLine0] = SelectionManager::getSelectedHLineRange();
+    if(! startHLine0 || ! endHLine0) {
+        emit Helper::helper->errorMsg("提示","请选择一段内容后，再进行内容分栏。");
+        return;
+    }
+
+    auto startHLine = startHLine0->as<AnchorObj_HLine*>();
+    auto endHLine = endHLine0->as<AnchorObj_HLine*>();
+
+    //if(startHLine->hline
+    //    && ! startHLine->hline->canBe<AnchorObj_HLine>()
+    //|| )
+
+    if(! startHLine || ! endHLine) {
+        emit Helper::helper->errorMsg("提示","只可以为最外层的内容设置内容分栏；\n"
+                                "表格的单元格、文本框等对象内部的内容，无法设置内容分栏。");
+        return;
+    }
+
+    // 开始创建 内容分栏
+    ColumnsSeparate *sep_line_1 = new ColumnsSeparate,
+                    *sep_line_2 = new ColumnsSeparate;
+    sep_line_1->isTop = true; //一上
+    sep_line_2->isTop = false; //一下
+    sep_line_1->pal = sep_line_2;
+    sep_line_2->pal = sep_line_1;
+    sep_line_1->y = startHLine->getContentTop();
+    sep_line_2->y = endHLine->getContentBottom();
+    // 创建栏
+    sep_line_1->changeColumnsNum(columns_num);
+    // 设置栏的宽度
+    float sum_width = startHLine->page->width - Helper::cm2pixel(2.4);
+    float start_x = Helper::cm2pixel(1.2);
+    float column_width = sum_width / columns_num;
+    float spacing = std::min<float>(column_width * 0.2f,Helper::cm2pixel(0.6));
+    for(auto& column : sep_line_1->getColumns())
+    {
+        column.leftLine->x = start_x;
+        column.rightLine->x = start_x + column_width - spacing;
+        start_x += column_width;
+    }
+
+    // 赋予相邻的水平标线一些属性
+    startHLine->top_sep_line = sep_line_1;
+    if(startHLine->hline) {
+        startHLine->hline->be<AnchorObj_HLine*>()
+            ->bottom_sep_line = sep_line_1;
+    }
+    endHLine->bottom_sep_line = sep_line_2;
+    if(endHLine->getNextLine()) {
+        endHLine->getNextLine()->be<AnchorObj_HLine*>()
+            ->top_sep_line = sep_line_2;
+    }
+
+    sep_line_1->hline_up = startHLine->hline->be<AnchorObj_HLine*>();
+    sep_line_1->hline_down = startHLine;
+    sep_line_2->hline_up = endHLine;
+    sep_line_2->hline_down = endHLine->getNextLine()->be<AnchorObj_HLine*>();
+
+    //排列这些hline到新的栏
+    AnchorObj_HLine* hline = startHLine;
+    while(hline != endHLine)
+    {
+        hline->leftLine = sep_line_1->columns[0].leftLine->be<AnchorObj_VLine*>();
+        hline->rightLine = sep_line_1->columns[0].rightLine->be<AnchorObj_VLine*>();
+        hline = hline->getNextLine()->be<AnchorObj_HLine*>();
+    }
 }

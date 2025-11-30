@@ -85,6 +85,8 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
         column.rightLine = new WordPage_VLine;
         column.leftLine->x = left;
         column.rightLine->x = right;
+        column.leftLine->be<WordPage_VLine*>()->page = page->souple_page;
+        column.rightLine->be<WordPage_VLine*>()->page = page->souple_page;
         column.leftLine->be<WordPage_VLine*>()->page_index = page->page_index;
         column.rightLine->be<WordPage_VLine*>()->page_index = page->page_index;
         column.leftLine->be<WordPage_VLine*>()->column_id = i >> 1;
@@ -93,6 +95,11 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
         column.leftLine->height = column.rightLine->height =
             page->souple_page->height - page->souple_page->topMargin - page->souple_page->bottomMargin;
         page->souple_page->columns.push_back(column);
+    }
+
+    for(int i = 0; i+1 < page->souple_page->columns.size(); ++i) {
+        page->souple_page->columns[i].leftLine->be<WordPage_VLine*>()
+            ->next_column = page->souple_page->columns[i+1];
     }
 
     auto &columns = page->souple_page->columns;

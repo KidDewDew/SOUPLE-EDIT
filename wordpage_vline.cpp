@@ -1,6 +1,7 @@
 #include "wordpage_vline.h"
 
 WordPage_VLine::WordPage_VLine() {
+    this->isWordLine = true;
     while(hash_vline.contains("W"+QString::number(s_wordpage_vline_count))) {
         ++s_wordpage_vline_count;
     }

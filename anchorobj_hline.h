@@ -9,6 +9,8 @@
 #include "wordpage_vline.h"
 #include "LLException.h"
 
+class ColumnsSeparate;
+
 //HLine：水平标线的数据管理类
 class AnchorObj_HLine : public HorLine_Base
 {
@@ -56,7 +58,7 @@ public:
     void setAnchorLastHLine(AnchorObj_HLine* _hline) {
         //qDebug() << "setAnchorLastHLine(" << _hline << ",this = " << this;
         if(hline) {
-           // qDebug() << "old_line: " << hline;
+            // qDebug() << "old_line: " << hline;
             hline->as<AnchorObj_HLine*>()->anchor_nextHLine.remove(this);//删除自身
         }
         hline = _hline;
@@ -99,12 +101,7 @@ public:
         return logic_lastHLine;
     }
 
-    virtual PCPos getPCPos() override {
-        PCPos p;
-        p.page = page;
-        p.column = leftLine->getColumn();
-        return p;
-    }
+    virtual PCPos getPCPos() override;
 
     virtual float getHScale() const noexcept override {
         return horizontal_scale;
@@ -210,8 +207,11 @@ public:
     typedef UIItemPool<__UINAME__,90> uiPool_HLine; //ui控件池
 protected:
     //bool dealLayout_protect_sign = false;  //保护dealLayout，使得dealLayout不会重复执行
+
+    //ColumnsSeparate *
+
     float topMargin = 50.0;
-    float page_topMargin = 0.0; //相对于页面顶部
+    float page_topMargin = 0.0; //相对于页面(分栏分隔线)顶部
     float horizontal_scale = 1.0; //水平放缩
     //float contentTop = 0.0, contentBottom = 0.0; //所有位于该hline上的obj相对于hline.y的top_y和bottom_y
     //contentTop = minY_of_obj - hline.y
@@ -223,6 +223,10 @@ protected:
     //AnchorObj_HLine *anchor_lastHLine = 0; //锚定上标线，用AnchorObj::hline表示
     AnchorObj_HLine *logic_nextHLine  = 0; //逻辑下标线
     std::list<AnchorObj_HLine*> anchor_nextHLine; //锚定下标线列表
+
+    /** 实验内容 */
+    ColumnsSeparate *top_sep_line = 0;       //顶部的分栏分隔线
+    ColumnsSeparate *bottom_sep_line = 0;    //底部的分栏分隔线
 
     //本标线死亡时，调用onDelete_Functions的所有回调函数
     //因为Anchor_Obj没有使用安全指针，HLine死亡时必须进行死亡通知。
