@@ -133,7 +133,9 @@ Item {
         "GlueL":cp_glue,"GlueR":cp_glue,
         "PH_Glue":cp_glue,"Latex":cp_latex,
         "Frame":cp_frame,"Nav":cp_nav,
-        "Spring":cp_spring,"StartSign":cp_startsign}
+        "Spring":cp_spring,"StartSign":cp_startsign,
+        "SepLine":cp_sepline
+    }
 
     //创建并返回类型为type的Souple前端对象
     function newObj(type) {
@@ -668,6 +670,11 @@ Item {
     Component {
         id: cp_startsign
         Obj_StartSign {}
+    }
+
+    Component {
+        id: cp_sepline
+        SepLine {}
     }
 
     Editable_Bound {

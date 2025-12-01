@@ -10,9 +10,8 @@ class ColumnsSeparate : public Obj
 {
     friend class SoupleManager;
 public:
-    QQuickItem* generateQmlItem() {
-        return 0; // no qml item.
-    }
+
+    QQuickItem* generateQmlItem();
 
     // 获取所有栏的const引用
     const std::vector<PageColumn>& getColumns() {
@@ -34,6 +33,18 @@ public:
         return pal;
     }
 
+    virtual const Obj_Global_Info& objInfo() const noexcept override {
+        static Obj_Global_Info gi = {.dealLayoutable = true};
+        return gi;
+    }
+
+    virtual void dealLayout() override;
+
+    virtual void discard_qmlItem() override {
+        uiPool_sep_line::returnItem(qmlItem);
+        qmlItem = 0;
+    }
+
     // 通知本对象：你被往下挪动了
     void notifyMoveDown() noexcept;
 
@@ -44,6 +55,11 @@ private:
     ColumnsSeparate *pal;
     Page* page = 0;
     std::vector<PageColumn> columns; //栏
+
+private:
+    static inline constexpr char __UINAME__[] = "SeqLine";
+public:
+    typedef UIItemPool<__UINAME__,4> uiPool_sep_line; //ui控件池
 };
 
 #endif // COLUMNS_SEPARATE_H

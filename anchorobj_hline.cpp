@@ -56,6 +56,15 @@ void AnchorObj_HLine::createNextLine() {
     logic_nextHLine->setAnchorLastHLine(this);
     logic_nextHLine->page = page;
     logic_nextHLine->y = getContentBottom() + logic_nextHLine->topMargin;
+
+    //继承 anyColumn 内容
+    logic_nextHLine->top_sep_line = this->top_sep_line;
+    logic_nextHLine->bottom_sep_line = this->bottom_sep_line;
+
+    // if(bottom_sep_line && logic_nextHLine->getNextLine() == 0) {
+    //     bottom_sep_line->
+    // }
+
     SoupleManager::registerObj(logic_nextHLine);
 }
 
@@ -130,7 +139,7 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
         {
             //需要往下挪动bottom_sep_line
             bottom_sep_line->y = max_obj_y;
-            bottom_sep_line->dealLayout();
+            bottom_sep_line->notifyMoveDown();
         }
     }
     else [[likely]]
@@ -228,7 +237,7 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
 
 
     //检查是否需要和锚定上标线转移到同页(前提是刚才没有进行页、栏转移)
-    if(!bGotoNextPage_or_Column) {
+    if(!bGotoNextPage_or_Column && false) {
         if(leftLine->isWordPageLine()) {
             if(anchor_lastHLine && anchor_lastHLine->page
                 && anchor_lastHLine->leftLine != leftLine) { //不在同一栏

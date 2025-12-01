@@ -570,6 +570,10 @@ public:
     Q_INVOKABLE static void requestSetContentColumns(int columns_num,
                                                      const QString& aux_text = "");
 
+    Q_INVOKABLE static void requestClearSelection() {
+        SelectionManager::clearSelection();
+    }
+
     static std::list<Obj*>& getDocumentObjs(int s) {
         if(s == currentDocumentID) return all_objs;
         return all_documents[s]->all_objs;

@@ -614,18 +614,20 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
         }
         break;
     case QEvent::MouseButtonPress:
-        if(SelectionManager::isSelectionKeep) {
-            QMouseEvent *me = dynamic_cast<QMouseEvent*>(event);
-            if(me->button() == Qt::LeftButton) { //左键按下
-                //获取相对于SoupleEdit的坐标
-                QPointF p = SoupleManager::qml_soupleEdit->mapFromGlobal(me->globalPosition());
-                if(SoupleManager::qml_soupleEdit->contains(p)&&
-                    p.y() >= SoupleManager::view_top
-                    && p.y() <= SoupleManager::view_bottom) {
-                    SelectionManager::clearSelection();
-                }
-            }
-        }
+        // 【作废】 由Main.qml中的可穿透MouseArea代替。
+        // if(SelectionManager::isSelectionKeep) {
+        //     QMouseEvent *me = dynamic_cast<QMouseEvent*>(event);
+        //     if(me->button() == Qt::LeftButton) { //左键按下
+        //         //获取相对于SoupleEdit的坐标
+        //         QPointF p = SoupleManager::qml_soupleEdit->mapFromGlobal(me->globalPosition());
+        //         if(SoupleManager::qml_soupleEdit->contains(p)&&
+        //             p.y() >= SoupleManager::view_top
+        //             && p.y() <= SoupleManager::view_bottom) {
+        //             SelectionManager::clearSelection();
+        //         }
+        //         //}
+        //     }
+        // }
         break;
     case QEvent::KeyPress:{
         QKeyEvent *ke = (QKeyEvent*)event;

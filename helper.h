@@ -180,7 +180,16 @@ public:
                  Error_Failed, Error_Unknown, Error_Other};
     Q_ENUM( Error )
 
-    enum Layer_Z { Bottom = -1000, Text = 100000, Cover = 500000, Top = 1000000 };
+    /**
+     * @brief The Layer_Z enum
+     *  Bottom: 最底层
+     *  >=Text: 文本层
+     *  >=Cover: 保证覆盖文本层
+     *  >=Top: 顶层
+     *  >=Widget_Top: 不允许任何组件达到该层；只有软件ui可以使用。
+     */
+    enum Layer_Z { Bottom = -1000, Text = 10000, Cover = 50000, Top = 100000,
+                   Widget_Top = 200000};
 
     enum QmlItemStatus {
         NotCreated = 0,

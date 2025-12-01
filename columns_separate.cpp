@@ -2,6 +2,11 @@
 #include "wordpage_vline.h"
 #include "souplemanager.h"
 
+QQuickItem* ColumnsSeparate::generateQmlItem() {
+    if(SoupleManager::showHelpLine == false) return (QQuickItem*)Helper::QmlItemStatus::CreatedButHidden;
+    return uiPool_sep_line::fetchItem();
+}
+
 void ColumnsSeparate::notifyMoveDown() noexcept
 {
     if(y > page->getBottomLineY()) {
@@ -12,7 +17,43 @@ void ColumnsSeparate::notifyMoveDown() noexcept
         y = page->getTopLineY();
 
         // 更新相关属性
+    }
+    SoupleManager::requestUpdateHLine(hline_down);
+}
 
+void ColumnsSeparate::dealLayout()
+{
+    //处理布局，这个函数被调用的频率较低。
+
+    // S1: 维护上邻线，确保它下面没有接续的HLine喽。
+    if(hline_up) {
+        auto nextLine = hline_up->getNextLine();
+        while(nextLine) {
+            if( ! nextLine->canBe<AnchorObj_HLine>()) {
+                throw LLException("ColumnsSeparate::dealLayout(): !nextLine->canBe<AnchorObj_HLine>()");
+            }
+            hline_up = nextLine->be<AnchorObj_HLine*>();
+            nextLine = hline_up->getNextLine();
+        }
+    }
+    // S2: 维护下邻线
+    if(hline_down) {
+        auto prevLine = hline_down->getPrevLine();
+        while(prevLine) {
+            if( ! prevLine->canBe<AnchorObj_HLine>()) {
+                throw LLException("ColumnsSeparate::dealLayout(): !prevLine->canBe<AnchorObj_HLine>()");
+            }
+            hline_up = prevLine->be<AnchorObj_HLine*>();
+            prevLine = hline_up->getNextLine();
+        }
+    }
+    // S3: 维护自己的qml属性(如果可见)
+    if(Helper::isQmlItemValid(qmlItem))
+    {
+        x = columns.front().leftLine->x;
+        width = columns.back().rightLine->x - x;
+        qmlItem->setWidth(width);
+        qmlItem->setPosition({x,y});
     }
 }
 

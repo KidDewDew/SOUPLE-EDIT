@@ -1448,6 +1448,7 @@ Window {
                         radius: 8
                         verticalOffset: 2
                     }
+
                     Flickable {
                         id: scv11
                         anchors.fill: parent
@@ -1487,6 +1488,10 @@ Window {
                                 }
                                 wheel.accepted = true
                             }
+                            // onPressed: {
+                            //     console.log(".......pressed")
+                            //     SoupleManager.requestClearSelection()
+                            // }
                         }
 
                         //flickDeceleration: 2000
@@ -1546,9 +1551,20 @@ Window {
                                     xScale: view_scale_slider.value2
                                     yScale: view_scale_slider.value2
                                 }
-                                // Component.onCompleted: {
-                                //     SoupleManager.installEventFilterOnSoupleEdit(soupleEdit)
-                                // }
+                                MouseArea {
+                                    z: Helper_Type.Widget_Top
+                                    anchors.fill: parent
+                                    propagateComposedEvents: true
+                                    hoverEnabled: false
+                                    Component.onCompleted: {
+                                        cursorShape = undefined
+                                    }
+                                    onPressed: (mouse)=> {
+                                        //console.log("pressed....")
+                                        SoupleManager.requestClearSelection()
+                                        mouse.accepted = false
+                                    }
+                                }
                             }
                         }
                     }
