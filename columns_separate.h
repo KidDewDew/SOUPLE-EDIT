@@ -11,7 +11,7 @@ class ColumnsSeparate : public Obj
     friend class SoupleManager;
 public:
 
-    QQuickItem* generateQmlItem();
+    QQuickItem* generateQmlItem() override;
 
     // 获取所有栏的const引用
     const std::vector<PageColumn>& getColumns() {
@@ -34,7 +34,8 @@ public:
     }
 
     virtual const Obj_Global_Info& objInfo() const noexcept override {
-        static Obj_Global_Info gi = {.dealLayoutable = true};
+        static Obj_Global_Info gi = {.dealLayoutable = true,
+                                     .isHelperLine=true};
         return gi;
     }
 
@@ -48,6 +49,16 @@ public:
     // 通知本对象：你被往下挪动了
     void notifyMoveDown() noexcept;
 
+    virtual QString __dstr() const noexcept override;
+
+    float getTop() const noexcept {
+        return y;
+    }
+
+    float getBottom() const noexcept {
+        return y+height;
+    }
+
 private:
     bool isTop;
     AnchorObj_HLine* hline_up = 0;  //它的上邻居hline
@@ -57,7 +68,7 @@ private:
     std::vector<PageColumn> columns; //栏
 
 private:
-    static inline constexpr char __UINAME__[] = "SeqLine";
+    static inline constexpr char __UINAME__[] = "SepLine";
 public:
     typedef UIItemPool<__UINAME__,4> uiPool_sep_line; //ui控件池
 };

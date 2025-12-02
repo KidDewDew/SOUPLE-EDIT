@@ -16,6 +16,7 @@ public:
     friend class FreeObj;
     friend class ColumnsSeparate;
     friend class Page;
+    friend class SoupleManager;
 
     AnchorObj_VLine();
     virtual QQuickItem* generateQmlItem() override; //创建用于ui的qml元素
@@ -39,6 +40,10 @@ public:
         return this->isWordLine;
     }
 
+    // 这是否是最后一栏(页面栏or区间分栏)
+    bool isLastColumn() const noexcept {
+        return is_last_column_leftline;
+    }
     // virtual int getColumn() const noexcept { [作废]
     //     return 0;
     // }
@@ -86,11 +91,13 @@ protected:
     QString name;
 
     /** 任意分栏 实验内容 BEGIN */
-    int              column_id = 0;
-    Page *           page = 0;
-    ColumnsSeparate *top_columns_separate = 0;
-    ColumnsSeparate *bottom_columns_separate = 0;
-    PageColumn       next_column;
+    // 如您所见，为了保证极低的开销，必须正确地维护以下变量，这样就不用在布局时动态计算。
+    bool              is_last_column_leftline = false;
+    int               column_id = 0;
+    Page *            page = 0;
+    ColumnsSeparate * top_columns_separate = 0;
+    ColumnsSeparate * bottom_columns_separate = 0;
+    PageColumn        next_column;
     /** 任意分栏 实验内容 END */
 
     static inline QHash<QString,AnchorObj_VLine*> hash_vline;

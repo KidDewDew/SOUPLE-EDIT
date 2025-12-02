@@ -37,6 +37,14 @@ public:
     //     return _global_info;
     // }
 
+    virtual void dealUI() noexcept override {
+        if( Helper::isQmlItemValid(qmlItem) ) {
+            qmlItem->setWidth(10);
+            qmlItem->setHeight(6);
+            qmlItem->setPosition({x-10,y-6});
+        }
+    }
+
     virtual QVariant qmlGetData(int dataName) override {
         switch(dataName) {
         //case Helper::ETC_TAB:

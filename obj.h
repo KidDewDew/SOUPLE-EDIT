@@ -82,6 +82,17 @@ public:
         return QVariant{};
     }
     virtual void dealLayout() {}
+
+    // [2025/12/2 added]
+    // 把dealLayout和dealUI区分。
+    virtual void dealUI() noexcept {
+        if(Helper::isQmlItemValid(qmlItem)) {
+            qmlItem->setPosition({x,y});
+            qmlItem->setSize({width,height});
+            if(z != qmlItem->z()) qmlItem->setZ(z);
+        }
+    }
+
     virtual void selectionCommand(int command,const QVariant& arg) {}
     virtual QVariant selectionGetData(int dataName) { return {}; }
     virtual int contentLength() const noexcept { return 1; }

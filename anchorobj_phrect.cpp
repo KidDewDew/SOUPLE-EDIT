@@ -39,10 +39,6 @@ void AnchorObj_PHRect::dealLayout() {
     if(hline) {
         y = hline->y - 10;
         if(leftObj) x = leftObj->x + leftObj->width;
-        if( Helper::isQmlItemValid(qmlItem) ){
-            if(x != qmlItem->x()) qmlItem->setX(x);
-            if(y != qmlItem->y()) qmlItem->setY(y);
-        }
     }
 }
 

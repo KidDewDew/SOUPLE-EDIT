@@ -23,13 +23,13 @@ void AnchorObj::dealLayout()
     if(leftObj) {
         x = leftObj->x + leftObj->width;
     }
-    if( Helper::isQmlItemValid(qmlItem) ){
-        if(x != qmlItem->x()) qmlItem->setX(x);
-        if(y != qmlItem->y()) qmlItem->setY(y);
-        if(width != qmlItem->width()) qmlItem->setWidth(width);
-        if(height != qmlItem->height()) qmlItem->setHeight(height);
-        if(z != qmlItem->z()) qmlItem->setZ(z);
-    }
+    // if( Helper::isQmlItemValid(qmlItem) ){  [2025/12/2 deleted. 移除ui操作]
+    //     if(x != qmlItem->x()) qmlItem->setX(x);
+    //     if(y != qmlItem->y()) qmlItem->setY(y);
+    //     if(width != qmlItem->width()) qmlItem->setWidth(width);
+    //     if(height != qmlItem->height()) qmlItem->setHeight(height);
+    //     if(z != qmlItem->z()) qmlItem->setZ(z);
+    // }
 }
 
 

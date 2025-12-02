@@ -82,7 +82,7 @@ void Page::setWordPageColumnNum(int num) {
 
             column.leftLine->be<WordPage_VLine*>()->column_id
                 = column.rightLine->be<WordPage_VLine*>()->column_id
-                = columns.size()-1;
+                = columns.size();
 
             SoupleManager::registerObj(column.leftLine);
             SoupleManager::registerObj(column.rightLine);
@@ -93,7 +93,13 @@ void Page::setWordPageColumnNum(int num) {
         for(int i = 0; i < columns.size()-1; ++i) {
             columns[i].leftLine->be<WordPage_VLine*>()->next_column
                 = columns[i+1];
+            columns[i].leftLine->be<WordPage_VLine*>()->is_last_column_leftline = false;
         }
     }
+
+    if(columns.size() > 0) {
+        columns.back().leftLine->be<AnchorObj_VLine*>()->is_last_column_leftline = true;
+    }
+
     initColumnWidthAndSpacing();
 }

@@ -81,12 +81,6 @@ void AnchorObj_PHLeft::dealLayout()
         y = hline->y; //2025/9/3修改，保证PH_Left不会受到换行影响导致Glue_Left换行。
         x = hline->x;
     }
-    if( Helper::isQmlItemValid(qmlItem) ) {
-        qmlItem->setWidth(10);
-        qmlItem->setHeight(6);
-        qmlItem->setPosition({x-10,y-6});
-    }
-
     doPHLeft();
 }
 

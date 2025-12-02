@@ -9,6 +9,8 @@
 #include "wordpage_vline.h"
 #include "LLException.h"
 
+#define Ex_AnyColumn true
+
 class ColumnsSeparate;
 
 //HLine：水平标线的数据管理类
@@ -189,6 +191,15 @@ public:
     ~AnchorObj_HLine() { hash_hline.remove(name); }
 protected:
     void check_after_dealSpan() {
+#if Ex_AnyColumn == true
+        if(!top_sep_line && page->page_type == Helper::Word_Page) {
+            auto word_leftLine = leftLine->as<WordPage_VLine*>();
+            if(word_leftLine && word_leftLine->page_index != page->index) {
+                leftLine = page->columns.front().leftLine->be<AnchorObj_VLine*>();
+                rightLine = page->columns.front().rightLine->be<AnchorObj_VLine*>();
+            }
+        }
+#else
         if(page && page->page_type == Helper::Word_Page) {
             auto word_leftLine = leftLine->as<WordPage_VLine*>();
             if(word_leftLine && word_leftLine->page_index != page->index) {
@@ -196,6 +207,7 @@ protected:
                 rightLine = page->columns.front().rightLine->be<AnchorObj_VLine*>();
             }
         }
+#endif
     }
 private:
     void createNextLine();

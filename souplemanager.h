@@ -429,7 +429,7 @@ public:
     }
 
     //获取obj所在的页面信息
-    static inline const Page* getPage(const Obj& obj) {
+    static inline Page* getPage(const Obj& obj) {
         if(page_inf.pages.empty()) return 0;
 #ifdef Q_OS_WIN32
         auto it = std::ranges::lower_bound(page_inf.sum_heights,obj.y);

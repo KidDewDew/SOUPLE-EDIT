@@ -936,7 +936,7 @@ Window {
                             }
                             CheckBox {
                                 Material.accent: "#3C8761"
-                                text: "辅助线"
+                                text: "布局线"
                                 checked: false
                                 onCheckedChanged: {
                                     //soupleEdit.showHelpInf = checked
@@ -1242,8 +1242,8 @@ Window {
                             spacing: toolBar_2l.dynamic_spacing
                             anchors.verticalCenter: parent.verticalCenter
                             AddToolButton {
-                                Layout.leftMargin: 8
-                                text: "选中内容分栏"
+                                Layout.leftMargin: 12
+                                text: "区间分栏"
                                 enableList: true
                                 listText: ["单栏","两栏","三栏","两栏-偏左","两栏-偏右"]
                                 onSelected: function(index,str) {

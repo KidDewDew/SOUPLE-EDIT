@@ -143,6 +143,7 @@ AnchorObj* AnchorObj_FlowText::dropRight(float dropWidth) //尝试截断并丢�
     obj->strokeWidth = strokeWidth;
     obj->fill_color = fill_color;
     obj->stroke_color = stroke_color;
+    obj->width = pile_width; //[2025/12/2 added]
     SoupleManager::registerObj(obj);
 
     if( Helper::isQmlItemValid(qmlItem) ) {
@@ -451,9 +452,17 @@ int AnchorObj_FlowText::dealCommandFromQmlItem(int command,const QVariant& arg)
     case Helper::KEY_RETURN: { //按下回车键
         if(!Helper::isQmlItemValid(qmlItem)) return 0;
         int cursorPosition = qmlItem->property("cursorPosition").toInt(); //获取当前光标位置
+        if(cursorPosition == 0) {
+            AnchorObj_PHRight *phright = new AnchorObj_PHRight;
+            SoupleManager::registerObj(phright);
+            phright->hline = hline;
+            insertOnLeft(phright);
+            break;
+        }
         QString chop_text = text.sliced(cursorPosition);
         AnchorObj_FlowText *new_obj = 0;
         if(chop_text.length() > 0) {
+            float my_old_rightx = getRightX();
             text.chop(text.length() - cursorPosition);
             if( Helper::isQmlItemValid(qmlItem) )
                 QMetaObject::invokeMethod(qmlItem,"cpp_updateText",Q_ARG(QVariant,text));
@@ -469,6 +478,11 @@ int AnchorObj_FlowText::dealCommandFromQmlItem(int command,const QVariant& arg)
             new_obj->strokeWidth = strokeWidth;
             new_obj->isStroke = isStroke;
             new_obj->isFill = isFill;
+
+            //[2025/12/2 added 维护坐标和尺寸]
+            new_obj->x = my_old_rightx - new_obj->width;
+            this->width -= new_obj->width;
+
             //立即创建ui对象，以便转移光标
             new_obj->qmlItem = new_obj->generateQmlItem();
             SoupleManager::notifyVisible(new_obj);//注意，通知SoupleManager可见性
@@ -621,6 +635,16 @@ void AnchorObj_FlowText::dealLayout()
     //if(hline && hline->qmlItem) {
     //   qDebug() << text << "y: " << y << " hline.y: " << hline->y;
    // }
+
+    // if(x < 10) {
+    //     qDebug() << "leftObj is " << leftObj;
+    //     if(leftObj) {
+    //         qDebug() << leftObj->__dstr();
+    //     }
+    //     if(hline) qDebug() << "hline.x = " << hline->x;
+    //     qDebug() << __dstr() << "x = " << x;
+    // }
+
     if(font.letterSpacing() < 0) qDebug() << "fw:" << font.letterSpacing();
     QFontMetricsF metrics{font};
     width = metrics.horizontalAdvance(text);

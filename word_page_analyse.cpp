@@ -97,6 +97,10 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
         page->souple_page->columns.push_back(column);
     }
 
+    // 标记末栏属性
+    page->souple_page->columns.back().leftLine
+        ->be<WordPage_VLine*>()->is_last_column_leftline = true;
+
     for(int i = 0; i+1 < page->souple_page->columns.size(); ++i) {
         page->souple_page->columns[i].leftLine->be<WordPage_VLine*>()
             ->next_column = page->souple_page->columns[i+1];

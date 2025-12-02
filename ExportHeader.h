@@ -84,22 +84,35 @@ struct PCPos {
     void print() {
         qDebug() << "PCPos:" << page->index << column;
     }
+
+    // 减法运算; 差一页算差距 1， 差
+    // int operator-(const PCPos& pos2) const noexcept {
+    //     if(page == pos2.page) return column - pos2.column;
+    //     else if(page->index > pos2.page->index) {
+    //         return
+    //     }
+    // }
+
     bool operator<(const PCPos& pos2) const noexcept {
         if(page->index < pos2.page->index) return true;
         if(page->index > pos2.page->index) return false;
         return column < pos2.column;
     }
+
     bool operator>(const PCPos& pos2) const noexcept {
         if(page->index > pos2.page->index) return true;
         if(page->index < pos2.page->index) return false;
         return column > pos2.column;
     }
+
     bool operator>=(const PCPos& pos2) const noexcept {
         return !(*this < pos2);
     }
+
     bool operator<=(const PCPos& pos2) const noexcept {
         return !(*this > pos2);
     }
+
     bool operator==(const PCPos& pos2) const noexcept {
         return page == pos2.page && column == pos2.column;
     }

@@ -631,13 +631,13 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
         break;
     case QEvent::KeyPress:{
         QKeyEvent *ke = (QKeyEvent*)event;
-        qDebug() << ke;
+        //qDebug() << ke;
         if(SelectionManager::isSelectStopButKeep()) {
             //对选择内容进行键盘操作
             //QObject* focusObject = global_app->focusObject(); //获取焦点对象
             //qDebug() << "focus:" << focusObject;
             QObject* focusObject = global_app->focusObject(); //获取焦点对象
-            qDebug() << "focus:" << focusObject;
+            //qDebug() << "focus:" << focusObject;
             if(!focusObject || focusObject->isWindowType()) { //windowType表明它没有具体焦点
                 Qt::KeyboardModifiers km = ke->modifiers();
                 //if(selected_qmlItem_id
@@ -862,12 +862,22 @@ void SoupleManager::requestSetContentColumns(int columns_num,const QString& aux_
     // 开始创建 内容分栏
     ColumnsSeparate *sep_line_1 = new ColumnsSeparate,
                     *sep_line_2 = new ColumnsSeparate;
+
+    registerObjs(sep_line_1,sep_line_2);
+
     sep_line_1->isTop = true; //一上
     sep_line_2->isTop = false; //一下
     sep_line_1->pal = sep_line_2;
     sep_line_2->pal = sep_line_1;
     sep_line_1->y = startHLine->getContentTop();
     sep_line_2->y = endHLine->getContentBottom();
+
+    sep_line_1->height = startHLine->getTopMargin();
+    sep_line_2->height = sep_line_1->height;
+
+    sep_line_1->page = getPage(*sep_line_1);
+    sep_line_2->page = getPage(*sep_line_2);
+
     // 创建栏
     sep_line_1->changeColumnsNum(columns_num);
     // 设置栏的宽度
@@ -879,6 +889,9 @@ void SoupleManager::requestSetContentColumns(int columns_num,const QString& aux_
     {
         column.leftLine->x = start_x;
         column.rightLine->x = start_x + column_width - spacing;
+        column.leftLine->y = startHLine->y;
+        column.rightLine->y = startHLine->y;
+        qDebug() << "column-id = " << column.leftLine->be<AnchorObj_VLine*>()->getColumn();
         start_x += column_width;
     }
 
@@ -899,12 +912,32 @@ void SoupleManager::requestSetContentColumns(int columns_num,const QString& aux_
     sep_line_2->hline_up = endHLine;
     sep_line_2->hline_down = endHLine->getNextLine()->be<AnchorObj_HLine*>();
 
+    qDebug() << "SoupleManager::requestSetContentColumn created: ";
+    qDebug() << sep_line_1->__dstr();
+    qDebug() << sep_line_2->__dstr();
+
+    startHLine->setAnchorLastHLine(0);
+    startHLine->setLogicLastHLine(0);
+
+    if(sep_line_2->hline_down) {
+        sep_line_2->hline_down->setAnchorLastHLine(0);
+        sep_line_2->hline_down->setLogicLastHLine(0);
+    }
+
     //排列这些hline到新的栏
     AnchorObj_HLine* hline = startHLine;
-    while(hline != endHLine)
+    while(true)
     {
         hline->leftLine = sep_line_1->columns[0].leftLine->be<AnchorObj_VLine*>();
         hline->rightLine = sep_line_1->columns[0].rightLine->be<AnchorObj_VLine*>();
+        hline->top_sep_line = sep_line_1;
+        hline->bottom_sep_line = sep_line_2;
+        qDebug() << "change " << hline->__dstr();
+        qDebug() << hline->leftLine->__dstr();
+        if(hline == endHLine) break;
         hline = hline->getNextLine()->be<AnchorObj_HLine*>();
     }
+
+    // 不需要设置上方的和下方的hline的top/bottom_sep_line
+    // 因为它们属于外层，不会因为check调整导致被放到外层。
 }

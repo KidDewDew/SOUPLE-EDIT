@@ -128,6 +128,8 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
 
     bool bGotoNextPage_or_Column = false;
 
+#if Ex_AnyColumn == true
+
     // 获取顶部和底部的sep_line
     //ColumnsSeparate *top_sep_line = leftLine->getTopColumnsSeparate(),
     //                *bottom_sep_line = leftLine->getBottomColumnsSeparate();
@@ -137,9 +139,24 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
     if(bottom_sep_line && bottom_sep_line->getPage() == page) {
         if(max_obj_y > bottom_sep_line->y)
         {
-            //需要往下挪动bottom_sep_line
-            bottom_sep_line->y = max_obj_y;
-            bottom_sep_line->notifyMoveDown();
+            //qDebug() << "max_obj_y > bottom_sep_line_y";
+            // 看看是不是处在区间的最后一栏里
+            if(leftLine->isLastColumn()) {
+                //需要往下挪动bottom_sep_line
+                bottom_sep_line->y = max_obj_y;
+                bottom_sep_line->notifyMoveDown();
+            } else {
+                //仍然应该进入下一栏
+                auto& nextColumn = leftLine->getNextColumn();
+                leftLine = static_cast<AnchorObj_VLine*>(nextColumn.leftLine);
+                rightLine = static_cast<AnchorObj_VLine*>(nextColumn.rightLine);
+                // 这里需要计算新的y坐标
+                if(top_sep_line && top_sep_line->getPage() == page) {
+                    y = top_sep_line->getBottom() + page_topMargin - contentTop;
+                } else {
+                    y = page->getTopLineY() + page_topMargin - contentTop;
+                }
+            }
         }
     }
     else [[likely]]
@@ -154,10 +171,25 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
                 // 下一栏，可能是正常的右边邻栏，既可能是下一页的页第一栏，也可能复用分栏分隔区的第一栏。
                 // 具体行为由leftLine自己决定。
                 auto& nextColumn = leftLine->getNextColumn();
+                if(leftLine->is_last_column_leftline) {
+                    if(! page->next_page) {
+                        if(! SoupleManager::addInheritPage()) {
+                            return;
+                        }
+                    }
+                    page = page->next_page;
+                }
                 leftLine = static_cast<AnchorObj_VLine*>(nextColumn.leftLine);
                 rightLine = static_cast<AnchorObj_VLine*>(nextColumn.rightLine);
-                page = leftLine->getPage();
-                y = page->getTopLineY() + page_topMargin - contentTop;
+
+                if(top_sep_line && top_sep_line->getPage() == page) {
+                    // 这里的page_topMargin的名称不是很恰当
+                    //qDebug() << __dstr() << "anchorTo top_sep_line";
+                    y = top_sep_line->getBottom() + page_topMargin - contentTop;
+                } else {
+                    // 没有返回sep_line，则使用page的topLine
+                    y = page->getTopLineY() + page_topMargin - contentTop;
+                }
             } else {
                 //需要把hline移动到下一页
                 if(! page->next_page) {
@@ -170,70 +202,76 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
         }
     }
 
+    // 开始检查是否需要回到anchor_lastHLine那去
+    // if(! bGotoNextPage_or_Column) {
+
+    // }
+
     //return;
     /** 实验版本 END*/
 
-    //auto anchor_lastHLine = hline->be<AnchorObj_HLine*>();
+#else
+
     //检查是否处于页边距内
     //bool bGotoNextPage_or_Column = false;
-//     if(! page) return;
-//     if(max_obj_y > page->getBottomLineY())
-//     { //在页底
-//         if(page->getContentHeight() < contentBottom - contentTop + page_topMargin) //内容比页面还高
-//             return;
+    if(! page) return;
+    if(max_obj_y > page->getBottomLineY())
+    { //在页底
+        if(page->getContentHeight() < contentBottom - contentTop + page_topMargin) //内容比页面还高
+            return;
 
-//         /** 检查分栏 */
-//         if(leftLine->isWordPageLine()) { //该hline是word布局
-//             auto nextColumn = page->getNextColumn(leftLine); //下一栏
-//             if(nextColumn) {
-//                 //跳到下一栏
-//                 leftLine = static_cast<AnchorObj_VLine*>(nextColumn->leftLine);
-//                 rightLine = static_cast<AnchorObj_VLine*>(nextColumn->rightLine);
-//                 y = page->getTopLineY() + page_topMargin - contentTop;
-//             } else {
-//                 if(! page->next_page) {
-//                     //自动生成下一页
-//                     if(!SoupleManager::addInheritPage()) return;
-// //page->width,page->height,page->topMargin,page->bottomMargin);
-//                 }
-//                 y += page->next_page->top_y + page->next_page->topMargin - min_obj_y;
-//                 page = page->next_page;
-//                 if(logic_nextHLine) {
-//                     leftLine = logic_nextHLine->leftLine;
-//                     rightLine = logic_nextHLine->rightLine;
-//                 } else {
-//                     // ...todo
-//                     if(page->page_type == Helper::Word_Page && page->columns.size() > 0) { //下一页也是Word_Page
-//                         auto& column = page->columns.front();
-//                         leftLine = column.leftLine->be<AnchorObj_VLine*>();
-//                         rightLine = column.rightLine->be<AnchorObj_VLine*>();
-//                     } else {
+        /** 检查分栏 */
+        if(leftLine->isWordPageLine()) { //该hline是word布局
+            auto nextColumn = page->getNextColumn(leftLine); //下一栏
+            if(nextColumn) {
+                //跳到下一栏
+                leftLine = static_cast<AnchorObj_VLine*>(nextColumn->leftLine);
+                rightLine = static_cast<AnchorObj_VLine*>(nextColumn->rightLine);
+                y = page->getTopLineY() + page_topMargin - contentTop;
+            } else {
+                if(! page->next_page) {
+                    //自动生成下一页
+                    if(!SoupleManager::addInheritPage()) return;
+//page->width,page->height,page->topMargin,page->bottomMargin);
+                }
+                y += page->next_page->top_y + page->next_page->topMargin - min_obj_y;
+                page = page->next_page;
+                if(logic_nextHLine) {
+                    leftLine = logic_nextHLine->leftLine;
+                    rightLine = logic_nextHLine->rightLine;
+                } else {
+                    // ...todo
+                    if(page->page_type == Helper::Word_Page && page->columns.size() > 0) { //下一页也是Word_Page
+                        auto& column = page->columns.front();
+                        leftLine = column.leftLine->be<AnchorObj_VLine*>();
+                        rightLine = column.rightLine->be<AnchorObj_VLine*>();
+                    } else {
 
-//                     }
-//                 }
-//             }
-//         } else {
-//             //需要把hline移动到下一页,如果下一页存在(可以自动生成下一页吗?)
-//             if(! page->next_page) {
-//                 //自动生成下一页
-//                 SoupleManager::addInheritPage();
-//                 qDebug() << "spanPage: " << name << contentBottom - contentTop + page_topMargin;
-//             }
-//             y += page->next_page->top_y + page->next_page->topMargin - min_obj_y;
-//             page = page->next_page;
-//         }
-//         bGotoNextPage_or_Column = true;
-//     } else {
-//         if(min_obj_y < page->getTopLineY())
-//         { //在页顶
-//             //先考虑最上面的hline，在页顶意味着用户操作导致hline处于页顶
-//             if( ! anchor_lastHLine || anchor_lastHLine->page != page)
-//             { //本hline为独立hline，即在本页内不受锚定
-//                 y += page->getTopLineY() - min_obj_y; //移动上边沿到页顶
-//                 page_topMargin = 0;
-//             }
-//         }
-//     }
+                    }
+                }
+            }
+        } else {
+            //需要把hline移动到下一页,如果下一页存在(可以自动生成下一页吗?)
+            if(! page->next_page) {
+                //自动生成下一页
+                SoupleManager::addInheritPage();
+                qDebug() << "spanPage: " << name << contentBottom - contentTop + page_topMargin;
+            }
+            y += page->next_page->top_y + page->next_page->topMargin - min_obj_y;
+            page = page->next_page;
+        }
+        bGotoNextPage_or_Column = true;
+    } else {
+        if(min_obj_y < page->getTopLineY())
+        { //在页顶
+            //先考虑最上面的hline，在页顶意味着用户操作导致hline处于页顶
+            if( ! anchor_lastHLine || anchor_lastHLine->page != page)
+            { //本hline为独立hline，即在本页内不受锚定
+                y += page->getTopLineY() - min_obj_y; //移动上边沿到页顶
+                page_topMargin = 0;
+            }
+        }
+    }
 
 
     //检查是否需要和锚定上标线转移到同页(前提是刚才没有进行页、栏转移)
@@ -285,6 +323,8 @@ void AnchorObj_HLine::dealSpan(AnchorObj_HLine* anchor_lastHLine,float min_obj_y
             }
         }
     }
+
+#endif
 }
 
 void AnchorObj_HLine::dealAnchor(AnchorObj_HLine*anchor_lastHLine) noexcept {
@@ -292,9 +332,35 @@ void AnchorObj_HLine::dealAnchor(AnchorObj_HLine*anchor_lastHLine) noexcept {
     /** 实验版本: 任意分栏 */
     // 实验版本中，使用了 ColumnsSeparate。
 
-    if(! anchor_lastHLine
-        || ! leftLine
+#if Ex_AnyColumn == true
+    if(! leftLine
     ) return;
+
+    // 没有锚定上标线~
+    if(! anchor_lastHLine)
+    {
+        if(top_sep_line) {
+            if(top_sep_line->getPage()->getBottomLineY() - top_sep_line->getBottom()
+                >= contentBottom - contentTop + page_topMargin) {
+                // 如果由上邻分栏分隔线，且剩余空间足够，则需要锚定到它
+                page = top_sep_line->getPage();
+                y = top_sep_line->getBottom() - contentTop + page_topMargin;
+            } else {
+                //转移到top_sep_line的下一页
+                if(! top_sep_line->getPage()->next_page) {
+                    if(!SoupleManager::addInheritPage()) return;
+                }
+                page = top_sep_line->getPage()->next_page;
+                y = page->getTopLineY() - contentTop + page_topMargin;
+            }
+        }
+        return;
+    }
+
+    // top_sep_line总是保持与上标线相同
+    top_sep_line = anchor_lastHLine->top_sep_line;
+    // bottom_sep_line总是上面和下面相同
+    anchor_lastHLine->bottom_sep_line = this->bottom_sep_line;
 
     PCPos my_pos = getPCPos();
     PCPos aline_pos = anchor_lastHLine->getPCPos();
@@ -306,18 +372,64 @@ void AnchorObj_HLine::dealAnchor(AnchorObj_HLine*anchor_lastHLine) noexcept {
     }
     else if(my_pos < aline_pos) {
         // 错位
+        qDebug() << "错位：my_pos < aline_pos" << __dstr();
         leftLine = anchor_lastHLine->leftLine;
         rightLine = anchor_lastHLine->rightLine;
         // 恢复错位，栏页相同
+        page = anchor_lastHLine->page;
         y = anchor_lastHLine->getContentBottom() - contentTop + topMargin;
     }
     else { //栏页不同
 
+        // 检查是否需要跳回anchor_lastHLine所在栏
+        //      (注意：lastLine的bottom_sep_line必定和本hline相同
+        // 为了提高代码效率，这里有一些重复。
+
+        if(anchor_lastHLine->leftLine->getNextColumn().leftLine != leftLine)
+        {  //如果我俩所处的栏不邻接，则需要转移。
+            leftLine = anchor_lastHLine->leftLine;
+            rightLine = anchor_lastHLine->rightLine;
+            y = anchor_lastHLine->getContentBottom() - contentTop + topMargin;
+            page = anchor_lastHLine->page;
+            return; //函数到此结束
+        }
+
+        if(bottom_sep_line
+            && anchor_lastHLine->page == bottom_sep_line->getPage())
+        { //上一条水平标线到bottom_sep_line
+            if(bottom_sep_line->getTop() - anchor_lastHLine->getContentBottom()
+                >= contentBottom - contentTop + topMargin)
+            // 如果间距足够容纳本hline
+            {
+                leftLine = anchor_lastHLine->leftLine;
+                rightLine = anchor_lastHLine->rightLine;
+                y = anchor_lastHLine->getContentBottom() - contentTop + topMargin;
+                page = anchor_lastHLine->page;
+                return; //函数到此结束
+            }
+        }
+        else { //上一条水平标线到页底
+            if(anchor_lastHLine->page->getBottomLineY() - anchor_lastHLine->getContentBottom()
+                    >= contentBottom - contentTop + topMargin)
+            // 如果间距足够容纳本hline
+            {
+                leftLine = anchor_lastHLine->leftLine;
+                rightLine = anchor_lastHLine->rightLine;
+                y = anchor_lastHLine->getContentBottom() - contentTop + topMargin;
+                page = anchor_lastHLine->page;
+                return; //函数到此结束
+            }
+        }
+
+        // 执行到这儿，表明没有向前转移。
+
         // 获取分栏分隔线
         //ColumnsSeparate *top_sep_line = leftLine->getTopColumnsSeparate();
+        // 注：只有同页的分栏分隔线，才作为顶部锚定线。
         if(top_sep_line && top_sep_line->getPage() == page) {
             // 这里的page_topMargin的名称不是很恰当
-            y = top_sep_line->y + page_topMargin - contentTop;
+            //qDebug() << __dstr() << "anchorTo top_sep_line";
+            y = top_sep_line->getBottom() + page_topMargin - contentTop;
         } else {
             // 没有返回sep_line，则使用page的topLine
             y = page->getTopLineY() + page_topMargin - contentTop;
@@ -327,9 +439,10 @@ void AnchorObj_HLine::dealAnchor(AnchorObj_HLine*anchor_lastHLine) noexcept {
     return;
     /** 实验版本 END */
 
+#else
 
         //if(anchor_lastHLine->page != page && anchor_lastHLine->y+topMargin <)
-
+    if(!anchor_lastHLine) return;
         //if(topMargin >= -1e-3) {
     if(page && anchor_lastHLine->page && page->index < anchor_lastHLine->page->index)
     {
@@ -395,6 +508,8 @@ void AnchorObj_HLine::dealAnchor(AnchorObj_HLine*anchor_lastHLine) noexcept {
             }
         }
     }
+
+#endif
 }
 
 void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
@@ -472,16 +587,11 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
         //qDebug() << name << "y:" << y;
     //}
 
-    float impact_hscale_width = 0, solid_width = 0;
-
-    bool isHscaleKilled = false;
-
     //int this_contentLength = 0; //内容索引
 
     while(1) {
         obj->dealLayout();    //处理布局
         obj->tryMergeRight(); //尝试合并
-        //this_contentLength += obj->contentLength(); //内容索引rd
         auto& objInfo = obj->objInfo();
         if(objInfo.anchorInfo.isRealHeight) { //看它是否具备“真实”高度
 #ifdef Q_OS_ANDROID
@@ -492,63 +602,11 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
             max_obj_y = std::max(max_obj_y,obj->y+obj->height);
 #endif
         }
-        if(qmlItem) {
-            if(objInfo.anchorInfo.impact_hscale) {
-                impact_hscale_width += obj->width;  //影响水平放缩的obj的宽度
-            }
-            if(objInfo.anchorInfo.isSelfWidth){
-                solid_width += obj->width;
-            }
-            if(objInfo.anchorInfo.kill_hscale) {
-                isHscaleKilled = true; //取消水平放缩
-            }
-        }
         if(obj->rightObj == nullptr) {
             rightObj = obj;
             break;
         }
         obj = obj->rightObj;
-    }
-
-    // Horizontal_Scale原则
-    // 不允许修改原有的任何数据，只可以修改可见的Qml对象。也就是说，水平放缩仅仅影响视觉效果。
-    // 注意，在输出PDF时，需要考虑水平放缩。
-
-    // solid_width: 真实内容宽度
-    if(isHscaleKilled) { //水平放缩受到禁用，但万一上一次应用了水平放缩呢？
-        if(this->horizontal_scale > 1.000001) {
-            this->horizontal_scale = 1.0;  //撤回水平放缩
-            obj = leftObj;
-            while(obj) {
-                if(obj->objInfo().anchorInfo.impact_hscale) {
-                   obj->showHScale(1.0,0,false);
-                } else {
-                    if(Helper::isQmlItemValid(obj->qmlItem)) {
-                        obj->qmlItem->setX(obj->x);
-                    }
-                }
-                obj = obj->rightObj;
-            }
-        }
-    } else if(qmlItem && logic_nextHLine) {
-        //计算水平放缩
-        float new_horizontal_scale = (width - solid_width + impact_hscale_width) / impact_hscale_width;
-        //if(qAbs(new_horizontal_scale - this->horizontal_scale) > 0.01) {
-            this->horizontal_scale = std::max(new_horizontal_scale,1.0f);
-            //赋予水平放缩
-            obj = leftObj;
-            float addX = 0;
-            while(obj) {
-                if(obj->objInfo().anchorInfo.impact_hscale) {
-                    addX += obj->showHScale(this->horizontal_scale,addX,false);
-                } else {
-                    if(Helper::isQmlItemValid(obj->qmlItem)) {
-                        obj->qmlItem->setX(obj->qmlItem->x() + addX);
-                    }
-                }
-                obj = obj->rightObj;
-            }
-        //}
     }
 
     //更新contentTop/Bottom
@@ -606,9 +664,11 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
                 createNextLine();
             }
             logic_nextHLine->insertOnLeft(dropObj); //从左端插入
+            dropObj->x = logic_nextHLine->x; //[2025/12/1 added]
+            //qDebug() << "dropObj->x = " << dropObj->x;
             dropObj->tryMergeRight(); //溢出时，自动尝试合并
             dropObj->dealLayout();
-
+            //qDebug() << "dropObj->x2 = " << dropObj->x;
         } else break;
     }
 
@@ -631,6 +691,70 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
         }
     }
 
+    // dealUI [2025/12/2 added]
+    float impact_hscale_width = 0, solid_width = 0;
+
+    bool isHscaleKilled = false;
+
+    obj = leftObj;
+
+    while(obj) {
+        obj->dealUI();
+        auto& objInfo = obj->objInfo();
+        if(qmlItem) {
+            if(objInfo.anchorInfo.impact_hscale) {
+                impact_hscale_width += obj->width;  //影响水平放缩的obj的宽度
+            }
+            if(objInfo.anchorInfo.isSelfWidth){
+                solid_width += obj->width;
+            }
+            if(objInfo.anchorInfo.kill_hscale) {
+                isHscaleKilled = true; //取消水平放缩
+            }
+        }
+        obj = obj->rightObj;
+    }
+
+    // Horizontal_Scale原则
+    // 不允许修改原有的任何数据，只可以修改可见的Qml对象。也就是说，水平放缩仅仅影响视觉效果。
+    // 注意，在输出PDF时，需要考虑水平放缩。
+
+    // solid_width: 真实内容宽度
+    if(isHscaleKilled) { //水平放缩受到禁用，但万一上一次应用了水平放缩呢？
+        if(this->horizontal_scale > 1.000001) {
+            this->horizontal_scale = 1.0;  //撤回水平放缩
+            obj = leftObj;
+            while(obj) {
+                if(obj->objInfo().anchorInfo.impact_hscale) {
+                    obj->showHScale(1.0,0,false);
+                } else {
+                    if(Helper::isQmlItemValid(obj->qmlItem)) {
+                        obj->qmlItem->setX(obj->x);
+                    }
+                }
+                obj = obj->rightObj;
+            }
+        }
+    } else if(qmlItem && logic_nextHLine) {
+        //计算水平放缩
+        float new_horizontal_scale = (width - solid_width + impact_hscale_width) / impact_hscale_width;
+        //if(qAbs(new_horizontal_scale - this->horizontal_scale) > 0.01) {
+        this->horizontal_scale = std::max(new_horizontal_scale,1.0f);
+        //赋予水平放缩
+        obj = leftObj;
+        float addX = 0;
+        while(obj) {
+            if(obj->objInfo().anchorInfo.impact_hscale) {
+                addX += obj->showHScale(this->horizontal_scale,addX,false);
+            } else {
+                if(Helper::isQmlItemValid(obj->qmlItem)) {
+                    obj->qmlItem->setX(obj->qmlItem->x() + addX);
+                }
+            }
+            obj = obj->rightObj;
+        }
+        //}
+    }
 
     if(hasDrop && logic_nextHLine) {
         //logic_nextHLine->moveFlowAttacher(drop_contentLength); //移动附着符
@@ -649,7 +773,6 @@ void AnchorObj_HLine::dealLayout() //hLine处理布局，实现溢出和收缩
     //     qDebug() << name <<"page changed:"<<(old_page ? old_page->index : -1)
     //              << page->index << "old_y: " << old_y << "new_y: " << y;
     // }
-
 }
 
 void AnchorObj_HLine::forceCalculateHorizontalScale() noexcept {
@@ -714,7 +837,11 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
                 //qDebug() << "page->index=" << page->index;
                 //qDebug() << "page-Height = " << page->height;
                 //qDebug() << "y=>" << y;
-                page_topMargin = getContentTop() - page->getTopLineY();
+                if(top_sep_line && top_sep_line->getPage() == page) {
+                    page_topMargin = getContentTop() - top_sep_line->y;
+                } else {
+                    page_topMargin = getContentTop() - page->getTopLineY();
+                }
                 //qDebug() << name << ".page_topMargin => " << page_topMargin;
             }
             requestUpdateAnchorNextHLine();

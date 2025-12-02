@@ -9,8 +9,8 @@ Rectangle {
     Triangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.left
-        width: 8
-        height: 7
+        width: 9
+        height: 12
         fillColor: theme.accent_dark
         dir: Triangle.Dir.Right
     }
