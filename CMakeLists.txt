@@ -14,7 +14,7 @@ set(CMAKE_BUILD_PARALLEL_LEVEL 8)
 set(CMAKE_UNITY_BUILD ON)
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 3)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick PrintSupport)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Quick PrintSupport Gui GuiPrivate)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -23,6 +23,7 @@ qt_add_executable(appSoupleEdit
     vcpkg.json
     main.rc
 )
+
 
 #include_directories(C:/Users/guest0/Downloads/poppler-23.07.0/qt6/src)
 
@@ -236,6 +237,9 @@ qt_add_qml_module(appSoupleEdit
         SOURCES columns_separate.h
         SOURCES columns_separate.cpp
         QML_FILES SepLine.qml
+        QML_FILES FlatDoubleSpinBox.qml
+        QML_FILES TToolBar_Start.qml
+        QML_FILES ComboBox_forFontSize.qml
         #RESOURCES vcpkg.json
 )
 
@@ -254,8 +258,12 @@ if(WIN32)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/pdfium-win-x64/include)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/freetype/include)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/java/include)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/zlib/include)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/xlsx/include)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/pdfium-win-x64/lib/pdfium.dll.lib)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/dwmapi.lib)
+    target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/xlsx/libxlsxwriter.a)
+    target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/zlib/zlib.lib)
     #target_link_libraries(appSoupleEdit PRIVATE E:/freetype/freetype2410.lib)
     #target_link_libraries(appSoupleEdit PRIVATE "C:/Program Files/Java/jdk1.8.0_331/lib/jvm.lib")
 endif()
@@ -270,8 +278,6 @@ endif()
 target_link_libraries(appSoupleEdit
     PRIVATE Qt6::Quick
     PRIVATE Qt6::PrintSupport
-    #PRIVATE Qt6::
-    #PRIVATE PkgConfig::POPPLER_CPP
 )
 
 include(GNUInstallDirs)

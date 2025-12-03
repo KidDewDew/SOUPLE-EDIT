@@ -312,79 +312,91 @@ float AnchorObj_FlowText::showHScale(float hscale,float addX,bool justQueryAddWi
     }
 }
 
+void AnchorObj_FlowText::userUpdateText(const QString& new_text)
+{
+    if(!hline || text == new_text) return;
+
+    // // 序列化更新前的自己
+    // QByteArray old_bytes = souple::serialization::serialize(this);
+
+    QString old_text = text;
+    text = new_text;
+    calcWidth();
+
+    // 处理redo、undo
+
+    Turnback* tb = TurnbackManager::addTurnback(Turnback::AC_Content_Flow);
+    tb->attach_obj_id = id;
+    tb->flow_position = 0;
+    this->addFlowAttacher(tb); //添加附着符
+    int old_length = old_text.length();
+    int new_length = text.length();
+
+    // undo原理：从attacher开始的一段文本(len=new_length)删除掉，然后反序列化生成old_text.
+    tb->undo = [=,font=font](Turnback*tb,Obj*start_obj)->void {
+        //咱们给第一个text修改为old_text
+        int i = 0,rest_length = new_length;
+        auto hline = start_obj->be<AnchorObj*>()->hline->be<HorLine_Base*>();
+        for(auto[obj,start_i,len] : hline->getWalker((AnchorObj*)start_obj,tb->flow_position,new_length)) {
+            AnchorObj_FlowText* t = obj->as<AnchorObj_FlowText*>();
+            if(! t) {
+                if(i>0 || ! obj) return;
+                t = new AnchorObj_FlowText;
+                t->font = font;
+                t->text = "";
+                SoupleManager::registerObj(t);
+                obj->insertOnLeft(t);
+                return;
+            }
+            qDebug() << "undo-textup-walk:" << t->text;
+            if(start_i == 0)
+                t->text.slice(qMin(len,t->text.length()));
+            else {
+                auto leftstr = t->text.left(start_i);
+                t->text = leftstr + t->text.slice(qMin(start_i+len,t->text.length()));
+            }
+            if(i == 0) {
+                //第一个文本
+                t->text.push_front(old_text);
+            }
+            if(t->text.length() == 0) {
+                t->removeSelf(true); //to die
+            }
+            else if(Helper::isQmlItemValid(t->qmlItem))
+                t->qmlItem->setProperty("text",t->text);
+            ++i;
+        }
+    };
+    tb->redo = [=,font=font,new_text=text](Turnback*tb,Obj*start_obj)->void {
+        //咱们给第一个text修改为new_text
+        int i = 0,rest_length = old_length;
+        auto hline = start_obj->be<AnchorObj*>()->hline->be<HorLine_Base*>();
+        for(auto[obj,start_i,len] : hline->getWalker((AnchorObj*)start_obj,tb->flow_position,new_length)) {
+            AnchorObj_FlowText* t = obj->as<AnchorObj_FlowText*>();
+            if(! t) {
+                if(i == 0) { //text对象死掉了。。
+
+                }
+                return;
+            }
+            t->text.slice(start_i,qMin(len,t->text.length()-start_i));
+            if(i == 0) {
+                //第一个文本
+                t->text.push_front(new_text);
+            }
+            if(Helper::isQmlItemValid(t->qmlItem))
+                t->qmlItem->setProperty("text",t->text);
+            ++i;
+        }
+    };
+}
+
 int AnchorObj_FlowText::dealCommandFromQmlItem(int command,const QVariant& arg)
 {
     //qDebug() << "FlowText 接收: " << command << arg;
     switch(command) {
     case Helper::TEXT_UP: {
-        QString old_text = text;
-        text = arg.toString();
-        calcWidth();
-        if(!hline || text == old_text) break;
-        //break;
-        Turnback* tb = TurnbackManager::addTurnback(Turnback::AC_Content_Flow);
-        tb->attach_obj_id = id;
-        tb->flow_position = 0;
-        this->addFlowAttacher(tb); //添加附着符
-        int old_length = old_text.length();
-        int new_length = text.length();
-        // undo原理：从attacher开始的一段文本 替换 为原来的文本
-        tb->undo = [=,font=font](Turnback*tb,Obj*start_obj)->void {
-            //咱们给第一个text修改为old_text
-            int i = 0,rest_length = new_length;
-            auto hline = start_obj->be<AnchorObj*>()->hline->be<HorLine_Base*>();
-            for(auto[obj,start_i,len] : hline->getWalker((AnchorObj*)start_obj,tb->flow_position,new_length)) {
-                AnchorObj_FlowText* t = obj->as<AnchorObj_FlowText*>();
-                if(! t) {
-                    if(i>0 || ! obj) return;
-                    t = new AnchorObj_FlowText;
-                    t->font = font;
-                    t->text = "";
-                    SoupleManager::registerObj(t);
-                    obj->insertOnLeft(t);
-                    return;
-                }
-                qDebug() << "undo-textup-walk:" << t->text;
-                if(start_i == 0)
-                    t->text.slice(qMin(len,t->text.length()));
-                else {
-                    auto leftstr = t->text.left(start_i);
-                    t->text = leftstr + t->text.slice(qMin(start_i+len,t->text.length()));
-                }
-                if(i == 0) {
-                    //第一个文本
-                    t->text.push_front(old_text);
-                }
-                if(t->text.length() == 0) {
-                    t->removeSelf(true); //to die
-                }
-                else if(Helper::isQmlItemValid(t->qmlItem))
-                    t->qmlItem->setProperty("text",t->text);
-                ++i;
-            }
-        };
-        tb->redo = [=,font=font,new_text=text](Turnback*tb,Obj*start_obj)->void {
-                //咱们给第一个text修改为new_text
-                int i = 0,rest_length = old_length;
-                auto hline = start_obj->be<AnchorObj*>()->hline->be<HorLine_Base*>();
-                for(auto[obj,start_i,len] : hline->getWalker((AnchorObj*)start_obj,tb->flow_position,new_length)) {
-                    AnchorObj_FlowText* t = obj->as<AnchorObj_FlowText*>();
-                    if(! t) {
-                        if(i == 0) { //text对象死掉了。。
-
-                        }
-                        return;
-                    }
-                    t->text.slice(start_i,qMin(len,t->text.length()-start_i));
-                    if(i == 0) {
-                        //第一个文本
-                        t->text.push_front(new_text);
-                    }
-                    if(Helper::isQmlItemValid(t->qmlItem))
-                        t->qmlItem->setProperty("text",t->text);
-                    ++i;
-                }
-            };
+        userUpdateText(arg.toString());
         break;
     }
     case Helper::CURSOR_CHANGE: { //光标移动

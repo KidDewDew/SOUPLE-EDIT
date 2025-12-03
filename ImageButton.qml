@@ -12,9 +12,11 @@ Rectangle {
     property alias image: img
     property bool down: marea.pressed
     property bool hovered: marea.containsMouse
+    property real padding: 4
     Image {
         id: img
         anchors.fill: parent
+        anchors.margins: button.padding
         source: button.source
         scale: marea.pressed ? 0.95 : 1.0
         fillMode: Image.PreserveAspectFit

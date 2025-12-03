@@ -32,6 +32,10 @@
         <file>icon_rotate.png</file>
         <file>icon_fontEdit.png</file>
         <file>nav_down.svg</file>
+        <file alias="A_add_dark.png">images/A_add_dark.png</file>
+        <file alias="A_add_light.png">images/A_add_light.png</file>
+        <file alias="A_sub_dark.png">images/A_sub_dark.png</file>
+        <file alias="A_sub_light.png">images/A_sub_light.png</file>
     </qresource>
     <qresource prefix="/shader">
         <file alias="stroke.frag">Shader/stroke.frag.qsb</file>

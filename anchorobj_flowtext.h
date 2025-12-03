@@ -124,6 +124,8 @@ public:
         width = metrics.horizontalAdvance(text);
     }
 
+    void userUpdateText(const QString& new_text);
+
     template<typename Serial>
     void serialize(Serial& serial) {
         serial / SOUPLE_PP(id)

@@ -1068,48 +1068,76 @@ void Pdf2Souple::imp_dealText(FPDF_TEXTPAGE textpage,std::vector<shared_ptr<PDFO
                         .fill_color = QColor::fromRgb(fillColor.R,fillColor.G,fillColor.B,fillColor.A),
                         .strokeWidth = strokeWidth,
                         .isFill = isFill,.isStroke = isStroke,.ascent_y = (float)ascent_y};
-        } else
-            if(font == curText->font &&
-                   strokeColor.R == curText->stroke_color.red() &&
-                   strokeColor.B == curText->stroke_color.blue() &&
-                   strokeColor.G == curText->stroke_color.green() &&
-                   strokeColor.A == curText->stroke_color.alpha()
-                   && curText->rect.right + TEXT_MERGE_OFFSET >= rect.left //接续
-                   && abs(curText->rect.top - rect.top) < 0.5
-                   && abs(curText->rect.bottom - rect.bottom) < 0.5
-                   && isFill == curText->isFill && isStroke == curText->isStroke
-                   && abs(strokeWidth - curText->strokeWidth) < 1e-3
-                )
-        {
-            curText->rect.right = rect.right; //延长右边界
-            curText->text += QString::fromUtf16(buf);
-        } else { //不连续
-            list.push_back(curText->toPDFOBJ());
-            //看看要不要插入PrePHRect
-            if(
-                curText->rect.right + TEXT_MERGE_OFFSET < rect.left
-                && rect.left-curText->rect.right < Helper::cm2pixel(0.4)
-                && abs(curText->rect.top - rect.top) < 0.5
-                && abs(curText->rect.bottom - rect.bottom) < 0.5) {
-                auto prerect = std::make_shared<PDFOBJ_PrePHRect>();
-                prerect->rect = QRectF(curText->rect.right,
-                                       (rect.top+rect.bottom)*0.5f-1.0f,rect.left-curText->rect.right,
-                                       2.0f);
-                prerect->render_id = 0;
-                prerect->visible = true;
-                //prerect->page_obj = text
-                list.push_back(prerect);
+        } else {
+            bool lookLike =
+                font == curText->font &&
+                strokeColor.R == curText->stroke_color.red() &
+                strokeColor.B == curText->stroke_color.blue() &&
+                strokeColor.G == curText->stroke_color.green() &&
+                strokeColor.A == curText->stroke_color.alpha()
+                && isFill == curText->isFill && isStroke == curText->isStroke
+                && abs(strokeWidth - curText->strokeWidth) < 1e-3;
+
+            bool y_cond = abs(curText->rect.top - rect.top) < 0.5
+                         && abs(curText->rect.bottom - rect.bottom) < 0.5;
+
+            if(lookLike
+                && curText->rect.right + TEXT_MERGE_OFFSET >= rect.left //接续
+                && y_cond
+                    )
+            {
+                curText->rect.right = rect.right; //延长右边界
+                curText->text += QString::fromUtf16(buf);
+            } else { //不连续
+
+                // [暂时作废] 考虑到表格解析、分栏解析啊。
+                // if(lookLike && y_cond) {
+                //     //只是因为水平不邻接，判断是否可以使用空格补充。[2025/12/3 added]
+                //     float xoffset = rect.left - curText->rect.right;
+                //     QFontMetricsF fm(font);
+                //     float width_of_spacing = fm.horizontalAdvance(' '); //空格宽度
+                //     int num_of_spacing = std::round(xoffset / width_of_spacing);
+                //     if(std::abs(num_of_spacing * width_of_spacing - xoffset)
+                //         <= TEXT_MERGE_OFFSET) { //可以使用空格填补
+                //         curText->rect.right = rect.right; //延长右边界
+                //         for(int i = 0; i < num_of_spacing; ++i)
+                //             curText->text.push_back(' ');
+                //         curText->text += QString::fromUtf16(buf);
+                //         continue;
+                //     }
+                // }
+
+                list.push_back(curText->toPDFOBJ());
+                //看看要不要插入PrePHRect
+                if(
+                    curText->rect.right + TEXT_MERGE_OFFSET < rect.left
+                    && rect.left-curText->rect.right < Helper::cm2pixel(0.1)
+                    && abs(curText->rect.top - rect.top) < 0.5
+                    && abs(curText->rect.bottom - rect.bottom) < 0.5) {
+                    auto prerect = std::make_shared<PDFOBJ_PrePHRect>();
+
+                    // prerect的y坐标和高度保持和`左边`的文本一致。
+                    prerect->rect = QRectF(curText->rect.right,
+                                           curText->rect.top,
+                                           rect.left-curText->rect.right,
+                                           curText->rect.bottom - curText->rect.top);
+                    prerect->render_id = 0;
+                    prerect->visible = true;
+                    //prerect->page_obj = text
+                    list.push_back(prerect);
+                }
+                delete curText;
+                curText = new Text{.text=str,.font = font,.rect = rect,
+                        .stroke_color = QColor::fromRgb(strokeColor.R,strokeColor.G,strokeColor.B,strokeColor.A),
+                        .fill_color = QColor::fromRgb(fillColor.R,fillColor.G,fillColor.B,fillColor.A),
+                        .strokeWidth = strokeWidth,
+                        .isFill = isFill,
+                        .isStroke = isStroke,
+                        .ascent_y = (float)ascent_y};
             }
-            delete curText;
-            curText = new Text{.text=str,.font = font,.rect = rect,
-                    .stroke_color = QColor::fromRgb(strokeColor.R,strokeColor.G,strokeColor.B,strokeColor.A),
-                    .fill_color = QColor::fromRgb(fillColor.R,fillColor.G,fillColor.B,fillColor.A),
-                    .strokeWidth = strokeWidth,
-                    .isFill = isFill,
-                    .isStroke = isStroke,
-                    .ascent_y = (float)ascent_y};
         }
     }
+
     if(curText) {
         list.push_back(curText->toPDFOBJ());
         delete curText;
@@ -1969,14 +1997,96 @@ void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFO
         bool underpoint = false;
         bool deleteline = false;
         bool upperline = false;
-
+        QColor underline_color;
+        QColor underpoint_color;
+        QColor upperline_color;
     };
-    QFont f;
-    //f. h
+
+    // tip: 文档软件认为文本和占位矩形，它们都是可以附加text-decoration的元素。
     struct Text {
         int index;
-        PDFOBJ_TEXT* obj_text;
+        PDFOBJ_TEXT* obj_text = 0;
+        PDFOBJ_PrePHRect* obj_rect = 0;
         std::vector<CharStyle> char_styles; //每个字符的样式
     };
+
+    struct HorLinePath {
+        int index;
+        PDFOBJ_PATH::Line line;
+    };
+
+    // to-do...
+    struct UnderPoint_like {
+        bool isPathType; //是路径吗？否则是文本。
+        int index_of_text_list; //映射到text_list的index
+    };
+
+    vector<Text> text_list;
+    vector<HorLinePath> hlines;
+
+    // S1: 找出所有文本、水平线条路径、小圆点路径、'.'文本
+
+    for(auto [index,obj] : objList | views::enumerate) {
+        PDFOBJ_TEXT* pdfobj_text = dynamic_cast<PDFOBJ_TEXT*>(obj.get());
+        PDFOBJ_PrePHRect* pdfobj_phrect = dynamic_cast<PDFOBJ_PrePHRect*>(obj.get());
+        if(pdfobj_text || pdfobj_phrect) {
+            text_list.push_back({});
+            auto& text = text_list.back();
+            text.index = index;
+            text.obj_text = pdfobj_text;
+            text.obj_rect = pdfobj_phrect;
+            text.char_styles.resize(pdfobj_text->text.length());
+            break;
+        }
+
+        PDFOBJ_PATH* pdfobj_path = dynamic_cast<PDFOBJ_PATH*>(obj.get());
+        if(pdfobj_path) {
+            vector<PDFOBJ_PATH::Line> lines;
+            if(pdfobj_path->toLinesIfRect(lines)
+                && lines.size() == 1) {
+                if(lines[0].x2 - lines[0].x1 > Helper::point2pixel(6)
+                    && lines[0].y2 - lines[0].y1 < Helper::point2pixel(4)) {
+                    hlines.push_back({});
+                    hlines.back().index = index;
+                    hlines.back().line = lines[0];
+                }
+            }
+        }
+    }
+
+    if(text_list.empty()) return;
+
+    // 按底部y坐标排序
+    ranges::sort(text_list,[](Text& t1,Text& t2){
+        return t1.obj_text->rect.bottom() < t2.obj_text->rect.bottom();
+    });
+
+    // S2: 下划线、删除线、上划线判定
+    for(auto& hline : hlines) // 遍历所有水平线条
+    {
+        // 找出第1个top >= hline.bottom的text或rect
+        auto it = std::lower_bound(text_list.begin(),text_list.end(),
+                                   hline.line.y2,[](Text& text,float y){
+            return text.obj_text->rect.top() < y;
+        });
+        if(it == text_list.end()) --it;
+        // 找出所有"可以"把该hline作为下划线、删除线、上划线的text or rect
+        vector<Text*> as_underline_text;
+        vector<Text*> as_deleteline_text;
+        //vector<Text*> as_upperline_text;
+        while(true) {
+            auto& text = *it;
+            if(text.obj_text->rect.left() >= hline.line.x2
+        || text.obj_text->rect.right() <= hline.line.x1)
+                continue;
+            //check for 下划线
+            if(std::abs(text.obj_text->rect.bottom() - hline.line.y2) < Helper::point2pixel(0.1))
+            {
+                as_underline_text.push_back(&text);
+            }
+            if(it == text_list.begin()) break;
+            --it;
+        }
+    }
 }
 

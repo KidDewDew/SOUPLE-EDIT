@@ -107,6 +107,12 @@ void BlockInner_HorLine::dealLayout()
 
     //if(hasDrop && nextLine) SoupleManager::requestUpdateHLine(nextLine);
 
+    obj = leftObj;
+    while(obj) {
+        obj->dealUI();
+        obj = obj->rightObj;
+    }
+
 }
 
 QQuickItem* BlockInner_HorLine::generateQmlItem()

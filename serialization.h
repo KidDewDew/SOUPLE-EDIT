@@ -26,6 +26,7 @@
 #include <QFont>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QFile>
 #include "LLException.h"
 
 class Register_ID_Repeat_Error : std::exception {};
@@ -282,6 +283,15 @@ namespace souple {
         static inline QHash<std::string, serialization_class_info>& get_typename_id_map() {
             static QHash<std::string, serialization_class_info> instance;
             return instance;
+        }
+
+        template<typename T>
+        // 只对单对象进行序列化，返回QByteArray
+        static inline QByteArray serialize(T* obj) {
+            QByteArray bytes;
+            QDataStream ds(&bytes,QIODevice::WriteOnly);
+            serialize(obj,ds);
+            return bytes;
         }
 
         template<typename T>

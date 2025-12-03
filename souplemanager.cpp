@@ -640,8 +640,9 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
             //qDebug() << "focus:" << focusObject;
             if(!focusObject || focusObject->isWindowType()) { //windowType表明它没有具体焦点
                 Qt::KeyboardModifiers km = ke->modifiers();
-                //if(selected_qmlItem_id
-                return true; //国旅
+                // 把事件交给SelectionManager处理
+                SelectionManager::dealKeyEvent(ke);
+                return true; //过滤
             }
         } else {
             Obj *who = MagicalCursor::at_who();

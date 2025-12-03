@@ -547,3 +547,8 @@ SelectionManager::getSelectedHLineRange() {
     }
     return {0,0}; //不接续
 }
+
+void SelectionManager::dealKeyEvent(QKeyEvent* keyEvent)
+{
+    //keyEvent->
+}

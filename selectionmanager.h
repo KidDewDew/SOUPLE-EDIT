@@ -6,6 +6,7 @@
 #include <QObject>
 #include <vector>
 #include <QQuickItem>
+#include <QKeyEvent>
 
 class HorLine_Base;
 
@@ -85,6 +86,9 @@ public:
     Q_INVOKABLE static QString toString() { return ""; };
 
     //static
+
+    // 处理键盘操作。调用前，请确定该事件真的作用于Selection-Content.
+    static void dealKeyEvent(QKeyEvent* keyEvent);
 
     //@brief 要求重新计算选择内容，从头开始。
     static void recalculateSelection() noexcept;
