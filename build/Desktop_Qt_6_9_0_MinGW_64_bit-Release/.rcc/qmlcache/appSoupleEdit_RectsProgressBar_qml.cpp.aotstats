@@ -1,0 +1,76 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 423,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method lighter, returning QVariant -> QColor stored as QVariant",
+                        "functionName": "accent2",
+                        "line": 6
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 140,
+                        "errorMessage": "",
+                        "functionName": "onValueChanged",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "mixColors",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name numRect",
+                        "functionName": "model",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 357,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "color",
+                        "line": 27
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "x",
+                        "line": 28
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name bar",
+                        "functionName": "width",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot access value for name bar",
+                        "functionName": "height",
+                        "line": 31
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/RectsProgressBar.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

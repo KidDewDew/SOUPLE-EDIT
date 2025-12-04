@@ -1,0 +1,172 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 159,
+                        "errorMessage": "Can't assign to read-only property drag",
+                        "functionName": "terminateDrag",
+                        "line": 72
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 281,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 127,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 139,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 38
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "Cannot load property hovered from (component in E:/SoupleEdit/SOUPLE-EDIT-master/InnerHorLine.qml)::parent with type QQuickItem.",
+                        "functionName": "visible",
+                        "line": 42
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 633,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 58
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 575,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 15,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 82
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 86
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 14,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 96
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 287,
+                        "errorMessage": "",
+                        "functionName": "fillColor",
+                        "line": 97
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "onFillColorChanged",
+                        "line": 99
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 94
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 275,
+                        "errorMessage": "Cannot find name selectedObj",
+                        "functionName": "onPressed",
+                        "line": 106
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 509,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onMouseYChanged",
+                        "line": 111
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 477,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onMouseXChanged",
+                        "line": 115
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 103
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/InnerHorLine.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

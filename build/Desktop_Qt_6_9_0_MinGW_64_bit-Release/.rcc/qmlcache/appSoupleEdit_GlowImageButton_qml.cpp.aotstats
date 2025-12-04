@@ -1,0 +1,156 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 454,
+                        "errorMessage": "",
+                        "functionName": "implicitWidth",
+                        "line": 11
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 287,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 135,
+                        "errorMessage": "",
+                        "functionName": "scale",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 133,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 19
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 89,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 81,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "scale",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 15,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 27
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 271,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 28
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 108,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 25
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 39
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 46
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 40
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 52
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 43,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 50
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/GlowImageButton.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

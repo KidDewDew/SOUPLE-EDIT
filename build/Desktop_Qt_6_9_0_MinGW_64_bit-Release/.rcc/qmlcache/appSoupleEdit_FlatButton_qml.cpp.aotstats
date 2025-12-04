@@ -1,0 +1,236 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 303,
+                        "errorMessage": "",
+                        "functionName": "implicitWidth",
+                        "line": 6
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 136,
+                        "errorMessage": "",
+                        "functionName": "implicitHeight",
+                        "line": 7
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 188,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "accent",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 21
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 23
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 106,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "w",
+                        "line": 49
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "h",
+                        "line": 50
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "Cannot access value for name foldV",
+                        "functionName": "d",
+                        "line": 52
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 253,
+                        "errorMessage": "",
+                        "functionName": "darkv",
+                        "line": 55
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 239,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method vector2d, returning QVariant -> QVector2D stored as QVariant",
+                        "functionName": "light_pos",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 368,
+                        "errorMessage": "",
+                        "functionName": "lx",
+                        "line": 57
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 195,
+                        "errorMessage": "",
+                        "functionName": "light_r",
+                        "line": 58
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 69
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 75
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 214,
+                        "errorMessage": "",
+                        "functionName": "resolution",
+                        "line": 79
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "sourceItem",
+                        "line": 83
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 84
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 89
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 54,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 95
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 96
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 109,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 117
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 176,
+                        "errorMessage": "",
+                        "functionName": "onMouseXChanged",
+                        "line": 118
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 115
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/FlatButton.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

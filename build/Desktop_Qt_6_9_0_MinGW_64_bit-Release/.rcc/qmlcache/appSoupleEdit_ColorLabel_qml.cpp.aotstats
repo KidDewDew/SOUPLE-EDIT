@@ -1,0 +1,28 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "Cannot access value for name bgColor",
+                        "functionName": "color",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 13,
+                        "errorMessage": "Cannot access value for name parent",
+                        "functionName": "fill",
+                        "line": 10
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/ColorLabel.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

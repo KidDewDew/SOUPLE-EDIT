@@ -1,0 +1,52 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"fill\".",
+                        "functionName": "fill",
+                        "line": 6
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "Cannot access value for name transition_time",
+                        "functionName": "duration",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "Cannot access value for name transition_time",
+                        "functionName": "duration",
+                        "line": 21
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 14,
+                        "errorMessage": "Cannot access value for name transition_time",
+                        "functionName": "duration",
+                        "line": 29
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 14,
+                        "errorMessage": "Cannot access value for name transition_time",
+                        "functionName": "duration",
+                        "line": 37
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/TStackView.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

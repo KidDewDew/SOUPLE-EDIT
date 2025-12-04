@@ -1,0 +1,32 @@
+{
+    "classes": [
+        {
+            "className": "Pdf2Souple",
+            "lineNumber": 58,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "pdf_filename",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "name": "loadPdf",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "Pdf2Souple",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "pdf2souple.h",
+    "outputRevision": 69
+}

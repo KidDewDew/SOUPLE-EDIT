@@ -1,0 +1,716 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 314,
+                        "errorMessage": "",
+                        "functionName": "die",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "setLetterSpacing",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 198,
+                        "errorMessage": "",
+                        "functionName": "onFocusChanged",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "cpp_updateText",
+                        "line": 51
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "cpp_overflow",
+                        "line": 60
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "insertNewObj",
+                        "line": 76
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 1003,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTextChanged",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 986,
+                        "errorMessage": "Cannot access value for name textEdit",
+                        "functionName": "getCursorFromRight",
+                        "line": 376
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 587,
+                        "errorMessage": "Cannot access value for name textEdit",
+                        "functionName": "getCursorFromLeft",
+                        "line": 381
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 131,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 118,
+                        "errorMessage": "Cannot access value for name focus",
+                        "functionName": "onTriggered",
+                        "line": 41
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 2079,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onPressed",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 225,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 121
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 124
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "Cannot load property hovered from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_TextEdit.qml)::parent with type QQuickItem.",
+                        "functionName": "visible",
+                        "line": 128
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 61,
+                        "durationMicroseconds": 214,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 177,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 140
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 61,
+                        "durationMicroseconds": 217,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 143
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 525,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 147
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 494,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 149
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 59,
+                        "durationMicroseconds": 200,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 159
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 888,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTextChanged",
+                        "line": 170
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 164
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 167
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 168
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 193,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 180
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 109,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 179
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 183
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 184
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 881,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTextChanged",
+                        "line": 192
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 191
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"clicked\".",
+                        "functionName": "onClicked",
+                        "line": 202
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 167,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 199
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 201,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 214
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "initialValue",
+                        "line": 219
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 411,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onValueChanged",
+                        "line": 225
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 222
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 223
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 723,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCheckedChanged",
+                        "line": 242
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 240
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 247
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 248
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 252
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 255
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 187,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 258
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 491,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onValueChanged",
+                        "line": 264
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 261
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "value",
+                        "line": 262
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 858,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 271
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"visible\".",
+                        "functionName": "visible",
+                        "line": 276
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 136,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onColorChanged",
+                        "line": 282
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 277
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 279
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 14,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 280
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 734,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCheckedChanged",
+                        "line": 293
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 291
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 298
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 299
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 304
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"visible\".",
+                        "functionName": "visible",
+                        "line": 309
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onColorChanged",
+                        "line": 315
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 310
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 312
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 313
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 780,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCheckedChanged",
+                        "line": 325
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 324
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 330
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 331
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 680,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCheckedChanged",
+                        "line": 337
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 47,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 336
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 342
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 343
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCheckedChanged",
+                        "line": 349
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 348
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 351
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 352
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCheckedChanged",
+                        "line": 358
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 357
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 360
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 361
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCheckedChanged",
+                        "line": 367
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 366
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 369
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 370
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "Cannot access value for name sWidth",
+                        "functionName": "radius",
+                        "line": 423
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot access value for name sColor",
+                        "functionName": "color",
+                        "line": 425
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 16,
+                        "errorMessage": "Cannot access value for name sWidth",
+                        "functionName": "spread",
+                        "line": 426
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Obj_TextEdit.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

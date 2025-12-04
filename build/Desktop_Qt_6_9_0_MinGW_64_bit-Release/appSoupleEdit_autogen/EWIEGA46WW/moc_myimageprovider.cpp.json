@@ -1,0 +1,48 @@
+{
+    "classes": [
+        {
+            "className": "MyImageProvider",
+            "lineNumber": 6,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "name": "removeImage",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "image",
+                            "type": "QImage"
+                        }
+                    ],
+                    "index": 1,
+                    "name": "addImage",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "MyImageProvider",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QQuickImageProvider"
+                }
+            ]
+        }
+    ],
+    "inputFile": "myimageprovider.h",
+    "outputRevision": 69
+}

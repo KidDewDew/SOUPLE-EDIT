@@ -1,0 +1,212 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 127,
+                        "errorMessage": "Can't assign to read-only property drag",
+                        "functionName": "terminateDrag",
+                        "line": 78
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 225,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 21
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 23
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 123,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 36
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 92,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "Cannot load property hovered from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Table_HorLine.qml)::parent with type QQuickItem.",
+                        "functionName": "visible",
+                        "line": 48
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 528,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 515,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 69
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"visible\".",
+                        "functionName": "visible",
+                        "line": 88
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\".",
+                        "functionName": "x",
+                        "line": 92
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"y\".",
+                        "functionName": "y",
+                        "line": 93
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"visible\".",
+                        "functionName": "visible",
+                        "line": 97
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"horizontalCenter\".",
+                        "functionName": "horizontalCenter",
+                        "line": 100
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 15,
+                        "durationMicroseconds": 147,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 106
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 110
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 14,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 120
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 290,
+                        "errorMessage": "",
+                        "functionName": "fillColor",
+                        "line": 121
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "onFillColorChanged",
+                        "line": 123
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 92,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 118
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 238,
+                        "errorMessage": "Cannot find name selectedObj",
+                        "functionName": "onPressed",
+                        "line": 130
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 462,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onMouseYChanged",
+                        "line": 135
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 126
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 127
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "axis",
+                        "line": 129
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Table_HorLine.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

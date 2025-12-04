@@ -1,0 +1,36 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 308,
+                        "errorMessage": "Cannot access value for name Dir",
+                        "functionName": "dir",
+                        "line": 8
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 138,
+                        "errorMessage": "",
+                        "functionName": "onDirChanged",
+                        "line": 10
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 14,
+                        "durationMicroseconds": 6647,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onPaint",
+                        "line": 11
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Triangle.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

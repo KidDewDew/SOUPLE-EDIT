@@ -1,0 +1,36 @@
+{
+    "classes": [
+        {
+            "className": "__Caller",
+            "lineNumber": 56,
+            "object": true,
+            "qualifiedClassName": "__Caller",
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "func",
+                            "type": "QJSValue"
+                        },
+                        {
+                            "name": "arg",
+                            "type": "QJSValueList"
+                        }
+                    ],
+                    "index": 0,
+                    "name": "call",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "PlatformMethod.h",
+    "outputRevision": 69
+}

@@ -1,0 +1,396 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 366,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "width",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 237,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "height",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 2725,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onCurrentPageIndexChanged",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 137,
+                        "errorMessage": "",
+                        "functionName": "objHash",
+                        "line": 51
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "pages",
+                        "line": 90
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 2282,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "pageCount",
+                        "line": 94
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 595,
+                        "errorMessage": "method updateObjPropertyPane cannot be resolved.",
+                        "functionName": "onSelectedObjChanged",
+                        "line": 98
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "vm2obj",
+                        "line": 113
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 1653,
+                        "errorMessage": "",
+                        "functionName": "type2cp",
+                        "line": 123
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "newObj",
+                        "line": 139
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "insertFreeObj",
+                        "line": 268
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "tryInsertAnchorObj",
+                        "line": 283
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 344,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onScroll_yChanged",
+                        "line": 445
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "getPageOfY",
+                        "line": 455
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "timer_tasks",
+                        "line": 466
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/SoupleEdit.qml)::contObj with type QVariant does not have a property iscont for writing",
+                        "functionName": "onContObjChanged",
+                        "line": 472
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "y_id_map",
+                        "line": 487
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "findItem",
+                        "line": 545
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 137,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 204,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "z",
+                        "line": 72
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "target",
+                        "line": 180
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onNewPageAdded",
+                        "line": 181
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onPageIndexChanged",
+                        "line": 188
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 54,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "target",
+                        "line": 194
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 9,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "",
+                        "functionName": "onBeginLoadDocument",
+                        "line": 195
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 9,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "",
+                        "functionName": "onFileLoaded",
+                        "line": 198
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onAddVLine",
+                        "line": 201
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onAddHLine",
+                        "line": 208
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "isFromLeft",
+                        "line": 335
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 242,
+                        "errorMessage": "",
+                        "functionName": "onOpened",
+                        "line": 338
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "",
+                        "functionName": "closePolicy",
+                        "line": 339
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 132,
+                        "errorMessage": "",
+                        "functionName": "parent",
+                        "line": 340
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "method accept_callback cannot be resolved.",
+                        "functionName": "onAccepted",
+                        "line": 342
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "method reject_callback cannot be resolved.",
+                        "functionName": "onRejected",
+                        "line": 343
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 341
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 359
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 364
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "closePolicy",
+                        "line": 376
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 119,
+                        "errorMessage": "",
+                        "functionName": "parent",
+                        "line": 377
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 378
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 641,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTextChanged",
+                        "line": 389
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"text\".",
+                        "functionName": "text",
+                        "line": 393
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 457,
+                        "errorMessage": "",
+                        "functionName": "accent",
+                        "line": 395
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 49,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"verticalCenter\".",
+                        "functionName": "verticalCenter",
+                        "line": 398
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"right\".",
+                        "functionName": "right",
+                        "line": 399
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 228,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 417
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 1426,
+                        "errorMessage": "method messageBox cannot be resolved.",
+                        "functionName": "onClicked",
+                        "line": 424
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "onTriggered",
+                        "line": 497
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/SoupleEdit.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

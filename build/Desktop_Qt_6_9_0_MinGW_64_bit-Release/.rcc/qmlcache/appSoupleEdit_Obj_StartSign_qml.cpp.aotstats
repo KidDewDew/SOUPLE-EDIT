@@ -1,0 +1,20 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 11,
+                        "durationMicroseconds": 300,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 9
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Obj_StartSign.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

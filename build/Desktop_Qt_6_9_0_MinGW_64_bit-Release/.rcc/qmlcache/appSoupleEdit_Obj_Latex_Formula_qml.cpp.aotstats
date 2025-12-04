@@ -1,0 +1,188 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 981,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onCompleted",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 235,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 25
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 175,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 27
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 209,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 33
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 187,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 41
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 138,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 893,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onFocusChanged",
+                        "line": 54
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 160,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 49
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 195,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 59
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 61
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 68
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 855,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTextChanged",
+                        "line": 74
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 70
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 258,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "accent",
+                        "line": 71
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"clicked\".",
+                        "functionName": "onClicked",
+                        "line": 87
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 164,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 97
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 43,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 99
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 135,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 103
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 207,
+                        "errorMessage": "Cannot find name selectedObj",
+                        "functionName": "onPressed",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 107
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Latex_Formula.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

@@ -1,0 +1,36 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 14,
+                        "durationMicroseconds": 184,
+                        "errorMessage": "",
+                        "functionName": "onPaint",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 10
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 115,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 9
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/ListIndicator.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

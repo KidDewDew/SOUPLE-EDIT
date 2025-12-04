@@ -1,0 +1,702 @@
+{
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"_qt_internal_deferred_aotstats_setup"
+		],
+		"files" : 
+		[
+			"E:/Qt/6.9.0/mingw_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"E:/Qt/6.9.0/mingw_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake:1103:EVAL",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"file" : 2,
+				"line" : -1,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 1,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1210,
+				"parent" : 2
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "module_appSoupleEdit_aotstats_target::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+	"name" : "all_aotstats",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/all_aotstats",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/all_aotstats.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/all_aotstats.aotstats.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/module_appSoupleEdit.aotstats.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_AddToolButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_AnchorObj_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_AnchorPoint_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_BaseHorLine_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_CMenu_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ChooseBoard_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ColorLabel_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ColorSelector_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_CustomToolButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_DashLine_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Dialog_DocumentDirTool_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Dialog_FileSelect_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Dialog_TableToExcelTool_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Dialog_setJAVA_HOME_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_DocumentSpec_StartPage_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_DotBar_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Editable_Bound_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Expandable_LineText_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FileBrowser_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FlatButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FontEdit_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FreeObjPositionPropertyGrid_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FreeObj_Image_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FreeObj_Path_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FreeObj_Rich_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FreeObj_Text_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_FreeObj_Unit_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_GlowImageButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_HLineSelector_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_HorBaseline_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_HorRuler_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ImageButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_InnerHorLine_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_LineText_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Line_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ListIndicator_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_MainWindowTitleBar_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Main_mobile_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Main_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_MyDoubleSpinBox_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_MyFunctions_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_MyProgressBar_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_MyToolButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_NavDirPreview_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ObjContainer_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Frame_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Glue_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Image_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Latex_Formula_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Nav_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Page_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Path_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_Spring_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_StartSign_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Obj_TextEdit_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_PH_Glue_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_PH_JZRect_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_PH_Left_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_PH_Rect_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_PH_Right_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_PdfLoadHelper_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_RectButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_RectsProgressBar_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_RightToolBar_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_S_TextInput_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_SelectedButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_SelectionObj_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_SelectionPropertyGrid_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ShaderEffect_Stroke_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ShapeBracket_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_SingleCharButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Slider_and_ASB_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_SmallComboBox_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_SoupleEdit_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_SquareButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_TCombo_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_TStackView_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_TTextField_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_TText_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Table_HorLine_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_TipButton_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_ToolBar_01_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_Triangle_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_VerBaseline_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.rcc/qmlcache/appSoupleEdit_WordPage_VLine_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/appsoupleedit_qmltyperegistrations.cpp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

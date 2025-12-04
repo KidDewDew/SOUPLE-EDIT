@@ -1,0 +1,996 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 465,
+                        "errorMessage": "",
+                        "functionName": "itemHeight",
+                        "line": 23
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 256,
+                        "errorMessage": "",
+                        "functionName": "buttonHeight",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selectFile",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "Type QQuickLoader::item with type QObject does not have a property parent for writing",
+                        "functionName": "show",
+                        "line": 38
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "folders",
+                        "line": 52
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "view",
+                        "line": 53
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "down",
+                        "line": 362
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 188,
+                        "errorMessage": "Cannot load property parentFolder from (component in E:/SoupleEdit/SOUPLE-EDIT-master/FileBrowser.qml)::folders with type QVariant.",
+                        "functionName": "up",
+                        "line": 378
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "keyPressed",
+                        "line": 397
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "folder",
+                        "line": 59
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "folder",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 863,
+                        "errorMessage": "Cannot access value for name filePath",
+                        "functionName": "launch",
+                        "line": 76
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name root",
+                        "functionName": "width",
+                        "line": 86
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 92,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 87
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 93
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "width",
+                        "line": 101
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "height",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "width",
+                        "line": 105
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "height",
+                        "line": 106
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 246,
+                        "errorMessage": "Cannot access value for name folders",
+                        "functionName": "visible",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 112,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 107
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 52,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "verticalAlignment",
+                        "line": 112
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 113
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 43,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 111
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "Cannot access value for name iconfamily",
+                        "functionName": "family",
+                        "line": 114
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 56,
+                        "durationMicroseconds": 199,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 117
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "width",
+                        "line": 121
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "height",
+                        "line": 122
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 227,
+                        "errorMessage": "Cannot access value for name folders",
+                        "functionName": "visible",
+                        "line": 125
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 110,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 123
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 52,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "verticalAlignment",
+                        "line": 128
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 69,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 129
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 127
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "Cannot access value for name iconfamily",
+                        "functionName": "family",
+                        "line": 130
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 56,
+                        "durationMicroseconds": 200,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 133
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "verticalAlignment",
+                        "line": 141
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 279,
+                        "errorMessage": "Cannot access value for name fileName",
+                        "functionName": "text",
+                        "line": 142
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 165,
+                        "errorMessage": "Cannot access value for name root",
+                        "functionName": "color",
+                        "line": 144
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "elide",
+                        "line": 145
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 140
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "leftMargin",
+                        "line": 143
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 248,
+                        "errorMessage": "Cannot access value for name root",
+                        "functionName": "onPressed",
+                        "line": 151
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 224,
+                        "errorMessage": "Cannot access value for name folders",
+                        "functionName": "onClicked",
+                        "line": 155
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 150
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 161
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 55,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 162
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 55,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 163
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 72,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"color\". You may want use ID-based grouped properties here.",
+                        "functionName": "color",
+                        "line": 163
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 173
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "model",
+                        "line": 174
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "delegate",
+                        "line": 175
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 171
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 172
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "Cannot access value for name root",
+                        "functionName": "visible",
+                        "line": 178
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "Cannot access value for name view1",
+                        "functionName": "width",
+                        "line": 179
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 196
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 61,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\". You may want use ID-based grouped properties here.",
+                        "functionName": "x",
+                        "line": 196
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 192
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 61,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\". You may want use ID-based grouped properties here.",
+                        "functionName": "x",
+                        "line": 192
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 188
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 471,
+                        "errorMessage": "Cannot access value for name event",
+                        "functionName": "onPressed",
+                        "line": 211
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 85,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 218
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 219
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "model",
+                        "line": 220
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 49,
+                        "errorMessage": "",
+                        "functionName": "delegate",
+                        "line": 221
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 142,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 216
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 217
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "Cannot access value for name root",
+                        "functionName": "visible",
+                        "line": 224
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "Cannot access value for name view1",
+                        "functionName": "width",
+                        "line": 225
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 240
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 61,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\". You may want use ID-based grouped properties here.",
+                        "functionName": "x",
+                        "line": 240
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 236
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 61,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\". You may want use ID-based grouped properties here.",
+                        "functionName": "x",
+                        "line": 236
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 232
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 386,
+                        "errorMessage": "Cannot access value for name event",
+                        "functionName": "onPressed",
+                        "line": 254
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 258
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "height",
+                        "line": 259
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 260
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 266
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "height",
+                        "line": 267
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "radius",
+                        "line": 273
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 269
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 270
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 97,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 271
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 279
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "verticalAlignment",
+                        "line": 280
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 276
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "Cannot access value for name fileBrowser",
+                        "functionName": "onClicked",
+                        "line": 285
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 284
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 1078,
+                        "errorMessage": "Cannot access value for name event",
+                        "functionName": "onPressed",
+                        "line": 289
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 302
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "height",
+                        "line": 303
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 304
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 308
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "height",
+                        "line": 309
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "radius",
+                        "line": 315
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "",
+                        "functionName": "top",
+                        "line": 312
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 313
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 314
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "width",
+                        "line": 319
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "height",
+                        "line": 320
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "width",
+                        "line": 323
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name itemHeight",
+                        "functionName": "height",
+                        "line": 324
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 325
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 52,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "",
+                        "functionName": "verticalAlignment",
+                        "line": 328
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 329
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 327
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name iconfamily",
+                        "functionName": "family",
+                        "line": 330
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 56,
+                        "durationMicroseconds": 193,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 333
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "width",
+                        "line": 337
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot access value for name buttonHeight",
+                        "functionName": "height",
+                        "line": 338
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 159,
+                        "errorMessage": "method up cannot be resolved.",
+                        "functionName": "onClicked",
+                        "line": 339
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 69,
+                        "durationMicroseconds": 49,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 336
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 344
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 59,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 345
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 76,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"color\". You may want use ID-based grouped properties here.",
+                        "functionName": "color",
+                        "line": 345
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 92,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 351
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "Cannot access value for name folders",
+                        "functionName": "text",
+                        "line": 353
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "elide",
+                        "line": 355
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 356
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 116,
+                        "errorMessage": "",
+                        "functionName": "verticalAlignment",
+                        "line": 357
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 351
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 70,
+                        "durationMicroseconds": 69,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 351
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/FileBrowser.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

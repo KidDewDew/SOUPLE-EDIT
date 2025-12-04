@@ -1,0 +1,116 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 394,
+                        "errorMessage": "",
+                        "functionName": "radius",
+                        "line": 9
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 210,
+                        "errorMessage": "",
+                        "functionName": "implicitHeight",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 110,
+                        "errorMessage": "",
+                        "functionName": "onShow_numChanged",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "onFull_numChanged",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "Cannot access value for name isStatic",
+                        "functionName": "enabled",
+                        "line": 19
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name changeAnimationDuration",
+                        "functionName": "duration",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 15,
+                        "errorMessage": "Cannot access value for name showBorder",
+                        "functionName": "visible",
+                        "line": 25
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 29
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 35
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 15460,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "onPaint",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 2510,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 42
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/DotBar.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

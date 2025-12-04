@@ -1,0 +1,476 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 271,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 10
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 2185,
+                        "errorMessage": "Cannot access value for name tf_topline",
+                        "functionName": "onCompleted",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 146,
+                        "errorMessage": "",
+                        "functionName": "columnSpan",
+                        "line": 29
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 33
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "data_id",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 230,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "hline_property",
+                        "line": 35
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 185,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "hline_up_property",
+                        "line": 36
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 39
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 42
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 492,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 45
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 448,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 50
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 130,
+                        "errorMessage": "",
+                        "functionName": "columnSpan",
+                        "line": 60
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "data_id",
+                        "line": 65
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 215,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "hline_property",
+                        "line": 66
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 175,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "hline_up_property",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 88,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 70
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 73
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 473,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 76
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 461,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 104,
+                        "errorMessage": "",
+                        "functionName": "columnSpan",
+                        "line": 90
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 95
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 1607,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: but_zbx1",
+                        "functionName": "onTextChanged",
+                        "line": 101
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "Cannot access value for name text",
+                        "functionName": "accent",
+                        "line": 111
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"verticalCenter\".",
+                        "functionName": "verticalCenter",
+                        "line": 114
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"right\".",
+                        "functionName": "right",
+                        "line": 115
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 120
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 123
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 506,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 126
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 442,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 127
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 144,
+                        "errorMessage": "",
+                        "functionName": "columnSpan",
+                        "line": 136
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 141
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 1672,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: but_zbx4",
+                        "functionName": "onTextChanged",
+                        "line": 147
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "Cannot access value for name text",
+                        "functionName": "accent",
+                        "line": 157
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"verticalCenter\".",
+                        "functionName": "verticalCenter",
+                        "line": 160
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"right\".",
+                        "functionName": "right",
+                        "line": 161
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 131,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 166
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 169
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 514,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 172
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 466,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 173
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 208,
+                        "errorMessage": "",
+                        "functionName": "enabled",
+                        "line": 186
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 459,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 187
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 533,
+                        "errorMessage": "Cannot access value for name aimObj",
+                        "functionName": "onValueChanged",
+                        "line": 192
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot access value for name aimObj",
+                        "functionName": "when",
+                        "line": 189
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "value",
+                        "line": 190
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 207,
+                        "errorMessage": "",
+                        "functionName": "enabled",
+                        "line": 205
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 469,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 206
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 471,
+                        "errorMessage": "Cannot access value for name aimObj",
+                        "functionName": "onValueChanged",
+                        "line": 211
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot access value for name aimObj",
+                        "functionName": "when",
+                        "line": 208
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "value",
+                        "line": 209
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 122,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 224
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "Cannot load property hovered from (component in E:/SoupleEdit/SOUPLE-EDIT-master/FreeObjPositionPropertyGrid.qml)::parent with type QQuickItem.",
+                        "functionName": "visible",
+                        "line": 228
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 153,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 242
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 1219,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCurrentIndexChanged",
+                        "line": 264
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 901,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "getBaseZ",
+                        "line": 271
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 5492,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 245
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 116,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 292
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 294,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onValueChanged",
+                        "line": 294
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/FreeObjPositionPropertyGrid.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

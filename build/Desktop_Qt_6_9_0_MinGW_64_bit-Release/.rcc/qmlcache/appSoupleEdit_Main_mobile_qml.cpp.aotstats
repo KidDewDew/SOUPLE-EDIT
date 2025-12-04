@@ -1,0 +1,1212 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "generateObj",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "appendPage",
+                        "line": 49
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "messageBox",
+                        "line": 160
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "updateObjPropertyPane",
+                        "line": 166
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "setPropertyPane",
+                        "line": 172
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 210,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 97,
+                        "errorMessage": "Cannot access value for name value",
+                        "functionName": "text",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 85,
+                        "errorMessage": "",
+                        "functionName": "fileMode",
+                        "line": 75
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 101,
+                        "errorMessage": "",
+                        "functionName": "nameFilters",
+                        "line": 76
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 183,
+                        "errorMessage": "Cannot access value for name PdfSaver",
+                        "functionName": "onAccepted",
+                        "line": 77
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 43,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "target",
+                        "line": 83
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 9,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "onBeginLoadDocument",
+                        "line": 84
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onFileLoadProgress",
+                        "line": 87
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 9,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "onFileLoaded",
+                        "line": 90
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "soupleEdit",
+                        "line": 97
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 107
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "method callback cannot be resolved.",
+                        "functionName": "onAccepted",
+                        "line": 126
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "",
+                        "functionName": "onAccepted",
+                        "line": 126
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "method callback cannot be resolved.",
+                        "functionName": "onAccepted",
+                        "line": 135
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "method callback cannot be resolved.",
+                        "functionName": "onAccepted",
+                        "line": 142
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "parent",
+                        "line": 147
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 148
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 180
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 188
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 258,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onTriggered",
+                        "line": 203
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 123,
+                        "errorMessage": "",
+                        "functionName": "onTriggered",
+                        "line": 225
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 118,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 269
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 282
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 286
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 120,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 302
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 416,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTriggered",
+                        "line": 308
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "cannot convert from  to double",
+                        "functionName": "contentWidth",
+                        "line": 420
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 419
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 81,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 423
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "currentIndex",
+                        "line": 424
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 52,
+                        "durationMicroseconds": 216,
+                        "errorMessage": "",
+                        "functionName": "dynamic_spacing",
+                        "line": 425
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "onCurrentIndexChanged",
+                        "line": 435
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 244,
+                        "errorMessage": "",
+                        "functionName": "to",
+                        "line": 428
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 187,
+                        "errorMessage": "Cannot generate efficient code for LoadClosure",
+                        "functionName": "onFinished",
+                        "line": 430
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 74,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 429
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 437
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 438
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 444
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 167,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 450
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 449
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 455
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 50,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 461
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 458
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 92,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 466
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 81,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 472
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 478
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 484
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 490
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 496
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "style",
+                        "line": 500
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 503
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 508
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 514
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 540
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 551
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 552
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 556
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 275,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onClicked",
+                        "line": 560
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 202,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onClicked",
+                        "line": 567
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 578
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 137,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 583
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 104,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 587
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 194,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 592
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 295,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "onSelected",
+                        "line": 593
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 110,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 608
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 130,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 613
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 618
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 189,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 626
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 637
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 638
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 653
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 225,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 658
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 3308,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onSelected",
+                        "line": 659
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "onSelected",
+                        "line": 659
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 50,
+                        "durationMicroseconds": 101,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 699
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 50,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 715
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 164,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 729
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 750
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "xScale",
+                        "line": 751
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 159,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 762
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 764
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\". You may want use ID-based grouped properties here.",
+                        "functionName": "x",
+                        "line": 765
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 768
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 63,
+                        "durationMicroseconds": 43,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: void -> QQmlScriptString stored as QVariant",
+                        "functionName": "horizontalCenter",
+                        "line": 769
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 163,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 755
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 757
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 63,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: QQuickItem::horizontalCenter with type QQuickAnchorLine (stored as QVariant) -> QQuickItem::horizontalCenter with type QQuickAnchorLine (stored as QVariant)",
+                        "functionName": "horizontalCenter",
+                        "line": 758
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 781
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 178,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 782
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 118,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 784
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 780
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 789
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 787
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "contentHeight",
+                        "line": 796
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "",
+                        "functionName": "scroll_x",
+                        "line": 798
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "scroll_y",
+                        "line": 814
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 445,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onHeightChanged",
+                        "line": 815
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 382,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onScroll_yChanged",
+                        "line": 818
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 88,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 795
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 162,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 803
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "value",
+                        "line": 804
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 142,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 823
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 121,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 824
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 259,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: conversion to QVariant -> QQuickAnchorLine stored as QVariant",
+                        "functionName": "horizontalCenter",
+                        "line": 826
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 184,
+                        "errorMessage": "",
+                        "functionName": "scroll_y",
+                        "line": 830
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "xScale",
+                        "line": 834
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "yScale",
+                        "line": 835
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "contentHeight",
+                        "line": 852
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 851
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 857
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 59,
+                        "durationMicroseconds": 210,
+                        "errorMessage": "Cannot access value for name ani_0002",
+                        "functionName": "onSourceComponentChanged",
+                        "line": 863
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 879
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 54,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 884
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 284,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 887
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 263,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 906
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onClicked",
+                        "line": 908
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 908
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 198,
+                        "errorMessage": "",
+                        "functionName": "value2",
+                        "line": 918
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "from",
+                        "line": 927
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 223,
+                        "errorMessage": "",
+                        "functionName": "onOpened",
+                        "line": 936
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 144,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 945
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 144,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 953
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 123,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 961
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 119,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 969
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 293,
+                        "errorMessage": "",
+                        "functionName": "onValueChanged",
+                        "line": 988
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "flags",
+                        "line": 996
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "modality",
+                        "line": 997
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1003
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 1009
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 1013
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1012
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 310,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 1020
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 92,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1017
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 69,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 1018
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1030
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 1031
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 1032
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "contentHeight",
+                        "line": 1033
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1038
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 119,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 1050
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 1053
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 511,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onPaint",
+                        "line": 1054
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 282,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 1067
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1066
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1074
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Main_mobile.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

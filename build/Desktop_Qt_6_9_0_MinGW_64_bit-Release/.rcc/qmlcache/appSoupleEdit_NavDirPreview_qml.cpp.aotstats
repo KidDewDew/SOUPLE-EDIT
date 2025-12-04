@@ -1,0 +1,196 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "calcLevelList",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 653,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onLevelsChanged",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 199,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 57
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "model",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 286,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 527,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "text",
+                        "line": 68
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "Cannot access value for name view",
+                        "functionName": "font",
+                        "line": 69
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 70
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 327,
+                        "errorMessage": "Cannot access value for name modelData",
+                        "functionName": "leftMargin",
+                        "line": 71
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 92,
+                        "errorMessage": "Cannot access value for name lineWidth",
+                        "functionName": "implicitHeight",
+                        "line": 77
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "renderStrategy",
+                        "line": 78
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 5055,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "onPaint",
+                        "line": 98
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 97,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 76
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name view",
+                        "functionName": "target",
+                        "line": 80
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "Cannot access value for name view",
+                        "functionName": "onSpacingChanged",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "onRadiusChanged",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 124,
+                        "errorMessage": "",
+                        "functionName": "onShowTypeChanged",
+                        "line": 88
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "onDashWidthChanged",
+                        "line": 91
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "onLineWidthChanged",
+                        "line": 94
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 288,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 133
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 240,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "text",
+                        "line": 134
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name view",
+                        "functionName": "font",
+                        "line": 135
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 111,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 136
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/NavDirPreview.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

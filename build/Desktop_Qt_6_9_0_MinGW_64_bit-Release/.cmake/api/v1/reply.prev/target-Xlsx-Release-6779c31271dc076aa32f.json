@@ -1,0 +1,858 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libXlsx.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_include_directories",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 266,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 268,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 275,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 286,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 287,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 288,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-O3 -DNDEBUG -std=gnu++23 -fdiagnostics-color=always"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "MINGW_HAS_SECURE_API=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_NO_DEBUG"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_OPENGL_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_QMLMETA_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_QMLMODELS_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_QMLWORKERSCRIPT_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_QUICK_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "WIN64"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_WIN64"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 0,
+					"path" : "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/Xlsx_autogen/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "E:/SoupleEdit/SOUPLE-EDIT-master/lib/qt_xlsx_writer"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "E:/SoupleEdit/SOUPLE-EDIT-master/lib/pdfium-win-x64/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "E:/SoupleEdit/SOUPLE-EDIT-master/lib/freetype/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "E:/SoupleEdit/SOUPLE-EDIT-master/lib/java/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtCore"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/mkspecs/win32-g++"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtQuick"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtGui"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtQml"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtQmlMeta"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtQmlModels"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtQmlWorkerScript"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtOpenGL"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtGui/6.9.0"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtGui/6.9.0/QtGui"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtCore/6.9.0"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "E:/Qt/6.9.0/mingw_64/include/QtCore/6.9.0/QtCore"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					2,
+					2
+				],
+				"standard" : "23"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "Xlsx_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "Xlsx_autogen::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "Xlsx::@6890427a1f51a3e7e1df",
+	"name" : "Xlsx",
+	"nameOnDisk" : "libXlsx.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				9,
+				12,
+				15,
+				18,
+				21,
+				23,
+				25,
+				28,
+				31,
+				33,
+				36,
+				38,
+				41,
+				43,
+				45,
+				48,
+				50,
+				52,
+				56,
+				58,
+				60,
+				62,
+				65,
+				67,
+				69,
+				71,
+				73,
+				75,
+				78,
+				81,
+				83
+			]
+		},
+		{
+			"name" : "Source Files\\Generated",
+			"sourceIndexes" : 
+			[
+				8,
+				85
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				10,
+				11,
+				13,
+				14,
+				16,
+				17,
+				19,
+				20,
+				22,
+				24,
+				26,
+				27,
+				29,
+				30,
+				32,
+				34,
+				35,
+				37,
+				39,
+				40,
+				42,
+				44,
+				46,
+				47,
+				49,
+				51,
+				53,
+				54,
+				55,
+				57,
+				59,
+				61,
+				63,
+				64,
+				66,
+				68,
+				70,
+				72,
+				74,
+				76,
+				77,
+				79,
+				80,
+				82,
+				84
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				86
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_7_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_6_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_5_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_4_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_3_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_2_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_1_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/Xlsx.dir/Unity/unity_0_cxx.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/Xlsx_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxabstractooxmlfile.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxabstractooxmlfile.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxabstractooxmlfile_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxabstractsheet.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxabstractsheet.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxabstractsheet_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcell.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcell.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcell_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcellformula.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcellformula.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcellformula_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcellrange.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcellrange.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcellreference.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcellreference.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxchart.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxchart.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxchart_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxchartsheet.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxchartsheet.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxchartsheet_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcolor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcolor_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxconditionalformatting.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxconditionalformatting.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxconditionalformatting_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcontenttypes.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxcontenttypes_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdatavalidation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdatavalidation.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdatavalidation_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdocpropsapp.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdocpropsapp_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdocpropscore.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdocpropscore_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdocument.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdocument.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdocument_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdrawing.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdrawing_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdrawinganchor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxdrawinganchor_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxformat.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxformat.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxformat_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxglobal.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxmediafile.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxmediafile_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxnumformatparser.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxnumformatparser_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxrelationships.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxrelationships_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxrichstring.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxrichstring.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxrichstring_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxsharedstrings.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxsharedstrings_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxsimpleooxmlfile.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxsimpleooxmlfile_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxstyles.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxstyles_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxtheme.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxtheme_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxutility.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxutility_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxworkbook.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxworkbook.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxworkbook_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxworksheet.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxworksheet.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxworksheet_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxzipreader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxzipreader_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxzipwriter.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "lib/qt_xlsx_writer/xlsxzipwriter_p.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/Xlsx_autogen/timestamp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/Xlsx_autogen/timestamp.rule",
+			"sourceGroupIndex" : 3
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

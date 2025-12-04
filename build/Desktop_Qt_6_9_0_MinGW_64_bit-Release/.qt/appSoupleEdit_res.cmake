@@ -1,0 +1,41 @@
+
+set(target "appSoupleEdit")
+set(working_dir "E:/SoupleEdit/SOUPLE-EDIT-master")
+set(src_and_dest_list
+    "E:/SoupleEdit/SOUPLE-EDIT-master/main.qrc"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/main.qrc"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/vcpkg.json"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/vcpkg.json"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/AndroidManifest.xml"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/AndroidManifest.xml"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/build.gradle"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/build.gradle"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/drawable-hdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/drawable-hdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/drawable-ldpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/drawable-ldpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/drawable-mdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/drawable-mdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/drawable-xhdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/drawable-xhdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/drawable-xxhdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/drawable-xxhdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/drawable-xxxhdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/drawable-xxxhdpi/icon.png"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/values/libs.xml"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/values/libs.xml"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/res/xml/file_paths.xml"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/res/xml/file_paths.xml"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/gradle/wrapper/gradle-wrapper.jar"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/gradle/wrapper/gradle-wrapper.jar"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/gradle/wrapper/gradle-wrapper.properties"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/gradle/wrapper/gradle-wrapper.properties"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/gradle.properties"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/gradle.properties"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/gradlew"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/gradlew"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/android/gradlew.bat"
+    "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit/android/gradlew.bat"
+
+)
+set(timestamp_file "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.qt/appSoupleEdit_res.txt")

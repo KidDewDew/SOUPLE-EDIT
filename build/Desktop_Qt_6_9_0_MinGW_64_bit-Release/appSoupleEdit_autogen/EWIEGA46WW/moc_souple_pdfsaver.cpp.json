@@ -1,0 +1,32 @@
+{
+    "classes": [
+        {
+            "className": "Souple_PdfSaver",
+            "lineNumber": 9,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "pdfFileName",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "name": "beginSaveAs",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "Souple_PdfSaver",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "souple_pdfsaver.h",
+    "outputRevision": 69
+}

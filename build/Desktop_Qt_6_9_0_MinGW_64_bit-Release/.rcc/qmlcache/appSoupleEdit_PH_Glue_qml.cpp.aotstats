@@ -1,0 +1,276 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selecti",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 176,
+                        "errorMessage": "",
+                        "functionName": "selectw",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selectp",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "",
+                        "functionName": "selectcl",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 521,
+                        "errorMessage": "Cannot find name selectedObj",
+                        "functionName": "onFocusChanged",
+                        "line": 37
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "onIsLeftChanged",
+                        "line": 152
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 14,
+                        "durationMicroseconds": 3372,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onPaint",
+                        "line": 153
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 523,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onPressed",
+                        "line": 47
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 47
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 140,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 55
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "Cannot access value for name isLeft",
+                        "functionName": "text",
+                        "line": 59
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "Cannot load property hovered from (component in E:/SoupleEdit/SOUPLE-EDIT-master/PH_Glue.qml)::parent with type QQuickItem.",
+                        "functionName": "visible",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 189,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 82
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 538,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onValueChanged",
+                        "line": 87
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 84
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "value",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 383,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTriggered",
+                        "line": 99
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 173,
+                        "errorMessage": "",
+                        "functionName": "acceptedButtons",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 110
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 374,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 113
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 113
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 46,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 108
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 14,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 124
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 144,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 125
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 130
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 724,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onXChanged",
+                        "line": 131
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 126
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 208,
+                        "errorMessage": "Cannot access value for name horRuler",
+                        "functionName": "onPressed",
+                        "line": 143
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 150,
+                        "errorMessage": "Cannot access value for name horRuler",
+                        "functionName": "onReleased",
+                        "line": 147
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 139
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "axis",
+                        "line": 140
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/PH_Glue.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

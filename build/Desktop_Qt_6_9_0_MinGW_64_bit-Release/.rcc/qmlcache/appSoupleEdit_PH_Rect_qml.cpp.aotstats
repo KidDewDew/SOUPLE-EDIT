@@ -1,0 +1,316 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 301,
+                        "errorMessage": "",
+                        "functionName": "die",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selecti",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "selectw",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selectp",
+                        "line": 28
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "selectcl",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 327,
+                        "errorMessage": "Cannot find name selectedObj",
+                        "functionName": "onFocusChanged",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 291,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 49
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "dropRight",
+                        "line": 184
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "dropLeft",
+                        "line": 189
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 218,
+                        "errorMessage": "Cannot access value for name rightObj",
+                        "functionName": "getCursorFromLeft",
+                        "line": 195
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 176,
+                        "errorMessage": "Cannot access value for name leftObj",
+                        "functionName": "getCursorFromRight",
+                        "line": 199
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 171,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 55
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "Cannot load property hovered from (component in E:/SoupleEdit/SOUPLE-EDIT-master/PH_Rect.qml)::parent with type QQuickItem.",
+                        "functionName": "visible",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 202,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 82
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 633,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onValueChanged",
+                        "line": 87
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 84
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "value",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 479,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTriggered",
+                        "line": 124
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 237,
+                        "errorMessage": "",
+                        "functionName": "acceptedButtons",
+                        "line": 134
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 131,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 135
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 479,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 133
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 14,
+                        "durationMicroseconds": 88,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 149
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 198,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 150
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 155
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 872,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onXChanged",
+                        "line": 156
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 151
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 756,
+                        "errorMessage": "Cannot access value for name horRuler",
+                        "functionName": "onPressed",
+                        "line": 168
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 192,
+                        "errorMessage": "Cannot access value for name horRuler",
+                        "functionName": "onReleased",
+                        "line": 172
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 163
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 164
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "",
+                        "functionName": "axis",
+                        "line": 165
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name sw",
+                        "functionName": "width",
+                        "line": 178
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 179
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "Cannot access value for name sw",
+                        "functionName": "visible",
+                        "line": 180
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 104,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 177
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/PH_Rect.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

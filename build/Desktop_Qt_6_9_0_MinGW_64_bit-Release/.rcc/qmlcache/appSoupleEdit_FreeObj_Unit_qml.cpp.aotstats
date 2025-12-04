@@ -1,0 +1,396 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 543,
+                        "errorMessage": "",
+                        "functionName": "borderColor",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 6954,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onIscontChanged",
+                        "line": 150
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 454,
+                        "errorMessage": "Cannot access value for name contObj",
+                        "functionName": "onFocusChanged",
+                        "line": 162
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot access value for name borderColor",
+                        "functionName": "color",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 104,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 21
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot access value for name borderColor",
+                        "functionName": "color",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 27
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "Cannot access value for name drawRightLine",
+                        "functionName": "visible",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 16,
+                        "errorMessage": "Cannot access value for name borderColor",
+                        "functionName": "color",
+                        "line": 33
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 35
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "Cannot access value for name drawBottomLine",
+                        "functionName": "visible",
+                        "line": 40
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 15,
+                        "errorMessage": "Cannot access value for name borderColor",
+                        "functionName": "color",
+                        "line": 41
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 42
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "Cannot access value for name menu_1",
+                        "functionName": "onClicked",
+                        "line": 53
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 52
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name menu_1",
+                        "functionName": "onClicked",
+                        "line": 60
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 59
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 68
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name menu_1",
+                        "functionName": "onClicked",
+                        "line": 75
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 74
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "Cannot access value for name menu_2",
+                        "functionName": "onClicked",
+                        "line": 82
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name menu_3",
+                        "functionName": "onClicked",
+                        "line": 89
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 88
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name menu_4",
+                        "functionName": "onClicked",
+                        "line": 96
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 95
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name menu_5",
+                        "functionName": "onClicked",
+                        "line": 103
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "Cannot access value for name menu_6",
+                        "functionName": "onClicked",
+                        "line": 110
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 150,
+                        "errorMessage": "",
+                        "functionName": "preferredHeight",
+                        "line": 117
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 118
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 144,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 128
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 1722,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "onCurrentIndexChanged",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 1389,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onCompleted",
+                        "line": 130
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 146,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 176
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 46,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 173
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 110,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 267
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "Cannot access value for name menu_1",
+                        "functionName": "onClicked",
+                        "line": 283
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name menu_2",
+                        "functionName": "onClicked",
+                        "line": 290
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name menu_3",
+                        "functionName": "onClicked",
+                        "line": 298
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name menu_4",
+                        "functionName": "onClicked",
+                        "line": 305
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name menu_5",
+                        "functionName": "onClicked",
+                        "line": 312
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "Cannot access value for name menu_6",
+                        "functionName": "onClicked",
+                        "line": 319
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 351,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onClicked",
+                        "line": 331
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/FreeObj_Unit.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

@@ -1,0 +1,108 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 264,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 6
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 13,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 7
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 410,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 9
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "",
+                        "functionName": "down",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "hovered",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 106,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 141,
+                        "errorMessage": "",
+                        "functionName": "scale",
+                        "line": 19
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 121,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 27
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "",
+                        "functionName": "onEntered",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 25
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/ImageButton.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

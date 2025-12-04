@@ -1,0 +1,42 @@
+{
+    "classes": [
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "auto"
+                }
+            ],
+            "className": "TableToExcel",
+            "lineNumber": 7,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "ti",
+                            "type": "TableInfo*"
+                        },
+                        {
+                            "name": "saveFile",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "name": "extractTableToExcel",
+                    "returnType": "bool"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "TableToExcel",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "TableToExcel.h",
+    "outputRevision": 69
+}

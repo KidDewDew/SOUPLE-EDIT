@@ -1,0 +1,92 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"clicked\".",
+                        "functionName": "onClicked",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 134,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: control",
+                        "functionName": "visible",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 140,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "Cannot access value for name control",
+                        "functionName": "color",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: control",
+                        "functionName": "color",
+                        "line": 31
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 137,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 35
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 33
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 69,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 45
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/ColorSelector.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

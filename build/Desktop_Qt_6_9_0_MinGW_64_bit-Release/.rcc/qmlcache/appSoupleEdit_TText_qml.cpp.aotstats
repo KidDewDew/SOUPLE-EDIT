@@ -1,0 +1,20 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 346,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 5
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/TText.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

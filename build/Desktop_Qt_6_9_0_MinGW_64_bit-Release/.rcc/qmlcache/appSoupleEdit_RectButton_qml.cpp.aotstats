@@ -1,0 +1,44 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"scale\".",
+                        "functionName": "scale",
+                        "line": 8
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 330,
+                        "errorMessage": "Cannot access value for name but",
+                        "functionName": "color",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 15,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: but",
+                        "functionName": "text",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 152,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 19
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/RectButton.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

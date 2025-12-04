@@ -1,0 +1,300 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 355,
+                        "errorMessage": "Cannot find name selectedObj",
+                        "functionName": "onFocusChanged",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 198,
+                        "errorMessage": "",
+                        "functionName": "onTabChanged",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "die",
+                        "line": 33
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selecti",
+                        "line": 37
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "",
+                        "functionName": "selectw",
+                        "line": 41
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selectp",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "",
+                        "functionName": "selectcl",
+                        "line": 45
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 28
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 110,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 29
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 27
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 184,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 2255,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onCompleted",
+                        "line": 57
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "",
+                        "functionName": "wrapMode",
+                        "line": 76
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 35,
+                        "durationMicroseconds": 565,
+                        "errorMessage": "Cannot access value for name spMgr",
+                        "functionName": "onCheckedChanged",
+                        "line": 88
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onCompleted",
+                        "line": 83
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 86
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "initialValue",
+                        "line": 104
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 415,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onValueChanged",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 22,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 106
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 107
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 390,
+                        "errorMessage": "Cannot access value for name spMgr",
+                        "functionName": "onValueChanged",
+                        "line": 122
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "initialValue",
+                        "line": 133
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 319,
+                        "errorMessage": "Cannot access value for name spMgr",
+                        "functionName": "onValueChanged",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 135
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "value",
+                        "line": 136
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 149,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 147
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 146
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "Cannot access value for name showLevel",
+                        "functionName": "visible",
+                        "line": 150
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 15,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot access value for name level",
+                        "functionName": "text",
+                        "line": 151
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 152
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 153
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 11,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 160
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 241,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "width",
+                        "line": 162
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 11,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 163
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 602,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onPaint",
+                        "line": 164
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/PH_Left.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

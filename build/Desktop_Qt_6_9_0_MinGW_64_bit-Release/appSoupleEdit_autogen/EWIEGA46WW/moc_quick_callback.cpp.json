@@ -1,0 +1,36 @@
+{
+    "classes": [
+        {
+            "className": "Quick_Callback",
+            "lineNumber": 8,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "qc",
+                            "type": "Quick_Callback"
+                        },
+                        {
+                            "name": "str",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "name": "invoke",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "Quick_Callback",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "quick_callback.h",
+    "outputRevision": 69
+}

@@ -1,0 +1,256 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-f676aad182dd7e679deb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				},
+				{
+					"build" : "souple_pdf",
+					"jsonFile" : "directory-souple_pdf-Release-33dadc672bac72842d2e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "souple_pdf",
+					"targetIndexes" : 
+					[
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SoupleEdit",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "souple_pdf",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_aotstats-Release-6cd61e3da99531c55d4f.json",
+					"name" : "all_aotstats",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Release-54d27818b0451976348a.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Release-8b9d0fea4b9af4efe7b7.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Release-b579eca9385aac1f5106.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Release-9cb33c53a727ff37fd28.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit-Release-063d252326ddac32de36.json",
+					"name" : "appSoupleEdit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_autogen-Release-8986b0cf174df93314ad.json",
+					"name" : "appSoupleEdit_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_autogen_timestamp_deps-Release-275ca178c0f7531ee14a.json",
+					"name" : "appSoupleEdit_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_copy_qml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_copy_qml-Release-862faf7f2a7a76906db7.json",
+					"name" : "appSoupleEdit_copy_qml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_copy_res::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_copy_res-Release-f0ec3e65e37291b38237.json",
+					"name" : "appSoupleEdit_copy_res",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_qmlimportscan-Release-a734012d2c399afe6ad9.json",
+					"name" : "appSoupleEdit_qmlimportscan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_qmllint-Release-346f9813a5fa78a46f34.json",
+					"name" : "appSoupleEdit_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_qmllint_json-Release-81332e324a1253a3784a.json",
+					"name" : "appSoupleEdit_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_qmllint_module-Release-a90141ed57685cce9af0.json",
+					"name" : "appSoupleEdit_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appSoupleEdit_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appSoupleEdit_qmltyperegistration-Release-29956b772a116f278dd1.json",
+					"name" : "appSoupleEdit_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "module_appSoupleEdit_aotstats_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-module_appSoupleEdit_aotstats_target-Release-99397fa91f601c14d675.json",
+					"name" : "module_appSoupleEdit_aotstats_target",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "souple_pdf::@b1c82efbbed0726240fb",
+					"jsonFile" : "target-souple_pdf-Release-9fd5ff258cf6bc902a8f.json",
+					"name" : "souple_pdf",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "souple_pdf_autogen::@b1c82efbbed0726240fb",
+					"jsonFile" : "target-souple_pdf_autogen-Release-d36346c19458fdb8a6cf.json",
+					"name" : "souple_pdf_autogen",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "souple_pdf_autogen_timestamp_deps::@b1c82efbbed0726240fb",
+					"jsonFile" : "target-souple_pdf_autogen_timestamp_deps-Release-ebc18141be969e10c497.json",
+					"name" : "souple_pdf_autogen_timestamp_deps",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release",
+		"source" : "E:/SoupleEdit/SOUPLE-EDIT-master"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

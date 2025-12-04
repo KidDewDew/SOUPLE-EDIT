@@ -1,0 +1,148 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 142,
+                        "errorMessage": "Cannot load property leftLine from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
+                        "functionName": "vLine",
+                        "line": 10
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 181,
+                        "errorMessage": "",
+                        "functionName": "rightX",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "rightX_for_shrink",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "leftX",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 8,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "Cannot load property centerX from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::vLine with type QVariant.",
+                        "functionName": "x",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 8,
+                        "durationMicroseconds": 13,
+                        "errorMessage": "Cannot load property centerY from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
+                        "functionName": "y",
+                        "line": 19
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "",
+                        "functionName": "whenInsertedOnRight",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "",
+                        "functionName": "whenInsertedOnLeft",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "insertOnRight",
+                        "line": 30
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "insertOnLeft",
+                        "line": 40
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 4,
+                        "errorMessage": "function without return type annotation returns bool. This may prevent proper compilation to Cpp.",
+                        "functionName": "tryMergeRight",
+                        "line": 51
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "Cannot load property lastHline from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
+                        "functionName": "getCursorFromRight",
+                        "line": 53
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "Cannot load property lastHline from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
+                        "functionName": "getCursorFromLeft",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "getShrinkObj",
+                        "line": 74
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 3,
+                        "errorMessage": "function without return type annotation returns std::nullptr_t. This may prevent proper compilation to Cpp.",
+                        "functionName": "dropLeft",
+                        "line": 80
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 2,
+                        "errorMessage": "function without return type annotation returns std::nullptr_t. This may prevent proper compilation to Cpp.",
+                        "functionName": "dropRight",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 6505,
+                        "errorMessage": "Instruction \"generate_CmpInstanceOf\" not implemented",
+                        "functionName": "onLeftObjChanged",
+                        "line": 84
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

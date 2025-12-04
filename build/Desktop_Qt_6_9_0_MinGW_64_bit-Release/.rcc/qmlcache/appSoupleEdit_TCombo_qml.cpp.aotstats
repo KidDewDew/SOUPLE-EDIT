@@ -1,0 +1,20 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 400,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "accent",
+                        "line": 8
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/TCombo.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

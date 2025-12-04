@@ -1,0 +1,834 @@
+{
+    "classes": [
+        {
+            "className": "Helper",
+            "enums": [
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "Error",
+                    "values": [
+                        "Error_Invalid_Command",
+                        "Error_Repeat",
+                        "Error_Invalid_Data",
+                        "Error_Failed",
+                        "Error_Unknown",
+                        "Error_Other"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "Layer_Z",
+                    "values": [
+                        "Bottom",
+                        "Text",
+                        "Cover",
+                        "Top"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "Align",
+                    "values": [
+                        "AlignVCenter",
+                        "AlignVBaseLine",
+                        "AlignTop",
+                        "AlignBottom",
+                        "AlignHCenter",
+                        "AlignLeft",
+                        "AlignRight"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "DataName",
+                    "values": [
+                        "X",
+                        "Y",
+                        "Z",
+                        "WIDTH",
+                        "HEIGHT",
+                        "TEXT",
+                        "VALIGNOFFSET",
+                        "NAME",
+                        "LEFTLINE",
+                        "RIGHTLINE",
+                        "DRAGY0",
+                        "DRAGY1",
+                        "ANCHOR_LASTHLINE",
+                        "LOGIC_LASTHLINE",
+                        "LOGIC_NEXTHLINE",
+                        "TOP_MARGIN",
+                        "SOURCE",
+                        "TOPLINE",
+                        "BOTTOMLINE",
+                        "BOTTOM_MARGIN",
+                        "LEFT_MARGIN",
+                        "RIGHT_MARGIN",
+                        "MAX_DRAG_X",
+                        "NEED_SHOW",
+                        "TABLE_ALIGNMODE",
+                        "FONT_SIZE",
+                        "FONT_COLOR",
+                        "FILL_MODE",
+                        "LINE_WIDTH",
+                        "RADIUS",
+                        "RADIUS_1",
+                        "RADIUS_2",
+                        "RADIUS_3",
+                        "RADIUS_4",
+                        "STROKE_COLOR",
+                        "BG_COLOR",
+                        "STROKE_WIDTH",
+                        "LEVEL",
+                        "SHOW_LEVEL",
+                        "FIRSTLINE_TAB",
+                        "ETC_TAB"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "Command",
+                    "values": [
+                        "X_UP",
+                        "Y_UP",
+                        "WIDTH_UP",
+                        "HEIGHT_UP",
+                        "Z_UP",
+                        "TEXT_UP",
+                        "FONT_SIZE_UP",
+                        "FONT_ITALIC_UP",
+                        "FONT_BOLD_UP",
+                        "GOTOLEFT",
+                        "KEY_RETURN",
+                        "FONT_FAMILY_UP",
+                        "COLOR_UP",
+                        "STROKE_COLOR_UP",
+                        "VALIGNOFFSET_UP",
+                        "BOOL_STROKE_UP",
+                        "INSERTOBJ",
+                        "STROKE_WIDTH_UP",
+                        "ANCHOR_LASTHLINE_UP",
+                        "LOGIC_LASTHLINE_UP",
+                        "TOP_MARGIN_UP",
+                        "LEFTLINE_UP",
+                        "RIGHTLINE_UP",
+                        "NAME_UP",
+                        "SOURCE_UP",
+                        "TOPLINE_UP",
+                        "BOTTOMLINE_UP",
+                        "BOTTOM_MARGIN_UP",
+                        "LEFT_MARGIN_UP",
+                        "RIGHT_MARGIN_UP",
+                        "ADDLINE",
+                        "STHCENTER",
+                        "STVCENTER",
+                        "FOCUS_CHANGED",
+                        "CONT_CHANGED",
+                        "TABLE_ALIGNMODE_UP",
+                        "TABLE_MERGE_UNIT",
+                        "TABLE_DELETE_ROW",
+                        "TABLE_DELETE_COLUMN",
+                        "TABLE_SPLIT_UNIT",
+                        "KEY_PRESSED",
+                        "KEY_BACKSPACE_PRESSED",
+                        "Request_Sync",
+                        "KEY_DOWN",
+                        "BG_COLOR_UP",
+                        "FILL_MODE_UP",
+                        "RADIUS_UP",
+                        "RADIUS_1_UP",
+                        "RADIUS_2_UP",
+                        "RADIUS_3_UP",
+                        "RADIUS_4_UP",
+                        "CREATE",
+                        "SET_FOCUS",
+                        "LEVEL_UP",
+                        "SHOW_LEVEL_UP",
+                        "FIRSTLINE_TAB_UP",
+                        "ETC_TAB_UP",
+                        "CLICKED",
+                        "CURSOR_CHANGE"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "SelectionCommand",
+                    "values": [
+                        "SP_Family_Set",
+                        "SP_FontSize_Add",
+                        "SP_FontSize_Set",
+                        "SP_FontBold_Set",
+                        "SP_FontItalic_Set",
+                        "SP_FontEnableStroke_Set",
+                        "SP_FontStrokeColor_Set",
+                        "SP_Color_Set",
+                        "SP_FontStrokeWidth_Add",
+                        "SP_FontStrokeWidth_Set",
+                        "SP_UnderLine_Set"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "SomeMore",
+                    "values": [
+                        "Dir_LEFT",
+                        "Dir_RIGHT",
+                        "Dir_TOP",
+                        "Dir_BOTTOM",
+                        "Dir_SKEW"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "SelectionProperty",
+                    "values": [
+                        "SP_FontSize",
+                        "SP_FontBold",
+                        "SP_FontItalic",
+                        "SP_TextEnableStroke",
+                        "SP_TextStrokeColor",
+                        "SP_TextStrokeWidth",
+                        "SP_UnderLine",
+                        "SP_TextColor",
+                        "SP_PathColor",
+                        "SP_TextEnableFill",
+                        "SP_vTextAlignMode",
+                        "SP_vTextAlignOffset",
+                        "SP_Family"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "PageType",
+                    "values": [
+                        "NoFormat_Page",
+                        "Word_Page"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "FillMode",
+                    "values": [
+                        "No_Fill",
+                        "Color_Fill",
+                        "Gradient_Fill",
+                        "Image_Fill",
+                        "Pattern_Fill",
+                        "Repeat_xy",
+                        "No_Repeat"
+                    ]
+                },
+                {
+                    "isClass": false,
+                    "isFlag": false,
+                    "name": "LinePattern",
+                    "values": [
+                        "None_LinePattern",
+                        "Solid_LinePattern",
+                        "Dash_LinePattern",
+                        "Dot_LinePattern"
+                    ]
+                }
+            ],
+            "lineNumber": 175,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "val",
+                            "type": "qreal"
+                        }
+                    ],
+                    "index": 12,
+                    "name": "pixel2cm",
+                    "returnType": "qreal"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "val",
+                            "type": "qreal"
+                        }
+                    ],
+                    "index": 13,
+                    "name": "cm2pixel",
+                    "returnType": "qreal"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "val",
+                            "type": "qreal"
+                        }
+                    ],
+                    "index": 14,
+                    "name": "point2pixel",
+                    "returnType": "qreal"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "val",
+                            "type": "qreal"
+                        }
+                    ],
+                    "index": 15,
+                    "name": "pixel2point",
+                    "returnType": "qreal"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "url",
+                            "type": "QUrl"
+                        }
+                    ],
+                    "index": 16,
+                    "name": "qurl2localfile",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 17,
+                    "name": "requestLoadSoup",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "options",
+                            "type": "QVariantMap"
+                        }
+                    ],
+                    "index": 18,
+                    "name": "requestLoadPdf",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 19,
+                    "isCloned": true,
+                    "name": "requestLoadPdf",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "callback",
+                            "type": "QJSValue"
+                        }
+                    ],
+                    "index": 20,
+                    "name": "requestPreLoadPdf",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "latex",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "fontSize",
+                            "type": "float"
+                        },
+                        {
+                            "name": "image_save_path",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 21,
+                    "name": "requestRenderLatexFormula",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "index": 22,
+                    "name": "trimCache",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "c",
+                            "type": "QChar"
+                        }
+                    ],
+                    "index": 23,
+                    "name": "isChineseChar",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "callback",
+                            "type": "QJSValue"
+                        }
+                    ],
+                    "index": 24,
+                    "name": "mobile_selectFile",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "permission",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 25,
+                    "name": "mobile_requestPermission",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "page_index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "into_image_id",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "callback",
+                            "type": "QJSValue"
+                        }
+                    ],
+                    "index": 26,
+                    "name": "request_renderPdf_as_image",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "func",
+                            "type": "std::function<void(void)>"
+                        }
+                    ],
+                    "index": 27,
+                    "name": "mainThread_do",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "default_value",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 28,
+                    "name": "temp_Get",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 29,
+                    "isCloned": true,
+                    "name": "temp_Get",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "value",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 30,
+                    "name": "temp_Set",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "default_value",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 31,
+                    "name": "DB_Get",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 32,
+                    "isCloned": true,
+                    "name": "DB_Get",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "default_value",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 33,
+                    "name": "DB_Read",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 34,
+                    "isCloned": true,
+                    "name": "DB_Read",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "key",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "value",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 35,
+                    "name": "DB_Set",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 36,
+                    "name": "removeImageFromProvider",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 37,
+                    "name": "platform_maximizeWindow",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 38,
+                    "name": "platform_minimizeWindow",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 39,
+                    "name": "platform_restoreWindow",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "url",
+                            "type": "QUrl"
+                        }
+                    ],
+                    "index": 40,
+                    "name": "extractFileNameFromPath",
+                    "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "args",
+                            "type": "QVariantMap"
+                        }
+                    ],
+                    "index": 41,
+                    "name": "createNavLines_fromLevels",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "args",
+                            "type": "QVariantMap"
+                        }
+                    ],
+                    "index": 42,
+                    "name": "createNavLines_auto",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "arg",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 43,
+                    "name": "doTest_1",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "n",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 44,
+                    "name": "number2chinese",
+                    "returnType": "QChar"
+                },
+                {
+                    "access": "public",
+                    "index": 45,
+                    "name": "getFontFamilyList",
+                    "returnType": "QStringList"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "func",
+                            "type": "QJSValue"
+                        },
+                        {
+                            "name": "arg",
+                            "type": "QVariantMap"
+                        }
+                    ],
+                    "index": 46,
+                    "name": "__invokeJSFunc",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "Helper",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "name": "requestTrimCache",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "title",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "text",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 1,
+                    "name": "errorMsg",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "name": "beginLoadDocument",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "pg",
+                            "type": "qreal"
+                        }
+                    ],
+                    "index": 3,
+                    "name": "fileLoadProgress",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 4,
+                    "name": "fileLoaded",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 5,
+                    "name": "beginSavePdf",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 6,
+                    "name": "pdfSaved",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "vLineName",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "x_offset",
+                            "type": "double"
+                        }
+                    ],
+                    "index": 7,
+                    "name": "addVLine",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "hLineName",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "y_offset",
+                            "type": "double"
+                        },
+                        {
+                            "name": "leftLine",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "rightLine",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "lastLine",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "lastAchorLine",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "hLine_objs",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 8,
+                    "name": "addHLine",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 9,
+                    "name": "beginSelection",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 10,
+                    "name": "clearSelection",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 11,
+                    "name": "selectionStopButKeep",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "helper.h",
+    "outputRevision": 69
+}

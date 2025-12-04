@@ -1,0 +1,31 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"souple_pdf/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"folder" : 
+	{
+		"name" : "QtInternalTargets"
+	},
+	"id" : "souple_pdf_autogen_timestamp_deps::@b1c82efbbed0726240fb",
+	"isGeneratorProvided" : true,
+	"name" : "souple_pdf_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "souple_pdf",
+		"source" : "souple_pdf"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

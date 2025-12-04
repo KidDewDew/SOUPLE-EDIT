@@ -1,0 +1,613 @@
+{
+    "classes": [
+        {
+            "className": "SoupleManager",
+            "lineNumber": 50,
+            "methods": [
+                {
+                    "access": "public",
+                    "index": 6,
+                    "isConst": true,
+                    "name": "documentHeight",
+                    "returnType": "float"
+                },
+                {
+                    "access": "public",
+                    "index": 7,
+                    "isConst": true,
+                    "name": "documentWidth",
+                    "returnType": "float"
+                },
+                {
+                    "access": "public",
+                    "index": 8,
+                    "isConst": true,
+                    "name": "getPageCount",
+                    "returnType": "int"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "data_id",
+                            "type": "qint32"
+                        },
+                        {
+                            "name": "command",
+                            "type": "int"
+                        },
+                        {
+                            "name": "arg",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 9,
+                    "name": "sendCommandToData",
+                    "returnType": "int"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "data_id",
+                            "type": "qint32"
+                        },
+                        {
+                            "name": "dataName",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 10,
+                    "name": "qmlGetData",
+                    "returnType": "QVariant"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "data_id",
+                            "type": "qint32"
+                        }
+                    ],
+                    "index": 11,
+                    "name": "requestDeleteObj",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 12,
+                    "name": "pauseDeal",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 13,
+                    "name": "continueDeal",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 14,
+                    "name": "freeze_frame",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 15,
+                    "name": "unfreeze_frame",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 16,
+                    "name": "request_undo",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 17,
+                    "name": "request_redo",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "type",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "hline_id",
+                            "type": "qint32"
+                        },
+                        {
+                            "name": "isInsertOnLeft",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 18,
+                    "name": "createSoupleObj_onHline",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "type",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "obj_id",
+                            "type": "qint32"
+                        },
+                        {
+                            "name": "isInsertOnLeft",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 19,
+                    "name": "createSoupleObj_byObj",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "type",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "x",
+                            "type": "float"
+                        },
+                        {
+                            "name": "y",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 20,
+                    "name": "createSoupleObj_Free",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "n_row",
+                            "type": "int"
+                        },
+                        {
+                            "name": "n_col",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 21,
+                    "name": "createTable",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "top",
+                            "type": "float"
+                        },
+                        {
+                            "name": "bottom",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 22,
+                    "name": "updateViewSize",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 23,
+                    "name": "hasCreatedFirstHLine",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "name",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 24,
+                    "name": "getHLineIdByName",
+                    "returnType": "qint32"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "doc_id",
+                            "type": "int"
+                        },
+                        {
+                            "name": "name",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 25,
+                    "name": "getHLineIdByName",
+                    "returnType": "qint32"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "qint32"
+                        }
+                    ],
+                    "index": 26,
+                    "name": "requestRemoveObj",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 27,
+                    "name": "tryCreateDecorationFrame",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 28,
+                    "name": "addInheritPage",
+                    "returnType": "Page*"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "width",
+                            "type": "float"
+                        },
+                        {
+                            "name": "height",
+                            "type": "float"
+                        },
+                        {
+                            "name": "top_margin",
+                            "type": "float"
+                        },
+                        {
+                            "name": "bottom_margin",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 29,
+                    "name": "addPage",
+                    "returnType": "Page*"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "page_index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "margin",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 30,
+                    "name": "updatePageTopMargin",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "page_index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "margin",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 31,
+                    "name": "updatePageBottomMargin",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "hline_name",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 32,
+                    "name": "checkHLineValid",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "doc_id",
+                            "type": "int"
+                        },
+                        {
+                            "name": "hline_name",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 33,
+                    "name": "checkHLineValid",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "show",
+                            "type": "bool"
+                        }
+                    ],
+                    "index": 34,
+                    "name": "setShowHelpLine",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "document_id",
+                            "type": "int"
+                        },
+                        {
+                            "name": "page_index",
+                            "type": "int"
+                        },
+                        {
+                            "name": "into_image_id",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 35,
+                    "name": "request_render_page",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "y",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 36,
+                    "name": "getPageIndexOfY",
+                    "returnType": "int"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "qobj",
+                            "type": "QObject*"
+                        }
+                    ],
+                    "index": 37,
+                    "name": "installEventFilter",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "qobj",
+                            "type": "QObject*"
+                        }
+                    ],
+                    "index": 38,
+                    "name": "efST",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "style",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 39,
+                    "name": "requestChangeCurrentPageStyle",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 40,
+                    "name": "getCurrentPageStyle",
+                    "returnType": "int"
+                },
+                {
+                    "access": "public",
+                    "index": 41,
+                    "name": "getCurrentPageInfo",
+                    "returnType": "QVariantMap"
+                },
+                {
+                    "access": "public",
+                    "index": 42,
+                    "name": "getCurrentDocumentID",
+                    "returnType": "int"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "num",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 43,
+                    "name": "requestChangePageColumnNum",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 44,
+                    "name": "addSoupleDocument",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "switch_to_id",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 45,
+                    "name": "switchSoupleDocument",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 46,
+                    "name": "getObjHLineName",
+                    "returnType": "QString"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 0,
+                    "name": "documentWidth",
+                    "notify": "documentWidthChanged",
+                    "read": "documentWidth",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 1,
+                    "name": "documentHeight",
+                    "notify": "documentHeightChanged",
+                    "read": "documentHeight",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "float",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 2,
+                    "name": "pageCount",
+                    "notify": "pageCountChanged",
+                    "read": "getPageCount",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "SoupleManager",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "name": "documentWidthChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "name": "documentHeightChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "name": "pageCountChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "width",
+                            "type": "float"
+                        },
+                        {
+                            "name": "height",
+                            "type": "float"
+                        },
+                        {
+                            "name": "top_margin",
+                            "type": "float"
+                        },
+                        {
+                            "name": "bottom_margin",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 3,
+                    "name": "newPageAdded",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "page_index",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 4,
+                    "name": "pageIndexChanged",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "index": 5,
+                    "name": "imp_updateUI",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "souplemanager.h",
+    "outputRevision": 69
+}

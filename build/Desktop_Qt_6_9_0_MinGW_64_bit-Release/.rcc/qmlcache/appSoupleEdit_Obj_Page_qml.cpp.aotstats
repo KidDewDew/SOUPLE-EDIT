@@ -1,0 +1,356 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 276,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 8
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 138,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 93,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 15,
+                        "durationMicroseconds": 46,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "text",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 25
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 14,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 32
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "Cannot load property top_margin from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Page.qml)::parent with type QQuickItem.",
+                        "functionName": "y",
+                        "line": 35
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 38
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "Cannot load property top_margin from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Page.qml)::parent with type QQuickItem.",
+                        "functionName": "height",
+                        "line": 42
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 39
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 276,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "text",
+                        "line": 46
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 45
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 109,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 395,
+                        "errorMessage": "Cannot find name top_margin",
+                        "functionName": "onMouseYChanged",
+                        "line": 57
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 50
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 51
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "axis",
+                        "line": 52
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 191,
+                        "errorMessage": "",
+                        "functionName": "maximumY",
+                        "line": 54
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "",
+                        "functionName": "minimumY",
+                        "line": 55
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 14,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 68
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 70
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 124,
+                        "errorMessage": "Cannot load property bottom_margin from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Page.qml)::parent with type QQuickItem.",
+                        "functionName": "y",
+                        "line": 71
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 74
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "Cannot load property bottom_margin from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Page.qml)::parent with type QQuickItem.",
+                        "functionName": "height",
+                        "line": 78
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 75
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 79
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 292,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "text",
+                        "line": 83
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 89,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 82
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 104,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 93
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 338,
+                        "errorMessage": "Cannot find name bottom_margin",
+                        "functionName": "onMouseYChanged",
+                        "line": 94
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 87
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 88
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "axis",
+                        "line": 89
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 152,
+                        "errorMessage": "",
+                        "functionName": "maximumY",
+                        "line": 91
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "",
+                        "functionName": "minimumY",
+                        "line": 92
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "Cannot load property top_margin from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Page.qml)::parent with type QQuickItem.",
+                        "functionName": "y",
+                        "line": 101
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 74,
+                        "errorMessage": "Cannot load property bottom_margin from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Page.qml)::parent with type QQuickItem.",
+                        "functionName": "y",
+                        "line": 108
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 109
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Page.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

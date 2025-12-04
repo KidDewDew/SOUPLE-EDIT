@@ -1,0 +1,14 @@
+-rootPath
+E:/SoupleEdit/SOUPLE-EDIT-master
+-cmake-output
+-output-file
+E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.qt/qml_imports/appSoupleEdit_build.cmake
+-importPath
+E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/SoupleEdit
+-importPath
+E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release
+-importPath
+E:/Qt/6.9.0/mingw_64/qml
+-qrcFiles
+E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.qt/rcc/qmake_SoupleEdit.qrc
+E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/.qt/rcc/appSoupleEdit_raw_qml_0.qrc

@@ -1,0 +1,1492 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 845,
+                        "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/Editable_Bound.qml)::sync_obj with type QVariant does not have a property x for writing",
+                        "functionName": "onEb_xChanged",
+                        "line": 21
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 500,
+                        "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/Editable_Bound.qml)::sync_obj with type QVariant does not have a property y for writing",
+                        "functionName": "onEb_yChanged",
+                        "line": 28
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 507,
+                        "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/Editable_Bound.qml)::sync_obj with type QVariant does not have a property width for writing",
+                        "functionName": "onEb_widthChanged",
+                        "line": 35
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 533,
+                        "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/Editable_Bound.qml)::sync_obj with type QVariant does not have a property height for writing",
+                        "functionName": "onEb_heightChanged",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 612,
+                        "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/Editable_Bound.qml)::sync_obj with type QVariant does not have a property rotation for writing",
+                        "functionName": "onEb_rotationChanged",
+                        "line": 51
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "Cannot load property x from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Editable_Bound.qml)::sync_obj with type QVariant.",
+                        "functionName": "onSync_objChanged",
+                        "line": 63
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 8,
+                        "durationMicroseconds": 149,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 72
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 8,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 73
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 15,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "rotation",
+                        "line": 77
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 15,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "Cannot access value for name move_left",
+                        "functionName": "when",
+                        "line": 94
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "value",
+                        "line": 95
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 15,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot access value for name move_right",
+                        "functionName": "when",
+                        "line": 98
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "value",
+                        "line": 99
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 15,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name move_top",
+                        "functionName": "when",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "value",
+                        "line": 103
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 15,
+                        "durationMicroseconds": 119,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 106
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "value",
+                        "line": 107
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name enableDrag",
+                        "functionName": "visible",
+                        "line": 112
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 11,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 114
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 11,
+                        "durationMicroseconds": 140,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 115
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "height",
+                        "line": 117
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 118
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onReleased",
+                        "line": 120
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onCanceled",
+                        "line": 124
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 119
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name enableAdjustW",
+                        "functionName": "visible",
+                        "line": 132
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 136
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot find name move_left",
+                        "functionName": "onPressed",
+                        "line": 137
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onMouseXChanged",
+                        "line": 141
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "",
+                        "functionName": "onMouseXChanged",
+                        "line": 141
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 241,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 144
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 144
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 133
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name enableDrag",
+                        "functionName": "visible",
+                        "line": 154
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 11,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 156
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 11,
+                        "durationMicroseconds": 142,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 157
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "height",
+                        "line": 159
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 160
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 47,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onReleased",
+                        "line": 162
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onCanceled",
+                        "line": 166
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 161
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name enableAdjustW",
+                        "functionName": "visible",
+                        "line": 175
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 176
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "Cannot find name move_right",
+                        "functionName": "onPressed",
+                        "line": 177
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onMouseXChanged",
+                        "line": 181
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "",
+                        "functionName": "onMouseXChanged",
+                        "line": 181
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 227,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 184
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 184
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 174
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 11,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 194
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name enableDrag",
+                        "functionName": "visible",
+                        "line": 195
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 11,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 196
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "width",
+                        "line": 197
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 85,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 199
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onReleased",
+                        "line": 201
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onCanceled",
+                        "line": 205
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 200
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name enableAdjustH",
+                        "functionName": "visible",
+                        "line": 214
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 217
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "Cannot find name move_top",
+                        "functionName": "onPressed",
+                        "line": 218
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 218
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "onPositionChanged",
+                        "line": 223
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 223
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 206,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 226
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 226
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 213
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "Cannot access value for name enableDrag",
+                        "functionName": "visible",
+                        "line": 237
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 11,
+                        "durationMicroseconds": 115,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 238
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 11,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 239
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "width",
+                        "line": 240
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 242
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 51,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onReleased",
+                        "line": 244
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot find name eb_x",
+                        "functionName": "onCanceled",
+                        "line": 248
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 243
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "Cannot access value for name enableAdjustH",
+                        "functionName": "visible",
+                        "line": 256
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 260
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "Cannot find name move_bottom",
+                        "functionName": "onPressed",
+                        "line": 261
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 261
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "onPositionChanged",
+                        "line": 266
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 266
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 193,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 269
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 269
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 257
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "Cannot access value for name enableAdjustW",
+                        "functionName": "visible",
+                        "line": 281
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 282
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "Cannot find name move_left",
+                        "functionName": "onPressed",
+                        "line": 283
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onMouseXChanged",
+                        "line": 287
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "",
+                        "functionName": "onMouseXChanged",
+                        "line": 287
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 656,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 291
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 291
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 279
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "Cannot access value for name enableAdjustW",
+                        "functionName": "visible",
+                        "line": 306
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 308
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 74,
+                        "errorMessage": "Cannot find name move_right",
+                        "functionName": "onPressed",
+                        "line": 309
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onMouseXChanged",
+                        "line": 313
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "",
+                        "functionName": "onMouseXChanged",
+                        "line": 313
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 387,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 317
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 317
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 305
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "Cannot access value for name enableAdjustW",
+                        "functionName": "visible",
+                        "line": 332
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 141,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 334
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "Cannot find name move_left",
+                        "functionName": "onPressed",
+                        "line": 335
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onMouseXChanged",
+                        "line": 339
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "",
+                        "functionName": "onMouseXChanged",
+                        "line": 339
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 398,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 343
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 343
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 88,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 331
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 70,
+                        "errorMessage": "Cannot access value for name enableAdjustW",
+                        "functionName": "visible",
+                        "line": 358
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 360
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "Cannot find name move_bottom",
+                        "functionName": "onPressed",
+                        "line": 361
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onMouseXChanged",
+                        "line": 365
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "",
+                        "functionName": "onMouseXChanged",
+                        "line": 365
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 379,
+                        "errorMessage": "Cannot access value for name eb_x",
+                        "functionName": "onReleased",
+                        "line": 369
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 369
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 357
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 18,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 383
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 386
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 384
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 125,
+                        "errorMessage": "Cannot access value for name move_left",
+                        "functionName": "visible",
+                        "line": 393
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "Cannot access value for name new_right",
+                        "functionName": "width",
+                        "line": 394
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "Cannot access value for name new_bottom",
+                        "functionName": "height",
+                        "line": 395
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "Cannot access value for name new_left",
+                        "functionName": "x",
+                        "line": 396
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 17,
+                        "errorMessage": "Cannot access value for name new_top",
+                        "functionName": "y",
+                        "line": 397
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name new_rotation",
+                        "functionName": "rotation",
+                        "line": 398
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "strokeStyle",
+                        "line": 404
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 138,
+                        "errorMessage": "",
+                        "functionName": "dashPattern",
+                        "line": 405
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "Cannot access value for name new_right",
+                        "functionName": "x",
+                        "line": 409
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "Cannot access value for name new_right",
+                        "functionName": "x",
+                        "line": 413
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 47,
+                        "errorMessage": "Cannot access value for name new_bottom",
+                        "functionName": "y",
+                        "line": 414
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "Cannot access value for name new_bottom",
+                        "functionName": "y",
+                        "line": 418
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 47,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "height",
+                        "line": 429
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 430
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 144,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 431
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 26,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 432
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "height",
+                        "line": 438
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 439
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 123,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 440
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "height",
+                        "line": 448
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 449
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 146,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 450
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 451
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 54,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "height",
+                        "line": 457
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 458
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 110,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 459
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "width",
+                        "line": 466
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 468
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 469
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 470
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 53,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "width",
+                        "line": 475
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 477
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 478
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "width",
+                        "line": 485
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 487
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 25,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 488
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 18,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 489
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "width",
+                        "line": 494
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 496
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 497
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 508
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 509
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 178,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 510
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 511
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 519
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 520
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 121,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 521
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 522
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 530
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 36,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 531
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 163,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 532
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 533
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "Cannot access value for name eb_width",
+                        "functionName": "x",
+                        "line": 541
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 542
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 124,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 543
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "Cannot access value for name accent",
+                        "functionName": "color",
+                        "line": 544
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name enableRotate",
+                        "functionName": "visible",
+                        "line": 548
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 553
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 24,
+                        "errorMessage": "Cannot access value for name enableRotate",
+                        "functionName": "visible",
+                        "line": 558
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "Cannot access value for name eb_height",
+                        "functionName": "y",
+                        "line": 562
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 18,
+                        "durationMicroseconds": 27,
+                        "errorMessage": "Cannot access value for name enableRotate",
+                        "functionName": "visible",
+                        "line": 568
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 121,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 569
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 20,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "Cannot find name isRotate",
+                        "functionName": "onPressed",
+                        "line": 570
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 101,
+                        "errorMessage": "Cannot find name new_rotation",
+                        "functionName": "onPositionChanged",
+                        "line": 574
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 574
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "Cannot access value for name eb_rotation",
+                        "functionName": "onReleased",
+                        "line": 578
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 567
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Editable_Bound.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

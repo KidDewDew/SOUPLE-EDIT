@@ -1,0 +1,692 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 225,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "path",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 239,
+                        "errorMessage": "",
+                        "functionName": "onHeightChanged",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 116,
+                        "errorMessage": "",
+                        "functionName": "die",
+                        "line": 26
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 313,
+                        "errorMessage": "Cannot find name selectedObj",
+                        "functionName": "onFocusChanged",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "onPathChanged",
+                        "line": 157
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 14,
+                        "durationMicroseconds": 18815,
+                        "errorMessage": "Cannot load property length from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Path.qml)::path with type QVariant.",
+                        "functionName": "onPaint",
+                        "line": 162
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 187,
+                        "errorMessage": "",
+                        "functionName": "columnSpacing",
+                        "line": 34
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 153,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 48
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 569,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 2282,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onValueChanged",
+                        "line": 58
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 803,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 75
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 346,
+                        "errorMessage": "",
+                        "functionName": "onValueChanged",
+                        "line": 76
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 213,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "initialValue",
+                        "line": 88
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 250,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onValueChanged",
+                        "line": 93
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "when",
+                        "line": 90
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "value",
+                        "line": 91
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 570,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "onClicked",
+                        "line": 107
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 106
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 483,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTriggered",
+                        "line": 131
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 224,
+                        "errorMessage": "",
+                        "functionName": "acceptedButtons",
+                        "line": 144
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 145
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 145
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 492,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 148
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 47,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 148
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 143
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 501,
+                        "errorMessage": "",
+                        "functionName": "flags",
+                        "line": 222
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "strokeColor",
+                        "line": 230
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 39,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "fillColor",
+                        "line": 231
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "lineWidth",
+                        "line": 232
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "fillPath",
+                        "line": 233
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 202,
+                        "errorMessage": "",
+                        "functionName": "dragStartPos",
+                        "line": 241
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 132,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "colorIndex",
+                        "line": 242
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 499,
+                        "errorMessage": "",
+                        "functionName": "colorList",
+                        "line": 244
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 215,
+                        "errorMessage": "",
+                        "functionName": "onStrokeColorChanged",
+                        "line": 251
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 727,
+                        "errorMessage": "",
+                        "functionName": "onFillPathChanged",
+                        "line": 259
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "findClosestPoint",
+                        "line": 264
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "createPoint",
+                        "line": 306
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "updatePoint",
+                        "line": 344
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "deletePoint",
+                        "line": 361
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 32220,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "loadPath",
+                        "line": 369
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 8680,
+                        "errorMessage": "Cannot access value for name obj",
+                        "functionName": "savePath",
+                        "line": 490
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "selectPoint",
+                        "line": 906
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 146,
+                        "errorMessage": "",
+                        "functionName": "onClosing",
+                        "line": 917
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 167,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 533
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 542
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 59,
+                        "durationMicroseconds": 93,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 562
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 48,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "Cannot access value for name strokeColor",
+                        "functionName": "color",
+                        "line": 570
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 59,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 573
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 60,
+                        "durationMicroseconds": 366,
+                        "errorMessage": "Cannot access value for name colorIndex",
+                        "functionName": "onClicked",
+                        "line": 578
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 63,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 577
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 59,
+                        "durationMicroseconds": 81,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 601
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 48,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "Cannot access value for name lineWidth",
+                        "functionName": "value",
+                        "line": 607
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 57,
+                        "durationMicroseconds": 159,
+                        "errorMessage": "Cannot find name lineWidth",
+                        "functionName": "onValueChanged",
+                        "line": 609
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 47,
+                        "durationMicroseconds": 46,
+                        "errorMessage": "Cannot access value for name lineWidth",
+                        "functionName": "text",
+                        "line": 617
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "Cannot access value for name fillPath",
+                        "functionName": "checked",
+                        "line": 625
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 55,
+                        "durationMicroseconds": 184,
+                        "errorMessage": "Cannot find name fillPath",
+                        "functionName": "onCheckedChanged",
+                        "line": 627
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "Cannot access value for name showControlPoints",
+                        "functionName": "checked",
+                        "line": 637
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 55,
+                        "durationMicroseconds": 69,
+                        "errorMessage": "Cannot find name showControlPoints",
+                        "functionName": "onCheckedChanged",
+                        "line": 639
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "Cannot access value for name showControlLines",
+                        "functionName": "checked",
+                        "line": 647
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 55,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "Cannot find name showControlLines",
+                        "functionName": "onCheckedChanged",
+                        "line": 649
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 663
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 669
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 85,
+                        "errorMessage": "",
+                        "functionName": "model",
+                        "line": 675
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 55,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "Cannot access value for name model",
+                        "functionName": "text",
+                        "line": 687
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 60,
+                        "durationMicroseconds": 157,
+                        "errorMessage": "Cannot access value for name model",
+                        "functionName": "onClicked",
+                        "line": 689
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 55,
+                        "durationMicroseconds": 71,
+                        "errorMessage": "Cannot access value for name model",
+                        "functionName": "text",
+                        "line": 696
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 55,
+                        "durationMicroseconds": 116,
+                        "errorMessage": "Cannot access value for name model",
+                        "functionName": "text",
+                        "line": 701
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 60,
+                        "durationMicroseconds": 703,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "onClicked",
+                        "line": 708
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 34,
+                        "durationMicroseconds": 48134,
+                        "errorMessage": "Cannot access value for name strokeColor",
+                        "functionName": "onPaint",
+                        "line": 727
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 725
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 257,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 813
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 1725,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onPressed",
+                        "line": 815
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "onPressed",
+                        "line": 815
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 48,
+                        "durationMicroseconds": 6314,
+                        "errorMessage": "Cannot generate efficient code for lookup in QJSValue",
+                        "functionName": "onPositionChanged",
+                        "line": 831
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 148,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 831
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 260,
+                        "errorMessage": "",
+                        "functionName": "onReleased",
+                        "line": 866
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 467,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 872
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 872
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 461,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onDoubleClicked",
+                        "line": 878
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "onDoubleClicked",
+                        "line": 878
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 811
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 121,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 889
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 890
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 193,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 896
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 429,
+                        "errorMessage": "method savePath cannot be resolved.",
+                        "functionName": "onClicked",
+                        "line": 902
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Path.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

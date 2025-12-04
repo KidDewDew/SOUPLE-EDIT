@@ -1,0 +1,412 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 299,
+                        "errorMessage": "",
+                        "functionName": "steps",
+                        "line": 12
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 245,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onClosing",
+                        "line": 13
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 19,
+                        "durationMicroseconds": 4122,
+                        "errorMessage": "Cannot access value for name steps",
+                        "functionName": "text",
+                        "line": 25
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 203,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 43
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 130,
+                        "errorMessage": "",
+                        "functionName": "fillMode",
+                        "line": 51
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 301,
+                        "errorMessage": "",
+                        "functionName": "preferredWidth",
+                        "line": 50
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 118,
+                        "errorMessage": "Cannot load property paintedWidth from (component in E:/SoupleEdit/SOUPLE-EDIT-master/PdfLoadHelper.qml)::parent with type QQuickItem.",
+                        "functionName": "width",
+                        "line": 55
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 89,
+                        "errorMessage": "Cannot load property paintedHeight from (component in E:/SoupleEdit/SOUPLE-EDIT-master/PdfLoadHelper.qml)::parent with type QQuickItem.",
+                        "functionName": "height",
+                        "line": 56
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 112,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 54
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 65
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 239,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 66
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 67
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 57,
+                        "durationMicroseconds": 401,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 73
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 81
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 84
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 148,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 86
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 472,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onYChanged",
+                        "line": 89
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 97
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 98
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 125,
+                        "errorMessage": "",
+                        "functionName": "axis",
+                        "line": 100
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 212,
+                        "errorMessage": "",
+                        "functionName": "maximumY",
+                        "line": 101
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "",
+                        "functionName": "minimumY",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 107
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 228,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 108
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 116,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 110
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 57,
+                        "durationMicroseconds": 122,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 116
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 128,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 124
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "dir",
+                        "line": 127
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 186,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 129
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 135,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 130
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 715,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onYChanged",
+                        "line": 131
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 137
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 104,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 138
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 85,
+                        "errorMessage": "",
+                        "functionName": "axis",
+                        "line": 140
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 286,
+                        "errorMessage": "",
+                        "functionName": "maximumY",
+                        "line": 141
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "",
+                        "functionName": "minimumY",
+                        "line": 142
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 93,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 149
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 404,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onValueChanged",
+                        "line": 160
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 30,
+                        "durationMicroseconds": 262,
+                        "errorMessage": "",
+                        "functionName": "columns",
+                        "line": 187
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 217,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 198
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 116,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 207
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 215
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 210,
+                        "errorMessage": "",
+                        "functionName": "enabled",
+                        "line": 219
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 259,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 221
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "Cannot access value for name steps",
+                        "functionName": "enabled",
+                        "line": 224
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 164,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 227
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "Cannot access value for name steps",
+                        "functionName": "visible",
+                        "line": 230
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 2234,
+                        "errorMessage": "Cannot access value for name main_titleBar",
+                        "functionName": "onClicked",
+                        "line": 236
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/PdfLoadHelper.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

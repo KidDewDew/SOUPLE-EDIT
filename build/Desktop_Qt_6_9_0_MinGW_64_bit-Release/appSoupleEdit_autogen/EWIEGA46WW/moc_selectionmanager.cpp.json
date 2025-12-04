@@ -1,0 +1,108 @@
+{
+    "classes": [
+        {
+            "className": "SelectionManager",
+            "lineNumber": 17,
+            "methods": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "name": "isSelecting",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "id",
+                            "type": "int"
+                        },
+                        {
+                            "name": "begin_x",
+                            "type": "float"
+                        },
+                        {
+                            "name": "begin_y",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 1,
+                    "name": "beginSelect",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "to_x",
+                            "type": "float"
+                        },
+                        {
+                            "name": "to_y",
+                            "type": "float"
+                        }
+                    ],
+                    "index": 2,
+                    "name": "moveSelect",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 3,
+                    "name": "stopSelect",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 4,
+                    "name": "clearSelection",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "command",
+                            "type": "int"
+                        },
+                        {
+                            "name": "arg",
+                            "type": "QVariant"
+                        }
+                    ],
+                    "index": 5,
+                    "name": "sendCommands",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "pobj",
+                            "type": "QObject*"
+                        }
+                    ],
+                    "index": 6,
+                    "name": "staticProperty",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 7,
+                    "name": "toString",
+                    "returnType": "QString"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "SelectionManager",
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "selectionmanager.h",
+    "outputRevision": 69
+}

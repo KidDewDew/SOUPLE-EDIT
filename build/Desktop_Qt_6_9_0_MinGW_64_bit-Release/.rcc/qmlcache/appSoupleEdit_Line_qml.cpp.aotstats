@@ -1,0 +1,76 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 391,
+                        "errorMessage": "",
+                        "functionName": "implicitHeight",
+                        "line": 6
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 176,
+                        "errorMessage": "",
+                        "functionName": "implicitWidth",
+                        "line": 7
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 57,
+                        "errorMessage": "Cannot access value for name x0",
+                        "functionName": "startX",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name y0",
+                        "functionName": "startY",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "",
+                        "functionName": "strokeWidth",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "strokeColor",
+                        "line": 18
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "Cannot access value for name x1",
+                        "functionName": "x",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name y1",
+                        "functionName": "y",
+                        "line": 20
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Line.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

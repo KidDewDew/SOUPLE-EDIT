@@ -1,0 +1,76 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 255,
+                        "errorMessage": "",
+                        "functionName": "implicitHeight",
+                        "line": 7
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 153,
+                        "errorMessage": "",
+                        "functionName": "implicitWidth",
+                        "line": 8
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 15,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "Cannot load property text from (component in E:/SoupleEdit/SOUPLE-EDIT-master/LineText.qml)::parent with type QQuickItem.",
+                        "functionName": "text",
+                        "line": 20
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 21
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "left",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 25
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 29
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/LineText.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

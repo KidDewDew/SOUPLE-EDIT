@@ -1,0 +1,692 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 225,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 10
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "docs",
+                        "line": 19
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 578,
+                        "errorMessage": "Cannot load property length from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Dialog_DocumentDirTool.qml)::docs with type QVariant.",
+                        "functionName": "verify_1",
+                        "line": 24
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 47,
+                        "errorMessage": "Type call to method createQmlObject, returning QObject does not have a property open for calling",
+                        "functionName": "loadPDF",
+                        "line": 44
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onClosing",
+                        "line": 64
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 143,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "foreground",
+                        "line": 14
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 139,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "background",
+                        "line": 15
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 128,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "primary",
+                        "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 276,
+                        "errorMessage": "Cannot access value for name isProtectEyeMode",
+                        "functionName": "theme",
+                        "line": 17
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 186,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onCompleted",
+                        "line": 60
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"initialItem\".",
+                        "functionName": "initialItem",
+                        "line": 72
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 23,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"fill\".",
+                        "functionName": "fill",
+                        "line": 71
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 125,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 79
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 29,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 80
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 85
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 38,
+                        "durationMicroseconds": 235,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "accent",
+                        "line": 91
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 105
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 42,
+                        "errorMessage": "Cannot access value for name stack",
+                        "functionName": "onClicked",
+                        "line": 113
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 130,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "accent",
+                        "line": 115
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 1136,
+                        "errorMessage": "Cannot access value for name docs",
+                        "functionName": "onClicked",
+                        "line": 120
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "",
+                        "functionName": "onCompleted",
+                        "line": 148
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "contentHeight",
+                        "line": 152
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 153
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 89,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 154
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 62,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 159
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 142,
+                        "errorMessage": "",
+                        "functionName": "implicitWidth",
+                        "line": 162
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 121,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "color",
+                        "line": 163
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"justifyContent\".",
+                        "functionName": "justifyContent",
+                        "line": 168
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"alignItems\".",
+                        "functionName": "alignItems",
+                        "line": 169
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"direction\".",
+                        "functionName": "direction",
+                        "line": 173
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 39,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name page1",
+                        "functionName": "when",
+                        "line": 182
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 52,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"direction\".",
+                        "functionName": "direction",
+                        "line": 184
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 39,
+                        "durationMicroseconds": 14,
+                        "errorMessage": "Cannot access value for name page1",
+                        "functionName": "when",
+                        "line": 176
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 52,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"direction\".",
+                        "functionName": "direction",
+                        "line": 178
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 136,
+                        "errorMessage": "",
+                        "functionName": "fillWidth",
+                        "line": 192
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 50,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 220
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 44,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 225
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 126,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 232
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 808,
+                        "errorMessage": "Cannot access value for name Helper_Type",
+                        "functionName": "showType",
+                        "line": 234
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 168,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 240
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 143,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 246
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 112,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 256
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 112,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 261
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 202,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 270
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 248,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 276
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 101,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 286
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 291
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 280,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "radius",
+                        "line": 307
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 226,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "lineWidth",
+                        "line": 308
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 39,
+                        "durationMicroseconds": 23,
+                        "errorMessage": "Cannot retrieve a non-object type by ID: fontEdit",
+                        "functionName": "font",
+                        "line": 309
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 199,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "spacing",
+                        "line": 310
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "levels",
+                        "line": 311
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 43,
+                        "durationMicroseconds": 211,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "levelTab",
+                        "line": 312
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 203,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "dashWidth",
+                        "line": 313
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "showType",
+                        "line": 314
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "updateDocList",
+                        "line": 340
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 13,
+                        "durationMicroseconds": 635,
+                        "errorMessage": "Cannot access value for name alias_soupleEdit",
+                        "functionName": "updateHLineFromCursor",
+                        "line": 358
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 329
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onCompleted",
+                        "line": 335
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 26,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "Cannot load property visible from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Dialog_DocumentDirTool.qml)::parent with type QObject.",
+                        "functionName": "running",
+                        "line": 366
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 119,
+                        "errorMessage": "method updateDocList cannot be resolved.",
+                        "functionName": "onTriggered",
+                        "line": 368
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "wrapMode",
+                        "line": 381
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 382
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 38,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 380
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"verticalCenter\".",
+                        "functionName": "verticalCenter",
+                        "line": 386
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 391
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 395
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "preferredWidth",
+                        "line": 396
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\".",
+                        "functionName": "x",
+                        "line": 398
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"clicked\".",
+                        "functionName": "onClicked",
+                        "line": 402
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"verticalCenter\".",
+                        "functionName": "verticalCenter",
+                        "line": 399
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 55,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 409
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 39,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 414
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "",
+                        "functionName": "wrapMode",
+                        "line": 433
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 434
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 432
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 263,
+                        "errorMessage": "Cannot find name hline_name",
+                        "functionName": "onClicked",
+                        "line": 442
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 93,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 440
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 188,
+                        "errorMessage": "Cannot find name hline_name",
+                        "functionName": "onClicked",
+                        "line": 456
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 85,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 454
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 37,
+                        "errorMessage": "",
+                        "functionName": "wrapMode",
+                        "line": 468
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 471
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 35,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 470
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 31,
+                        "errorMessage": "",
+                        "functionName": "wrapMode",
+                        "line": 476
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 478
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Dialog_DocumentDirTool.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]

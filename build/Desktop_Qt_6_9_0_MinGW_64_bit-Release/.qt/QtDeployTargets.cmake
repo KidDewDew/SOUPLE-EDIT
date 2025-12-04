@@ -1,0 +1,6 @@
+set(__QT_DEPLOY_TARGET_souple_pdf_FILE E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/libsouple_pdf.dll)
+set(__QT_DEPLOY_TARGET_souple_pdf_TYPE SHARED_LIBRARY)
+set(__QT_DEPLOY_TARGET_souple_pdf_RUNTIME_DLLS E:/Qt/6.9.0/mingw_64/bin/Qt6Core.dll)
+set(__QT_DEPLOY_TARGET_appSoupleEdit_FILE E:/SoupleEdit/SOUPLE-EDIT-master/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/appSoupleEdit.exe)
+set(__QT_DEPLOY_TARGET_appSoupleEdit_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_appSoupleEdit_RUNTIME_DLLS E:/Qt/6.9.0/mingw_64/bin/Qt6Quick.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6PrintSupport.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6QmlMeta.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6QmlWorkerScript.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6QmlModels.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6Qml.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6Network.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6OpenGL.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6Widgets.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6Gui.dll;E:/Qt/6.9.0/mingw_64/bin/Qt6Core.dll)

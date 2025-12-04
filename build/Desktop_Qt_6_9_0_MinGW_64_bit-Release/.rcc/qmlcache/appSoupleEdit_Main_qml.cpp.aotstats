@@ -1,0 +1,2396 @@
+[
+    {
+        "moduleFiles": [
+            {
+                "entries": [
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 9,
+                        "durationMicroseconds": 497,
+                        "errorMessage": "",
+                        "functionName": "windowShadowBW",
+                        "line": 22
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "isProtectEyeMode",
+                        "line": 109
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 48,
+                        "errorMessage": "",
+                        "functionName": "darkMode",
+                        "line": 111
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 478,
+                        "errorMessage": "Cannot load property fg from conversion to QObject.",
+                        "functionName": "onIsProtectEyeModeChanged",
+                        "line": 113
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 12,
+                        "durationMicroseconds": 231,
+                        "errorMessage": "",
+                        "functionName": "flags",
+                        "line": 146
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 5,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "doQuit",
+                        "line": 272
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 49,
+                        "errorMessage": "Instruction \"generate_StoreLocal\" not implemented",
+                        "functionName": "open_dialog_setJAVA_HOME",
+                        "line": 276
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "showChooseBoard",
+                        "line": 285
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "hideChooseBoard",
+                        "line": 289
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "changeViewTop",
+                        "line": 295
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "generateObj",
+                        "line": 300
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "appendPage",
+                        "line": 305
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 40,
+                        "errorMessage": "function without return type annotation returns int. This may prevent proper compilation to Cpp.",
+                        "functionName": "getSelectedID",
+                        "line": 311
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "preloadPDF",
+                        "line": 316
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "messageBox",
+                        "line": 457
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "updateObjPropertyPane",
+                        "line": 463
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "setPropertyPane",
+                        "line": 473
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "foreground",
+                        "line": 102
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "background",
+                        "line": 103
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "primary",
+                        "line": 104
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 158,
+                        "errorMessage": "",
+                        "functionName": "theme",
+                        "line": 105
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 520,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onCompleted",
+                        "line": 129
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 149,
+                        "errorMessage": "",
+                        "functionName": "closePolicy",
+                        "line": 332
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 158,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 330
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 143,
+                        "errorMessage": "",
+                        "functionName": "fileMode",
+                        "line": 355
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 136,
+                        "errorMessage": "",
+                        "functionName": "nameFilters",
+                        "line": 356
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 303,
+                        "errorMessage": "Cannot access value for name PdfSaver",
+                        "functionName": "onAccepted",
+                        "line": 357
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 17,
+                        "durationMicroseconds": 66,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "target",
+                        "line": 363
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 9,
+                        "durationMicroseconds": 120,
+                        "errorMessage": "",
+                        "functionName": "onBeginLoadDocument",
+                        "line": 364
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onFileLoadProgress",
+                        "line": 367
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 9,
+                        "durationMicroseconds": 88,
+                        "errorMessage": "",
+                        "functionName": "onFileLoaded",
+                        "line": 370
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 141,
+                        "errorMessage": "method setPropertyPane cannot be resolved.",
+                        "functionName": "onBeginSelection",
+                        "line": 373
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 9,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onErrorMsg",
+                        "line": 379
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "soupleEdit",
+                        "line": 394
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 287,
+                        "errorMessage": "method callback cannot be resolved.",
+                        "functionName": "onAccepted",
+                        "line": 423
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 49,
+                        "errorMessage": "",
+                        "functionName": "onAccepted",
+                        "line": 423
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 34,
+                        "errorMessage": "method callback cannot be resolved.",
+                        "functionName": "onAccepted",
+                        "line": 432
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 21,
+                        "durationMicroseconds": 33,
+                        "errorMessage": "method callback cannot be resolved.",
+                        "functionName": "onAccepted",
+                        "line": 439
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 17,
+                        "durationMicroseconds": 162,
+                        "errorMessage": "",
+                        "functionName": "parent",
+                        "line": 444
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 445
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 487
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 29,
+                        "durationMicroseconds": 32,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "leftMargin",
+                        "line": 488
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "rightMargin",
+                        "line": 489
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 28,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "topMargin",
+                        "line": 490
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "bottomMargin",
+                        "line": 491
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 509
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 67,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 504
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 56,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "bottomMargin",
+                        "line": 505
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "topMargin",
+                        "line": 506
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "leftMargin",
+                        "line": 507
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "rightMargin",
+                        "line": 508
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 516
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 28,
+                        "durationMicroseconds": 45,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "topMargin",
+                        "line": 517
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "leftMargin",
+                        "line": 519
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 30,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "rightMargin",
+                        "line": 520
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 31,
+                        "durationMicroseconds": 20,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "bottomMargin",
+                        "line": 521
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 69,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 536
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"widthChanged\".",
+                        "functionName": "onWidthChanged",
+                        "line": 537
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 109,
+                        "errorMessage": "",
+                        "functionName": "background",
+                        "line": 545
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 46,
+                        "durationMicroseconds": 453,
+                        "errorMessage": "Cannot generate efficient code for LoadClosure",
+                        "functionName": "onTriggered",
+                        "line": 555
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 121,
+                        "errorMessage": "",
+                        "functionName": "onTriggered",
+                        "line": 578
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 50,
+                        "durationMicroseconds": 447,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 622
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 50,
+                        "durationMicroseconds": 942,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 635
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 50,
+                        "durationMicroseconds": 334,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 639
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 50,
+                        "durationMicroseconds": 472,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onTriggered",
+                        "line": 655
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 50,
+                        "durationMicroseconds": 556,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTriggered",
+                        "line": 661
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 153,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 700
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 106,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 699
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 425,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onClicked",
+                        "line": 713
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 122,
+                        "errorMessage": "Cannot access value for name darkMode",
+                        "functionName": "color",
+                        "line": 711
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 36,
+                        "durationMicroseconds": 588,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onClicked",
+                        "line": 721
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 37,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "Cannot access value for name darkMode",
+                        "functionName": "color",
+                        "line": 719
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 341,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 729
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 728
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 739
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 106,
+                        "errorMessage": "",
+                        "functionName": "accent",
+                        "line": 741
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 173,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 778
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 92,
+                        "errorMessage": "",
+                        "functionName": "currentIndex",
+                        "line": 788
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 56,
+                        "durationMicroseconds": 425,
+                        "errorMessage": "",
+                        "functionName": "dynamic_spacing",
+                        "line": 789
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 48,
+                        "durationMicroseconds": 141,
+                        "errorMessage": "",
+                        "functionName": "onCurrentIndexChanged",
+                        "line": 799
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 787
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 281,
+                        "errorMessage": "",
+                        "functionName": "to",
+                        "line": 792
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 41,
+                        "durationMicroseconds": 273,
+                        "errorMessage": "Cannot generate efficient code for LoadClosure",
+                        "functionName": "onFinished",
+                        "line": 794
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 57,
+                        "durationMicroseconds": 88,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 793
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 801
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 802
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 81,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 808
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 148,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 814
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 813
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 74,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 819
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 112,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 825
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 826
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 119,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 822
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 52,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "Cannot load property spacing from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Main.qml)::parent with type QQuickItem.",
+                        "functionName": "leftMargin",
+                        "line": 831
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 55,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "",
+                        "functionName": "textFormat",
+                        "line": 835
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 55,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "textFormat",
+                        "line": 847
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 860
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 866
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 872
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 878
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 884
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 890
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "",
+                        "functionName": "style",
+                        "line": 894
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 897
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 902
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 152,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 908
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 919
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 929
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 51,
+                        "durationMicroseconds": 543,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onCheckedChanged",
+                        "line": 935
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 93,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 948
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 949
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 89,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 953
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 134,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 959
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 672,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "onClicked",
+                        "line": 960
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 152,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 979
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 131,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 987
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 289,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 992
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 422,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "onSelected",
+                        "line": 993
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 146,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 1007
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 180,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 1012
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 284,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onClicked",
+                        "line": 1016
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 220,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onClicked",
+                        "line": 1020
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 146,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 1024
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 160,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 1029
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 190,
+                        "errorMessage": "Cannot access value for name index",
+                        "functionName": "onSelected",
+                        "line": 1030
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 100,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 1041
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 135,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 1045
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 118,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 1049
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 152,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 1054
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 194,
+                        "errorMessage": "Cannot access value for name str",
+                        "functionName": "onClicked",
+                        "line": 1055
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 128,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 1059
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 113,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 1063
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 197,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onClicked",
+                        "line": 1067
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 89,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 1072
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 101,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1073
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 1088
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 242,
+                        "errorMessage": "",
+                        "functionName": "listText",
+                        "line": 1093
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 3813,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onSelected",
+                        "line": 1094
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "onSelected",
+                        "line": 1094
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 142,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 1134
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 56,
+                        "durationMicroseconds": 1568,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onCurrentIndexChanged",
+                        "line": 1135
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 231,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1143
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 136,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1147
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 1152
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 48,
+                        "durationMicroseconds": 614,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onTextChanged",
+                        "line": 1156
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 56,
+                        "durationMicroseconds": 146,
+                        "errorMessage": "",
+                        "functionName": "preferredWidth",
+                        "line": 1149
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 1171
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 56,
+                        "durationMicroseconds": 116,
+                        "errorMessage": "",
+                        "functionName": "preferredWidth",
+                        "line": 1166
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 1188
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 57,
+                        "durationMicroseconds": 111,
+                        "errorMessage": "",
+                        "functionName": "preferredWidth",
+                        "line": 1183
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 1202
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 54,
+                        "durationMicroseconds": 69,
+                        "errorMessage": "",
+                        "functionName": "horizontalAlignment",
+                        "line": 1216
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 176,
+                        "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
+                        "functionName": "model",
+                        "line": 1231
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 83,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 1236
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 96,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1237
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "spacing",
+                        "line": 1241
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 53,
+                        "durationMicroseconds": 135,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1242
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 51,
+                        "durationMicroseconds": 1025,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onCheckedChanged",
+                        "line": 1246
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 453,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "onClicked",
+                        "line": 1253
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 352,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 1264
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 67,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "",
+                        "functionName": "type",
+                        "line": 1282
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 29,
+                        "durationMicroseconds": 79,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 1285
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 61,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1286
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 129,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 1293
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1294
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 149,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1296
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 70,
+                        "durationMicroseconds": 126,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 1296
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 354,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method darker, returning QVariant -> QColor stored as QVariant",
+                        "functionName": "color",
+                        "line": 1298
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 1302
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1301
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 27,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"text\".",
+                        "functionName": "text",
+                        "line": 1313
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 24,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\".",
+                        "functionName": "x",
+                        "line": 1321
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find signal \"clicked\".",
+                        "functionName": "onClicked",
+                        "line": 1327
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 45,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"verticalCenter\".",
+                        "functionName": "verticalCenter",
+                        "line": 1320
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 168,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1356
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 73,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1359
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 22,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1365
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 115,
+                        "errorMessage": "",
+                        "functionName": "orientation",
+                        "line": 1369
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 90,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1382
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "xScale",
+                        "line": 1383
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 206,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 1394
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 1396
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Could not find property \"x\". You may want use ID-based grouped properties here.",
+                        "functionName": "x",
+                        "line": 1397
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 1400
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 63,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: void -> QQmlScriptString stored as QVariant",
+                        "functionName": "horizontalCenter",
+                        "line": 1401
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 278,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 1387
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 1389
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 63,
+                        "durationMicroseconds": 122,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: QQuickItem::horizontalCenter with type QQuickAnchorLine (stored as QVariant) -> QQuickItem::horizontalCenter with type QQuickAnchorLine (stored as QVariant)",
+                        "functionName": "horizontalCenter",
+                        "line": 1390
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 80,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1413
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 1414
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 34,
+                        "durationMicroseconds": 134,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1416
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 101,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 1412
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 33,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "source",
+                        "line": 1421
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 115,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1419
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 108,
+                        "errorMessage": "",
+                        "functionName": "contentHeight",
+                        "line": 1428
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "scroll_x",
+                        "line": 1430
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 134,
+                        "errorMessage": "",
+                        "functionName": "acceptedButtons",
+                        "line": 1433
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 211,
+                        "errorMessage": "",
+                        "functionName": "onContentYChanged",
+                        "line": 1443
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 78,
+                        "errorMessage": "",
+                        "functionName": "flickableDirection",
+                        "line": 1468
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 107,
+                        "errorMessage": "",
+                        "functionName": "scroll_y",
+                        "line": 1491
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 42,
+                        "durationMicroseconds": 563,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onHeightChanged",
+                        "line": 1492
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 44,
+                        "durationMicroseconds": 503,
+                        "errorMessage": "Cannot access value for name SoupleManager",
+                        "functionName": "onScroll_yChanged",
+                        "line": 1495
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 93,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1427
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 138,
+                        "errorMessage": "",
+                        "functionName": "enabled",
+                        "line": 1436
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 64,
+                        "durationMicroseconds": 274,
+                        "errorMessage": "Cannot access value for name Helper",
+                        "functionName": "scrollStep",
+                        "line": 1452
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 1696,
+                        "errorMessage": "",
+                        "functionName": "onWheel",
+                        "line": 1453
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 52,
+                        "errorMessage": "",
+                        "functionName": "onWheel",
+                        "line": 1453
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 68,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1451
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 186,
+                        "errorMessage": "",
+                        "functionName": "when",
+                        "line": 1471
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "",
+                        "functionName": "value",
+                        "line": 1472
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 191,
+                        "errorMessage": "",
+                        "functionName": "policy",
+                        "line": 1477
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 204,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1478
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "policy",
+                        "line": 1482
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 38,
+                        "durationMicroseconds": 179,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1483
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 189,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1500
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 157,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 1501
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 348,
+                        "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: conversion to QVariant -> QQuickAnchorLine stored as QVariant",
+                        "functionName": "horizontalCenter",
+                        "line": 1503
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 141,
+                        "errorMessage": "",
+                        "functionName": "scroll_y",
+                        "line": 1516
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 89,
+                        "errorMessage": "",
+                        "functionName": "xScale",
+                        "line": 1520
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "yScale",
+                        "line": 1521
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 163,
+                        "errorMessage": "",
+                        "functionName": "show",
+                        "line": 1534
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 64,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1533
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 75,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 1541
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 37,
+                        "durationMicroseconds": 101,
+                        "errorMessage": "",
+                        "functionName": "target",
+                        "line": 1547
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 354,
+                        "errorMessage": "",
+                        "functionName": "onFinished",
+                        "line": 1550
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 171,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 1558
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 40,
+                        "durationMicroseconds": 164,
+                        "errorMessage": "Multiple matching overrides found. Cannot determine the right one.",
+                        "functionName": "onClicked",
+                        "line": 1560
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 1560
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 72,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1557
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 236,
+                        "errorMessage": "",
+                        "functionName": "scale",
+                        "line": 1573
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 1569
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 45,
+                        "durationMicroseconds": 98,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 1570
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 167,
+                        "errorMessage": "",
+                        "functionName": "scale",
+                        "line": 1580
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 134,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 1576
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 46,
+                        "durationMicroseconds": 143,
+                        "errorMessage": "",
+                        "functionName": "cursorShape",
+                        "line": 1586
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 44,
+                        "durationMicroseconds": 149,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 1587
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 47,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1584
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 26,
+                        "durationMicroseconds": 118,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1601
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 961,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 1614
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 125,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1609
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 42,
+                        "durationMicroseconds": 63,
+                        "errorMessage": "",
+                        "functionName": "visible",
+                        "line": 1611
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 106,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 1632
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 87,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1633
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 266,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 1642
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 49,
+                        "durationMicroseconds": 102,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1647
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 1648
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 130,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1657
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 103,
+                        "errorMessage": "",
+                        "functionName": "horizontalCenter",
+                        "line": 1653
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 86,
+                        "errorMessage": "",
+                        "functionName": "bottom",
+                        "line": 1654
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 1669
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 40,
+                        "durationMicroseconds": 139,
+                        "errorMessage": "",
+                        "functionName": "contentHeight",
+                        "line": 1676
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 39,
+                        "durationMicroseconds": 58,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1675
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 122,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1682
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 59,
+                        "durationMicroseconds": 30,
+                        "errorMessage": "",
+                        "functionName": "onSourceComponentChanged",
+                        "line": 1688
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 94,
+                        "errorMessage": "",
+                        "functionName": "color",
+                        "line": 1703
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 117,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1706
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 82,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1711
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 494,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 1714
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 25,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "addTask",
+                        "line": 1747
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 43,
+                        "durationMicroseconds": 81,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 1746
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 33,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "setProgress",
+                        "line": 1755
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 51,
+                        "durationMicroseconds": 99,
+                        "errorMessage": "",
+                        "functionName": "alignment",
+                        "line": 1753
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 43,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "Cannot load property text from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Main.qml)::parent with type QQuickItem.",
+                        "functionName": "text",
+                        "line": 1762
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 313,
+                        "errorMessage": "",
+                        "functionName": "text",
+                        "line": 1788
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 32,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "onClicked",
+                        "line": 1790
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 41,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 1790
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 25,
+                        "durationMicroseconds": 226,
+                        "errorMessage": "",
+                        "functionName": "value2",
+                        "line": 1801
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 91,
+                        "errorMessage": "",
+                        "functionName": "from",
+                        "line": 1810
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 16,
+                        "durationMicroseconds": 59,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "width",
+                        "line": 1820
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 21,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "y",
+                        "line": 1821
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 12,
+                        "durationMicroseconds": 19,
+                        "errorMessage": "Cannot access value for name windowShadowBW",
+                        "functionName": "x",
+                        "line": 1822
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 287,
+                        "errorMessage": "",
+                        "functionName": "onOpened",
+                        "line": 1829
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 178,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 1838
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 162,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 1846
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 237,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 1854
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 158,
+                        "errorMessage": "",
+                        "functionName": "onCheckedChanged",
+                        "line": 1862
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 685,
+                        "errorMessage": "",
+                        "functionName": "onValueChanged",
+                        "line": 1881
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 287,
+                        "errorMessage": "",
+                        "functionName": "flags",
+                        "line": 1892
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 19,
+                        "durationMicroseconds": 84,
+                        "errorMessage": "",
+                        "functionName": "modality",
+                        "line": 1893
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 85,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1899
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 35,
+                        "durationMicroseconds": 60,
+                        "errorMessage": "",
+                        "functionName": "centerIn",
+                        "line": 1905
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 125,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 1909
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 138,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1908
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 295,
+                        "errorMessage": "",
+                        "functionName": "onClicked",
+                        "line": 1916
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 41,
+                        "durationMicroseconds": 232,
+                        "errorMessage": "",
+                        "functionName": "verticalCenter",
+                        "line": 1913
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 32,
+                        "durationMicroseconds": 120,
+                        "errorMessage": "",
+                        "functionName": "right",
+                        "line": 1914
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 20,
+                        "durationMicroseconds": 95,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1926
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 77,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 1927
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 209,
+                        "errorMessage": "",
+                        "functionName": "height",
+                        "line": 1928
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 28,
+                        "durationMicroseconds": 76,
+                        "errorMessage": "",
+                        "functionName": "contentHeight",
+                        "line": 1929
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 24,
+                        "durationMicroseconds": 229,
+                        "errorMessage": "",
+                        "functionName": "width",
+                        "line": 1934
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 145,
+                        "errorMessage": "",
+                        "functionName": "x",
+                        "line": 1946
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 16,
+                        "durationMicroseconds": 114,
+                        "errorMessage": "",
+                        "functionName": "y",
+                        "line": 1949
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 22,
+                        "durationMicroseconds": 560,
+                        "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
+                        "functionName": "onPaint",
+                        "line": 1950
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 36,
+                        "durationMicroseconds": 258,
+                        "errorMessage": "",
+                        "functionName": "onPositionChanged",
+                        "line": 1963
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 31,
+                        "durationMicroseconds": 65,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1962
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 27,
+                        "durationMicroseconds": 105,
+                        "errorMessage": "",
+                        "functionName": "fill",
+                        "line": 1970
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 23,
+                        "durationMicroseconds": 148,
+                        "errorMessage": "",
+                        "functionName": "modality",
+                        "line": 2005
+                    }
+                ],
+                "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Main.qml"
+            }
+        ],
+        "moduleId": "SoupleEdit(appSoupleEdit)"
+    }
+]
