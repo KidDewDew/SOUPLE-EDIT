@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 159,
+                        "durationMicroseconds": 317,
                         "errorMessage": "Cannot access value for name control",
                         "functionName": "color",
                         "line": 17
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 82,
                         "errorMessage": "Cannot access value for name control",
                         "functionName": "scale",
                         "line": 19
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 120,
                         "errorMessage": "Cannot access value for name control",
                         "functionName": "color",
                         "line": 20
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 274,
+                        "durationMicroseconds": 547,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 28
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 140,
+                        "durationMicroseconds": 275,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 27

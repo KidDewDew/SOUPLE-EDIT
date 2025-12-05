@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 311,
+                        "durationMicroseconds": 617,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 13
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 17,
-                        "durationMicroseconds": 907,
+                        "durationMicroseconds": 2198,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "model",
                         "line": 18
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 270,
+                        "durationMicroseconds": 520,
                         "errorMessage": "Cannot access value for name modelData",
                         "functionName": "source",
                         "line": 29
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 159,
+                        "durationMicroseconds": 371,
                         "errorMessage": "Cannot access value for name Image",
                         "functionName": "fillMode",
                         "line": 31

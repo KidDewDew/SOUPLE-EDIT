@@ -20,6 +20,7 @@
 // 本头文件提供一些辅助设计和Helper类。
 // 注意：对这个文件进行修改将导致大量文件(60%+)需要重新编译。
 
+
 template<typename T,typename U>
 concept Iterable = requires(T cont) {   //Concept: 可迭代容器
     {cont.begin()}; {cont.end()};

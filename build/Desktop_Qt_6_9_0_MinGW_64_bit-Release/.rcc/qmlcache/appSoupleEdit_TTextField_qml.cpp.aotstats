@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 439,
+                        "durationMicroseconds": 919,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "accent",
                         "line": 5

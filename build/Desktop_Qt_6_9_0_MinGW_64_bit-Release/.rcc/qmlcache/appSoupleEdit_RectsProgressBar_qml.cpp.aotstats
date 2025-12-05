@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 423,
+                        "durationMicroseconds": 733,
                         "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method lighter, returning QVariant -> QColor stored as QVariant",
                         "functionName": "accent2",
                         "line": 6
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 140,
+                        "durationMicroseconds": 294,
                         "errorMessage": "",
                         "functionName": "onValueChanged",
                         "line": 12
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 67,
                         "errorMessage": "Cannot access value for name numRect",
                         "functionName": "model",
                         "line": 24
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 357,
+                        "durationMicroseconds": 692,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "color",
                         "line": 27
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 158,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "x",
                         "line": 28
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 90,
                         "errorMessage": "Cannot access value for name bar",
                         "functionName": "width",
                         "line": 30
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 23,
+                        "durationMicroseconds": 54,
                         "errorMessage": "Cannot access value for name bar",
                         "functionName": "height",
                         "line": 31

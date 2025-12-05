@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 225,
+                        "durationMicroseconds": 401,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "path",
                         "line": 12
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 239,
+                        "durationMicroseconds": 657,
                         "errorMessage": "",
                         "functionName": "onHeightChanged",
                         "line": 22
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 116,
+                        "durationMicroseconds": 254,
                         "errorMessage": "",
                         "functionName": "die",
                         "line": 26
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 313,
+                        "durationMicroseconds": 645,
                         "errorMessage": "Cannot find name selectedObj",
                         "functionName": "onFocusChanged",
                         "line": 138
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 128,
                         "errorMessage": "",
                         "functionName": "onPathChanged",
                         "line": 157
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 14,
-                        "durationMicroseconds": 18815,
+                        "durationMicroseconds": 35937,
                         "errorMessage": "Cannot load property length from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Obj_Path.qml)::path with type QVariant.",
                         "functionName": "onPaint",
                         "line": 162
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 187,
+                        "durationMicroseconds": 702,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 34
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 153,
+                        "durationMicroseconds": 460,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "model",
                         "line": 48
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 569,
+                        "durationMicroseconds": 1177,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "initialValue",
                         "line": 56
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 2282,
+                        "durationMicroseconds": 1205,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onValueChanged",
                         "line": 58
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 803,
+                        "durationMicroseconds": 994,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "initialValue",
                         "line": 75
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 346,
+                        "durationMicroseconds": 548,
                         "errorMessage": "",
                         "functionName": "onValueChanged",
                         "line": 76
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 213,
+                        "durationMicroseconds": 336,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "initialValue",
                         "line": 88
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 250,
+                        "durationMicroseconds": 429,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 93
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 35,
+                        "durationMicroseconds": 61,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "when",
                         "line": 90
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 82,
+                        "durationMicroseconds": 163,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "value",
                         "line": 91
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 570,
+                        "durationMicroseconds": 874,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onClicked",
                         "line": 107
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 129,
+                        "durationMicroseconds": 222,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 106
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 483,
+                        "durationMicroseconds": 796,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onTriggered",
                         "line": 131
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 224,
+                        "durationMicroseconds": 367,
                         "errorMessage": "",
                         "functionName": "acceptedButtons",
                         "line": 144
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 113,
+                        "durationMicroseconds": 198,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 145
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 44,
+                        "durationMicroseconds": 81,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 145
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 492,
+                        "durationMicroseconds": 918,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 148
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 47,
+                        "durationMicroseconds": 83,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 148
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 105,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 143
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 501,
+                        "durationMicroseconds": 719,
                         "errorMessage": "",
                         "functionName": "flags",
                         "line": 222
@@ -222,7 +222,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 39,
-                        "durationMicroseconds": 102,
+                        "durationMicroseconds": 147,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "fillColor",
                         "line": 231
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 37,
-                        "durationMicroseconds": 33,
+                        "durationMicroseconds": 56,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "lineWidth",
                         "line": 232
@@ -238,7 +238,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 37,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 52,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "fillPath",
                         "line": 233
@@ -246,7 +246,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 42,
-                        "durationMicroseconds": 202,
+                        "durationMicroseconds": 314,
                         "errorMessage": "",
                         "functionName": "dragStartPos",
                         "line": 241
@@ -254,7 +254,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 38,
-                        "durationMicroseconds": 132,
+                        "durationMicroseconds": 164,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "colorIndex",
                         "line": 242
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 46,
-                        "durationMicroseconds": 499,
+                        "durationMicroseconds": 797,
                         "errorMessage": "",
                         "functionName": "colorList",
                         "line": 244
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 215,
+                        "durationMicroseconds": 476,
                         "errorMessage": "",
                         "functionName": "onStrokeColorChanged",
                         "line": 251
@@ -278,7 +278,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 727,
+                        "durationMicroseconds": 505,
                         "errorMessage": "",
                         "functionName": "onFillPathChanged",
                         "line": 259
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 13,
-                        "durationMicroseconds": 32220,
+                        "durationMicroseconds": 53293,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "loadPath",
                         "line": 369
@@ -326,7 +326,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 13,
-                        "durationMicroseconds": 8680,
+                        "durationMicroseconds": 14150,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "savePath",
                         "line": 490
@@ -342,7 +342,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 146,
+                        "durationMicroseconds": 238,
                         "errorMessage": "",
                         "functionName": "onClosing",
                         "line": 917
@@ -350,7 +350,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 167,
+                        "durationMicroseconds": 133,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 533
@@ -358,7 +358,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 100,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 542
@@ -366,7 +366,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 59,
-                        "durationMicroseconds": 93,
+                        "durationMicroseconds": 162,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 562
@@ -374,7 +374,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 48,
-                        "durationMicroseconds": 50,
+                        "durationMicroseconds": 87,
                         "errorMessage": "Cannot access value for name strokeColor",
                         "functionName": "color",
                         "line": 570
@@ -382,7 +382,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 59,
-                        "durationMicroseconds": 73,
+                        "durationMicroseconds": 140,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 573
@@ -390,7 +390,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 60,
-                        "durationMicroseconds": 366,
+                        "durationMicroseconds": 613,
                         "errorMessage": "Cannot access value for name colorIndex",
                         "functionName": "onClicked",
                         "line": 578
@@ -398,7 +398,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 63,
-                        "durationMicroseconds": 62,
+                        "durationMicroseconds": 113,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 577
@@ -406,7 +406,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 59,
-                        "durationMicroseconds": 81,
+                        "durationMicroseconds": 202,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 601
@@ -414,7 +414,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 48,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 95,
                         "errorMessage": "Cannot access value for name lineWidth",
                         "functionName": "value",
                         "line": 607
@@ -422,7 +422,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 57,
-                        "durationMicroseconds": 159,
+                        "durationMicroseconds": 248,
                         "errorMessage": "Cannot find name lineWidth",
                         "functionName": "onValueChanged",
                         "line": 609
@@ -430,7 +430,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 47,
-                        "durationMicroseconds": 46,
+                        "durationMicroseconds": 74,
                         "errorMessage": "Cannot access value for name lineWidth",
                         "functionName": "text",
                         "line": 617
@@ -438,7 +438,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 46,
-                        "durationMicroseconds": 45,
+                        "durationMicroseconds": 67,
                         "errorMessage": "Cannot access value for name fillPath",
                         "functionName": "checked",
                         "line": 625
@@ -446,7 +446,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 55,
-                        "durationMicroseconds": 184,
+                        "durationMicroseconds": 300,
                         "errorMessage": "Cannot find name fillPath",
                         "functionName": "onCheckedChanged",
                         "line": 627
@@ -454,7 +454,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 46,
-                        "durationMicroseconds": 62,
+                        "durationMicroseconds": 91,
                         "errorMessage": "Cannot access value for name showControlPoints",
                         "functionName": "checked",
                         "line": 637
@@ -462,7 +462,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 55,
-                        "durationMicroseconds": 69,
+                        "durationMicroseconds": 112,
                         "errorMessage": "Cannot find name showControlPoints",
                         "functionName": "onCheckedChanged",
                         "line": 639
@@ -470,7 +470,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 46,
-                        "durationMicroseconds": 45,
+                        "durationMicroseconds": 69,
                         "errorMessage": "Cannot access value for name showControlLines",
                         "functionName": "checked",
                         "line": 647
@@ -478,7 +478,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 55,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 108,
                         "errorMessage": "Cannot find name showControlLines",
                         "functionName": "onCheckedChanged",
                         "line": 649
@@ -486,7 +486,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 47,
-                        "durationMicroseconds": 79,
+                        "durationMicroseconds": 118,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 663
@@ -494,7 +494,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 51,
-                        "durationMicroseconds": 62,
+                        "durationMicroseconds": 99,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 669
@@ -502,7 +502,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 48,
-                        "durationMicroseconds": 85,
+                        "durationMicroseconds": 126,
                         "errorMessage": "",
                         "functionName": "model",
                         "line": 675
@@ -510,7 +510,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 55,
-                        "durationMicroseconds": 79,
+                        "durationMicroseconds": 121,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 687
@@ -518,7 +518,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 60,
-                        "durationMicroseconds": 157,
+                        "durationMicroseconds": 259,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "onClicked",
                         "line": 689
@@ -526,7 +526,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 55,
-                        "durationMicroseconds": 71,
+                        "durationMicroseconds": 112,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 696
@@ -534,7 +534,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 55,
-                        "durationMicroseconds": 116,
+                        "durationMicroseconds": 197,
                         "errorMessage": "Cannot access value for name model",
                         "functionName": "text",
                         "line": 701
@@ -542,7 +542,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 60,
-                        "durationMicroseconds": 703,
+                        "durationMicroseconds": 1195,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "onClicked",
                         "line": 708
@@ -550,7 +550,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 34,
-                        "durationMicroseconds": 48134,
+                        "durationMicroseconds": 79167,
                         "errorMessage": "Cannot access value for name strokeColor",
                         "functionName": "onPaint",
                         "line": 727
@@ -558,7 +558,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 103,
+                        "durationMicroseconds": 167,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 725
@@ -566,7 +566,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 42,
-                        "durationMicroseconds": 257,
+                        "durationMicroseconds": 455,
                         "errorMessage": "",
                         "functionName": "cursorShape",
                         "line": 813
@@ -574,7 +574,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 1725,
+                        "durationMicroseconds": 2214,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onPressed",
                         "line": 815
@@ -582,7 +582,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 40,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 98,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 815
@@ -590,7 +590,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 48,
-                        "durationMicroseconds": 6314,
+                        "durationMicroseconds": 8913,
                         "errorMessage": "Cannot generate efficient code for lookup in QJSValue",
                         "functionName": "onPositionChanged",
                         "line": 831
@@ -598,7 +598,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 48,
-                        "durationMicroseconds": 148,
+                        "durationMicroseconds": 113,
                         "errorMessage": "",
                         "functionName": "onPositionChanged",
                         "line": 831
@@ -606,7 +606,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 41,
-                        "durationMicroseconds": 260,
+                        "durationMicroseconds": 386,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 866
@@ -614,7 +614,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 467,
+                        "durationMicroseconds": 839,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onClicked",
                         "line": 872
@@ -622,7 +622,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 40,
-                        "durationMicroseconds": 48,
+                        "durationMicroseconds": 85,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 872
@@ -630,7 +630,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 46,
-                        "durationMicroseconds": 461,
+                        "durationMicroseconds": 716,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onDoubleClicked",
                         "line": 878
@@ -638,7 +638,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 46,
-                        "durationMicroseconds": 48,
+                        "durationMicroseconds": 83,
                         "errorMessage": "",
                         "functionName": "onDoubleClicked",
                         "line": 878
@@ -646,7 +646,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 43,
-                        "durationMicroseconds": 66,
+                        "durationMicroseconds": 113,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 811
@@ -654,7 +654,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 121,
+                        "durationMicroseconds": 196,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 889
@@ -662,7 +662,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 94,
+                        "durationMicroseconds": 175,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 890
@@ -670,7 +670,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 193,
+                        "durationMicroseconds": 199,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 896
@@ -678,7 +678,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 429,
+                        "durationMicroseconds": 649,
                         "errorMessage": "method savePath cannot be resolved.",
                         "functionName": "onClicked",
                         "line": 902

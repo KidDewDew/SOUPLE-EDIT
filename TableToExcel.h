@@ -2,18 +2,23 @@
 #define TABLETOEXCEL_H
 
 #include <QObject>
-#include "tableline.h"  // 直接使用tableline.h中定义的TableInfo
+#include "tableline.h" // 包含TableInfo定义
 
-class TableToExcel : public QObject {
-    Q_OBJECT
-    QML_ELEMENT  // 注册到QML，支持Qt 6+；Qt 5需用qmlRegisterType在main中注册
-
+// 必须继承QObject，且有Q_OBJECT宏
+class TableToExcel : public QObject
+{
+    Q_OBJECT // 必须保留，否则无法注册到QML
 public:
     explicit TableToExcel(QObject *parent = nullptr);
 
-    // 核心接口：将TableInfo数据导出为Excel
-    // Q_INVOKABLE允许QML直接调用静态方法
-    Q_INVOKABLE static bool extractTableToExcel(TableInfo* ti, const QString& saveFile);
+    // 修正参数为QObject*，确保QML能传递TableInfo
+    Q_INVOKABLE static bool extractTableToExcel(QObject* tableInfoObj, const QString& filePath);
+
+private:
+    // 从TableInfo中获取单元格内容
+    static QString getCellContent(Free_TableUnit* unit);
+    // 将QObject*转换为TableInfo*（安全转换）
+    static TableInfo* toTableInfo(QObject* obj);
 };
 
 #endif // TABLETOEXCEL_H

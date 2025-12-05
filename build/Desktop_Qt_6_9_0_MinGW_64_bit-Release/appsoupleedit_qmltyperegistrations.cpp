@@ -7,9 +7,6 @@
 #include <QtQml/qqml.h>
 #include <QtQml/qqmlmoduleregistration.h>
 
-#if __has_include(<TableToExcel.h>)
-#  include <TableToExcel.h>
-#endif
 
 
 #if !defined(QT_STATIC)
@@ -20,7 +17,6 @@
 Q_QMLTYPE_EXPORT void qml_register_types_SoupleEdit()
 {
     QT_WARNING_PUSH QT_WARNING_DISABLE_DEPRECATED
-    qmlRegisterTypesAndRevisions<TableToExcel>("SoupleEdit", 1);
     QT_WARNING_POP
     qmlRegisterModule("SoupleEdit", 1, 0);
 }

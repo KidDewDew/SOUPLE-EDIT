@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 11,
-                        "durationMicroseconds": 300,
+                        "durationMicroseconds": 547,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 9

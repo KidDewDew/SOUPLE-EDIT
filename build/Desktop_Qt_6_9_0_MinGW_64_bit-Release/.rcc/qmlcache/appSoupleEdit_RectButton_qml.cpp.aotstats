@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 330,
+                        "durationMicroseconds": 596,
                         "errorMessage": "Cannot access value for name but",
                         "functionName": "color",
                         "line": 15
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 32,
+                        "durationMicroseconds": 67,
                         "errorMessage": "Cannot retrieve a non-object type by ID: but",
                         "functionName": "text",
                         "line": 20
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 152,
+                        "durationMicroseconds": 272,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 19

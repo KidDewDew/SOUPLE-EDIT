@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 428,
+                        "durationMicroseconds": 895,
                         "errorMessage": "",
                         "functionName": "onRadiusChanged",
                         "line": 27
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 174,
+                        "durationMicroseconds": 405,
                         "errorMessage": "",
                         "functionName": "onSpacingChanged",
                         "line": 33
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 167,
+                        "durationMicroseconds": 349,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 20
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 85,
+                        "durationMicroseconds": 180,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 43
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 17,
-                        "durationMicroseconds": 80,
+                        "durationMicroseconds": 167,
                         "errorMessage": "Cannot access value for name lineWidth",
                         "functionName": "height",
                         "line": 44
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 85,
+                        "durationMicroseconds": 196,
                         "errorMessage": "",
                         "functionName": "renderStrategy",
                         "line": 45
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 3483,
+                        "durationMicroseconds": 7467,
                         "errorMessage": "Cannot access value for name Helper_Type",
                         "functionName": "onPaint",
                         "line": 46
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 149,
+                        "durationMicroseconds": 219,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 42

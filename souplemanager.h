@@ -18,6 +18,8 @@
 #include "obj_start_sign.h"
 #ifdef Q_OS_WIN32
 #include <ranges>
+#include <QJSValue> // 新增：支持QML回调
+
 #endif
 
 #define Soup_Mgr SoupleManager
@@ -248,6 +250,8 @@ public:
         view_top = top, view_bottom = bottom;
         //qDebug() << "updateViewSize(" << top << ',' << bottom;
     }
+
+
 
     // 获取更新队列的第一个对象
     static inline Obj* getUpdateQueueFirst() {

@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 2087,
+                        "durationMicroseconds": 825,
                         "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: call to method darker, returning QVariant -> QColor stored as QVariant",
                         "functionName": "hover_color",
                         "line": 7
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 1438,
+                        "durationMicroseconds": 429,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 9
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 125,
+                        "durationMicroseconds": 230,
                         "errorMessage": "Cannot load property down from .",
                         "functionName": "scale",
                         "line": 10
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 122,
+                        "durationMicroseconds": 218,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 16
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 47,
+                        "durationMicroseconds": 101,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 15

@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 127,
+                        "durationMicroseconds": 292,
                         "errorMessage": "Can't assign to read-only property drag",
                         "functionName": "terminateDrag",
                         "line": 78
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 225,
+                        "durationMicroseconds": 524,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 21
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 242,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 23
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 123,
+                        "durationMicroseconds": 259,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 36
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 92,
+                        "durationMicroseconds": 165,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 44
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 34,
-                        "durationMicroseconds": 76,
+                        "durationMicroseconds": 140,
                         "errorMessage": "Cannot load property hovered from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Table_HorLine.qml)::parent with type QQuickItem.",
                         "functionName": "visible",
                         "line": 48
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 528,
+                        "durationMicroseconds": 1162,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "initialValue",
                         "line": 64
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 515,
+                        "durationMicroseconds": 1129,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onValueChanged",
                         "line": 69
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 15,
-                        "durationMicroseconds": 147,
+                        "durationMicroseconds": 244,
                         "errorMessage": "",
                         "functionName": "text",
                         "line": 106
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 96,
+                        "durationMicroseconds": 201,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 109
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 100,
+                        "durationMicroseconds": 187,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 110
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 14,
-                        "durationMicroseconds": 75,
+                        "durationMicroseconds": 142,
                         "errorMessage": "",
                         "functionName": "dir",
                         "line": 120
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 290,
+                        "durationMicroseconds": 546,
                         "errorMessage": "",
                         "functionName": "fillColor",
                         "line": 121
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 29,
-                        "durationMicroseconds": 66,
+                        "durationMicroseconds": 128,
                         "errorMessage": "",
                         "functionName": "onFillColorChanged",
                         "line": 123
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 92,
+                        "durationMicroseconds": 190,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 118
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 238,
+                        "durationMicroseconds": 466,
                         "errorMessage": "Cannot find name selectedObj",
                         "functionName": "onPressed",
                         "line": 130
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 30,
-                        "durationMicroseconds": 462,
+                        "durationMicroseconds": 1048,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onMouseYChanged",
                         "line": 135
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 67,
+                        "durationMicroseconds": 1967,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 126
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 218,
                         "errorMessage": "",
                         "functionName": "target",
                         "line": 127
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 75,
+                        "durationMicroseconds": 183,
                         "errorMessage": "",
                         "functionName": "axis",
                         "line": 129

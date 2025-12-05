@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 77,
+                        "durationMicroseconds": 152,
                         "errorMessage": "Cannot access value for name transition_time",
                         "functionName": "duration",
                         "line": 13
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 18,
+                        "durationMicroseconds": 39,
                         "errorMessage": "Cannot access value for name transition_time",
                         "functionName": "duration",
                         "line": 21
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 14,
+                        "durationMicroseconds": 33,
                         "errorMessage": "Cannot access value for name transition_time",
                         "functionName": "duration",
                         "line": 29
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 14,
+                        "durationMicroseconds": 31,
                         "errorMessage": "Cannot access value for name transition_time",
                         "functionName": "duration",
                         "line": 37

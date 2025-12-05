@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 631,
+                        "durationMicroseconds": 1281,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onIscontChanged",
                         "line": 20
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 974,
+                        "durationMicroseconds": 1885,
                         "errorMessage": "Cannot access value for name contObj",
                         "functionName": "onFocusChanged",
                         "line": 24
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 134,
                         "errorMessage": "",
                         "functionName": "insertImage",
                         "line": 54
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 19,
-                        "durationMicroseconds": 569,
+                        "durationMicroseconds": 1041,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 16
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 133,
+                        "durationMicroseconds": 239,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 48
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 61,
+                        "durationMicroseconds": 120,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 39
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 144,
+                        "durationMicroseconds": 289,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 62
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 90,
+                        "durationMicroseconds": 159,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 78
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 25,
-                        "durationMicroseconds": 36,
+                        "durationMicroseconds": 77,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "aimObj",
                         "line": 79
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 42,
+                        "durationMicroseconds": 65,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "data_id",
                         "line": 80
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 93,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "text",
                         "line": 92
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 1614,
+                        "durationMicroseconds": 3247,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onClicked",
                         "line": 95
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 110,
+                        "durationMicroseconds": 195,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 94
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 398,
+                        "durationMicroseconds": 789,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onClicked",
                         "line": 112

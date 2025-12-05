@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 1180,
+                        "durationMicroseconds": 2633,
                         "errorMessage": "Cannot access value for name spMgr",
                         "functionName": "onData_idChanged",
                         "line": 19
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 558,
+                        "durationMicroseconds": 1293,
                         "errorMessage": "Cannot find name selectedObj",
                         "functionName": "onFocusChanged",
                         "line": 247
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 266,
+                        "durationMicroseconds": 512,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 30
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 75,
                         "errorMessage": "Cannot access value for name isFree",
                         "functionName": "visible",
                         "line": 42
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 25,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 55,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "aimObj",
                         "line": 46
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 33,
+                        "durationMicroseconds": 53,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "data_id",
                         "line": 47
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 20,
+                        "durationMicroseconds": 66,
                         "errorMessage": "Cannot access value for name isFree",
                         "functionName": "visible",
                         "line": 50
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 257,
+                        "durationMicroseconds": 459,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "model",
                         "line": 66
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 2531,
+                        "durationMicroseconds": 5479,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onCompleted",
                         "line": 67
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 178,
+                        "durationMicroseconds": 329,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 77
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 121,
+                        "durationMicroseconds": 249,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onColorChanged",
                         "line": 86
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 79,
+                        "durationMicroseconds": 153,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onCompleted",
                         "line": 83
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 114,
+                        "durationMicroseconds": 312,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 92
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 124,
+                        "durationMicroseconds": 210,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 97
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 881,
+                        "durationMicroseconds": 1936,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onTextChanged",
                         "line": 102
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 792,
+                        "durationMicroseconds": 1943,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onCompleted",
                         "line": 99
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 145,
+                        "durationMicroseconds": 318,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 107
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 99,
+                        "durationMicroseconds": 233,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 113
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 112,
+                        "durationMicroseconds": 263,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "model",
                         "line": 115
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 120,
+                        "durationMicroseconds": 269,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onColorChanged",
                         "line": 130
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 73,
+                        "durationMicroseconds": 160,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onCompleted",
                         "line": 127
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 368,
+                        "durationMicroseconds": 896,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "initialValue",
                         "line": 142
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 369,
+                        "durationMicroseconds": 2084,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 144
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 139,
+                        "durationMicroseconds": 340,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 155
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 105,
+                        "durationMicroseconds": 217,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 160
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 377,
+                        "durationMicroseconds": 1350,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "initialValue",
                         "line": 162
@@ -222,7 +222,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 395,
+                        "durationMicroseconds": 1435,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 164
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 111,
+                        "durationMicroseconds": 266,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 170
@@ -238,7 +238,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 96,
+                        "durationMicroseconds": 231,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 175
@@ -246,7 +246,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 380,
+                        "durationMicroseconds": 860,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "initialValue",
                         "line": 177
@@ -254,7 +254,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 386,
+                        "durationMicroseconds": 826,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 179
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 89,
+                        "durationMicroseconds": 169,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 185
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 70,
+                        "durationMicroseconds": 150,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 190
@@ -278,7 +278,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 367,
+                        "durationMicroseconds": 757,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "initialValue",
                         "line": 192
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 390,
+                        "durationMicroseconds": 843,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 194
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 83,
+                        "durationMicroseconds": 168,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 200
@@ -302,7 +302,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 71,
+                        "durationMicroseconds": 231,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 205
@@ -310,7 +310,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 393,
+                        "durationMicroseconds": 794,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "initialValue",
                         "line": 207
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 384,
+                        "durationMicroseconds": 1436,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 209
@@ -326,7 +326,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 88,
+                        "durationMicroseconds": 193,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 215
@@ -334,7 +334,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 74,
+                        "durationMicroseconds": 244,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 220
@@ -342,7 +342,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 375,
+                        "durationMicroseconds": 794,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "initialValue",
                         "line": 222
@@ -350,7 +350,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 390,
+                        "durationMicroseconds": 827,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 224
@@ -358,7 +358,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 117,
+                        "durationMicroseconds": 169,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 230
@@ -366,7 +366,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 145,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 235
@@ -374,7 +374,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 382,
+                        "durationMicroseconds": 715,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "initialValue",
                         "line": 237
@@ -382,7 +382,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 387,
+                        "durationMicroseconds": 764,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onValueChanged",
                         "line": 239
@@ -390,7 +390,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 150,
+                        "durationMicroseconds": 276,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 261
@@ -398,7 +398,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 56,
+                        "durationMicroseconds": 106,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 260
@@ -406,7 +406,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 210,
+                        "durationMicroseconds": 440,
                         "errorMessage": "Cannot access value for name selectedObj",
                         "functionName": "visible",
                         "line": 268
@@ -414,7 +414,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 48,
+                        "durationMicroseconds": 107,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 269
@@ -422,7 +422,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 115,
+                        "durationMicroseconds": 241,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 272

@@ -28,6 +28,8 @@
 #include "magicalcursor.h"
 #include <QGuiApplication>
 
+
+
 using namespace std;
 
 extern QQuickWindow* qmlWindow;
@@ -828,3 +830,6 @@ HorLine_Base* SoupleManager::getDocumentFirstLine(int document_id)
     THEN(return nullptr;)
     return ss->attach_hline.get();
 }
+
+
+

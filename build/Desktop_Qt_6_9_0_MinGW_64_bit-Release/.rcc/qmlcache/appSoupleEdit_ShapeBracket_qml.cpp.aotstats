@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 4483,
+                        "durationMicroseconds": 11197,
                         "errorMessage": "",
                         "functionName": "dir",
                         "line": 10
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 14,
-                        "durationMicroseconds": 1996,
+                        "durationMicroseconds": 4406,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onPaint",
                         "line": 11

@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 362,
+                        "durationMicroseconds": 495,
                         "errorMessage": "",
                         "functionName": "onValueChanged",
                         "line": 12
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 115,
+                        "durationMicroseconds": 138,
                         "errorMessage": "Cannot generate efficient code for lookup of function property.",
                         "functionName": "when",
                         "line": 15
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 112,
+                        "durationMicroseconds": 123,
                         "errorMessage": "",
                         "functionName": "value",
                         "line": 16
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 224,
+                        "durationMicroseconds": 277,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 20
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 134,
+                        "durationMicroseconds": 124,
                         "errorMessage": "Cannot access value for name precision",
                         "functionName": "text",
                         "line": 34
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 154,
+                        "durationMicroseconds": 230,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 39

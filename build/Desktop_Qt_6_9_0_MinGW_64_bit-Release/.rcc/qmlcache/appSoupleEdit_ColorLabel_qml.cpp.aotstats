@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 103,
+                        "durationMicroseconds": 175,
                         "errorMessage": "Cannot access value for name bgColor",
                         "functionName": "color",
                         "line": 12
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 13,
+                        "durationMicroseconds": 19,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "fill",
                         "line": 10

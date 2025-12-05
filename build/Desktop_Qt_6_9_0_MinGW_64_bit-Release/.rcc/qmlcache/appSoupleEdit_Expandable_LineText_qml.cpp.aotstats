@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 413,
+                        "durationMicroseconds": 845,
                         "errorMessage": "",
                         "functionName": "implicitHeight",
                         "line": 10
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 138,
+                        "durationMicroseconds": 259,
                         "errorMessage": "",
                         "functionName": "implicitWidth",
                         "line": 11
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 264,
                         "errorMessage": "",
                         "functionName": "y",
                         "line": 14
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 18,
-                        "durationMicroseconds": 98,
+                        "durationMicroseconds": 239,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 15
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 94,
+                        "durationMicroseconds": 233,
                         "errorMessage": "",
                         "functionName": "x",
                         "line": 17
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 85,
+                        "durationMicroseconds": 229,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 41
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 110,
+                        "durationMicroseconds": 276,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 48
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 51,
+                        "durationMicroseconds": 168,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 49
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 168,
+                        "durationMicroseconds": 383,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 50
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 80,
+                        "durationMicroseconds": 222,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 47
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 19,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 133,
                         "errorMessage": "",
                         "functionName": "text",
                         "line": 57
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 83,
+                        "durationMicroseconds": 158,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 58
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 18,
-                        "durationMicroseconds": 215,
+                        "durationMicroseconds": 439,
                         "errorMessage": "",
                         "functionName": "dir",
                         "line": 61
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 122,
+                        "durationMicroseconds": 296,
                         "errorMessage": "",
                         "functionName": "x",
                         "line": 64
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 92,
+                        "durationMicroseconds": 174,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 66
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 223,
                         "errorMessage": "Cannot load property containsMouse from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Expandable_LineText.qml)::parent with type QQuickItem.",
                         "functionName": "visible",
                         "line": 69
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 77,
+                        "durationMicroseconds": 224,
                         "errorMessage": "Cannot load property pressed from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Expandable_LineText.qml)::parent with type QQuickItem.",
                         "functionName": "color",
                         "line": 72
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 128,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 71
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 90,
+                        "durationMicroseconds": 225,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 76
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 165,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 77
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 176,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 81

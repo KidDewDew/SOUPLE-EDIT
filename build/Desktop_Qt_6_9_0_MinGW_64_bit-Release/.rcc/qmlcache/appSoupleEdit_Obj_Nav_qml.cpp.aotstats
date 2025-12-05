@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 433,
+                        "durationMicroseconds": 848,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 12
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 143,
+                        "durationMicroseconds": 379,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 22
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 18,
-                        "durationMicroseconds": 129,
+                        "durationMicroseconds": 245,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 28

@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 274,
+                        "durationMicroseconds": 446,
                         "errorMessage": "Cannot access value for name cb_bold",
                         "functionName": "onCurrentFontChanged",
                         "line": 17
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 64,
+                        "durationMicroseconds": 111,
                         "errorMessage": "Cannot access value for name combo_fonts",
                         "functionName": "onCompleted",
                         "line": 13
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 183,
+                        "durationMicroseconds": 285,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 27
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 135,
+                        "durationMicroseconds": 221,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 28
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 46,
                         "errorMessage": "Cannot access value for name view",
                         "functionName": "font",
                         "line": 37
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 234,
+                        "durationMicroseconds": 423,
                         "errorMessage": "Cannot access value for name Text",
                         "functionName": "wrapMode",
                         "line": 41
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 183,
+                        "durationMicroseconds": 261,
                         "errorMessage": "Cannot access value for name Qt",
                         "functionName": "alignment",
                         "line": 39
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 34,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 47,
                         "errorMessage": "Cannot access value for name gridLayout",
                         "functionName": "maximumWidth",
                         "line": 40
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 35,
-                        "durationMicroseconds": 40,
+                        "durationMicroseconds": 46,
                         "errorMessage": "Cannot access value for name currentFont",
                         "functionName": "onCurrentTextChanged",
                         "line": 49
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 26,
                         "errorMessage": "Cannot access value for name currentFont",
                         "functionName": "initialValue",
                         "line": 64
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 30,
+                        "durationMicroseconds": 31,
                         "errorMessage": "Cannot access value for name currentFont",
                         "functionName": "onValueChanged",
                         "line": 65

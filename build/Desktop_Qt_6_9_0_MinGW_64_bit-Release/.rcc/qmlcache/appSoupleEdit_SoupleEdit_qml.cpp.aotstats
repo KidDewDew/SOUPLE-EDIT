@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 366,
+                        "durationMicroseconds": 746,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "width",
                         "line": 16
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 13,
-                        "durationMicroseconds": 237,
+                        "durationMicroseconds": 516,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "height",
                         "line": 17
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 2725,
+                        "durationMicroseconds": 6480,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onCurrentPageIndexChanged",
                         "line": 32
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 137,
+                        "durationMicroseconds": 286,
                         "errorMessage": "",
                         "functionName": "objHash",
                         "line": 51
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 25,
-                        "durationMicroseconds": 60,
+                        "durationMicroseconds": 135,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "pages",
                         "line": 90
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 2282,
+                        "durationMicroseconds": 535,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "pageCount",
                         "line": 94
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 595,
+                        "durationMicroseconds": 942,
                         "errorMessage": "method updateObjPropertyPane cannot be resolved.",
                         "functionName": "onSelectedObjChanged",
                         "line": 98
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 1653,
+                        "durationMicroseconds": 2817,
                         "errorMessage": "",
                         "functionName": "type2cp",
                         "line": 123
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 344,
+                        "durationMicroseconds": 583,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onScroll_yChanged",
                         "line": 445
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 76,
+                        "durationMicroseconds": 164,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "timer_tasks",
                         "line": 466
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 21,
+                        "durationMicroseconds": 39,
                         "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/SoupleEdit.qml)::contObj with type QVariant does not have a property iscont for writing",
                         "functionName": "onContObjChanged",
                         "line": 472
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 119,
                         "errorMessage": "",
                         "functionName": "y_id_map",
                         "line": 487
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 137,
+                        "durationMicroseconds": 258,
                         "errorMessage": "",
                         "functionName": "onCompleted",
                         "line": 63
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 204,
+                        "durationMicroseconds": 641,
                         "errorMessage": "Cannot access value for name Helper_Type",
                         "functionName": "z",
                         "line": 72
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 17,
-                        "durationMicroseconds": 78,
+                        "durationMicroseconds": 140,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "target",
                         "line": 180
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 17,
-                        "durationMicroseconds": 54,
+                        "durationMicroseconds": 116,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "target",
                         "line": 194
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 9,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 77,
                         "errorMessage": "",
                         "functionName": "onBeginLoadDocument",
                         "line": 195
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 9,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 91,
                         "errorMessage": "",
                         "functionName": "onFileLoaded",
                         "line": 198
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 129,
+                        "durationMicroseconds": 243,
                         "errorMessage": "",
                         "functionName": "isFromLeft",
                         "line": 335
@@ -246,7 +246,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 113,
+                        "durationMicroseconds": 192,
                         "errorMessage": "",
                         "functionName": "closePolicy",
                         "line": 339
@@ -254,7 +254,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 132,
+                        "durationMicroseconds": 172,
                         "errorMessage": "",
                         "functionName": "parent",
                         "line": 340
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 50,
                         "errorMessage": "method accept_callback cannot be resolved.",
                         "functionName": "onAccepted",
                         "line": 342
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 18,
+                        "durationMicroseconds": 30,
                         "errorMessage": "method reject_callback cannot be resolved.",
                         "functionName": "onRejected",
                         "line": 343
@@ -278,7 +278,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 60,
+                        "durationMicroseconds": 3543,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 341
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 129,
+                        "durationMicroseconds": 325,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 359
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 102,
+                        "durationMicroseconds": 206,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 364
@@ -302,7 +302,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 87,
+                        "durationMicroseconds": 283,
                         "errorMessage": "",
                         "functionName": "closePolicy",
                         "line": 376
@@ -310,7 +310,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 119,
+                        "durationMicroseconds": 294,
                         "errorMessage": "",
                         "functionName": "parent",
                         "line": 377
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 188,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 378
@@ -326,7 +326,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 36,
-                        "durationMicroseconds": 641,
+                        "durationMicroseconds": 12496,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onTextChanged",
                         "line": 389
@@ -342,7 +342,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 457,
+                        "durationMicroseconds": 690,
                         "errorMessage": "",
                         "functionName": "accent",
                         "line": 395
@@ -366,7 +366,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 228,
+                        "durationMicroseconds": 367,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onClicked",
                         "line": 417
@@ -374,7 +374,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 1426,
+                        "durationMicroseconds": 2824,
                         "errorMessage": "method messageBox cannot be resolved.",
                         "functionName": "onClicked",
                         "line": 424
@@ -382,7 +382,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 59,
+                        "durationMicroseconds": 102,
                         "errorMessage": "",
                         "functionName": "onTriggered",
                         "line": 497

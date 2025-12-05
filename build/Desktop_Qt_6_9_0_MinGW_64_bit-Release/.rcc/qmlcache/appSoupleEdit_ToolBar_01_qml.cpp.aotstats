@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 197,
+                        "durationMicroseconds": 448,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 21
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 177,
                         "errorMessage": "",
                         "functionName": "model",
                         "line": 25
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 235,
+                        "durationMicroseconds": 449,
                         "errorMessage": "Cannot access value for name modelData",
                         "functionName": "text",
                         "line": 27
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 168,
+                        "durationMicroseconds": 522,
                         "errorMessage": "Cannot access value for name modelData",
                         "functionName": "img_src",
                         "line": 28
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 157,
+                        "durationMicroseconds": 436,
                         "errorMessage": "Cannot access value for name modelData",
                         "functionName": "onClicked",
                         "line": 29

@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "SoupleManager",
-            "lineNumber": 50,
+            "lineNumber": 52,
             "methods": [
                 {
                     "access": "public",

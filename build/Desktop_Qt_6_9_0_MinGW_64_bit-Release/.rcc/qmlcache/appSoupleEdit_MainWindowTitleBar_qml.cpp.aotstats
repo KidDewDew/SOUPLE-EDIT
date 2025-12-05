@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 335,
+                        "durationMicroseconds": 542,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 10
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 4593,
+                        "durationMicroseconds": 8047,
                         "errorMessage": "Cannot load property documentType from (component in E:/SoupleEdit/SOUPLE-EDIT-master/MainWindowTitleBar.qml)::selectedTab with type QVariant.",
                         "functionName": "onSelectedIdChanged",
                         "line": 48
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 201,
+                        "durationMicroseconds": 352,
                         "errorMessage": "Cannot access value for name window",
                         "functionName": "onPressed",
                         "line": 98
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 544,
+                        "durationMicroseconds": 965,
                         "errorMessage": "Cannot access value for name window",
                         "functionName": "onDoubleClicked",
                         "line": 99
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 156,
+                        "durationMicroseconds": 254,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 97
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 70,
+                        "durationMicroseconds": 118,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 106
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 262,
+                        "durationMicroseconds": 450,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 121
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 109,
+                        "durationMicroseconds": 192,
                         "errorMessage": "",
                         "functionName": "model",
                         "line": 126
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 305,
+                        "durationMicroseconds": 534,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 139
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 41,
-                        "durationMicroseconds": 157,
+                        "durationMicroseconds": 277,
                         "errorMessage": "Cannot access value for name selectedId",
                         "functionName": "selected",
                         "line": 140
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 679,
+                        "durationMicroseconds": 1076,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "onXChanged",
                         "line": 145
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 30,
-                        "durationMicroseconds": 149,
+                        "durationMicroseconds": 268,
                         "errorMessage": "",
                         "functionName": "enabled",
                         "line": 142
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 481,
+                        "durationMicroseconds": 917,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 164
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 82,
+                        "durationMicroseconds": 154,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 168
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 29,
-                        "durationMicroseconds": 71,
+                        "durationMicroseconds": 126,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 169
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 285,
+                        "durationMicroseconds": 498,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 172
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 36,
-                        "durationMicroseconds": 219,
+                        "durationMicroseconds": 342,
                         "errorMessage": "Cannot access value for name s",
                         "functionName": "onClicked",
                         "line": 176
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 202,
+                        "durationMicroseconds": 270,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 179
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 131,
+                        "durationMicroseconds": 225,
                         "errorMessage": "",
                         "functionName": "onReleased",
                         "line": 182
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 96,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 175
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 38,
-                        "durationMicroseconds": 83,
+                        "durationMicroseconds": 103,
                         "errorMessage": "",
                         "functionName": "target",
                         "line": 177
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 88,
+                        "durationMicroseconds": 145,
                         "errorMessage": "",
                         "functionName": "axis",
                         "line": 178
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 273,
+                        "durationMicroseconds": 455,
                         "errorMessage": "Cannot access value for name icon_src",
                         "functionName": "source",
                         "line": 187
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 85,
+                        "durationMicroseconds": 137,
                         "errorMessage": "",
                         "functionName": "fillMode",
                         "line": 190
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 49,
-                        "durationMicroseconds": 104,
+                        "durationMicroseconds": 235,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 189
@@ -222,7 +222,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 298,
+                        "durationMicroseconds": 589,
                         "errorMessage": "Cannot access value for name tabName",
                         "functionName": "text",
                         "line": 194
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 111,
+                        "durationMicroseconds": 259,
                         "errorMessage": "",
                         "functionName": "elide",
                         "line": 197
@@ -238,7 +238,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 249,
+                        "durationMicroseconds": 538,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 199
@@ -246,7 +246,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 49,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 217,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 196
@@ -254,7 +254,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 34,
-                        "durationMicroseconds": 196,
+                        "durationMicroseconds": 395,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 202
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 67,
+                        "durationMicroseconds": 136,
                         "errorMessage": "Cannot load property color from (component in E:/SoupleEdit/SOUPLE-EDIT-master/MainWindowTitleBar.qml)::parent with type QQuickItem.",
                         "functionName": "color",
                         "line": 205
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 120,
+                        "durationMicroseconds": 157,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 203
@@ -278,7 +278,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 34,
-                        "durationMicroseconds": 176,
+                        "durationMicroseconds": 346,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 213
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 49,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 190,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 209
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 40,
-                        "durationMicroseconds": 99,
+                        "durationMicroseconds": 225,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 210
@@ -302,7 +302,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 61,
-                        "durationMicroseconds": 98,
+                        "durationMicroseconds": 202,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 224
@@ -310,7 +310,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 61,
-                        "durationMicroseconds": 98,
+                        "durationMicroseconds": 255,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 230
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 61,
-                        "durationMicroseconds": 100,
+                        "durationMicroseconds": 229,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 237
@@ -326,7 +326,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 260,
+                        "durationMicroseconds": 435,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 272
@@ -334,7 +334,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 154,
+                        "durationMicroseconds": 242,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 273
@@ -342,7 +342,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 393,
+                        "durationMicroseconds": 873,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onPaint",
                         "line": 277
@@ -350,7 +350,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 104,
+                        "durationMicroseconds": 236,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 275
@@ -358,7 +358,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 208,
+                        "durationMicroseconds": 391,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 290
@@ -366,7 +366,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 95,
+                        "durationMicroseconds": 189,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 292
@@ -374,7 +374,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 92,
+                        "durationMicroseconds": 170,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 294
@@ -382,7 +382,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 34,
-                        "durationMicroseconds": 94,
+                        "durationMicroseconds": 161,
                         "errorMessage": "",
                         "functionName": "cursorShape",
                         "line": 300
@@ -390,7 +390,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 38,
-                        "durationMicroseconds": 120,
+                        "durationMicroseconds": 193,
                         "errorMessage": "",
                         "functionName": "acceptedButtons",
                         "line": 301
@@ -398,7 +398,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 92,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 299
@@ -406,7 +406,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 254,
+                        "durationMicroseconds": 440,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "onClicked",
                         "line": 334
@@ -414,7 +414,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 222,
+                        "durationMicroseconds": 340,
                         "errorMessage": "Cannot access value for name darkMode",
                         "functionName": "color",
                         "line": 332
@@ -422,7 +422,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 107,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 329
@@ -430,7 +430,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 524,
+                        "durationMicroseconds": 1237,
                         "errorMessage": "Cannot access value for name window",
                         "functionName": "onClicked",
                         "line": 361
@@ -438,7 +438,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 61,
+                        "durationMicroseconds": 192,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 343
@@ -446,7 +446,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 196,
+                        "durationMicroseconds": 367,
                         "errorMessage": "Cannot access value for name darkMode",
                         "functionName": "color",
                         "line": 348
@@ -454,7 +454,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 30,
-                        "durationMicroseconds": 174,
+                        "durationMicroseconds": 372,
                         "errorMessage": "Cannot access value for name window",
                         "functionName": "visible",
                         "line": 351
@@ -462,7 +462,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 138,
+                        "durationMicroseconds": 305,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 356
@@ -470,7 +470,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 35,
-                        "durationMicroseconds": 177,
+                        "durationMicroseconds": 351,
                         "errorMessage": "Cannot access value for name darkMode",
                         "functionName": "color",
                         "line": 358
@@ -478,7 +478,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 358,
+                        "durationMicroseconds": 638,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 371
@@ -486,7 +486,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 36,
-                        "durationMicroseconds": 228,
+                        "durationMicroseconds": 415,
                         "errorMessage": "Cannot access value for name darkMode",
                         "functionName": "tcolor",
                         "line": 373
@@ -494,7 +494,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 173,
+                        "durationMicroseconds": 315,
                         "errorMessage": "Cannot access value for name window",
                         "functionName": "onClicked",
                         "line": 375
@@ -502,7 +502,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 85,
+                        "durationMicroseconds": 161,
                         "errorMessage": "Cannot access value for name ttb1",
                         "functionName": "onPaint",
                         "line": 388
@@ -510,7 +510,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 57,
                         "errorMessage": "Cannot access value for name ttb1",
                         "functionName": "target",
                         "line": 382
@@ -518,7 +518,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 190,
+                        "durationMicroseconds": 227,
                         "errorMessage": "",
                         "functionName": "onTcolorChanged",
                         "line": 383

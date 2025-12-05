@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 260,
+                        "durationMicroseconds": 504,
                         "errorMessage": "",
                         "functionName": "hline_name",
                         "line": 9
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 2042,
+                        "durationMicroseconds": 2566,
                         "errorMessage": "Cannot retrieve a non-object type by ID: but_cf1",
                         "functionName": "onTextChanged",
                         "line": 24
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 1529,
+                        "durationMicroseconds": 1179,
                         "errorMessage": "Cannot access value for name sync",
                         "functionName": "onCompleted",
                         "line": 21
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 56,
+                        "durationMicroseconds": 108,
                         "errorMessage": "Cannot access value for name text",
                         "functionName": "accent",
                         "line": 42

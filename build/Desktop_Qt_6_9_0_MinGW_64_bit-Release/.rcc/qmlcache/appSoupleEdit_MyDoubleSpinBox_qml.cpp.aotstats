@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 122,
+                        "durationMicroseconds": 224,
                         "errorMessage": "Cannot retrieve a non-object type by ID: tf",
                         "functionName": "text",
                         "line": 8
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 129,
                         "errorMessage": "Cannot retrieve a non-object type by ID: but_add",
                         "functionName": "implicitWidth",
                         "line": 21
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 21,
+                        "durationMicroseconds": 46,
                         "errorMessage": "Cannot retrieve a non-object type by ID: tf",
                         "functionName": "implicitHeight",
                         "line": 22
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 154,
+                        "durationMicroseconds": 310,
                         "errorMessage": "",
                         "functionName": "onCompleted",
                         "line": 24
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 134,
                         "errorMessage": "Cannot access value for name but_sub",
                         "functionName": "color",
                         "line": 39
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 150,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 47
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 21,
+                        "durationMicroseconds": 55,
                         "errorMessage": "Cannot access value for name control",
                         "functionName": "when",
                         "line": 67
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 46,
+                        "durationMicroseconds": 101,
                         "errorMessage": "Cannot access value for name control",
                         "functionName": "value",
                         "line": 68
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 21,
+                        "durationMicroseconds": 61,
                         "errorMessage": "Cannot access value for name suffix",
                         "functionName": "text",
                         "line": 106
@@ -222,7 +222,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 244,
+                        "durationMicroseconds": 525,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 111
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 270,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 109
@@ -238,7 +238,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 25,
+                        "durationMicroseconds": 70,
                         "errorMessage": "Cannot retrieve a non-object type by ID: tf",
                         "functionName": "left",
                         "line": 110
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 43,
+                        "durationMicroseconds": 102,
                         "errorMessage": "Cannot access value for name but_add",
                         "functionName": "color",
                         "line": 123
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 150,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 131

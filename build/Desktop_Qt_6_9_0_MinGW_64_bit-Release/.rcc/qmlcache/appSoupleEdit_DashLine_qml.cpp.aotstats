@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 244,
+                        "durationMicroseconds": 549,
                         "errorMessage": "",
                         "functionName": "onColorChanged",
                         "line": 9
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 14,
-                        "durationMicroseconds": 1016,
+                        "durationMicroseconds": 5761,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onPaint",
                         "line": 10

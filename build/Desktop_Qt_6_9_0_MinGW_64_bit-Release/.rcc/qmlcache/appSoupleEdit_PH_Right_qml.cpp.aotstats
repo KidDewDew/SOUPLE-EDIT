@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 12,
-                        "durationMicroseconds": 495,
+                        "durationMicroseconds": 1034,
                         "errorMessage": "",
                         "functionName": "color",
                         "line": 14
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 110,
+                        "durationMicroseconds": 249,
                         "errorMessage": "",
                         "functionName": "die",
                         "line": 18
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 42,
+                        "durationMicroseconds": 122,
                         "errorMessage": "",
                         "functionName": "selectw",
                         "line": 26
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 32,
+                        "durationMicroseconds": 80,
                         "errorMessage": "",
                         "functionName": "selectcl",
                         "line": 34
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 253,
+                        "durationMicroseconds": 548,
                         "errorMessage": "Cannot find name selectedObj",
                         "functionName": "onFocusChanged",
                         "line": 41
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 2713,
+                        "durationMicroseconds": 332,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 72
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 104715,
+                        "durationMicroseconds": 199403,
                         "errorMessage": "Cannot access value for name cp_obj_textedit",
                         "functionName": "onPressed",
                         "line": 193
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 121,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 193
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 116,
+                        "durationMicroseconds": 209,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 218
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 399,
+                        "durationMicroseconds": 741,
                         "errorMessage": "Cannot access value for name SoupleManager",
                         "functionName": "onTriggered",
                         "line": 225
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 193,
+                        "durationMicroseconds": 376,
                         "errorMessage": "",
                         "functionName": "acceptedButtons",
                         "line": 235
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 93,
+                        "durationMicroseconds": 190,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 236
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 36,
+                        "durationMicroseconds": 77,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 236
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 395,
+                        "durationMicroseconds": 703,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 239
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 36,
+                        "durationMicroseconds": 88,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 239
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 70,
+                        "durationMicroseconds": 126,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 234

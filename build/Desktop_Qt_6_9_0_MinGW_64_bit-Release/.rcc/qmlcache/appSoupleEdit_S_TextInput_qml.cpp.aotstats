@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 257,
+                        "durationMicroseconds": 483,
                         "errorMessage": "",
                         "functionName": "selectw",
                         "line": 10
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 124,
+                        "durationMicroseconds": 259,
                         "errorMessage": "",
                         "functionName": "selectcl",
                         "line": 18
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 74,
                         "errorMessage": "",
                         "functionName": "onCompleted",
                         "line": 26
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 116,
+                        "durationMicroseconds": 233,
                         "errorMessage": "",
                         "functionName": "cursorShape",
                         "line": 33
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 489,
+                        "durationMicroseconds": 1007,
                         "errorMessage": "Cannot access value for name soupleEdit",
                         "functionName": "onPressed",
                         "line": 34
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 45,
+                        "durationMicroseconds": 102,
                         "errorMessage": "",
                         "functionName": "onPressed",
                         "line": 34
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 48,
+                        "durationMicroseconds": 3657,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 32

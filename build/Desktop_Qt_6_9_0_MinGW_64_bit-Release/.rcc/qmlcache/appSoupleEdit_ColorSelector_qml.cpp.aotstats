@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 134,
+                        "durationMicroseconds": 257,
                         "errorMessage": "Cannot retrieve a non-object type by ID: control",
                         "functionName": "visible",
                         "line": 17
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 140,
+                        "durationMicroseconds": 271,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 16
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 64,
+                        "durationMicroseconds": 136,
                         "errorMessage": "Cannot access value for name control",
                         "functionName": "color",
                         "line": 26
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 17,
+                        "durationMicroseconds": 42,
                         "errorMessage": "Cannot retrieve a non-object type by ID: control",
                         "functionName": "color",
                         "line": 31
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 137,
+                        "durationMicroseconds": 309,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 34
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 40,
+                        "durationMicroseconds": 110,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 35
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 82,
+                        "durationMicroseconds": 185,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 33
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 69,
+                        "durationMicroseconds": 169,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 43
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 67,
+                        "durationMicroseconds": 157,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 45

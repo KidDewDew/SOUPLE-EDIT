@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 177,
+                        "durationMicroseconds": 380,
                         "errorMessage": "",
                         "functionName": "onFloat_xChanged",
                         "line": 9
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 46,
+                        "durationMicroseconds": 113,
                         "errorMessage": "",
                         "functionName": "onShow_floatChanged",
                         "line": 10
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 112,
                         "errorMessage": "",
                         "functionName": "onXScaleChanged",
                         "line": 11
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 287,
+                        "durationMicroseconds": 598,
                         "errorMessage": "",
                         "functionName": "lineColor",
                         "line": 12
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 52,
+                        "durationMicroseconds": 99,
                         "errorMessage": "",
                         "functionName": "onLineColorChanged",
                         "line": 16
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 14,
-                        "durationMicroseconds": 2468,
+                        "durationMicroseconds": 5241,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "onPaint",
                         "line": 17

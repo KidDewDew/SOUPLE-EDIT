@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 106,
+                        "durationMicroseconds": 229,
                         "errorMessage": "Cannot access value for name control",
                         "functionName": "width",
                         "line": 24
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 9,
+                        "durationMicroseconds": 27,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "height",
                         "line": 25
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 267,
+                        "durationMicroseconds": 474,
                         "errorMessage": "Cannot access value for name real_value",
                         "functionName": "color",
                         "line": 27
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 19,
+                        "durationMicroseconds": 43,
                         "errorMessage": "Cannot access value for name show_text",
                         "functionName": "visible",
                         "line": 31
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 45,
+                        "durationMicroseconds": 114,
                         "errorMessage": "Cannot access value for name real_value",
                         "functionName": "text",
                         "line": 32
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 209,
+                        "durationMicroseconds": 390,
                         "errorMessage": "Cannot access value for name Text",
                         "functionName": "style",
                         "line": 36
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 8,
+                        "durationMicroseconds": 18,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "centerIn",
                         "line": 33
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 13,
+                        "durationMicroseconds": 38,
                         "errorMessage": "Cannot access value for name parent",
                         "functionName": "pixelSize",
                         "line": 34

@@ -3,32 +3,6 @@
 #include "TableFactory.h"
 #include <QPainterPath>
 
-
-
-// 获取表格行数：根据存储的行数据数量确定
-int TableInfo::rowCount() const {
-    return static_cast<int>(units.size());
-}
-
-// 获取表格列数：取第一行的列数（假设所有行结构一致）
-int TableInfo::colCount() const {
-    if (units.empty()) return 0;
-    return static_cast<int>(units[0].size());
-}
-
-// 获取指定单元格的文本：从 Free_TableUnit 中提取文本
-QString TableInfo::getCellText(int row, int col) const {
-    // 越界检查
-    if (row < 0 || row >= rowCount()) return "";
-    if (col < 0 || col >= colCount()) return "";
-
-    // 获取单元格单元（Free_TableUnit）
-    const UnitInfo& unitInfo = units[row][col];
-    if (!unitInfo.u) return ""; // 单元为空时返回空字符串
-
-    return unitInfo.u->getText();
-}
-
 TableLine::TableLine() {
     while(hash_hline.contains("T"+QString::number(s_tline_count))) {
         ++s_tline_count;
@@ -62,6 +36,11 @@ void TableLine::dealLayout()
 {
     //qDebug() << "TableLine::dealLayout()" << "y: " << y;
     if(!table_info) return;
+
+    if(!page) {
+        page = SoupleManager::getPage(*this);
+    }
+
     //return;
     float old_y = y;
 
@@ -182,7 +161,7 @@ void TableLine::dealLayout()
         if( Helper::isQmlItemValid(qmlItem) ) qmlItem->setY(y - qmlItem->height()/2);
     }
 
-    if(! page || abs(y-old_y) > 1e-2) {
+    if(/*! page || */abs(y-old_y) > 1e-2) {
         page = SoupleManager::getPage(*this);
     }
 

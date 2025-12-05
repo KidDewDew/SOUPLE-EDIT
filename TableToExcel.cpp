@@ -1,121 +1,84 @@
 #include "TableToExcel.h"
-#include "tableline.h"  // 包含TableInfo的具体定义
-#include <QString>
+#include "tableline.h"
+#include "free_tableunit.h"
+#include <xlsxwriter.h>
 #include <QDebug>
-#include <xlsxwriter.h>  // 依赖libxlsxwriter库
-#include <stdexcept>     // 用于异常处理
+#include <any>
 
-// 构造函数：仅为QObject继承关系初始化，无需额外逻辑
 TableToExcel::TableToExcel(QObject *parent) : QObject(parent) {}
 
-/**
- * @brief 初始化Excel单元格样式（表头和内容样式）
- * @param workbook 工作簿指针
- * @param header_format 表头样式指针（输出）
- * @param content_format 内容样式指针（输出）
- */
-static void initExcelStyles(lxw_workbook *workbook, lxw_format **header_format, lxw_format **content_format) {
-    if (!workbook) return;
-
-    // 表头样式：加粗、居中、浅灰背景、细边框
-    *header_format = workbook_add_format(workbook);
-    format_set_bold(*header_format);
-    format_set_align(*header_format, LXW_ALIGN_CENTER);         // 水平居中
-    format_set_align(*header_format, LXW_ALIGN_VERTICAL_CENTER); // 垂直居中
-    format_set_bg_color(*header_format, 0xF0F0F0);              // 浅灰色背景
-    format_set_border(*header_format, LXW_BORDER_THIN);          // 细边框
-    format_set_border_color(*header_format, 0x000000);          // 边框黑色
-
-    // 内容样式：居中、细边框
-    *content_format = workbook_add_format(workbook);
-    format_set_align(*content_format, LXW_ALIGN_CENTER);
-    format_set_align(*content_format, LXW_ALIGN_VERTICAL_CENTER);
-    format_set_border(*content_format, LXW_BORDER_THIN);
-    format_set_border_color(*content_format, 0x000000);
+// 安全转换QObject*到TableInfo*
+TableInfo* TableToExcel::toTableInfo(QObject* obj) {
+    if (!obj) return nullptr;
+    // 假设TableInfo继承自QObject，使用dynamic_cast转换
+    return dynamic_cast<TableInfo*>(obj);
 }
 
-/**
- * @brief 核心方法：将TableInfo中的表格数据导出到Excel
- * @param ti 表格数据（TableInfo指针，来自tableline.h）
- * @param saveFile 保存路径（支持中文路径）
- * @return 导出成功返回true，失败返回false
- */
-bool TableToExcel::extractTableToExcel(TableInfo *ti, const QString &saveFile) {
-    // 第一步：参数校验
-    if (!ti) {
-        qCritical() << "TableToExcel: 表格数据(TableInfo)为空！";
-        return false;
+// 提取单元格内容
+QString TableToExcel::getCellContent(Free_TableUnit* unit) {
+    if (!unit) return "";
+    auto textData = unit->getAnyData("text");
+    if (textData.has_value()) {
+        try {
+            return std::any_cast<QString>(textData);
+        } catch (...) {
+            qWarning() << "单元格文本转换失败";
+        }
     }
-    if (saveFile.isEmpty()) {
-        qCritical() << "TableToExcel: 保存路径为空！";
+    return "";
+}
+
+// 导出表格到Excel
+bool TableToExcel::extractTableToExcel(QObject* tableInfoObj, const QString& filePath) {
+    // 转换表格信息对象
+    TableInfo* tableInfo = toTableInfo(tableInfoObj);
+    if (!tableInfo) {
+        qWarning() << "无效的表格信息对象";
         return false;
     }
 
-    // 获取表格行列数（依赖TableInfo已实现的rowCount()和colCount()）
-    int rowCount = ti->rowCount();
-    int colCount = ti->colCount();
-    if (rowCount <= 0 || colCount <= 0) {
-        qCritical() << "TableToExcel: 表格无有效数据（行：" << rowCount << "，列：" << colCount << "）";
-        return false;
-    }
-
-    // 第二步：创建Excel工作簿和工作表
-    // 转换QString路径为C字符串（支持中文，使用toLocal8Bit处理编码）
-    const char *excelPath = saveFile.toLocal8Bit().constData();
-    lxw_workbook *workbook = workbook_new(excelPath);
+    // 创建xlsxwriter工作簿
+    lxw_workbook *workbook = workbook_new(filePath.toUtf8().constData());
     if (!workbook) {
-        qCritical() << "TableToExcel: 创建工作簿失败！路径：" << saveFile;
+        qWarning() << "创建Excel工作簿失败:" << filePath;
         return false;
     }
-
-    // 创建工作表（默认名称"Sheet1"）
     lxw_worksheet *worksheet = workbook_add_worksheet(workbook, nullptr);
     if (!worksheet) {
-        qCritical() << "TableToExcel: 创建工作表失败！";
-        workbook_close(workbook);  // 释放资源
+        workbook_close(workbook);
+        qWarning() << "创建Excel工作表失败";
         return false;
     }
 
-    // 第三步：初始化样式
-    lxw_format *headerFormat = nullptr;
-    lxw_format *contentFormat = nullptr;
-    initExcelStyles(workbook, &headerFormat, &contentFormat);
+    // 遍历表格写入数据
+    for (int row = 0; row < tableInfo->rowCount(); ++row) {
+        for (int col = 0; col < tableInfo->colCount(); ++col) {
+            const auto& unitInfo = tableInfo->units[row][col];
+            if (!unitInfo.u) continue;
 
-    // 第四步：设置列宽（优化显示）
-    const double columnWidth = 15;  // 列宽适中，可根据内容调整
-    for (int col = 0; col < colCount; ++col) {
-        worksheet_set_column(worksheet, col, col, columnWidth, nullptr);
-    }
+            // 仅写入合并单元格的起始位置
+            if (unitInfo.start_row == row && unitInfo.start_col == col) {
+                QString cellText = getCellContent(unitInfo.u);
 
-    // 第五步：写入表格数据
-    try {
-        for (int row = 0; row < rowCount; ++row) {
-            for (int col = 0; col < colCount; ++col) {
-                // 获取单元格文本（依赖TableInfo已实现的getCellText()，返回QString）
-                QString cellText = ti->getCellText(row, col);
-                // 转换为C字符串（支持中文）
-                const char *text = cellText.toLocal8Bit().constData();
+                // 写入单元格内容
+                worksheet_write_string(worksheet, row, col,
+                                       cellText.toUtf8().constData(), nullptr);
 
-                // 表头行（第0行）用表头样式，其他行用内容样式
-                if (row == 0) {
-                    worksheet_write_string(worksheet, row, col, text, headerFormat);
-                } else {
-                    worksheet_write_string(worksheet, row, col, text, contentFormat);
+                // 处理合并单元格
+                if (unitInfo.start_row != unitInfo.end_row || unitInfo.start_col != unitInfo.end_col) {
+                    worksheet_merge_range(worksheet,
+                                          unitInfo.start_row, unitInfo.start_col,
+                                          unitInfo.end_row, unitInfo.end_col,
+                                          cellText.toUtf8().constData(), nullptr);
                 }
             }
         }
-    } catch (const std::exception &e) {
-        qCritical() << "TableToExcel: 写入数据失败！原因：" << e.what();
-        workbook_close(workbook);
-        return false;
     }
 
-    // 第六步：保存并释放资源
-    if (workbook_close(workbook) != LXW_NO_ERROR) {
-        qCritical() << "TableToExcel: 保存Excel文件失败！";
-        return false;
+    // 保存并关闭工作簿
+    bool success = (workbook_close(workbook) == LXW_NO_ERROR);
+    if (!success) {
+        qWarning() << "保存Excel文件失败:" << filePath;
     }
-
-    qInfo() << "TableToExcel: 导出成功！文件路径：" << saveFile;
-    return true;
+    return success;
 }

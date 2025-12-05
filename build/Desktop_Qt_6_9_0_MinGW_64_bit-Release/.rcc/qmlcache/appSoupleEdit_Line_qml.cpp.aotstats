@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 391,
+                        "durationMicroseconds": 727,
                         "errorMessage": "",
                         "functionName": "implicitHeight",
                         "line": 6
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 176,
+                        "durationMicroseconds": 392,
                         "errorMessage": "",
                         "functionName": "implicitWidth",
                         "line": 7
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 17,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 102,
                         "errorMessage": "Cannot access value for name x0",
                         "functionName": "startX",
                         "line": 15
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 17,
-                        "durationMicroseconds": 19,
+                        "durationMicroseconds": 39,
                         "errorMessage": "Cannot access value for name y0",
                         "functionName": "startY",
                         "line": 16
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 99,
+                        "durationMicroseconds": 186,
                         "errorMessage": "",
                         "functionName": "strokeWidth",
                         "line": 17
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 102,
+                        "durationMicroseconds": 230,
                         "errorMessage": "",
                         "functionName": "strokeColor",
                         "line": 18
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 61,
                         "errorMessage": "Cannot access value for name x1",
                         "functionName": "x",
                         "line": 20
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 19,
+                        "durationMicroseconds": 41,
                         "errorMessage": "Cannot access value for name y1",
                         "functionName": "y",
                         "line": 20

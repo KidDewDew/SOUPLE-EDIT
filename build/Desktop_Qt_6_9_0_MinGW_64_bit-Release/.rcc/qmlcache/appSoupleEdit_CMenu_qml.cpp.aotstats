@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 246,
+                        "durationMicroseconds": 437,
                         "errorMessage": "",
                         "functionName": "onHighlightedChanged",
                         "line": 14
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 142,
+                        "durationMicroseconds": 268,
                         "errorMessage": "",
                         "functionName": "x",
                         "line": 19
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 78,
+                        "durationMicroseconds": 166,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 22
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 121,
+                        "durationMicroseconds": 245,
                         "errorMessage": "Cannot access value for name accent",
                         "functionName": "onPaint",
                         "line": 23
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 109,
+                        "durationMicroseconds": 243,
                         "errorMessage": "",
                         "functionName": "source",
                         "line": 37
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 66,
+                        "durationMicroseconds": 149,
                         "errorMessage": "",
                         "functionName": "fillMode",
                         "line": 38
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 401,
+                        "durationMicroseconds": 773,
                         "errorMessage": "Cannot generate efficient code for incomparable types std::nullptr_t and QQuickIcon::source with type QUrl",
                         "functionName": "visible",
                         "line": 39
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 30,
-                        "durationMicroseconds": 93,
+                        "durationMicroseconds": 172,
                         "errorMessage": "",
                         "functionName": "leftPadding",
                         "line": 42
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 80,
+                        "durationMicroseconds": 156,
                         "errorMessage": "",
                         "functionName": "rightPadding",
                         "line": 43
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 164,
                         "errorMessage": "",
                         "functionName": "text",
                         "line": 44
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 74,
+                        "durationMicroseconds": 167,
                         "errorMessage": "",
                         "functionName": "font",
                         "line": 45
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 113,
+                        "durationMicroseconds": 244,
                         "errorMessage": "",
                         "functionName": "opacity",
                         "line": 46
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 46,
+                        "durationMicroseconds": 92,
                         "errorMessage": "Cannot access value for name accent",
                         "functionName": "color",
                         "line": 47
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 38,
-                        "durationMicroseconds": 59,
+                        "durationMicroseconds": 132,
                         "errorMessage": "",
                         "functionName": "horizontalAlignment",
                         "line": 48
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 115,
                         "errorMessage": "",
                         "functionName": "verticalAlignment",
                         "line": 49
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 47,
+                        "durationMicroseconds": 149,
                         "errorMessage": "",
                         "functionName": "elide",
                         "line": 50
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 84,
+                        "durationMicroseconds": 193,
                         "errorMessage": "",
                         "functionName": "opacity",
                         "line": 56
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 35,
+                        "durationMicroseconds": 81,
                         "errorMessage": "Cannot access value for name accent",
                         "functionName": "color",
                         "line": 57
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 18,
+                        "durationMicroseconds": 42,
                         "errorMessage": "Cannot access value for name accent",
                         "functionName": "color",
                         "line": 64

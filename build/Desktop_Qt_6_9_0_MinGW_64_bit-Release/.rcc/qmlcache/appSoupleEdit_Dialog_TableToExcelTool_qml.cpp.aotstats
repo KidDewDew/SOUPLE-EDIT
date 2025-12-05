@@ -6,42 +6,50 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 234,
+                        "durationMicroseconds": 434,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
-                        "line": 9
+                        "line": 10
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 163,
+                        "durationMicroseconds": 315,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "onClosing",
-                        "line": 27
+                        "line": 30
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 30,
-                        "durationMicroseconds": 110,
+                        "durationMicroseconds": 203,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "openedDocs",
-                        "line": 33
+                        "line": 36
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 32,
+                        "durationMicroseconds": 68,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "currentTables",
-                        "line": 34
+                        "line": 37
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 314,
+                        "durationMicroseconds": 0,
+                        "errorMessage": "Functions without type annotations won't be compiled",
+                        "functionName": "messageBox",
+                        "line": 48
+                    },
+                    {
+                        "codegenSuccessfull": false,
+                        "column": 5,
+                        "durationMicroseconds": 1218,
                         "errorMessage": "Cannot access value for name main_titleBar",
                         "functionName": "updateOpenedDocList",
-                        "line": 40
+                        "line": 61
                     },
                     {
                         "codegenSuccessfull": false,
@@ -49,15 +57,15 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Functions without type annotations won't be compiled",
                         "functionName": "loadTablesFromDoc",
-                        "line": 61
+                        "line": 86
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 91,
                         "errorMessage": "Type call to method createQmlObject, returning QObject does not have a property open for calling",
                         "functionName": "openPDFAndParse",
-                        "line": 101
+                        "line": 144
                     },
                     {
                         "codegenSuccessfull": false,
@@ -65,23 +73,23 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Functions without type annotations won't be compiled",
                         "functionName": "parsePdfTables",
-                        "line": 116
+                        "line": 174
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 327,
+                        "durationMicroseconds": 163,
                         "errorMessage": "Cannot load property length from (component in E:/SoupleEdit/SOUPLE-EDIT-master/Dialog_TableToExcelTool.qml)::currentTables with type QVariant.",
                         "functionName": "exportSelectedTable",
-                        "line": 158
+                        "line": 265
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 74,
+                        "durationMicroseconds": 165,
                         "errorMessage": "function without return type annotation returns QString. This may prevent proper compilation to Cpp.",
                         "functionName": "getCurrentDocName",
-                        "line": 189
+                        "line": 296
                     },
                     {
                         "codegenSuccessfull": false,
@@ -89,127 +97,127 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Functions without type annotations won't be compiled",
                         "functionName": "exportToExcel",
-                        "line": 196
+                        "line": 303
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 128,
+                        "durationMicroseconds": 263,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "foreground",
-                        "line": 13
-                    },
-                    {
-                        "codegenSuccessfull": false,
-                        "column": 26,
-                        "durationMicroseconds": 98,
-                        "errorMessage": "Cannot access value for name theme",
-                        "functionName": "background",
                         "line": 14
                     },
                     {
                         "codegenSuccessfull": false,
-                        "column": 23,
-                        "durationMicroseconds": 88,
+                        "column": 26,
+                        "durationMicroseconds": 220,
                         "errorMessage": "Cannot access value for name theme",
-                        "functionName": "primary",
+                        "functionName": "background",
                         "line": 15
                     },
                     {
                         "codegenSuccessfull": false,
-                        "column": 21,
-                        "durationMicroseconds": 181,
-                        "errorMessage": "Cannot access value for name isProtectEyeMode",
-                        "functionName": "theme",
+                        "column": 23,
+                        "durationMicroseconds": 323,
+                        "errorMessage": "Cannot access value for name theme",
+                        "functionName": "primary",
                         "line": 16
+                    },
+                    {
+                        "codegenSuccessfull": true,
+                        "column": 21,
+                        "durationMicroseconds": 729,
+                        "errorMessage": "",
+                        "functionName": "theme",
+                        "line": 17
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 115,
+                        "durationMicroseconds": 428,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "onCompleted",
-                        "line": 22
+                        "line": 25
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 66,
+                        "durationMicroseconds": 221,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 224
+                        "line": 333
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 59,
+                        "durationMicroseconds": 131,
                         "errorMessage": "",
                         "functionName": "alignment",
-                        "line": 237
+                        "line": 346
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 34,
-                        "durationMicroseconds": 76,
+                        "durationMicroseconds": 145,
                         "errorMessage": "",
                         "functionName": "top",
-                        "line": 254
+                        "line": 363
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 49,
+                        "durationMicroseconds": 131,
                         "errorMessage": "",
                         "functionName": "left",
-                        "line": 255
+                        "line": 364
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 118,
                         "errorMessage": "",
                         "functionName": "right",
-                        "line": 256
+                        "line": 365
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 36,
-                        "durationMicroseconds": 322,
+                        "durationMicroseconds": 678,
                         "errorMessage": "Cannot find name isPdfMode",
                         "functionName": "onClicked",
-                        "line": 266
+                        "line": 375
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 36,
-                        "durationMicroseconds": 232,
+                        "durationMicroseconds": 505,
                         "errorMessage": "Cannot find name isPdfMode",
                         "functionName": "onClicked",
-                        "line": 277
+                        "line": 386
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 49,
+                        "durationMicroseconds": 119,
                         "errorMessage": "",
                         "functionName": "visible",
-                        "line": 289
+                        "line": 398
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 63,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 293
+                        "line": 402
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 48,
-                        "durationMicroseconds": 433,
+                        "durationMicroseconds": 1160,
                         "errorMessage": "Cannot access value for name openedDocs",
                         "functionName": "onCurrentIndexChanged",
-                        "line": 300
+                        "line": 409
                     },
                     {
                         "codegenSuccessfull": false,
@@ -217,207 +225,207 @@
                         "durationMicroseconds": 0,
                         "errorMessage": "Could not find signal \"clicked\".",
                         "functionName": "onClicked",
-                        "line": 321
+                        "line": 428
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 107,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 352
+                        "line": 458
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 61,
+                        "durationMicroseconds": 149,
                         "errorMessage": "Cannot access value for name currentTables",
                         "functionName": "text",
-                        "line": 357
+                        "line": 463
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 178,
+                        "durationMicroseconds": 372,
                         "errorMessage": "Cannot access value for name currentTables",
                         "functionName": "color",
-                        "line": 360
+                        "line": 466
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 34,
-                        "durationMicroseconds": 22,
+                        "durationMicroseconds": 48,
                         "errorMessage": "Cannot access value for name isLoading",
                         "functionName": "visible",
-                        "line": 367
+                        "line": 473
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 36,
-                        "durationMicroseconds": 101,
+                        "durationMicroseconds": 216,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
-                        "line": 371
+                        "line": 477
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 43,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 78,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 370
+                        "line": 476
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 42,
-                        "durationMicroseconds": 20,
+                        "durationMicroseconds": 49,
                         "errorMessage": "Cannot access value for name isLoading",
                         "functionName": "running",
-                        "line": 374
+                        "line": 480
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 51,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 61,
                         "errorMessage": "",
                         "functionName": "centerIn",
-                        "line": 373
+                        "line": 479
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 131,
+                        "durationMicroseconds": 270,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
-                        "line": 383
+                        "line": 489
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 51,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 81,
                         "errorMessage": "",
                         "functionName": "centerIn",
-                        "line": 380
+                        "line": 486
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 21,
+                        "durationMicroseconds": 43,
                         "errorMessage": "Cannot access value for name currentTables",
                         "functionName": "model",
-                        "line": 393
+                        "line": 499
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 34,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 37,
                         "errorMessage": "Cannot access value for name isLoading",
                         "functionName": "enabled",
-                        "line": 396
+                        "line": 502
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 90,
                         "errorMessage": "",
                         "functionName": "width",
-                        "line": 399
+                        "line": 505
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 119,
+                        "durationMicroseconds": 264,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "color",
-                        "line": 403
+                        "line": 509
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 47,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 75,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 402
+                        "line": 508
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 47,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 237,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "color",
-                        "line": 404
+                        "line": 510
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 55,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 56,
                         "errorMessage": "",
                         "functionName": "centerIn",
-                        "line": 408
+                        "line": 514
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 47,
-                        "durationMicroseconds": 130,
+                        "durationMicroseconds": 290,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "text",
-                        "line": 411
+                        "line": 517
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 48,
-                        "durationMicroseconds": 122,
+                        "durationMicroseconds": 252,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
-                        "line": 413
+                        "line": 519
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 47,
-                        "durationMicroseconds": 274,
+                        "durationMicroseconds": 583,
                         "errorMessage": "Cannot access value for name currentTables",
                         "functionName": "text",
-                        "line": 417
+                        "line": 522
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 44,
-                        "durationMicroseconds": 141,
+                        "durationMicroseconds": 243,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "onClicked",
-                        "line": 426
+                        "line": 531
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 47,
-                        "durationMicroseconds": 34,
+                        "durationMicroseconds": 69,
                         "errorMessage": "",
                         "functionName": "fill",
-                        "line": 425
+                        "line": 530
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 30,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 139,
                         "errorMessage": "Cannot access value for name isLoading",
                         "functionName": "enabled",
-                        "line": 447
+                        "line": 552
                     },
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 129,
+                        "durationMicroseconds": 305,
                         "errorMessage": "method exportSelectedTable cannot be resolved.",
                         "functionName": "onClicked",
-                        "line": 448
+                        "line": 553
                     },
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 58,
+                        "durationMicroseconds": 121,
                         "errorMessage": "",
                         "functionName": "right",
-                        "line": 442
+                        "line": 547
                     }
                 ],
                 "filepath": "E:/SoupleEdit/SOUPLE-EDIT-master/Dialog_TableToExcelTool.qml"

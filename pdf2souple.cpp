@@ -197,6 +197,7 @@ auto _sort_func = [](shared_ptr<Pdf2Souple::PDFOBJ> a,shared_ptr<Pdf2Souple::PDF
 void Pdf2Souple::imp_analysePdfPage(shared_ptr<PDFPage> page,shared_ptr<PDFPage> old_page)
 {
 
+
     /**第一步，找出所有自由元素
      *rule-1: 重叠的元素中最上面的那个是锚定元素，其余是自由元素
      *rule-2: 一个元素判定为自由元素后，不会再变成锚定元素。锚定元素条件更苛刻。**/
@@ -405,7 +406,16 @@ void Pdf2Souple::imp_analysePdfPage(shared_ptr<PDFPage> page,shared_ptr<PDFPage>
         //bool isTable = false; //是否是表格HBlock
         for(auto[id,j] : composed_indexs|std::views::enumerate) { //扫描各个HBlock(各行)
             auto& bk = blocks[j];
+            if (bk.objs.empty()) {
+                qDebug() << "警告：HBlock对象列表为空，跳过";
+                continue;
+            }
             if(auto table = dynamic_pointer_cast<PDFOBJ_TablePart>(bk.objs[0]); table) {
+                // 新增：检查 tablelines 是否为空
+                if (table->tablelines.empty()) {
+                    qDebug() << "警告：表格行列表为空，跳过处理";
+                    continue;
+                }
 
                 //表格需要特殊处理
                 if(last_hline) { //表格上间距

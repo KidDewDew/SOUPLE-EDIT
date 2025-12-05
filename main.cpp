@@ -17,6 +17,8 @@
 #include "souplemanager.h"
 #include "myimageprovider.h"
 #include "souple_pdfsaver.h"
+#include "TableToExcel.h"//111
+#include "tableline.h" //111
 #include <QPdfWriter>
 #include <QPainter>
 #include <QPainterPath>
@@ -177,7 +179,7 @@ int main(int argc, char *argv[])
     qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT","Dense");
 
     QGuiApplication app(argc, argv);
-
+    qmlRegisterType<TableToExcel>("com.custom", 1, 0, "TableToExcel");//111
     ::global_app = &app;
 
     app.installNativeEventFilter(new MyWindowEvenetFilter);

@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 25,
-                        "durationMicroseconds": 142,
+                        "durationMicroseconds": 272,
                         "errorMessage": "Cannot load property leftLine from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
                         "functionName": "vLine",
                         "line": 10
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 181,
+                        "durationMicroseconds": 279,
                         "errorMessage": "",
                         "functionName": "rightX",
                         "line": 14
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 38,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 109,
                         "errorMessage": "",
                         "functionName": "rightX_for_shrink",
                         "line": 15
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 119,
                         "errorMessage": "",
                         "functionName": "leftX",
                         "line": 16
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 8,
-                        "durationMicroseconds": 18,
+                        "durationMicroseconds": 29,
                         "errorMessage": "Cannot load property centerX from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::vLine with type QVariant.",
                         "functionName": "x",
                         "line": 18
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 8,
-                        "durationMicroseconds": 13,
+                        "durationMicroseconds": 23,
                         "errorMessage": "Cannot load property centerY from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
                         "functionName": "y",
                         "line": 19
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 20,
+                        "durationMicroseconds": 45,
                         "errorMessage": "",
                         "functionName": "whenInsertedOnRight",
                         "line": 22
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 19,
+                        "durationMicroseconds": 46,
                         "errorMessage": "",
                         "functionName": "whenInsertedOnLeft",
                         "line": 26
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 4,
+                        "durationMicroseconds": 9,
                         "errorMessage": "function without return type annotation returns bool. This may prevent proper compilation to Cpp.",
                         "functionName": "tryMergeRight",
                         "line": 51
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 78,
+                        "durationMicroseconds": 194,
                         "errorMessage": "Cannot load property lastHline from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
                         "functionName": "getCursorFromRight",
                         "line": 53
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 67,
+                        "durationMicroseconds": 150,
                         "errorMessage": "Cannot load property lastHline from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorPoint.qml)::hLine with type QVariant.",
                         "functionName": "getCursorFromLeft",
                         "line": 64
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 3,
+                        "durationMicroseconds": 8,
                         "errorMessage": "function without return type annotation returns std::nullptr_t. This may prevent proper compilation to Cpp.",
                         "functionName": "dropLeft",
                         "line": 80
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 2,
+                        "durationMicroseconds": 5,
                         "errorMessage": "function without return type annotation returns std::nullptr_t. This may prevent proper compilation to Cpp.",
                         "functionName": "dropRight",
                         "line": 81
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 6505,
+                        "durationMicroseconds": 10835,
                         "errorMessage": "Instruction \"generate_CmpInstanceOf\" not implemented",
                         "functionName": "onLeftObjChanged",
                         "line": 84

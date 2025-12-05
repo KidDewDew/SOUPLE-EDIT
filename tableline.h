@@ -8,19 +8,13 @@ class TableLine;
 
 // 表格数据结构。一个表格的多个TablePart共享一个TableInfo(ti)
 struct TableInfo : public Signal_Receiver{
-    // 获取表格行数
-    int rowCount() const;
-    // 获取表格列数
-    int colCount() const;
-    // 获取指定单元格的文本（row=行号，col=列号，从0开始）
-    QString getCellText(int row, int col) const;
-    // 其他已有成员...
     struct UnitInfo {
         int start_col,start_row; //所在(合并)单元格的左上角的列、行坐标(index from 0)
         int end_col,end_row; //所在(合并)单元格的右下角的列、行坐标(index from 0)
         Free_TableUnit *u = 0;
     };
-
+    int rowCount() const noexcept { return rowHeights.size(); }
+    int colCount() const noexcept { return colWidths.size(); }
     TableLine *firstLine, *endLine;
     unsigned char alignMode;
     float width,height;

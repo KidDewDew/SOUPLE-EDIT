@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 653,
+                        "durationMicroseconds": 1149,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onLevelsChanged",
                         "line": 30
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 199,
+                        "durationMicroseconds": 348,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 57
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 102,
+                        "durationMicroseconds": 199,
                         "errorMessage": "",
                         "functionName": "model",
                         "line": 63
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 286,
+                        "durationMicroseconds": 464,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 67
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 527,
+                        "durationMicroseconds": 981,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "text",
                         "line": 68
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 54,
                         "errorMessage": "Cannot access value for name view",
                         "functionName": "font",
                         "line": 69
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 107,
+                        "durationMicroseconds": 179,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 70
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 40,
-                        "durationMicroseconds": 327,
+                        "durationMicroseconds": 397,
                         "errorMessage": "Cannot access value for name modelData",
                         "functionName": "leftMargin",
                         "line": 71
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 37,
-                        "durationMicroseconds": 92,
+                        "durationMicroseconds": 113,
                         "errorMessage": "Cannot access value for name lineWidth",
                         "functionName": "implicitHeight",
                         "line": 77
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 82,
+                        "durationMicroseconds": 105,
                         "errorMessage": "",
                         "functionName": "renderStrategy",
                         "line": 78
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 30,
-                        "durationMicroseconds": 5055,
+                        "durationMicroseconds": 6257,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "onPaint",
                         "line": 98
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 97,
+                        "durationMicroseconds": 187,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 76
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 33,
-                        "durationMicroseconds": 33,
+                        "durationMicroseconds": 42,
                         "errorMessage": "Cannot access value for name view",
                         "functionName": "target",
                         "line": 80
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 25,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 79,
                         "errorMessage": "Cannot access value for name view",
                         "functionName": "onSpacingChanged",
                         "line": 81
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 96,
+                        "durationMicroseconds": 124,
                         "errorMessage": "",
                         "functionName": "onRadiusChanged",
                         "line": 85
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 124,
+                        "durationMicroseconds": 141,
                         "errorMessage": "",
                         "functionName": "onShowTypeChanged",
                         "line": 88
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 77,
+                        "durationMicroseconds": 80,
                         "errorMessage": "",
                         "functionName": "onDashWidthChanged",
                         "line": 91
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 77,
                         "errorMessage": "",
                         "functionName": "onLineWidthChanged",
                         "line": 94
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 288,
+                        "durationMicroseconds": 342,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 133
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 240,
+                        "durationMicroseconds": 286,
                         "errorMessage": "Cannot access value for name index",
                         "functionName": "text",
                         "line": 134
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 40,
                         "errorMessage": "Cannot access value for name view",
                         "functionName": "font",
                         "line": 135
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 111,
+                        "durationMicroseconds": 126,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 136

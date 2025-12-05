@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 255,
+                        "durationMicroseconds": 535,
                         "errorMessage": "",
                         "functionName": "implicitHeight",
                         "line": 7
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 153,
+                        "durationMicroseconds": 384,
                         "errorMessage": "",
                         "functionName": "implicitWidth",
                         "line": 8
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 114,
+                        "durationMicroseconds": 245,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 14
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 90,
+                        "durationMicroseconds": 177,
                         "errorMessage": "Cannot load property text from (component in E:/SoupleEdit/SOUPLE-EDIT-master/LineText.qml)::parent with type QQuickItem.",
                         "functionName": "text",
                         "line": 20
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 87,
+                        "durationMicroseconds": 194,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 21
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 86,
+                        "durationMicroseconds": 2659,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 24
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 94,
+                        "durationMicroseconds": 335,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 25
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 100,
+                        "durationMicroseconds": 298,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 29

@@ -39,31 +39,24 @@ template <> constexpr inline auto TableToExcel::qt_create_metaobjectdata<qt_meta
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "TableToExcel",
-        "QML.Element",
-        "auto",
         "extractTableToExcel",
         "",
-        "TableInfo*",
-        "ti",
-        "saveFile"
+        "tableInfoObj",
+        "filePath"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Method 'extractTableToExcel'
-        QtMocHelpers::MethodData<bool(TableInfo *, const QString &)>(3, 4, QMC::AccessPublic, QMetaType::Bool, {{
-            { 0x80000000 | 5, 6 }, { QMetaType::QString, 7 },
+        QtMocHelpers::MethodData<bool(QObject *, const QString &)>(1, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QObjectStar, 3 }, { QMetaType::QString, 4 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
     QtMocHelpers::UintData qt_enums {
     };
-    QtMocHelpers::UintData qt_constructors {};
-    QtMocHelpers::ClassInfos qt_classinfo({
-            {    1,    2 },
-    });
-    return QtMocHelpers::metaObjectData<TableToExcel, void>(QMC::MetaObjectFlag{}, qt_stringData,
-            qt_methods, qt_properties, qt_enums, qt_constructors, qt_classinfo);
+    return QtMocHelpers::metaObjectData<TableToExcel, qt_meta_tag_ZN12TableToExcelE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
 }
 Q_CONSTINIT const QMetaObject TableToExcel::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
@@ -80,7 +73,7 @@ void TableToExcel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     auto *_t = static_cast<TableToExcel *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: { bool _r = _t->extractTableToExcel((*reinterpret_cast< std::add_pointer_t<TableInfo*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])));
+        case 0: { bool _r = _t->extractTableToExcel((*reinterpret_cast< std::add_pointer_t<QObject*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }

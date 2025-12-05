@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 255,
+                        "durationMicroseconds": 445,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 5

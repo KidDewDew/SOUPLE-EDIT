@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 3993,
+                        "durationMicroseconds": 568,
                         "errorMessage": "",
                         "functionName": "vAlign",
                         "line": 10
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 113,
+                        "durationMicroseconds": 167,
                         "errorMessage": "",
                         "functionName": "hAlign",
                         "line": 11
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 166,
+                        "durationMicroseconds": 283,
                         "errorMessage": "",
                         "functionName": "rightX",
                         "line": 16
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 38,
-                        "durationMicroseconds": 120,
+                        "durationMicroseconds": 225,
                         "errorMessage": "",
                         "functionName": "rightX_for_shrink",
                         "line": 17
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 26,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 108,
                         "errorMessage": "",
                         "functionName": "leftX",
                         "line": 18
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 130,
+                        "durationMicroseconds": 247,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onRightXChanged",
                         "line": 22
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 396,
+                        "durationMicroseconds": 661,
                         "errorMessage": "Cannot find name selectedObj",
                         "functionName": "onIsSelectedChanged",
                         "line": 32
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 33,
+                        "durationMicroseconds": 59,
                         "errorMessage": "",
                         "functionName": "dealLayout",
                         "line": 38
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 23,
+                        "durationMicroseconds": 34,
                         "errorMessage": "",
                         "functionName": "whenInsertedOnRight",
                         "line": 70
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 20,
+                        "durationMicroseconds": 33,
                         "errorMessage": "",
                         "functionName": "whenInsertedOnLeft",
                         "line": 74
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 26,
+                        "durationMicroseconds": 37,
                         "errorMessage": "",
                         "functionName": "runLayoutAction",
                         "line": 96
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 5,
-                        "durationMicroseconds": 9,
+                        "durationMicroseconds": 14,
                         "errorMessage": "function without return type annotation returns bool. This may prevent proper compilation to Cpp.",
                         "functionName": "tryMergeRight",
                         "line": 116
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 64,
+                        "durationMicroseconds": 110,
                         "errorMessage": "Cannot load property verticalCenter from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorObj.qml)::hLine with type QVariant.",
                         "functionName": "top",
                         "line": 47
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 21,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 59,
                         "errorMessage": "Cannot load property verticalCenter from (component in E:/SoupleEdit/SOUPLE-EDIT-master/AnchorObj.qml)::hLine with type QVariant.",
                         "functionName": "bottom",
                         "line": 48
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 25,
-                        "durationMicroseconds": 265,
+                        "durationMicroseconds": 531,
                         "errorMessage": "Cannot access value for name hAlignMargin",
                         "functionName": "leftMargin",
                         "line": 63
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 35,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 122,
                         "errorMessage": "",
                         "functionName": "verticalCenterOffset",
                         "line": 65
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 49,
+                        "durationMicroseconds": 84,
                         "errorMessage": "",
                         "functionName": "topMargin",
                         "line": 66
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 72,
+                        "durationMicroseconds": 134,
                         "errorMessage": "",
                         "functionName": "bottomMargin",
                         "line": 67
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 41,
+                        "durationMicroseconds": 68,
                         "errorMessage": "Cannot access value for name vAlign",
                         "functionName": "when",
                         "line": 50
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 45,
                         "errorMessage": "Cannot access value for name hLine",
                         "functionName": "value",
                         "line": 51
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 32,
+                        "durationMicroseconds": 50,
                         "errorMessage": "Cannot access value for name hAlign",
                         "functionName": "when",
                         "line": 54
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 23,
+                        "durationMicroseconds": 46,
                         "errorMessage": "Cannot access value for name leftObj",
                         "functionName": "value",
                         "line": 55
@@ -222,7 +222,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 15,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 48,
                         "errorMessage": "Cannot access value for name hAlign",
                         "functionName": "when",
                         "line": 60
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 98,
+                        "durationMicroseconds": 130,
                         "errorMessage": "Cannot access value for name leftObj",
                         "functionName": "value",
                         "line": 61
@@ -238,7 +238,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 23,
+                        "durationMicroseconds": 36,
                         "errorMessage": "Cannot access value for name isSelected",
                         "functionName": "visible",
                         "line": 208
@@ -246,7 +246,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 101,
+                        "durationMicroseconds": 199,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 210
@@ -254,7 +254,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 82,
+                        "durationMicroseconds": 106,
                         "errorMessage": "Cannot access value for name leftObj",
                         "functionName": "x",
                         "line": 213
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 113,
+                        "durationMicroseconds": 176,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 214
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 44,
                         "errorMessage": "Cannot access value for name isSelected",
                         "functionName": "visible",
                         "line": 219
@@ -278,7 +278,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 73,
+                        "durationMicroseconds": 149,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 221
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 52,
+                        "durationMicroseconds": 77,
                         "errorMessage": "Cannot access value for name rightObj",
                         "functionName": "x",
                         "line": 224
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 100,
+                        "durationMicroseconds": 169,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 225
@@ -302,7 +302,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 273,
+                        "durationMicroseconds": 507,
                         "errorMessage": "Cannot access value for name showHelpInf",
                         "functionName": "visible",
                         "line": 234
@@ -310,7 +310,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 96,
+                        "durationMicroseconds": 160,
                         "errorMessage": "Cannot access value for name isSelected",
                         "functionName": "onPaint",
                         "line": 235
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 59,
+                        "durationMicroseconds": 109,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 233

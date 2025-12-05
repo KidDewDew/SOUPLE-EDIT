@@ -14,7 +14,7 @@
 //[2025/11/4：新增对AnchorObj_HLine及其派生类的兼容！]
 class Free_Rich : public FreeObj, public Single_Signal_Emitter
 {
-    friend class Pdf2Souple;
+    friend class Pdf2Souple;    
 public:
 
     enum {

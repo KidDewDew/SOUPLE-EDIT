@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 28,
-                        "durationMicroseconds": 215,
+                        "durationMicroseconds": 420,
                         "errorMessage": "",
                         "functionName": "hovered",
                         "line": 8
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 63,
+                        "durationMicroseconds": 134,
                         "errorMessage": "",
                         "functionName": "down",
                         "line": 9
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 12,
-                        "durationMicroseconds": 508,
+                        "durationMicroseconds": 1129,
                         "errorMessage": "Cannot generate efficient code for internal conversion with incompatible or ambiguous types: conversion to QVariant -> QColor stored as QVariant",
                         "functionName": "color",
                         "line": 12
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 100,
+                        "durationMicroseconds": 231,
                         "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/CustomToolButton.qml)::parent with type QQuickItem does not have a property clicked for calling",
                         "functionName": "onClicked",
                         "line": 18
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 64,
+                        "durationMicroseconds": 169,
                         "errorMessage": "Type (component in E:/SoupleEdit/SOUPLE-EDIT-master/CustomToolButton.qml)::parent with type QQuickItem does not have a property pressed for calling",
                         "functionName": "onPressed",
                         "line": 19
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 137,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 17
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 23,
+                        "durationMicroseconds": 56,
                         "errorMessage": "Cannot access value for name contentItem",
                         "functionName": "sourceComponent",
                         "line": 23
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 97,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 22

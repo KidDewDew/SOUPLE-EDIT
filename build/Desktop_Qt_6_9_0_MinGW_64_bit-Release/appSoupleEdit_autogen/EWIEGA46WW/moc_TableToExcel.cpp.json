@@ -1,24 +1,18 @@
 {
     "classes": [
         {
-            "classInfos": [
-                {
-                    "name": "QML.Element",
-                    "value": "auto"
-                }
-            ],
             "className": "TableToExcel",
-            "lineNumber": 7,
+            "lineNumber": 8,
             "methods": [
                 {
                     "access": "public",
                     "arguments": [
                         {
-                            "name": "ti",
-                            "type": "TableInfo*"
+                            "name": "tableInfoObj",
+                            "type": "QObject*"
                         },
                         {
-                            "name": "saveFile",
+                            "name": "filePath",
                             "type": "QString"
                         }
                     ],

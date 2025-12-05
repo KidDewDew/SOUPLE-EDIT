@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 276,
+                        "durationMicroseconds": 443,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 16
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 89,
+                        "durationMicroseconds": 165,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 22
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 462,
+                        "durationMicroseconds": 1003,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onCompleted",
                         "line": 30
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 17,
-                        "durationMicroseconds": 205,
+                        "durationMicroseconds": 454,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 78
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 126,
+                        "durationMicroseconds": 286,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 81
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 73,
+                        "durationMicroseconds": 160,
                         "errorMessage": "",
                         "functionName": "contentWidth",
                         "line": 82
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 30,
-                        "durationMicroseconds": 83,
+                        "durationMicroseconds": 155,
                         "errorMessage": "Cannot access value for name upV",
                         "functionName": "sourceComponent",
                         "line": 86
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 70,
+                        "durationMicroseconds": 140,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 87
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 68,
+                        "durationMicroseconds": 161,
                         "errorMessage": "",
                         "functionName": "target",
                         "line": 90
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 86,
+                        "durationMicroseconds": 164,
                         "errorMessage": "",
                         "functionName": "from",
                         "line": 92
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 30,
-                        "durationMicroseconds": 89,
+                        "durationMicroseconds": 148,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 95
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 66,
+                        "durationMicroseconds": 114,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 101
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 88,
+                        "durationMicroseconds": 157,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 105
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 112,
                         "errorMessage": "",
                         "functionName": "height",
                         "line": 106
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 80,
+                        "durationMicroseconds": 125,
                         "errorMessage": "",
                         "functionName": "target",
                         "line": 110
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 32,
-                        "durationMicroseconds": 131,
+                        "durationMicroseconds": 199,
                         "errorMessage": "",
                         "functionName": "to",
                         "line": 111
@@ -158,7 +158,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 29,
-                        "durationMicroseconds": 243,
+                        "durationMicroseconds": 391,
                         "errorMessage": "Cannot generate efficient code for LoadClosure",
                         "functionName": "onFinished",
                         "line": 114
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 30,
-                        "durationMicroseconds": 83,
+                        "durationMicroseconds": 125,
                         "errorMessage": "",
                         "functionName": "type",
                         "line": 113
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 22,
-                        "durationMicroseconds": 86,
+                        "durationMicroseconds": 157,
                         "errorMessage": "",
                         "functionName": "orientation",
                         "line": 127
@@ -182,7 +182,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 82,
+                        "durationMicroseconds": 117,
                         "errorMessage": "",
                         "functionName": "model",
                         "line": 128
@@ -190,7 +190,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 94,
+                        "durationMicroseconds": 172,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 126
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 84,
+                        "durationMicroseconds": 154,
                         "errorMessage": "",
                         "functionName": "left",
                         "line": 131
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 116,
+                        "durationMicroseconds": 207,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 132
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 436,
+                        "durationMicroseconds": 709,
                         "errorMessage": "Cannot access value for name tabName",
                         "functionName": "text",
                         "line": 136
@@ -222,7 +222,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 104,
+                        "durationMicroseconds": 179,
                         "errorMessage": "Cannot access value for name tabIndex",
                         "functionName": "fg",
                         "line": 142
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 195,
+                        "durationMicroseconds": 351,
                         "errorMessage": "Cannot access value for name tabIndex",
                         "functionName": "onClicked",
                         "line": 148
@@ -238,7 +238,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 34,
-                        "durationMicroseconds": 89,
+                        "durationMicroseconds": 2945,
                         "errorMessage": "",
                         "functionName": "foreground",
                         "line": 141
@@ -246,7 +246,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 26,
-                        "durationMicroseconds": 199,
+                        "durationMicroseconds": 618,
                         "errorMessage": "Cannot access value for name tabIndex",
                         "functionName": "visible",
                         "line": 156
@@ -254,7 +254,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 78,
+                        "durationMicroseconds": 185,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 159
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 95,
+                        "durationMicroseconds": 290,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 157
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 144,
+                        "durationMicroseconds": 268,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 171
@@ -278,7 +278,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 91,
+                        "durationMicroseconds": 184,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 168
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 82,
+                        "durationMicroseconds": 153,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 169
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 39,
-                        "durationMicroseconds": 52,
+                        "durationMicroseconds": 325,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 187
@@ -302,7 +302,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 296,
+                        "durationMicroseconds": 626,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 202
@@ -310,7 +310,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 95,
+                        "durationMicroseconds": 372,
                         "errorMessage": "",
                         "functionName": "font",
                         "line": 200
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 85,
+                        "durationMicroseconds": 255,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 203
@@ -326,7 +326,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 579,
+                        "durationMicroseconds": 1235,
                         "errorMessage": "Cannot generate efficient code for LoadClosure",
                         "functionName": "items",
                         "line": 214

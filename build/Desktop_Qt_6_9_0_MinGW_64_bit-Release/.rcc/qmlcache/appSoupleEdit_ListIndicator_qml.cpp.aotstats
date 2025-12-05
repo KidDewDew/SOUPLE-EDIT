@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 14,
-                        "durationMicroseconds": 184,
+                        "durationMicroseconds": 299,
                         "errorMessage": "",
                         "functionName": "onPaint",
                         "line": 14
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 48,
+                        "durationMicroseconds": 72,
                         "errorMessage": "",
                         "functionName": "onClicked",
                         "line": 10
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 115,
+                        "durationMicroseconds": 166,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 9

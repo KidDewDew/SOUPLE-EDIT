@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 158,
+                        "durationMicroseconds": 249,
                         "errorMessage": "",
                         "functionName": "selectw",
                         "line": 10
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 27,
+                        "durationMicroseconds": 53,
                         "errorMessage": "",
                         "functionName": "selectcl",
                         "line": 14
@@ -30,7 +30,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 5,
-                        "durationMicroseconds": 165,
+                        "durationMicroseconds": 284,
                         "errorMessage": "",
                         "functionName": "die",
                         "line": 16
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 14,
-                        "durationMicroseconds": 2059,
+                        "durationMicroseconds": 4076,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onPaint",
                         "line": 21

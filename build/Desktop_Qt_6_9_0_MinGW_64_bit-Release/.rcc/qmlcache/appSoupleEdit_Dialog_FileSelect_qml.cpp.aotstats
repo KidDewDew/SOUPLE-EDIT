@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 31,
-                        "durationMicroseconds": 185,
+                        "durationMicroseconds": 556,
                         "errorMessage": "Cannot generate efficient code for storing an array in a non-sequence type",
                         "functionName": "nameFilters",
                         "line": 10
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 34,
-                        "durationMicroseconds": 84,
+                        "durationMicroseconds": 289,
                         "errorMessage": "",
                         "functionName": "currentFile",
                         "line": 11
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 114,
+                        "durationMicroseconds": 341,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 13
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 153,
+                        "durationMicroseconds": 569,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "onDropped",
                         "line": 26
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 123,
                         "errorMessage": "",
                         "functionName": "onDropped",
                         "line": 26
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 16,
-                        "durationMicroseconds": 78,
+                        "durationMicroseconds": 301,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 34
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 39,
+                        "durationMicroseconds": 161,
                         "errorMessage": "",
                         "functionName": "fill",
                         "line": 33
@@ -86,7 +86,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 23,
-                        "durationMicroseconds": 89,
+                        "durationMicroseconds": 312,
                         "errorMessage": "",
                         "functionName": "width",
                         "line": 35
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 78,
+                        "durationMicroseconds": 295,
                         "errorMessage": "Cannot access value for name theme",
                         "functionName": "color",
                         "line": 36
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 31,
-                        "durationMicroseconds": 30,
+                        "durationMicroseconds": 111,
                         "errorMessage": "",
                         "functionName": "centerIn",
                         "line": 40
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 54,
+                        "durationMicroseconds": 305,
                         "errorMessage": "",
                         "functionName": "top",
                         "line": 45
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 299,
+                        "durationMicroseconds": 1138,
                         "errorMessage": "Cannot access value for name file_dialog",
                         "functionName": "onClicked",
                         "line": 61
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 62,
+                        "durationMicroseconds": 232,
                         "errorMessage": "",
                         "functionName": "bottom",
                         "line": 71
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 24,
-                        "durationMicroseconds": 47,
+                        "durationMicroseconds": 181,
                         "errorMessage": "",
                         "functionName": "right",
                         "line": 73
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 29,
+                        "durationMicroseconds": 88,
                         "errorMessage": "Cannot retrieve a non-object type by ID: dialog",
                         "functionName": "onClicked",
                         "line": 81
@@ -150,7 +150,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 15,
+                        "durationMicroseconds": 57,
                         "errorMessage": "Cannot retrieve a non-object type by ID: dialog",
                         "functionName": "onClicked",
                         "line": 88

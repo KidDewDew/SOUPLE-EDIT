@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 20,
-                        "durationMicroseconds": 376,
+                        "durationMicroseconds": 545,
                         "errorMessage": "",
                         "functionName": "columnSpacing",
                         "line": 10
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 291,
+                        "durationMicroseconds": 442,
                         "errorMessage": "Cannot access value for name SelectMgr",
                         "functionName": "onCompleted",
                         "line": 14
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 17,
-                        "durationMicroseconds": 56,
+                        "durationMicroseconds": 84,
                         "errorMessage": "Cannot access value for name Helper",
                         "functionName": "target",
                         "line": 22
@@ -38,7 +38,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 121,
+                        "durationMicroseconds": 184,
                         "errorMessage": "",
                         "functionName": "alignment",
                         "line": 37
@@ -46,7 +46,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 33,
-                        "durationMicroseconds": 65,
+                        "durationMicroseconds": 103,
                         "errorMessage": "",
                         "functionName": "preferredHeight",
                         "line": 71
@@ -54,7 +54,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 28,
-                        "durationMicroseconds": 1209,
+                        "durationMicroseconds": 2002,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "onTextChanged",
                         "line": 83
@@ -62,7 +62,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 36,
-                        "durationMicroseconds": 160,
+                        "durationMicroseconds": 252,
                         "errorMessage": "",
                         "functionName": "preferredWidth",
                         "line": 76
@@ -70,7 +70,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 157,
+                        "durationMicroseconds": 253,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "when",
                         "line": 80
@@ -78,7 +78,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 24,
-                        "durationMicroseconds": 130,
+                        "durationMicroseconds": 216,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "value",
                         "line": 81
@@ -94,7 +94,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 178,
+                        "durationMicroseconds": 291,
                         "errorMessage": "",
                         "functionName": "preferredHeight",
                         "line": 91
@@ -102,7 +102,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 305,
+                        "durationMicroseconds": 500,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "visible",
                         "line": 107
@@ -110,7 +110,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 121,
+                        "durationMicroseconds": 206,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "initialValue",
                         "line": 110
@@ -118,7 +118,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 25,
-                        "durationMicroseconds": 371,
+                        "durationMicroseconds": 610,
                         "errorMessage": "Cannot access value for name SelectMgr",
                         "functionName": "onValueChanged",
                         "line": 116
@@ -126,7 +126,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 126,
+                        "durationMicroseconds": 220,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "when",
                         "line": 113
@@ -134,7 +134,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 40,
+                        "durationMicroseconds": 68,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "value",
                         "line": 114
@@ -142,7 +142,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 18,
-                        "durationMicroseconds": 136,
+                        "durationMicroseconds": 217,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 122
@@ -166,7 +166,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 264,
+                        "durationMicroseconds": 435,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "text",
                         "line": 132
@@ -174,7 +174,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 215,
+                        "durationMicroseconds": 366,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "color",
                         "line": 133
@@ -198,7 +198,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 695,
+                        "durationMicroseconds": 1206,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "enabled",
                         "line": 159
@@ -206,7 +206,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 43,
+                        "durationMicroseconds": 76,
                         "errorMessage": "",
                         "functionName": "onCheckedChanged",
                         "line": 160
@@ -214,7 +214,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 646,
+                        "durationMicroseconds": 1126,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "onCompleted",
                         "line": 154
@@ -222,7 +222,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 131,
+                        "durationMicroseconds": 218,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "when",
                         "line": 156
@@ -230,7 +230,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 115,
+                        "durationMicroseconds": 191,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "value",
                         "line": 157
@@ -238,7 +238,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 105,
+                        "durationMicroseconds": 191,
                         "errorMessage": "",
                         "functionName": "x",
                         "line": 166
@@ -246,7 +246,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 234,
+                        "durationMicroseconds": 400,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "visible",
                         "line": 169
@@ -254,7 +254,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 110,
+                        "durationMicroseconds": 194,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 167
@@ -262,7 +262,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 81,
+                        "durationMicroseconds": 138,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 173
@@ -270,7 +270,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 18,
-                        "durationMicroseconds": 310,
+                        "durationMicroseconds": 549,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "visible",
                         "line": 177
@@ -278,7 +278,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 31,
+                        "durationMicroseconds": 57,
                         "errorMessage": "",
                         "functionName": "onValueChanged",
                         "line": 186
@@ -286,7 +286,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 83,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "when",
                         "line": 183
@@ -294,7 +294,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 37,
+                        "durationMicroseconds": 67,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "value",
                         "line": 184
@@ -302,7 +302,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 18,
-                        "durationMicroseconds": 185,
+                        "durationMicroseconds": 309,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 192
@@ -318,7 +318,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 235,
+                        "durationMicroseconds": 411,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "text",
                         "line": 199
@@ -326,7 +326,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 204,
+                        "durationMicroseconds": 369,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "color",
                         "line": 200
@@ -342,7 +342,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 118,
+                        "durationMicroseconds": 194,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 209
@@ -366,7 +366,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 41,
+                        "durationMicroseconds": 66,
                         "errorMessage": "",
                         "functionName": "onColorChanged",
                         "line": 219
@@ -374,7 +374,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 120,
+                        "durationMicroseconds": 197,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "when",
                         "line": 216
@@ -382,7 +382,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 34,
+                        "durationMicroseconds": 58,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "value",
                         "line": 217
@@ -390,7 +390,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 16,
-                        "durationMicroseconds": 80,
+                        "durationMicroseconds": 132,
                         "errorMessage": "",
                         "functionName": "x",
                         "line": 225
@@ -398,7 +398,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 22,
-                        "durationMicroseconds": 231,
+                        "durationMicroseconds": 365,
                         "errorMessage": "Cannot access value for name spp",
                         "functionName": "visible",
                         "line": 228
@@ -406,7 +406,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 37,
-                        "durationMicroseconds": 104,
+                        "durationMicroseconds": 175,
                         "errorMessage": "",
                         "functionName": "verticalCenter",
                         "line": 226
@@ -414,7 +414,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 28,
+                        "durationMicroseconds": 46,
                         "errorMessage": "",
                         "functionName": "onCheckedChanged",
                         "line": 236
@@ -422,7 +422,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 21,
-                        "durationMicroseconds": 79,
+                        "durationMicroseconds": 141,
                         "errorMessage": "",
                         "functionName": "visible",
                         "line": 241
@@ -438,7 +438,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 25,
-                        "durationMicroseconds": 38,
+                        "durationMicroseconds": 60,
                         "errorMessage": "",
                         "functionName": "onColorChanged",
                         "line": 246
@@ -446,7 +446,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 42,
+                        "durationMicroseconds": 40,
                         "errorMessage": "",
                         "functionName": "onCheckedChanged",
                         "line": 254
@@ -454,7 +454,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 27,
-                        "durationMicroseconds": 21,
+                        "durationMicroseconds": 35,
                         "errorMessage": "",
                         "functionName": "onCheckedChanged",
                         "line": 260
@@ -462,7 +462,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 57,
+                        "durationMicroseconds": 99,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "when",
                         "line": 264
@@ -470,7 +470,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 47,
+                        "durationMicroseconds": 71,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "value",
                         "line": 265
@@ -478,7 +478,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 311,
+                        "durationMicroseconds": 504,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onCheckedChanged",
                         "line": 271
@@ -486,7 +486,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 271,
+                        "durationMicroseconds": 424,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onCompleted",
                         "line": 270
@@ -494,7 +494,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 53,
+                        "durationMicroseconds": 83,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "when",
                         "line": 273
@@ -502,7 +502,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 43,
+                        "durationMicroseconds": 73,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "value",
                         "line": 274
@@ -510,7 +510,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 250,
+                        "durationMicroseconds": 390,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onCheckedChanged",
                         "line": 280
@@ -518,7 +518,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 230,
+                        "durationMicroseconds": 937,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onCompleted",
                         "line": 279
@@ -526,7 +526,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 50,
+                        "durationMicroseconds": 95,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "when",
                         "line": 282
@@ -534,7 +534,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 42,
+                        "durationMicroseconds": 85,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "value",
                         "line": 283
@@ -542,7 +542,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 27,
-                        "durationMicroseconds": 223,
+                        "durationMicroseconds": 396,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onCheckedChanged",
                         "line": 289
@@ -550,7 +550,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 32,
-                        "durationMicroseconds": 213,
+                        "durationMicroseconds": 390,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "onCompleted",
                         "line": 288
@@ -558,7 +558,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 19,
-                        "durationMicroseconds": 47,
+                        "durationMicroseconds": 84,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "when",
                         "line": 291
@@ -566,7 +566,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 20,
-                        "durationMicroseconds": 55,
+                        "durationMicroseconds": 86,
                         "errorMessage": "Cannot access value for name obj",
                         "functionName": "value",
                         "line": 292

@@ -6,7 +6,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 23,
-                        "durationMicroseconds": 308,
+                        "durationMicroseconds": 592,
                         "errorMessage": "Cannot access value for name Dir",
                         "functionName": "dir",
                         "line": 8
@@ -14,7 +14,7 @@
                     {
                         "codegenSuccessfull": true,
                         "column": 19,
-                        "durationMicroseconds": 138,
+                        "durationMicroseconds": 237,
                         "errorMessage": "",
                         "functionName": "onDirChanged",
                         "line": 10
@@ -22,7 +22,7 @@
                     {
                         "codegenSuccessfull": false,
                         "column": 14,
-                        "durationMicroseconds": 6647,
+                        "durationMicroseconds": 14348,
                         "errorMessage": "Cannot generate efficient code for call to untyped JavaScript function",
                         "functionName": "onPaint",
                         "line": 11
