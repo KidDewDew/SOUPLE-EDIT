@@ -108,7 +108,7 @@ Window {
 
     //Material.Variant:
 
-    property bool isProtectEyeMode: checkbox_protect_eye.checked
+    property bool isProtectEyeMode: false//: checkbox_protect_eye.checked
 
     property bool darkMode: isProtectEyeMode
 
@@ -138,7 +138,7 @@ Window {
                         icon_src: "qrc:/image/嗖谷熊_icon.png"
                     }
         )
-        checkbox_protect_eye.checked = Helper.DB_Get("Protect_Eye",false)
+        //checkbox_protect_eye.checked = Helper.DB_Get("Protect_Eye",false)
     }
 
     SelectionObj {

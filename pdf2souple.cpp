@@ -2005,6 +2005,7 @@ void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFO
     // tip: 文档软件认为文本和占位矩形，它们都是可以附加text-decoration的元素。
     struct Text {
         int index;
+        PDFOBJ* obj;
         PDFOBJ_TEXT* obj_text = 0;
         PDFOBJ_PrePHRect* obj_rect = 0;
         std::vector<CharStyle> char_styles; //每个字符的样式
@@ -2021,8 +2022,13 @@ void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFO
         int index_of_text_list; //映射到text_list的index
     };
 
+    struct VerLinePath {
+        PDFOBJ_PATH::Line line;
+    };
+
     vector<Text> text_list;
-    vector<HorLinePath> hlines;
+    vector<HorLinePath> hlines; //水平线条
+    vector<VerLinePath> vlines; //垂直线条
 
     // S1: 找出所有文本、水平线条路径、小圆点路径、'.'文本
 
@@ -2033,6 +2039,7 @@ void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFO
             text_list.push_back({});
             auto& text = text_list.back();
             text.index = index;
+            text.obj = pdfobj_text ? (PDFOBJ*)pdfobj_text : (PDFOBJ*)pdfobj_phrect;
             text.obj_text = pdfobj_text;
             text.obj_rect = pdfobj_phrect;
             text.char_styles.resize(pdfobj_text->text.length());
@@ -2049,6 +2056,9 @@ void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFO
                     hlines.push_back({});
                     hlines.back().index = index;
                     hlines.back().line = lines[0];
+                } else {
+                    // 不是水平线条，即是垂直线条。
+                    vlines.push_back({lines[0]});
                 }
             }
         }
@@ -2064,6 +2074,24 @@ void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFO
     // S2: 下划线、删除线、上划线判定
     for(auto& hline : hlines) // 遍历所有水平线条
     {
+
+        // 检查：该hline是否有和垂直线条相交
+        bool hasIntersect = false;
+        for(auto& vline : vlines)
+        {
+            // y方向不重叠
+            if(vline.line.y1 > hline.line.y2 || vline.line.y2 < hline.line.y1)
+                continue;
+            if(vline.line.x1 > hline.line.x2 || vline.line.x2 < hline.line.x1)
+                continue;
+            hasIntersect = true;
+            break;
+        }
+
+        if(hasIntersect) {
+            continue;
+        }
+
         // 找出第1个top >= hline.bottom的text或rect
         auto it = std::lower_bound(text_list.begin(),text_list.end(),
                                    hline.line.y2,[](Text& text,float y){
@@ -2086,6 +2114,22 @@ void Pdf2Souple::analyse_text_attach_properties(std::vector<std::shared_ptr<PDFO
             }
             if(it == text_list.begin()) break;
             --it;
+        }
+
+        if( ! as_underline_text.empty()) {
+            //认为它是下划线，注意必须补全字符or rect
+            ranges::sort(as_underline_text,[](Text* t1,Text* t2){
+                return t1->obj->rect.left() < t2->obj->rect.left();
+            });
+            float last_x = hline.line.x1;
+            for(auto t : as_underline_text) {
+                if(t->obj->rect.left() - last_x > Helper::point2pixel(3)) {
+                    //补充Rect
+                    auto ph = std::make_shared<PDFOBJ_PrePHRect>();
+                    objList.push_back(ph);
+                    //ph->
+                }
+            }
         }
     }
 }

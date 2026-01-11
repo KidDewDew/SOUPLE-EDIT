@@ -22,6 +22,8 @@ class SelectionManager : public QObject
 public:
 
     struct SelectionItem {
+        // begin_index: 从obj的内容索引begin_index处开始选择
+        // end_index: 结束选择的内容位置(包含)
         int obj_id,begin_index,end_index;
         SelectionItem() = default;
         SelectionItem(int obj_id,int begin_index,int end_index):obj_id(obj_id),begin_index(begin_index),end_index(end_index){}
@@ -62,6 +64,11 @@ public:
     static inline void removeSelectionItem(int id) noexcept {
         selection_items.remove(id);
     }
+
+    static inline QByteArray copySelectedItems() noexcept {}
+
+    //@brief 删除所有选中的对象；并记录撤回/重做
+    static void deleteAllSelectedObjs();
 
     //@brief 通知SoupleManager，前端开始选择
     //@arg id:开始选择的对象id begin_x:鼠标X坐标(全局) begin_y:鼠标Y坐标(全局)

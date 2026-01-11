@@ -240,6 +240,7 @@ qt_add_qml_module(appSoupleEdit
         QML_FILES FlatDoubleSpinBox.qml
         QML_FILES TToolBar_Start.qml
         QML_FILES ComboBox_forFontSize.qml
+        SOURCES uniformkb.h uniformkb.cpp
         #RESOURCES vcpkg.json
 )
 

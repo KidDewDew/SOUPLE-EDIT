@@ -131,6 +131,8 @@ public:
      */
     struct PDFOBJ_PrePHRect : public PDFOBJ
     {
+        bool underline = false;
+        QColor underline_color = Qt::transparent;
         virtual void print() override {
             qDebug() << "PDFOBJ_PHRect 预占位矩形. width=" << rect.width();
         }
@@ -239,6 +241,8 @@ public:
         float strokeWidth; //描边宽度
         QFont font;
         QColor stroke_color,fill_color;
+        bool attach_underline = false;   //附加下划线
+        QColor attach_underline_color = Qt::transparent;
         void print() override
          {
             qDebug() << "TEXT" << text;

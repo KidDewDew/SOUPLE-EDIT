@@ -27,6 +27,7 @@
 #include "anchorobj_spring.h"
 #include "magicalcursor.h"
 #include "columns_separate.h"
+#include "uniformkb.h"
 #include <QGuiApplication>
 
 using namespace std;
@@ -435,6 +436,7 @@ bool SoupleManager::createTable(int n_row,int n_col)
     return true;
 }
 
+//采用字典树(Trie)来快速根据字符串类型创建Obj
 Obj* SoupleManager::createObj(const QString& type)
 {
     Obj* r = 0;
@@ -631,27 +633,7 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
         break;
     case QEvent::KeyPress:{
         QKeyEvent *ke = (QKeyEvent*)event;
-        //qDebug() << ke;
-        if(SelectionManager::isSelectStopButKeep()) {
-            //对选择内容进行键盘操作
-            //QObject* focusObject = global_app->focusObject(); //获取焦点对象
-            //qDebug() << "focus:" << focusObject;
-            QObject* focusObject = global_app->focusObject(); //获取焦点对象
-            //qDebug() << "focus:" << focusObject;
-            if(!focusObject || focusObject->isWindowType()) { //windowType表明它没有具体焦点
-                Qt::KeyboardModifiers km = ke->modifiers();
-                // 把事件交给SelectionManager处理
-                SelectionManager::dealKeyEvent(ke);
-                return true; //过滤
-            }
-        } else {
-            Obj *who = MagicalCursor::at_who();
-            if(who && QML_VALID(who) && who->qmlItem->hasFocus())
-            { //检查它到底有没有焦点
-                return true;
-            }
-        }
-        break;
+        return UniformKB::dealKeyPressed(ke);
     }
     default: return false;
     }

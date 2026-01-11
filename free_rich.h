@@ -72,7 +72,8 @@ public:
         return FreeObj::qmlGetData(dataName);
     }
 
-    void qt_paint(QPainter& painter,Page* page) override {};
+    void qt_paint(QPainter& painter,Page* page) override {}
+
     virtual void discard_qmlItem() override {
         uiPool_FRich::returnItem(qmlItem);
         qmlItem = 0;

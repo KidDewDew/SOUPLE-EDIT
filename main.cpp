@@ -47,7 +47,9 @@ QQuickWindow* qmlWindow;
 QQmlApplicationEngine* engine;
 MyImageProvider *image_provider; //图像提供者
 Quick_Callback quick_callback;
+//app指针
 QGuiApplication *global_app;
+//QObject* no_focus_object;
 
 constexpr char nn[] = "FlowText";
 
@@ -269,6 +271,8 @@ int main(int argc, char *argv[])
     //初始化全局变量
     qmlRoot = Helper::qml_main_object = engine.rootObjects().first();
 
+    qDebug() << "qmlRoot:" << qmlRoot;
+
     qmlWindow = qobject_cast<QQuickWindow*>(qmlRoot);
     qmlWindow->setPersistentGraphics(false);
     qmlWindow->setPersistentSceneGraph(false);
@@ -427,32 +431,32 @@ int main(int argc, char *argv[])
     // qDebug() << ft2->__dstr();
 
     /* Create a new workbook and add a worksheet. */
-        lxw_workbook  *workbook  = workbook_new("demo.xlsx");
-        lxw_worksheet *worksheet = workbook_add_worksheet(workbook, NULL);
+        // lxw_workbook  *workbook  = workbook_new("demo.xlsx");
+        // lxw_worksheet *worksheet = workbook_add_worksheet(workbook, NULL);
 
-        /* Add a format. */
-        lxw_format *format = workbook_add_format(workbook);
+        // /* Add a format. */
+        // lxw_format *format = workbook_add_format(workbook);
 
-        /* Set the bold property for the format */
-        format_set_bold(format);
+        // /* Set the bold property for the format */
+        // format_set_bold(format);
 
-        /* Change the column width for clarity. */
-        worksheet_set_column(worksheet, 0, 0, 20, NULL);
+        // /* Change the column width for clarity. */
+        // worksheet_set_column(worksheet, 0, 0, 20, NULL);
 
-        /* Write some simple text. */
-        worksheet_write_string(worksheet, 0, 0, "Hello", NULL);
+        // /* Write some simple text. */
+        // worksheet_write_string(worksheet, 0, 0, "Hello", NULL);
 
-        /* Text with formatting. */
-        worksheet_write_string(worksheet, 1, 0, "World", format);
+        // /* Text with formatting. */
+        // worksheet_write_string(worksheet, 1, 0, "World", format);
 
-        /* Write some numbers. */
-        worksheet_write_number(worksheet, 2, 0, 123,     NULL);
-        worksheet_write_number(worksheet, 3, 0, 123.456, NULL);
+        // /* Write some numbers. */
+        // worksheet_write_number(worksheet, 2, 0, 123,     NULL);
+        // worksheet_write_number(worksheet, 3, 0, 123.456, NULL);
 
-        /* Insert an image. */
-        worksheet_insert_image(worksheet, 1, 2, "logo.png");
+        // /* Insert an image. */
+        // worksheet_insert_image(worksheet, 1, 2, "logo.png");
 
-        workbook_close(workbook);
+        // workbook_close(workbook);
 
 
     return app.exec();

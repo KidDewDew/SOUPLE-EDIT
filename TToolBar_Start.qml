@@ -179,5 +179,11 @@ RowLayout { //“开始”工具栏
         id: checkbox_protect_eye
         Material.accent: "#3C8761"
         text: "护眼模式"
+        Component.onCompleted: {
+            window.isProtectEyeMode = checked = Helper.DB_Get("Protect_Eye",false)
+        }
+        onCheckedChanged: {
+            window.isProtectEyeMode = checked
+        }
     }
 } //“开始”工具栏 END

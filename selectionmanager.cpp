@@ -552,3 +552,16 @@ void SelectionManager::dealKeyEvent(QKeyEvent* keyEvent)
 {
     //keyEvent->
 }
+
+void SelectionManager::deleteAllSelectedObjs()
+{
+    for(auto& si : selection_items) {
+        auto obj = SoupleManager::getObjById(si.obj_id);
+        if(!obj) continue;
+        auto a = obj->as<AnchorObj*>();
+        if(!a) continue;
+        a->slice(si.begin_index,si.end_index - si.begin_index + 1)
+         ->removeSelf(true); //正常操作。。。
+    }
+    clearSelection();
+}
