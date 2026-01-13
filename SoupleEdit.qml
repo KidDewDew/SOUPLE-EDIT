@@ -107,6 +107,9 @@ Item {
         if("isSelected" in selectedObj)
             selectedObj.isSelected = true
         old_selected_obj = selectedObj
+
+        //通知SoupleManager
+        spMgr.changeSelectedObj(selectedObj.data_id)
     }
 
     //variantmap to obj
@@ -681,6 +684,26 @@ Item {
         id: eb_bound
         visible: false
         z: 1e8
+    }
+
+    // 光标对象
+    Rectangle {
+        id: uniCursor
+        objectName: "uniformCursor"
+        width: 2
+        height: 16
+        color: "black"
+        z: Helper_Type.Widget_Top
+        onVisibleChanged: {
+            console.log("UniCursor.visible -> ",visible)
+        }
+
+        Timer {
+            interval: 500
+            repeat: true
+            running: uniCursor.visible
+            onTriggered: uniCursor.opacity = 1.0 - uniCursor.opacity
+        }
     }
 
     // ColumnLayout { //页面

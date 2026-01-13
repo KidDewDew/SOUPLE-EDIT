@@ -86,6 +86,12 @@ public:
         connect_l2r(objs...);
     }
 
+    // 获取前面的邻居
+    AnchorObj* get_neighbor_before() noexcept;
+
+    // 获取后面的邻居
+    AnchorObj* get_neighbor_after() noexcept;
+
     template<typename Serial>
     void serialize(Serial& serial) {
         serial / SOUPLE_PP(id) /SOUPLE_PP(z)

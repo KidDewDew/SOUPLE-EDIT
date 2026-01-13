@@ -164,6 +164,7 @@ Window {
     }
 
     function updateObjPropertyPane(obj) { //更新属性面板为obj
+        if(obj.cp_propertyBar == null) return //[26/1/12]
         if(property_window.visible)
             pane_property2.sourceComponent = obj.cp_propertyBar
         else pane_property.sourceComponent = obj.cp_propertyBar //更新source

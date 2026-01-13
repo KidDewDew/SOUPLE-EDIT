@@ -323,6 +323,16 @@ Window {
         })
     }
 
+    function getSoupleEditObject(objName) {
+        const children = soupleEdit.children
+        for (var i = 0; i < children.length; i++) {
+            if (children[i].objectName === objName) {
+                return children[i]
+            }
+        }
+        return null
+    }
+
     // function getSoupleEdit() {
     //     return soupleEdit;
     // }

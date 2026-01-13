@@ -28,8 +28,10 @@ struct Obj_Global_Info {
     bool isHelperLine = false;
 };
 
+
+// 注意，selfDeal_input=true的对象不仅得自己处理键盘事件，还得自己绘制光标！
 struct Obj_KeyEvent_Info {
-    bool selfDeal_backspace;
+    bool selfDeal_backspace;//暂时【作废】
     bool selfDeal_input;
 };
 
@@ -94,10 +96,35 @@ public:
     }
 
     virtual void selectionCommand(int command,const QVariant& arg) {}
-    virtual QVariant selectionGetData(int dataName) { return {}; }
-    virtual int contentLength() const noexcept { return 1; }
+
+    virtual QVariant selectionGetData(int dataName) {
+        return {};
+    }
+
+    /**
+     * @brief contentLength
+     * @return 返回对象的内容长度。对于一体化的对象，通常长度为1。
+     */
+    virtual int contentLength() const noexcept {
+        return 1;
+    }
+
+    /**
+     * @brief positionToIndex
+     * 根据x坐标返回对应的内容索引区间，注：x区间即便只覆盖了某索引内容的一部分，也算被选中
+     * @param x1: 左边x
+     * @param x2: 右边x
+     * @param begin_index: 起始索引
+     * @param end_index: 结束索引(含)
+     */
     virtual void positionToIndex(float x1,float x2,int& begin_index,int& end_index) noexcept
     { begin_index = end_index = 0; }
+
+    //根据内容索引返回该段内容的起始X坐标(，相对于本对象的x坐标)。
+    virtual float x_ofIndex(int index) {
+        return index == 0 ? 0.0f : width; //对于内容长度为1者，即可这样计算
+    }
+
     virtual void removeSelf(bool dead = true) {
         if(dead) dead_sign = true;
     }

@@ -574,6 +574,9 @@ public:
         SelectionManager::clearSelection();
     }
 
+    // 当selectedObj变动时，qml以此为通知
+    Q_INVOKABLE static void changeSelectedObj(int id);
+
     static std::list<Obj*>& getDocumentObjs(int s) {
         if(s == currentDocumentID) return all_objs;
         return all_documents[s]->all_objs;

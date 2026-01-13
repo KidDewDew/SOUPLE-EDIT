@@ -95,3 +95,21 @@ void AnchorObj::getCursorFromRight(int RN) //从右边获取光标
     if( ! Helper::isQmlItemValid(qmlItem) || RN > 32) return;
     if(leftObj) leftObj->getCursorFromRight();
 }
+
+AnchorObj* AnchorObj::get_neighbor_before() noexcept {
+    if(leftObj) return leftObj;
+    if(hline) {
+        auto prevLine = ((HorLine_Base*)hline)->getPrevLine();
+        if(prevLine) return prevLine->rightObj;
+    }
+    return 0;
+}
+
+AnchorObj* AnchorObj::get_neighbor_after() noexcept {
+    if(rightObj) return rightObj;
+    if(hline) {
+        auto nextLine = ((HorLine_Base*)hline)->getNextLine();
+        if(nextLine) return nextLine->leftObj;
+    }
+    return 0;
+}

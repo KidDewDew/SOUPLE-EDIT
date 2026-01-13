@@ -42,13 +42,13 @@ int HorLine_Base::dealCommandFromQmlItem(int command,const QVariant& arg)
 
 void HorLine_Base::dealLayout()
 {
-
     if(leftObj)
     {
         auto obj = leftObj;
         obj->x = x;
         while(1) {
             obj->dealLayout();
+            obj->dealUI();
             obj->tryMergeRight();
             if(obj->rightObj == nullptr) {
                 this->rightObj = obj;

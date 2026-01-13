@@ -924,3 +924,14 @@ void SoupleManager::requestSetContentColumns(int columns_num,const QString& aux_
     // 不需要设置上方的和下方的hline的top/bottom_sep_line
     // 因为它们属于外层，不会因为check调整导致被放到外层。
 }
+
+void SoupleManager::changeSelectedObj(int id) {
+    auto it = hash_id_obj.find(id);
+    if(it == hash_id_obj.end()) return;
+    Obj* obj = it.value();
+    auto& keyInfo = obj->keyInfo();
+    if(! keyInfo.selfDeal_input) {
+        //统一处理光标
+        MagicalCursor::set_cursor_sync<true>(obj,obj->contentLength());
+    }
+}

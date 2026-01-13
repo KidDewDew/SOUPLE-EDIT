@@ -35,16 +35,23 @@ S_TextInput {
 
     //style: Text.Outline
 
-    Timer {
-        id: timer_setSelected
-        interval: 200
-        onTriggered: if(focus) selectedObj = obj
-    }
+    // [2026/1/12 删除“流文本”的属性框]
+    // Timer {
+    //     id: timer_setSelected
+    //     interval: 200
+    //     onTriggered: if(focus) selectedObj = obj
+    // }
 
     onFocusChanged: {
         if(focus) {
-            timer_setSelected.start()
+            selectedObj = obj
+            SoupleManager.sendCommandToData(data_id,Helper_Type.CURSOR_CHANGE,cursorPosition)
         }
+    }
+
+    // 通知光标发生改变
+    onCursorPositionChanged: {
+        if(focus) SoupleManager.sendCommandToData(data_id,Helper_Type.CURSOR_CHANGE,cursorPosition)
     }
 
 
@@ -104,7 +111,9 @@ S_TextInput {
             }
 
 
-    property alias cp_propertyBar: cp_propertyBar
+    //property alias cp_propertyBar: cp_propertyBar
+    property var cp_propertyBar: null
+
     Component {
         id: cp_propertyBar //属性栏
         GridLayout {

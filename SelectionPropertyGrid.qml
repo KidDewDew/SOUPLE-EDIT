@@ -114,6 +114,7 @@ GridLayout {
             value: spp.fontsize
         }
         onValueChanged: {
+            spp.fontsize = value
             SelectMgr.sendCommands(Helper_Type.SP_FontSize_Set,value)
         }
     }

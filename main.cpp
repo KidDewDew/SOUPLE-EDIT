@@ -33,6 +33,9 @@
 #include <QFont>
 #include <QDataStream>
 #include <QColor>
+
+#include "magicalcursor.h"
+
 #ifdef WIN32
 #include <windows.h>
 #include <dwmapi.h>
@@ -270,6 +273,8 @@ int main(int argc, char *argv[])
 
     //初始化全局变量
     qmlRoot = Helper::qml_main_object = engine.rootObjects().first();
+
+    MagicalCursor::init();
 
     qDebug() << "qmlRoot:" << qmlRoot;
 
