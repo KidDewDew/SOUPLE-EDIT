@@ -28,15 +28,24 @@ public:
     //virtual void dealCommandFromQmlItem(const QString& command,const QString& args) override {};  //处理来自对应qml item的指令
     virtual void dealLayout() override; //处理布局
     virtual bool tryMergeRight() { return false; } //尝试合并右边
-    virtual void insertOnLeft(AnchorObj* obj); //从左边插入
-    virtual void insertOnRight(AnchorObj* obj); //从右边插入
+
+     //从左边插入，会设置obj的hline
+    virtual void insertOnLeft(AnchorObj* obj);
+
+    //从右边插入，会设置obj的hline
+    virtual void insertOnRight(AnchorObj* obj);
+
     virtual AnchorObj* dropRight(float dropWidth) { return 0; } //尝试截断并丢弃右边
     virtual AnchorObj* dropLeft(float dropWidth) { return 0; }  //尝试截断并丢弃左边
+
     virtual bool check_dropLeft(float dropWidth) { return false; } //仅检测给定dropWidth是否会截断左边
+
     virtual void removeSelf(bool dead = true) override;
-    //float x,y; //x,y坐标: 为了快速定位AnchorObj，需要暴露并更新y坐标
+
     virtual void getCursorFromLeft(int RN= 0); //从左边获取光标
+
     virtual void getCursorFromRight(int RN = 0); //从右边获取光标
+
     //利用多态获取类型相关的信息 [于2025/7/30删除该函数]
     // virtual const AnchorObj_Global_Info& global_info() const {
     //     static AnchorObj_Global_Info _global_info = {.isSelfWidth = true};
@@ -125,16 +134,20 @@ protected:
         }
     }
 
+    // 移动流附着符
+    // @param add_flow_position: 移动的步数 正数:向后 负数:向前
     void moveFlowAttachers(int add_flow_position) {
         for(auto attacher : flow_attachers) {
             attacher->flow_position += add_flow_position;
         }
     }
 
+    // 添加流附着符
     void addFlowAttacher(FlowAttacher* attacher) {
         flow_attachers.push_back(attacher);
     }
 
+    // 移除指定流附着符
     void removeFlowAttacher(FlowAttacher* attacher) {
         std::ranges::remove(flow_attachers,attacher);
     }

@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 
+
 project(SoupleEdit VERSION 0.1 LANGUAGES CXX)
+
+# 是否启用SOUPLE_SERVICE子项目。
+set(ENABLE_SOUPLESERVICE_SUBPRO ON)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
@@ -20,10 +24,9 @@ qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(appSoupleEdit
     main.cpp
-    vcpkg.json
+
     main.rc
 )
-
 
 #include_directories(C:/Users/guest0/Downloads/poppler-23.07.0/qt6/src)
 
@@ -290,3 +293,7 @@ install(TARGETS appSoupleEdit
 
 #include(C:/Users/guest0/Downloads/poppler-25.03.0.tar/poppler-25.03.0/poppler-25.03.0/qt6/src
 add_subdirectory(souple_pdf)
+
+if(ENABLE_SOUPLESERVICE_SUBPRO)
+    add_subdirectory(SoupleService)
+endif()

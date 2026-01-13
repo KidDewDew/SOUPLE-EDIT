@@ -126,6 +126,7 @@ public:
 
     void userUpdateText(const QString& new_text);
 
+    // (反)序列化函数。
     template<typename Serial>
     void serialize(Serial& serial) {
         serial / SOUPLE_PP(id)
@@ -153,6 +154,7 @@ public:
 public:
 };
 
+//注册为Souple类型
 SOUPLE_REGISTER_CLASS(AnchorObj_FlowText,DATE_ID(202511202136))
 
 #endif // ANCHOROBJ_FLOWTEXT_H

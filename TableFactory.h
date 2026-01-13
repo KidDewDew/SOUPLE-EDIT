@@ -4,6 +4,9 @@
 #include "souplemanager.h"
 #include "tableline.h"
 
+///本文件提供对表格的创建、操作功能。
+///但不涉及表格解析。
+
 struct TableUnitIndex {
     int row,col;
 };

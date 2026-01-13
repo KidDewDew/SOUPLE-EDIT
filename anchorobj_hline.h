@@ -251,6 +251,7 @@ protected:
     static inline int s_hline_count = 0; //hline计数
 };
 
+// 兼容水平线。特点是可以把AnchorObj_HLine及其派生类 与 其他类型的hline连接。
 class FitLine_for_AnchorObj_HLine : public AnchorObj_HLine {
 public:
     FitLine_for_AnchorObj_HLine() {

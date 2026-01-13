@@ -33,7 +33,9 @@ class Register_ID_Repeat_Error : std::exception {};
 
 #define DATE_ID(date) (((long long)date)%30013)
 
+//如果该变量可以引用，且只实现serialize，使用该宏
 #define SOUPLE_PP(id) souple::serialization::KV(#id,id)
+//如果id不允许修改，使用该宏
 #define SOUPLE_PPC(id) souple::serialization::KVC(#id,id)
 #define SOUPLE_PK(key,id) souple::serialization::KV(key,id)
 #define SOUPLE_PKC(key,id) souple::serialization::KVC(key,id)

@@ -165,10 +165,16 @@ public:
         if(Helper::isQmlItemValid(qmlItem)) qmlItem->setHeight(height);
     }
 
+    // 该函数指明一个对象如何“丢弃”qml对象
+    // 典型的，如果使用了UIItemPool，在这里回收qml对象
+    // 不使用UIItemPool的，比如qml对象实例预期很少的，可以直接删除qml对象
     virtual void discard_qmlItem() {}
 
-    //注册死亡时的回调函数，当然该函数可以留空
-    virtual void register_deleteCallback(std::function<void(void)> callback) {}
+    //注册死亡时的回调函数，当然该函数可以留空。
+    //notice,如果被调用者未实现该函数，将抛出RuntimeError.
+    virtual void register_deleteCallback(std::function<void(void)> callback) {
+        throw std::runtime_error("Call register_deleteCallback But Not Resolved.");
+    }
 
     //写入pdf page(pdfium版本的绘制函数)
     virtual void writeToPDFPage(FPDF_DOCUMENT document,FPDF_PAGE pdf_page, const Page* page){};
@@ -236,6 +242,7 @@ public:
     //}
 
     // 序列化函数
+    // 该函数模仿boost库的序列化设计。具体请查看serialization.h
     template<typename Serial>
     void serialize(Serial& serial) {
         serial /SOUPLE_PP(id)
