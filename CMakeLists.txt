@@ -244,6 +244,7 @@ qt_add_qml_module(appSoupleEdit
         QML_FILES TToolBar_Start.qml
         QML_FILES ComboBox_forFontSize.qml
         SOURCES uniformkb.h uniformkb.cpp
+        RESOURCES readme.txt
         #RESOURCES vcpkg.json
 )
 
@@ -295,5 +296,9 @@ install(TARGETS appSoupleEdit
 add_subdirectory(souple_pdf)
 
 if(ENABLE_SOUPLESERVICE_SUBPRO)
-    add_subdirectory(SoupleService)
+    add_subdirectory(SoupleService_PDFTableExtract)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE
+      ${CMAKE_CURRENT_SOURCE_DIR}/lib/json/libjsoncpp.a)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE
+      ${CMAKE_CURRENT_SOURCE_DIR}/lib/json/libjsoncpp.dll.a)
 endif()

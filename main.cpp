@@ -43,8 +43,6 @@
 
 #include "xlsxwriter.h"
 
-
-
 QObject* qmlRoot;
 QQuickWindow* qmlWindow;
 QQmlApplicationEngine* engine;
