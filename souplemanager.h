@@ -20,7 +20,22 @@
 #include <ranges>
 #endif
 
+#ifdef MULTITHREAD_SOUPLEMANAGER
+#include <thread>
+#endif
+
+#ifdef ULONGLONG_OBJID
+    typedef quint64 OBJID_t;
+#else
+    typedef quint32 OBJID_t;
+#endif
+
 #define Soup_Mgr SoupleManager
+
+///宏：MULTITHREAD_SOUPLEMANAGER
+///brief: 多线程分离模式
+/// 在cmake中启用后，SoupleManager将自动根据线程ID来存储obj。
+/// 主工程禁止启用该宏
 
 //处理一次布局的timer间隔
 constexpr int TIMER_DEALUI_INTERVAL = 30;
@@ -47,6 +62,8 @@ struct CMP_for_AnchorObj { //排序仿函数
     }
 };
 
+
+//本类为纯静态类，支持高效的当前文档访问。也支持多文档访问。
 class SoupleManager : public QObject
 {
     Q_OBJECT
@@ -56,8 +73,6 @@ class SoupleManager : public QObject
     Q_PROPERTY(float documentWidth READ documentWidth NOTIFY documentWidthChanged FINAL)
     Q_PROPERTY(float documentHeight READ documentHeight NOTIFY documentHeightChanged FINAL)
     Q_PROPERTY(int pageCount READ getPageCount NOTIFY pageCountChanged FINAL)
-
-
 
     struct _PAGE_INF {
         std::vector<Page*> pages; //页面列表，按顺序排列
@@ -111,33 +126,70 @@ public:
     static inline int NUM1 = 0,NUM2 = 0,NUM3=0,NUM4=0,NUM5=0;
 
     static inline void registerObj(Obj* obj) { //注册obj
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        if(! tb->enableRegister) {
+            tb->wait_register_obj_list.push_back(obj);
+            return;
+        }
+        tb->hash_id_obj[obj->id] = obj;
+        tb->all_objs.push_back(obj);
+#else
         if( ! enableRegister) {
             wait_register_obj_list.push_back(obj);
             return;
         }
         hash_id_obj[obj->id] = obj;
         all_objs.push_back(obj);
+#endif
     }
 
     // 一次性注册多个objs，模板展开;
     template<typename...Ts>
     static inline void registerObjs(Ts...objs) { //注册obj
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        if( ! tb->enableRegister) {
+            (tb->wait_register_obj_list.push_back(objs),...);
+            return;
+        }
+        ((tb->hash_id_obj[objs->id] = objs),...);
+        (tb->all_objs.push_back(objs),...);
+#else
         if( ! enableRegister) {
             (wait_register_obj_list.push_back(objs),...);
             return;
         }
         ((hash_id_obj[objs->id] = objs),...);
         (all_objs.push_back(objs),...);
+#endif
     }
 
-
+#ifdef ULONGLONG_OBJID
+    static inline Obj* getObjById(qint64 id) noexcept {
+#else
     static inline Obj* getObjById(int id) noexcept {
+#endif
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        auto it = tb->hash_id_obj.find(id);
+        if(it == tb->hash_id_obj.end()) return 0;
+        return *it;
+#else
         auto it = hash_id_obj.find(id);
         if(it == hash_id_obj.end()) return 0;
         return *it;
+#endif
     }
 
-    static inline Obj* getObjById(int document_id,int id) noexcept {
+    static inline Obj* getObjById(int document_id,OBJID_t id)
+#ifndef MULTITHREAD_SOUPLEMANAGER
+    noexcept
+#endif
+    {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: getObjById(int document_id,int id)");
+#endif
         if(document_id == currentDocumentID || document_id == Current_Document) {
             auto it = hash_id_obj.find(id);
             if(it == hash_id_obj.end()) return 0;
@@ -158,18 +210,27 @@ public:
     static void init(); //初始化
 
     Q_INVOKABLE static int sendCommandToData(qint32 data_id,int command,QVariant arg) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no sendCommandToData");
+#endif
         auto it = hash_id_obj.find(data_id);
         if(it == hash_id_obj.end()) return 0;
         return it.value()->dealCommandFromQmlItem(command,arg);
     }
 
     Q_INVOKABLE QVariant qmlGetData(qint32 data_id,int dataName) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no qmlGetData");
+#endif
         auto it = hash_id_obj.find(data_id);
         if(it == hash_id_obj.end()) return "null";
         return it.value()->qmlGetData(dataName);
     }
 
     Q_INVOKABLE void requestDeleteObj(qint32 data_id) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no requestDeleteObj");
+#endif
         auto it = hash_id_obj.find(data_id);
         if(it != hash_id_obj.end() && it.value()) {
             it.value()->removeSelf(true);
@@ -205,6 +266,9 @@ public:
     //在hline上创建obj
     Q_INVOKABLE static void createSoupleObj_onHline(const QString& type,qint32 hline_id,bool isInsertOnLeft)
     {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no createSoupleObj_onHLine");
+#endif
 #ifdef DEBUG
         qDebug() << "createSoupleObj_onHline(" << type;
 #endif
@@ -218,6 +282,9 @@ public:
 
     //在obj旁边创建obj
     Q_INVOKABLE static void createSoupleObj_byObj(const QString& type,qint32 obj_id,bool isInsertOnLeft) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no createSoupleObj_byObj");
+#endif
         auto obj = createObj(type);
         auto it = hash_id_obj.find(obj_id);
         if(it == hash_id_obj.end()) return;
@@ -230,6 +297,9 @@ public:
 
     //创建自由obj
     Q_INVOKABLE static void createSoupleObj_Free(const QString& type,float x,float y) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no createSoupleObj_Free");
+#endif
 #ifdef DEBUG
         qDebug() << "createSoupleObj_Free(" << type << "," << x << "," << y;
 #endif
@@ -288,6 +358,12 @@ public:
     Q_INVOKABLE static void tryCreateDecorationFrame();
 
     Q_INVOKABLE static inline Page* addInheritPage() {
+
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        //不允许多线程模式的SoupleManager调用该函数
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no addInheritPage()");
+#endif
+
         int num = SoupleManager::page_inf.pages.size();
         if(0 == num) {
             //addPage()
@@ -333,6 +409,34 @@ public:
     }
 
     Q_INVOKABLE static inline Page* addPage(float width,float height,float top_margin,float bottom_margin) {
+
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        int num = tb->page_inf.pages.size();
+        auto new_page = new Page{.width = width,.height = height,.topMargin = top_margin,
+                                 .bottomMargin = bottom_margin,.index=num};
+        new_page->obj_page = new Obj_Page;
+        new_page->obj_page->page = new_page;
+        registerObj(new_page->obj_page);
+        if(num > 0) {
+            tb->page_inf.pages.back()->next_page = new_page;
+            new_page->prev_page = tb->page_inf.pages.back();
+        }
+        tb->page_inf.pages.push_back(new_page);
+        tb->page_inf.sum_heights.push_back((num > 0 ? tb->page_inf.sum_heights.back():0) + height);
+        tb->page_inf.pages.back()->top_y = tb->page_inf.sum_heights.back() - height;
+        if(num > 0) {
+            tb->page_inf.sum_margins.push_back(tb->page_inf.sum_margins.back()
+                                           + tb->page_inf.pages[num-1]->bottomMargin + top_margin);
+        } else {
+            tb->page_inf.sum_margins.push_back(top_margin);
+        }
+        tb->edit_height += height;
+        tb->edit_width = qMax(tb->edit_width,width);
+        //new_page->obj_page->initFromPage();
+
+        return new_page;
+#else
         int num = SoupleManager::page_inf.pages.size();
         auto new_page = new Page{.width = width,.height = height,.topMargin = top_margin,
                                  .bottomMargin = bottom_margin,.index=num};
@@ -361,9 +465,11 @@ public:
         new_page->obj_page->initFromPage();
 
         return new_page;
+#endif
     }
 
     Q_INVOKABLE void updatePageTopMargin(int page_index,float margin) {
+
         if(page_index >= page_inf.pages.size()) return;
         page_inf.pages[page_index]->topMargin = margin;
         //page_inf.pages[page_index]->update_rest_num = 200; //设置更新量
@@ -388,8 +494,14 @@ public:
                                                 const QString& into_image_id);
 
     static Page* getPageByIndex(int page_index) { //从0算起
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        if(page_index >= tb->page_inf.pages.size()) return 0;
+        return tb->page_inf.pages[page_index];
+#else
         if(page_index >= page_inf.pages.size()) return 0;
         return page_inf.pages[page_index];
+#endif
     }
 
     //修改页面信息
@@ -430,6 +542,13 @@ public:
 
     //获取obj所在的页面信息
     static inline Page* getPage(const Obj& obj) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        if(tb->page_inf.pages.empty()) return 0;
+        auto it =  std::lower_bound(tb->page_inf.sum_heights.begin(),tb->page_inf.sum_heights.end(),obj.y);
+        if(it == tb->page_inf.sum_heights.end()) return tb->page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
+        return tb->page_inf.pages[it - tb->page_inf.sum_heights.begin()];
+#else
         if(page_inf.pages.empty()) return 0;
 #ifdef Q_OS_WIN32
         auto it = std::ranges::lower_bound(page_inf.sum_heights,obj.y);
@@ -439,9 +558,19 @@ public:
         //if(it == page_inf.sum_heights.end()) return nullptr;
         if(it == page_inf.sum_heights.end()) return page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
         return page_inf.pages[it - page_inf.sum_heights.begin()];
+#endif
     }
 
     static inline Page* getPage(float y) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        if(tb->page_inf.pages.empty()) return 0;
+        auto it = std::lower_bound(tb->page_inf.sum_heights.begin(),
+                                   tb->page_inf.sum_heights.end(),y);
+        if(it == tb->page_inf.sum_heights.end())
+            return tb->page_inf.pages.back();
+        return tb->page_inf.pages[it - tb->page_inf.sum_heights.begin()];
+#else
         if(page_inf.pages.empty()) return 0;
 #ifdef Q_OS_WIN32
         auto it = std::ranges::lower_bound(page_inf.sum_heights,y);
@@ -452,9 +581,13 @@ public:
         if(it == page_inf.sum_heights.end())
             return page_inf.pages.back(); //[2025/8/6 修改，保证返回有效Page]
         return page_inf.pages[it - page_inf.sum_heights.begin()];
+#endif
     }
 
     static inline Page* getPage(int doc_id,float y) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no getPage(doc_id,y)");
+#endif
         if(doc_id == Current_Document || doc_id == currentDocumentID) {
             return getPage(y);
         }
@@ -471,14 +604,23 @@ public:
 
     //计算两个page之间差了多高的空白，不包含page1的上边距和page2的下边距
     static inline float calcPageMargins(const Page* page1,const Page* page2) {
-        qDebug() << "calcPageMargins(" << page1->index << "," << page2->index;
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
         if(page2->index > page_inf.pages.size()) return 0;
-        qDebug() << "s2=" << page_inf.sum_margins[page2->index] << " s1=" << page_inf.sum_margins[page1->index];
+        return tb->page_inf.sum_margins[page2->index] - tb->page_inf.sum_margins[page1->index];
+#else
+        //qDebug() << "calcPageMargins(" << page1->index << "," << page2->index;
+        if(page2->index > page_inf.pages.size()) return 0;
+        //qDebug() << "s2=" << page_inf.sum_margins[page2->index] << " s1=" << page_inf.sum_margins[page1->index];
         return page_inf.sum_margins[page2->index] - page_inf.sum_margins[page1->index];
+#endif
     }
 
     //通知hline死亡，必须从hline队列中删除
     static inline void notifyHLineDead(Obj* hline) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no notifyHLineDead(Obj* hline)");
+#endif
         int i = 0;
         for(auto obj : queue_hline_wait_update) {
             if(obj == hline)
@@ -513,6 +655,9 @@ public:
     }
 
     Q_INVOKABLE static void requestChangeCurrentPageStyle(int style) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no requestChangeCurrentPageStyle(int style)");
+#endif
         Page* page = getPage(view_top);
         if(!page || page->page_type == style) return;
         if(page->page_type == Helper::NoFormat_Page) {
@@ -524,12 +669,18 @@ public:
     }
 
     Q_INVOKABLE static int getCurrentPageStyle() {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no getCurrentPageStyle()");
+#endif
         Page* page = getPage(view_top);
         if(!page) return 0;
         return page->page_type;
     }
 
     Q_INVOKABLE static QVariantMap getCurrentPageInfo() {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no getCurrentPageInfo()");
+#endif
         Page* page = getPage(view_top);
         if(!page) return {};
         return {{"width",page->width},{"height",page->height},
@@ -551,6 +702,9 @@ public:
 
     Q_INVOKABLE static void addSoupleDocument(int id) {
         qDebug() << "addSoupleDocument(" << id;
+#ifdef MULTITHREAD_SOUPLEMANAGER
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no addSoupleDocument(int id)");
+#endif
         all_documents.insert(id,std::make_shared<Document>());
     }
 
@@ -596,13 +750,34 @@ public:
     static HorLine_Base* getDocumentFirstLine(int document_id=Current_Document);
 
     static void notifyVisible(Obj* obj) noexcept {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         all_visible_objs.push_back(obj);
+#endif
     }
 
     static void setQmlSoupleEdit(QQuickItem* qml_instance) noexcept {
         SoupleManager::qml_soupleEdit = qml_instance;
     }
 
+#ifdef MULTITHREAD_SOUPLEMANAGER
+    // 初始化SoupleManager，请每个线程都得调用一次。
+    static inline void init_for_thread() {
+        thread_bundle[std::this_thread::get_id()] = new ThreadBundle;
+        clear_for_thread();
+    }
+    // 清除SoupleManager所有内容
+    static inline void clear_for_thread() {
+        auto tb = thread_bundle[std::this_thread::get_id()];
+        tb->edit_height = 0;
+        tb->edit_width = 0;
+        tb->enableRegister = true;
+        tb->wait_register_obj_list.clear();
+        tb->hash_id_obj.clear();
+        for(auto obj : tb->all_objs) {
+            delete obj;
+        }
+    }
+#endif
 
 public:
     static inline float view_top, view_bottom;
@@ -620,13 +795,19 @@ private:
     static inline std::list<Obj*> all_visible_objs;
     //所有可见Obj(即创建了qml对象的obj) // 含义变更 [2025/9/8]：所有可见或预备可见的obj
     static inline std::list<Obj*> all_objs; //记录所有obj
-    static inline QHash<qint32,Obj*> hash_id_obj; //id->obj哈希表
+    static inline QHash<OBJID_t,Obj*> hash_id_obj; //id->obj哈希表
+// #ifdef ULONGLONG_OBJID
+//         static inline QHash<qint64,Obj*> hash_id_obj; //id->obj哈希表
+// #else
+//         static inline QHash<qint32,Obj*> hash_id_obj; //id->obj哈希表
+// #endif
     //static inline std::vector<Obj*> obj_vector; //2
     static inline std::list<Obj*>::iterator scan_iter = all_objs.begin(); //扫描id
     static inline std::list<Obj*>::iterator scan_iter2 = all_objs.begin(); //扫描id2
     static inline std::list<Obj*>::iterator scan_iter_visble = all_visible_objs.begin(); //扫描可见id
     static inline float edit_width; //编辑区总宽度(=最宽的页面的宽度)
     static inline float edit_height; //编辑区总高度(=所有页面高度和)
+
     //y_sort_objs[i]存储着所有y属于[i*500,i*500+500)间的obj
     //static inline std::vector<QSet<Obj*>> y_sort_objs{10000,QSet<Obj*>{}}; //最多5000页
     static inline _PAGE_INF page_inf;
@@ -650,11 +831,28 @@ private:
         //std::list<Obj*> all_visible_objs;
         std::list<Obj*> all_objs;
         std::list<Obj*> all_visible_objs;
-        QHash<qint32,Obj*> hash_id_obj;
+
+        QHash<OBJID_t,Obj*> hash_id_obj;
         std::deque<Turnback*> turnback_list;
         std::vector<Turnback*> redo_list;
         _PAGE_INF page_inf;
     };
+
+#ifdef MULTITHREAD_SOUPLEMANAGER
+    //每个线程只可能访问自己的键，无插入、修改、删除键值对的可能
+    //因此是线程安全的。
+    struct ThreadBundle {
+        bool enableRegister = true;
+        Safe_Obj_Pointer<Obj_Start_Sign> start_sign;
+        std::list<Obj*> all_objs;
+        QHash<OBJID_t,Obj*> hash_id_obj;
+        float edit_width; //编辑区总宽度(=最宽的页面的宽度)
+        float edit_height; //编辑区总高度(=所有页面高度和)
+        std::vector<Obj*> wait_register_obj_list; //等待注册的对象
+        _PAGE_INF page_inf;
+    };
+    static inline QHash<std::thread::id,ThreadBundle*> thread_bundle;
+#endif
 
     static inline QHash<int,std::shared_ptr<Document>> all_documents;
 

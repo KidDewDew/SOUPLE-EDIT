@@ -3,8 +3,16 @@ cmake_minimum_required(VERSION 3.16)
 
 project(SoupleEdit VERSION 0.1 LANGUAGES CXX)
 
-# 是否启用SOUPLE_SERVICE子项目。
-set(ENABLE_SOUPLESERVICE_SUBPRO ON)
+### Notice
+### 以下为所有子项目的启用
+### 请确保在构建主工程时，所有子项目均为OFF
+### 在构建某子项目时，其他子项目均为OFF
+
+# BEGIN
+# 是否启用SOUPLE_SERVICE_PDFTABLEEXTRACT子项目。
+set(ENABLE_SOUPLESERVICE_PDFTABLEEXTRACT_SUBPRO ON)
+
+# END
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
@@ -18,13 +26,13 @@ set(CMAKE_BUILD_PARALLEL_LEVEL 8)
 set(CMAKE_UNITY_BUILD ON)
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 3)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick PrintSupport Gui GuiPrivate)
+find_package(Qt6 6.10 REQUIRED COMPONENTS Quick PrintSupport Gui GuiPrivate)
 
-qt_standard_project_setup(REQUIRES 6.5)
+qt_standard_project_setup(REQUIRES 6.10)
 
 qt_add_executable(appSoupleEdit
     main.cpp
-
+    vcpkg.json
     main.rc
 )
 
@@ -295,7 +303,7 @@ install(TARGETS appSoupleEdit
 #include(C:/Users/guest0/Downloads/poppler-25.03.0.tar/poppler-25.03.0/poppler-25.03.0/qt6/src
 add_subdirectory(souple_pdf)
 
-if(ENABLE_SOUPLESERVICE_SUBPRO)
+if(ENABLE_SOUPLESERVICE_PDFTABLEEXTRACT_SUBPRO)
     add_subdirectory(SoupleService_PDFTableExtract)
     target_link_libraries(SoupleService_PDFTableExtract PRIVATE
       ${CMAKE_CURRENT_SOURCE_DIR}/lib/json/libjsoncpp.a)

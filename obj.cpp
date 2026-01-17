@@ -3,7 +3,9 @@
 #include "anchorobj_flowtext.h"
 #include "anchorobj_glue.h"
 #include "anchorobj_hline.h"
-Obj::Obj() {   id = s_all_id++;    }
+Obj::Obj() {
+    id = s_all_id++;
+}
 
 Obj::~Obj() {
     //

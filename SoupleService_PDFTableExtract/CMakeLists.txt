@@ -9,15 +9,57 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_UNITY_BUILD OFF)
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
+
+file(GLOB MAIN_SRC
+  "${CMAKE_SOURCE_DIR}/*.h"
+  "${CMAKE_SOURCE_DIR}/*.hpp"
+  "${CMAKE_SOURCE_DIR}/*.c"
+  "${CMAKE_SOURCE_DIR}/*.cpp")
 
 add_executable(SoupleService_PDFTableExtract
   main.cpp
   config.h
   worker.h
-  helper.h
+  helper_web.h
+  ../souplemanager.h ../souplemanager.cpp
+  ../anchorobj_phleft.cpp
+  ../anchorobj_glue.cpp
+  ../selectionmanager.cpp
+  ../obj.cpp
+  ../ExportHeader.cpp
+  ../anchorobj_image.cpp
+  ../anchorobj_flowtext.cpp
+  ../NoRef_ResolveALL.cpp
+  ../helper.cpp  ../anchorobj_latexformula.cpp
+  ../frame_ofhlines.cpp ../anchorobj_jzrect.cpp
+  ../anchorobj.cpp ../navline.cpp ../nav_create.cpp
+  ../pdf2souple.h  ../pdf2souple.cpp
+  ../anchorobj_phright.cpp ../free_frame.cpp
+  ../turnbackmanager.cpp  ../anchorobj_phrect.cpp
+  ../anchorobj_vline.cpp  ../freeobj.cpp  ../anchorobj_hline.cpp
+  ../horline_base.cpp  ../columns_separate.cpp
+  ../free_tableunit.cpp
+  ../uniformkb.cpp ../anchorobj_path.cpp ../free_path.cpp
+  ../anchorobj_path.cpp ../free_rich.cpp ../wordline.cpp
+  ../wordpage_vline.cpp ../word_page_analyse.cpp
+  ../tableline.cpp ../souple_pdfsaver.cpp
+  ../blockinner_horline.cpp ../quick_callback.cpp
+  ../anchorobj_spring.cpp  ../free_image.cpp ../anchorobj_rich.cpp
+  etc.cpp
 )
+
+
+add_definitions(
+-DPROJECT_TABLE_EXTRACT  #启用PROJECT宏
+-DULONGLONG_OBJID  #启用unsigned long long类型的对象id
+-DMULTITHREAD_SOUPLEMANAGER # 启用多线程分离模式的SoupleManager
+-DMULTITHREAD_PDF2SOUPLE #启用线程安全的pdf2souple
+)
+
 target_link_libraries(SoupleService_PDFTableExtract PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 
 include(GNUInstallDirs)
@@ -38,3 +80,17 @@ include_directories(E:/vcpkg/vcpkg/installed/x64-windows/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/json)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_CURRENT_SOURCE_DIR}/../lib/json")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ljsoncpp")
+
+if(WIN32)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/pdfium-win-x64/include)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/freetype/include)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/java/include)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/zlib/include)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/xlsx/include)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/pdfium-win-x64/lib/pdfium.dll.lib)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/dwmapi.lib)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/xlsx/libxlsxwriter.a)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/zlib/zlib.lib)
+    #target_link_libraries(appSoupleEdit PRIVATE E:/freetype/freetype2410.lib)
+    #target_link_libraries(appSoupleEdit PRIVATE "C:/Program Files/Java/jdk1.8.0_331/lib/jvm.lib")
+endif()

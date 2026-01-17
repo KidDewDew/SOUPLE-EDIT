@@ -57,9 +57,81 @@ void Pdf2Souple::loadPdf(const QString& pdf_filename)
 
 }
 
+#ifdef PROJECT_TABLE_EXTRACT
+bool Pdf2Souple::loadPDF_ofProTableExtract(const QString& filename)
+{
+    auto document = FPDF_LoadDocument(filename.toUtf8(),""); //加载document
+    if(document == NULL)
+        return false;
+    int page_count = FPDF_GetPageCount(document); //获取pdf页数
+    float total_height = 0; //累计页面高度和
+    double leftLine_x, rightLine_x; //的x
+    QString leftLine_name = "", rightLine_name ="";
+    vector<shared_ptr<Souple_Area>> list_area = {};
+    vector<shared_ptr<PDFPage>> pdfpage_list;
+    std::shared_ptr<PDFPage> old_page;
+
+    Shared::pdf_page_number[std::this_thread::get_id()] = page_count; //分享页数
+
+    for(int page_index = 0; page_index < page_count; ++page_index)
+    {
+        //if(page_index  11) continue;
+        auto fpage = FPDF_LoadPage(document,page_index);
+        auto text_page = FPDFText_LoadPage(fpage); //加载文本层
+        float page_width = Helper::point2pixel(FPDF_GetPageWidth(fpage));
+        float page_height = Helper::point2pixel(FPDF_GetPageHeight(fpage));
+
+        auto page = make_shared<PDFPage>();
+        // 分享current_page
+        Shared::current_page[std::this_thread::get_id()] = page;
+
+        int obj_num = FPDFPage_CountObjects(fpage); //获取obj数量
+
+        page->page_left_margin = 0;
+        page->page_top_margin = total_height;
+        page->page_width = page_width;
+        page->page_height = page_height;
+        page->page_index = page_index;
+
+        imp_dealText(text_page,page->all_objs,page_width,page_height); //读取文本层
+
+        for(int i = 0; i < obj_num; ++i) { //读取并处理非文本类型的pdfobj
+            auto page_obj = FPDFPage_GetObject(fpage,i);
+            std::shared_ptr<PDFOBJ> obj = readPdfObj(page_obj,text_page,page_width,page_height);
+            if(! obj) continue;
+            obj->render_id = i; //渲染顺序(越小越先绘制)
+            page->all_objs.push_back(obj);
+        }
+
+        imp_analysePdfPage(page,old_page);
+
+        total_height += page_height; //记录累计高度
+
+        FPDFText_ClosePage(text_page);
+        FPDF_ClosePage(fpage);
+
+        pdfpage_list.push_back(page);
+        old_page = page;
+#if Only_Test_FirstPage == true
+        break; //只需要读取一页做测试，就define该宏为true
+#endif
+    }
+
+    //合并临时表格、创建表格
+    mergeAndCreateTables(pdfpage_list);
+
+    //合并FrameParts，创建装饰框[不需要]
+    //mergeAndCreateFrames(pdfpage_list);
+
+    FPDF_CloseDocument(document);
+
+    return true; //成功解析PDF到本线程的SoupleManager
+}
+#endif
+
 void Pdf2Souple::imp_loadPdf(const QString& filename)
 {
-    //使用poppler读取pdf，并把pdf转换为souple
+    //使用pdfium读取pdf，并把pdf转换为souple
     //通过Helper的两个信号: addVLine和addHLine来添加obj到编辑器
 
     qDebug() << "imp_loadPdf(" << filename;
@@ -89,7 +161,11 @@ void Pdf2Souple::imp_loadPdf(const QString& filename)
     vector<shared_ptr<PDFPage>> pdfpage_list;
     std::shared_ptr<PDFPage> old_page;
 
+#ifdef MULTITHREAD_PDF2SOUPLE
+    Shared::pdf_page_number[std::this_thread::get_id()] = page_count; //分享页数
+#else
     Shared::pdf_page_number = page_count; //分享页数
+#endif
 
     future_preload.waitForFinished(); //等待pdf预读取完毕
 
@@ -107,7 +183,11 @@ void Pdf2Souple::imp_loadPdf(const QString& filename)
 
         auto page = make_shared<PDFPage>();
 
+#ifdef MULTITHREAD_PDF2SOUPLE
+        Shared::current_page[std::this_thread::get_id()] = page;
+#else
         Shared::current_page = page;
+#endif
 
         //FS_RECTF contentBox;
         //尝试使用pdfium的实验性方法获取内容框，以得到页面的上下边距

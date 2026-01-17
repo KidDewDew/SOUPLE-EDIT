@@ -1,5 +1,5 @@
-#include <boost/beast/core.hpp>
 #include <boost/beast/websocket.hpp>
+#include <boost/beast/core.hpp>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <json.h>
@@ -10,7 +10,7 @@
 #include <random>
 #include <filesystem>
 #include "worker.h"
-#include "helper.h"
+#include "helper_web.h"
 
 /// PDF表格提取 分布服务程序
 /// 启动该程序即可启动一个表格提取服务。
@@ -178,13 +178,13 @@ void task_notify(const Worker::Task& task) {
     jv["finished"] = true;
     if(task.isSucceeded() == false) {
         jv["failed_reason"] = task.get_failed_reason().data();
-        std::string data = concatStrAndBinary(Json::FastWriter().write(jv),0,0);
+        std::string data = souple_web::concatStrAndBinary(Json::FastWriter().write(jv),0,0);
         send_message(data);
     } else {
         std::ifstream is(task.get_generated_filepath().data(),std::ios::binary|std::ios::ate);
         if(!is.is_open()) {
             jv["succeeded"] = false;
-            std::string data = concatStrAndBinary(Json::FastWriter().write(jv),0,0);
+            std::string data = souple_web::concatStrAndBinary(Json::FastWriter().write(jv),0,0);
             send_message(data);
             return;
         }
@@ -194,7 +194,7 @@ void task_notify(const Worker::Task& task) {
         char *buffer = new char[size];
         is.read(buffer,size);
 
-        std::string data = concatStrAndBinary(Json::FastWriter().write(jv),buffer,size);
+        std::string data = souple_web::concatStrAndBinary(Json::FastWriter().write(jv),buffer,size);
         delete[] buffer;
         send_message(data);
     }

@@ -292,7 +292,11 @@ public:
 public:
     bool dead_sign = false; //死亡标志(置位后，由SoupleManager负责删除obj)
     float x=0,y=-1000,width=0,height=0;
+#ifdef ULONGLONG_OBJID
+    uint64_t id;
+#else
     uint32_t id;  //唯一标识符，id
+#endif
     int z {Helper::Layer_Z::Text};        //渲染层级
     QQuickItem* qmlItem = 0;
     static inline uint32_t s_all_id = 0; //记录下一个obj的id

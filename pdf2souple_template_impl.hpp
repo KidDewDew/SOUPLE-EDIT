@@ -607,8 +607,13 @@ bool Pdf2Souple::impl_createHBlocks_specForWord(const RandomAccessCont<std::shar
                             float contentHeight_unused;
                             // allowVCross: 允许行垂直相交
                             createRich<TStr("allowVCross = true")>
-                                (       Shared::current_page.lock().get(),
-                                        rich_bks,
+                                (
+                                #ifdef MULTITHREAD_PDF2SOUPLE
+                                        Shared::current_page[std::this_thread::get_id()].lock().get()
+                                #else
+                                        Shared::current_page.lock().get()
+                                #endif
+                                        ,rich_bks,
                                         rich->free_rich,
                                         &rich->free_rich->vAlignMode,
                                         &contentHeight_unused,

@@ -40,6 +40,9 @@ SoupleManager::SoupleManager() {}
 
 void SoupleManager::init()
 {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+    throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no init()");
+#endif
     timer.setInterval(TIMER_DEALUI_INTERVAL);
     timer.start();
     connect(&timer,&QTimer::timeout,[]{ SoupleManager::imp_updateUI(); });
@@ -642,6 +645,9 @@ bool SoupleManager::MyEventFilter::eventFilter(QObject *watched, QEvent *event)
 }
 
 void SoupleManager::saveCurrentDocument() {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+    throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no saveCurrentDocument()");
+#endif
     if(currentDocumentID == -1)
         return;
     /** 回收所有可见对象 */
@@ -675,6 +681,9 @@ void SoupleManager::saveCurrentDocument() {
 }
 
 bool SoupleManager::switchSoupleDocument(int switch_to_id) {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+    throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: no switchSoupleDocument(int switch_to_id)");
+#endif
     qDebug() << "switchSoupleDocument(" << switch_to_id;
     if(currentDocumentID == switch_to_id) return true;
     if(switch_to_id == -1) {
@@ -804,6 +813,10 @@ bool SoupleManager::request_render_page(int document_id,int page_index,
 
 HorLine_Base* SoupleManager::getDocumentFirstLine(int document_id)
 {
+#ifdef MULTITHREAD_SOUPLEMANAGER
+    IF(document_id != Current_Document or document_id == currentDocumentID)
+        throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: illegal getDocumentFirstLine args.");
+#endif
     IF(((document_id == Current_Document or document_id == currentDocumentID)
          and currentDocumentID == -1)
        or (not all_documents.contains(document_id)))

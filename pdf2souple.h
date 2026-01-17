@@ -54,6 +54,11 @@
 //#define BGRECT_ANALYSE_MIN
 #endif
 
+/// 传播cmake宏
+#ifdef MULTITHREAD_PDF2SOUPLE
+    #define MULTITHREAD_PDF2SOUPLE
+#endif
+
 //Pdf2Souple: pdf到souple转换类
 class Pdf2Souple: public QObject
 {
@@ -522,12 +527,34 @@ public:
         hline->topMargin = page.souple_page->getBottomLineY() - top_hline->getContentBottom() + 1e-3;
     }
 
+///表格提取项目专用方法
+#ifdef PROJECT_TABLE_EXTRACT
+    //加载PDF
+    //@return 是否成功解析pdf
+    static bool loadPDF_ofProTableExtract(const QString& filename);
+#endif
+
 public:
 
+#ifdef MULTITHREAD_PDF2SOUPLE
+    //为线程初始化pdf2souple
+    static inline void init_for_thread() {
+        Shared::pdf_page_number[std::this_thread::get_id()] = {};
+        Shared::current_page[std::this_thread::get_id()] = {};
+    }
+#endif
+
+#ifdef MULTITHREAD_PDF2SOUPLE
+    struct Shared {
+        static inline QHash<std::thread::id,int> pdf_page_number; //pdf页数
+        static inline QHash<std::thread::id,std::weak_ptr<PDFPage>> current_page;
+    };
+#else
     struct Shared {
         static inline int pdf_page_number; //pdf页数
         static inline std::weak_ptr<PDFPage> current_page;
     };
+#endif
 
     static inline QFuture<void> future_preload; // preload异步返回值
 

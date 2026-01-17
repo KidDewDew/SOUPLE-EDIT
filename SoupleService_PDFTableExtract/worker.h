@@ -11,6 +11,7 @@
 #include <iostream>
 #include <functional>
 #include <filesystem>
+#include "../pdf2souple.h"
 ///本文件包含了工作线程池，供main.cpp使用
 
 class Worker {
@@ -57,6 +58,8 @@ public:
     }
 private:
     static inline void worker_thread_loop() {
+        SoupleManager::init_for_thread(); //初始化SoupleManager
+        Pdf2Souple::init_for_thread();
         while(true) {
             std::unique_lock<std::mutex> lock(mutex_for_queue);
             // 等待任务队列有一个任务
@@ -69,14 +72,21 @@ private:
             lock.unlock();
             std::cout << "[info]Thread " << std::this_thread::get_id()
                       << " is working on Task " << task.task_id << std::endl;
-            std::this_thread::sleep_for(std::chrono::seconds(3));
-            task.succeeded = true;
+
+            //std::this_thread::sleep_for(std::chrono::seconds(3));
+
+            /* 执行任务 */
+            task.succeeded = doTask(task);
+
+            SoupleManager::clear_for_thread(); //清理SoupleManager
+
             if(task.succeeded) {
                 std::cout << "[info]Task " << task.task_id << " Finished." << std::endl;
             } else {
                 std::cout << "[error]Task " << task.task_id << " Failed: "
                           << task.failed_reason << std::endl;
             }
+
             task.generated_filepath = task.pdf_filepath;
             task_notifier(task); //通知
 
@@ -86,6 +96,17 @@ private:
             }
         }
     }
+
+    //执行表格提取的任务
+    static bool doTask(Task& task) noexcept {
+        if(! Pdf2Souple::loadPDF_ofProTableExtract(QString(task.pdf_filepath.c_str())) )
+        {
+            std::cout << "[error]Analyse PDF failed\n";
+            return false;
+        }
+        return true;
+    }
+
 private:
     static inline std::mutex mutex_for_queue;
     static inline std::condition_variable task_cv;
