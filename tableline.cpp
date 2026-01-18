@@ -4,11 +4,13 @@
 #include <QPainterPath>
 
 TableLine::TableLine() {
+#ifndef MULTITHREAD_SOUPLEMANAGER
     while(hash_hline.contains("T"+QString::number(s_tline_count))) {
         ++s_tline_count;
     }
     name = "T"+QString::number(s_tline_count);
     hash_hline[name] = this; //记录tline
+#endif
     width = 200;
     x = 50;
     z = Helper::Layer_Z::Top; //绝对置顶

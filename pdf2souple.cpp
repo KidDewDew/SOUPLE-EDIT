@@ -60,10 +60,14 @@ void Pdf2Souple::loadPdf(const QString& pdf_filename)
 #ifdef PROJECT_TABLE_EXTRACT
 bool Pdf2Souple::loadPDF_ofProTableExtract(const QString& filename)
 {
+    std::unique_lock<std::mutex> lock(mutex_for_fpdf);
     auto document = FPDF_LoadDocument(filename.toUtf8(),""); //加载document
     if(document == NULL)
         return false;
+
     int page_count = FPDF_GetPageCount(document); //获取pdf页数
+    lock.unlock();
+
     float total_height = 0; //累计页面高度和
     double leftLine_x, rightLine_x; //的x
     QString leftLine_name = "", rightLine_name ="";
@@ -76,6 +80,7 @@ bool Pdf2Souple::loadPDF_ofProTableExtract(const QString& filename)
     for(int page_index = 0; page_index < page_count; ++page_index)
     {
         //if(page_index  11) continue;
+        lock.lock();
         auto fpage = FPDF_LoadPage(document,page_index);
         auto text_page = FPDFText_LoadPage(fpage); //加载文本层
         float page_width = Helper::point2pixel(FPDF_GetPageWidth(fpage));
@@ -94,7 +99,9 @@ bool Pdf2Souple::loadPDF_ofProTableExtract(const QString& filename)
         page->page_index = page_index;
 
         imp_dealText(text_page,page->all_objs,page_width,page_height); //读取文本层
+        lock.unlock();
 
+        lock.lock();
         for(int i = 0; i < obj_num; ++i) { //读取并处理非文本类型的pdfobj
             auto page_obj = FPDFPage_GetObject(fpage,i);
             std::shared_ptr<PDFOBJ> obj = readPdfObj(page_obj,text_page,page_width,page_height);
@@ -102,13 +109,16 @@ bool Pdf2Souple::loadPDF_ofProTableExtract(const QString& filename)
             obj->render_id = i; //渲染顺序(越小越先绘制)
             page->all_objs.push_back(obj);
         }
+        lock.unlock();
 
         imp_analysePdfPage(page,old_page);
 
         total_height += page_height; //记录累计高度
 
+        lock.lock();
         FPDFText_ClosePage(text_page);
         FPDF_ClosePage(fpage);
+        lock.unlock();
 
         pdfpage_list.push_back(page);
         old_page = page;
@@ -122,8 +132,9 @@ bool Pdf2Souple::loadPDF_ofProTableExtract(const QString& filename)
 
     //合并FrameParts，创建装饰框[不需要]
     //mergeAndCreateFrames(pdfpage_list);
-
+    mutex_for_fpdf.lock();
     FPDF_CloseDocument(document);
+    mutex_for_fpdf.unlock();
 
     return true; //成功解析PDF到本线程的SoupleManager
 }
@@ -759,6 +770,7 @@ shared_ptr<Pdf2Souple::PDFOBJ> Pdf2Souple::readPdfObj(FPDF_PAGEOBJECT fpdf_pageo
         break; //文本由imp_dealText单独处理，这里忽略
     }
     case 3: { //Image
+#ifndef NO_CACHE_IMAGE //不读取、保存图片
         auto obj_image =  make_shared<PDFOBJ_IMAGE>();
         auto fpdf_image = FPDFImageObj_GetBitmap(fpdf_pageobj);
         int width = FPDFBitmap_GetWidth(fpdf_image);
@@ -785,6 +797,14 @@ shared_ptr<Pdf2Souple::PDFOBJ> Pdf2Souple::readPdfObj(FPDF_PAGEOBJECT fpdf_pageo
         FPDFBitmap_Destroy(fpdf_image); //! [2025/7/15 补充 因为fpdf_image内存由调用者来管理！]
 
         return obj_image;
+#else
+        auto obj_image =  make_shared<PDFOBJ_IMAGE>();
+        auto fpdf_image = FPDFImageObj_GetBitmap(fpdf_pageobj);
+        int width = FPDFBitmap_GetWidth(fpdf_image);
+        int height = FPDFBitmap_GetHeight(fpdf_image);
+        obj_image->rect = {left,top,right-left,bottom-top};
+        return obj_image;
+#endif
       }
     case FPDF_PAGEOBJ_PATH: {
         int path_segment_num = FPDFPath_CountSegments(fpdf_pageobj); //路径由多少个片段组成

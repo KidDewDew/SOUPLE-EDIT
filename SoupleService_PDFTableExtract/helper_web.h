@@ -2,6 +2,8 @@
 #define HELPER_WEB_H
 #include <string>
 #include <bit>
+#include <random>
+#include <chrono>
 
 namespace souple_web {
     inline std::string concatStrAndBinary(const std::string& str,char* binary_data,int binary_data_len) {
@@ -22,6 +24,21 @@ namespace souple_web {
             result.append(binary_data,binary_data_len);
         }
         return std::move(result);
+    }
+    //生成一个随机标识符
+    inline std::string generateUID() {
+        static std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                     "1234567890";
+        auto now = std::chrono::system_clock::now();
+        auto seed = now.time_since_epoch();
+        //该随机数产生器，线程安全。
+        std::mt19937 gen(seed.count());
+        std::uniform_int_distribution<int> dist(0, charset.length()-1);
+        auto sec = std::chrono::duration_cast<std::chrono::seconds>(seed);
+        std::string random_str = "";
+        for(unsigned short i = 0; i < 6; ++i)
+            random_str += charset[dist(gen)];
+        return std::format("{}{}",seed,random_str);
     }
 }
 

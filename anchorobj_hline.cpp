@@ -8,11 +8,13 @@
 
 AnchorObj_HLine::AnchorObj_HLine()
 {
+#ifndef MULTITHREAD_SOUPLEMANAGER
     while(hash_hline.contains("H"+QString::number(s_hline_count))) {
         ++s_hline_count;
     }
     name = "H"+QString::number(s_hline_count); //自动命名
     hash_hline[name] = this; //记录hline
+#endif
     width = 200;
     x = 50;
     z = Helper::Layer_Z::Top; //绝对置顶
@@ -860,6 +862,7 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
         break;
     }
     case Helper::LOGIC_LASTHLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(logic_lastHLine && logic_lastHLine->name == arg.toString()) return 0;
         auto it = hash_hline.find(arg.toString());
         if(it == hash_hline.end()) return Helper::Error_Invalid_Data;
@@ -872,9 +875,11 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
             //hline->as<AnchorObj_HLine*>()->anchor_nextHLine = this; //更新锚定上标线的锚定下标线
             SoupleManager::requestUpdateHLine(this); //请求更新布局
         }
+#endif
         break;
     }
     case Helper::ANCHOR_LASTHLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(hline && hline->be<AnchorObj_HLine*>()->name == arg.toString()) return 0;
         auto it = hash_hline.find(arg.toString());
         if(it == hash_hline.end()) return Helper::Error_Invalid_Data;
@@ -882,6 +887,7 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
         // hline = *it;
         // hline->as<AnchorObj_HLine*>()->anchor_nextHLine = this; //更新锚定上标线的锚定下标线
         SoupleManager::requestUpdateHLine(this); //请求更新布局
+#endif
         break;
     }
     case Helper::TOP_MARGIN_UP: {
@@ -921,12 +927,16 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
         break;
     }
     case Helper::NAME_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(hash_hline.contains(arg.toString()))
             return Helper::Error_Repeat; //重复
         hash_hline.remove(name);
         hash_hline[name = arg.toString()] = this;
+#endif
+        break;
     }
     case Helper::LEFTLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(leftLine && leftLine->name == arg.toString()) return 0;
         auto it = AnchorObj_VLine::hash_vline.find(arg.toString());
         if(it == AnchorObj_VLine::hash_vline.end()) {
@@ -936,9 +946,13 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
             SoupleManager::requestUpdateHLine(this);
             //updateDataToQmlItem(qmlItem); //更新数据
         }
+#endif
+        break;
     }
     case Helper::RIGHTLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(leftLine && leftLine->name == arg.toString()) return 0;
+
         auto it = AnchorObj_VLine::hash_vline.find(arg.toString());
         if(it == AnchorObj_VLine::hash_vline.end()) {
             return Helper::Error_Invalid_Data;
@@ -947,6 +961,8 @@ int AnchorObj_HLine::dealCommandFromQmlItem(int command,const QVariant& arg)
             SoupleManager::requestUpdateHLine(this);
             //updateDataToQmlItem(qmlItem); //更新数据
         }
+#endif
+        break;
     }
     default:
         return Helper::Error_Invalid_Command; //无效指令

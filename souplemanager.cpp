@@ -536,8 +536,10 @@ Obj* SoupleManager::createObj(const QString& type)
 }
 
 bool SoupleManager::checkHLineValid(const QString& hline_name) {
+#ifndef MULTITHREAD_SOUPLEMANAGER
     auto it = AnchorObj_HLine::hash_hline.find(hline_name);
     if(it == AnchorObj_HLine::hash_hline.end()) return Helper::Error_Invalid_Data;
+#endif
     return 0;
 }
 
@@ -545,13 +547,18 @@ bool SoupleManager::checkHLineValid(int doc_id,const QString& hline_name) {
     return getHLineIdByName(doc_id,hline_name) == -1;
 }
 
-qint32 SoupleManager::getHLineIdByName(const QString& name) {
+OBJID_t SoupleManager::getHLineIdByName(const QString& name) {
+#ifndef MULTITHREAD_SOUPLEMANAGER
     auto it = AnchorObj_HLine::hash_hline.find(name);
     if(it == AnchorObj_HLine::hash_hline.end()) return -1;
     return (*it)->id;
+#else
+    return 0;
+#endif
 }
 
-qint32 SoupleManager::getHLineIdByName(int doc_id,const QString& name) {
+OBJID_t SoupleManager::getHLineIdByName(int doc_id,const QString& name) {
+#ifndef MULTITHREAD_SOUPLEMANAGER
     if(doc_id == currentDocumentID || doc_id == Current_Document) {
         auto it = AnchorObj_HLine::hash_hline.find(name);
         if(it == AnchorObj_HLine::hash_hline.end()) return -1;
@@ -565,6 +572,9 @@ qint32 SoupleManager::getHLineIdByName(int doc_id,const QString& name) {
     auto it = h.find(name);
     if(it == h.end()) return -1;
     return (*it)->id;
+#else
+    return 0;
+#endif
 }
 
 void SoupleManager::setShowHelpLine(bool show) noexcept {
@@ -675,7 +685,11 @@ void SoupleManager::saveCurrentDocument() {
     doc->obj_s_all_id = Obj::s_all_id;
     doc->hline_s_hline_count = AnchorObj_HLine::s_hline_count;
     doc->tline_s_tline_count = TableLine::s_tline_count;
+    doc->vline_s_vline_count = AnchorObj_VLine::s_vline_count;
+#ifndef MULTITHREAD_SOUPLEMANAGER
     doc->horline_s_hash_hline = HorLine_Base::hash_hline;
+    doc->verline_s_hash_vline = AnchorObj_VLine::hash_vline;
+#endif
     doc->turnback_list = TurnbackManager::turnback_list;
     doc->redo_list = TurnbackManager::redo_list;
 }
@@ -720,8 +734,11 @@ bool SoupleManager::switchSoupleDocument(int switch_to_id) {
     Obj::s_all_id = doc->obj_s_all_id;
     AnchorObj_HLine::s_hline_count = doc->hline_s_hline_count;
     TableLine::s_tline_count = doc->tline_s_tline_count;
+#ifndef MULTITHREAD_SOUPLEMANAGER
     HorLine_Base::hash_hline = doc->horline_s_hash_hline;
-
+    AnchorObj_VLine::hash_vline = doc->verline_s_hash_vline;
+#endif
+    AnchorObj_VLine::s_vline_count = doc->vline_s_vline_count;
     currentDocumentID = switch_to_id;
 
     qDebug() << "switch success";
@@ -814,7 +831,7 @@ bool SoupleManager::request_render_page(int document_id,int page_index,
 HorLine_Base* SoupleManager::getDocumentFirstLine(int document_id)
 {
 #ifdef MULTITHREAD_SOUPLEMANAGER
-    IF(document_id != Current_Document or document_id == currentDocumentID)
+    IF(document_id != Current_Document and document_id != currentDocumentID)
         throw std::runtime_error("MULTITHREAD_SOUPLEMANAGER: illegal getDocumentFirstLine args.");
 #endif
     IF(((document_id == Current_Document or document_id == currentDocumentID)

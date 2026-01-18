@@ -48,6 +48,7 @@ int FreeObj::dealCommandFromQmlItem(int command,const QVariant& arg)
     case Helper::RIGHT_MARGIN_UP: right_margin = arg.toDouble(); break;
     case Helper::Z_UP: z = arg.toDouble(); break;
     case Helper::TOPLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(top_hline && top_hline->getName() == arg.toString()) return 0;
         auto it = AnchorObj_HLine::hash_hline.find(arg.toString());
         if(it == AnchorObj_HLine::hash_hline.end()) {
@@ -55,9 +56,11 @@ int FreeObj::dealCommandFromQmlItem(int command,const QVariant& arg)
         } else {
             top_hline = (*it)->as<AnchorObj_HLine*>();
         }
+#endif
         break;
     }
     case Helper::BOTTOMLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(bottom_hline && bottom_hline->getName() == arg.toString()) return 0;
         auto it = AnchorObj_HLine::hash_hline.find(arg.toString());
         if(it == AnchorObj_HLine::hash_hline.end()) {
@@ -65,9 +68,11 @@ int FreeObj::dealCommandFromQmlItem(int command,const QVariant& arg)
         } else {
             bottom_hline = (*it)->as<AnchorObj_HLine*>();
         }
+#endif
         break;
     }
     case Helper::LEFTLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(left_vline && left_vline->getName() == arg.toString()) return 0;
         auto it = AnchorObj_VLine::hash_vline.find(arg.toString());
         if(it == AnchorObj_VLine::hash_vline.end()) {
@@ -75,9 +80,11 @@ int FreeObj::dealCommandFromQmlItem(int command,const QVariant& arg)
         } else {
             left_vline = *it;
         }
+#endif
         break;
     }
     case Helper::RIGHTLINE_UP: {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(right_vline && right_vline->getName() == arg.toString()) return 0;
         auto it = AnchorObj_VLine::hash_vline.find(arg.toString());
         if(it == AnchorObj_VLine::hash_vline.end()) {
@@ -85,6 +92,7 @@ int FreeObj::dealCommandFromQmlItem(int command,const QVariant& arg)
         } else {
             right_vline = *it;
         }
+#endif
         break;
     }
     }

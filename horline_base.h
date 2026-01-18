@@ -418,7 +418,9 @@ protected:
 private:
     static inline constexpr char __UINAME__[] = "BLine";
 public:
+#ifndef MULTITHREAD_SOUPLEMANAGER
     static inline QHash<QString,HorLine_Base*> hash_hline;
+#endif
     const Page *page = 0; //记录所属页面，当然派生类也可以忽略;
     float contentTop = 0.0, contentBottom = 0.0; //所有位于该hline上的obj相对于hline.y的top_y和bottom_y
     float left_tab = 0.0;

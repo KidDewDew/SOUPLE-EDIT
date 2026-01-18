@@ -28,6 +28,13 @@
 #include "TT_Str.h"
 #include "anchorobj_rich.h"
 
+#ifdef MULTITHREAD_PDF2SOUPLE
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <atomic>
+#endif
+
 #ifndef MACRO_PDF2SOUPLE
 #define MACRO_PDF2SOUPLE
 #define Y_LINEOBJ_MAX_MARGIN 2
@@ -549,6 +556,14 @@ public:
         static inline QHash<std::thread::id,int> pdf_page_number; //pdf页数
         static inline QHash<std::thread::id,std::weak_ptr<PDFPage>> current_page;
     };
+    /**
+     * @brief mutex_for_fpdf
+     * 实际情况是，pdfium库是非线程安全的，即使每个线程只操作自己的pdf对象。
+     * 因此，每个线程同时最多有一个使用fpdf库函数。
+     * 幸运的是，在pdf解析中,pdfium库函数并不是主要的耗时操作。
+     * 也就是说，程序因为等待锁而浪费的时间占比很小(<10%)
+     */
+    static inline std::mutex mutex_for_fpdf;
 #else
     struct Shared {
         static inline int pdf_page_number; //pdf页数

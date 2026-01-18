@@ -36,6 +36,10 @@ qt_add_executable(appSoupleEdit
     main.rc
 )
 
+add_definitions(
+-DOBJID_t=quint32
+)
+
 #include_directories(C:/Users/guest0/Downloads/poppler-23.07.0/qt6/src)
 
 file(GLOB DLLS ${CMAKE_SOURCE_DIR}/auto_copy_dll/*.dll)
@@ -253,6 +257,8 @@ qt_add_qml_module(appSoupleEdit
         QML_FILES ComboBox_forFontSize.qml
         SOURCES uniformkb.h uniformkb.cpp
         RESOURCES readme.txt
+        SOURCES table_extract_tool.h
+        SOURCES table_extract_tool.cpp
         #RESOURCES vcpkg.json
 )
 
@@ -276,7 +282,7 @@ if(WIN32)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/pdfium-win-x64/lib/pdfium.dll.lib)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/dwmapi.lib)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/xlsx/libxlsxwriter.a)
-    target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/zlib/zlib.lib)
+    #target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/zlib/zlib.lib)
     #target_link_libraries(appSoupleEdit PRIVATE E:/freetype/freetype2410.lib)
     #target_link_libraries(appSoupleEdit PRIVATE "C:/Program Files/Java/jdk1.8.0_331/lib/jvm.lib")
 endif()

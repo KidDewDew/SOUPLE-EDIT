@@ -41,7 +41,6 @@
 #include <dwmapi.h>
 #endif
 
-#include "xlsxwriter.h"
 
 QObject* qmlRoot;
 QQuickWindow* qmlWindow;
@@ -435,7 +434,7 @@ int main(int argc, char *argv[])
 
     /* Create a new workbook and add a worksheet. */
         // lxw_workbook  *workbook  = workbook_new("demo.xlsx");
-        // lxw_worksheet *worksheet = workbook_add_worksheet(workbook, NULL);
+        //lxw_worksheet *worksheet = workbook_add_worksheet(workbook, NULL);
 
         // /* Add a format. */
         // lxw_format *format = workbook_add_format(workbook);

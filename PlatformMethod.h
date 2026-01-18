@@ -83,8 +83,9 @@ public:
 #else
     //QString fileName = QFileDialog::getOpenFileName(nullptr,"选择文件","/home","所有文件(*.*)"); \
     //if(! fileName.isEmpty()) callback_func(1, fileName);
-        QMetaObject::invokeMethod(qmlRoot, "open_fileDialog", Q_ARG(QVariant, u"选择一张图片"_qs),
-                                  Q_ARG(QVariant, u"所有文件(*.*)"_qs),
+        QMetaObject::invokeMethod(qmlRoot, "open_fileDialog",
+                                  Q_ARG(QVariant, QStringLiteral("选择一张图片")),
+                                  Q_ARG(QVariant, QStringLiteral("所有文件(*.*)")),
                                   callback_func.toVariant());
 #endif
 

@@ -11,8 +11,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_UNITY_BUILD OFF)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
+if (MINGW)
+    add_compile_options(-Wa,-mbig-obj)
+endif()
+
+find_package(Qt6 6.10 REQUIRED COMPONENTS Core Quick)
 
 file(GLOB MAIN_SRC
   "${CMAKE_SOURCE_DIR}/*.h"
@@ -49,18 +52,35 @@ add_executable(SoupleService_PDFTableExtract
   ../tableline.cpp ../souple_pdfsaver.cpp
   ../blockinner_horline.cpp ../quick_callback.cpp
   ../anchorobj_spring.cpp  ../free_image.cpp ../anchorobj_rich.cpp
+  ../anchorobj_hline.h
+  ../wordline.h
+  ../anchorobj_vline.h
+  ../horline_base.h
+  ../tableline.h
+  ../table_extract_tool.cpp
   etc.cpp
 )
 
+# # 由于boost库使用WinSock.h，必须把main.cpp单独编译
+# set_source_files_properties(
+#     main.cpp
+#     PROPERTIES
+#     SKIP_UNITY_BUILD TRUE
+# )
 
 add_definitions(
 -DPROJECT_TABLE_EXTRACT  #启用PROJECT宏
 -DULONGLONG_OBJID  #启用unsigned long long类型的对象id
 -DMULTITHREAD_SOUPLEMANAGER # 启用多线程分离模式的SoupleManager
 -DMULTITHREAD_PDF2SOUPLE #启用线程安全的pdf2souple
+-DOBJID_t=quint64
+-DNO_CACHE_IMAGE   #不缓存图片
 )
 
-target_link_libraries(SoupleService_PDFTableExtract PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+target_link_libraries(SoupleService_PDFTableExtract
+  PRIVATE
+  Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::Quick)
 
 include(GNUInstallDirs)
 install(TARGETS SoupleService_PDFTableExtract
@@ -87,10 +107,12 @@ if(WIN32)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/java/include)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/zlib/include)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/xlsx/include)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib/minizip/include)
     target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/pdfium-win-x64/lib/pdfium.dll.lib)
     target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/dwmapi.lib)
     target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/xlsx/libxlsxwriter.a)
-    target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/zlib/zlib.lib)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/zlib/libzlib.dll.a)
+    target_link_libraries(SoupleService_PDFTableExtract PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib/minizip/libminizip.dll.a)
     #target_link_libraries(appSoupleEdit PRIVATE E:/freetype/freetype2410.lib)
     #target_link_libraries(appSoupleEdit PRIVATE "C:/Program Files/Java/jdk1.8.0_331/lib/jvm.lib")
 endif()

@@ -87,6 +87,10 @@ public:
         //无需注册...
     }
 
+    HorLine_Base *getFirstLine() noexcept {
+        return firstLine;
+    }
+
 protected:
     HorLine_Base *findLastLine() noexcept {
         if(! firstLine) return 0;

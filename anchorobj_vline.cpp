@@ -4,11 +4,13 @@
 #include "souplemanager.h"
 
 AnchorObj_VLine::AnchorObj_VLine():isWordLine(false) {
+#ifndef MULTITHREAD_SOUPLEMANAGER
     while(hash_vline.contains("V"+QString::number(s_vline_count))) {
         ++s_vline_count;
     }
     name = "V"+QString::number(s_vline_count); //自动命名
     hash_vline[name] = this; //记录hline
+#endif
     height = 100;
     z = Helper::Layer_Z::Top; //绝对置顶
     next_column = {0,0};
@@ -39,6 +41,7 @@ int AnchorObj_VLine::dealCommandFromQmlItem(int command,const QVariant& arg)  //
         x = arg.toFloat() + qmlItem->width()/2;
         qmlItem->setProperty("x",x - qmlItem->width()/2);
     } else if(command == Helper::NAME_UP) {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         if(name == arg) return 0;
         auto it = hash_vline.find(arg.toString());
         if(it == hash_vline.end()) {
@@ -47,6 +50,7 @@ int AnchorObj_VLine::dealCommandFromQmlItem(int command,const QVariant& arg)  //
         } else {
             return Helper::Error_Repeat;
         }
+#endif
     }
     return 0;
 }

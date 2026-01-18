@@ -53,6 +53,9 @@ public:
     virtual void dealLayout() override;
     virtual void updateDataToQmlItem(QQuickItem*) override;
     virtual int dealCommandFromQmlItem(int command,const QVariant& arg) override;
+    TableInfo* getTableInfo() noexcept {
+        return table_info;
+    }
     // virtual HorLine_Base *getNextLine() const noexcept override {
     //     return nextLine;
     // }
@@ -65,7 +68,11 @@ public:
     // virtual void setPrevLine(HorLine_Base* l) noexcept override {
     //     hline = l;
     // }
-    virtual ~TableLine() { hash_hline.remove(getName()); }
+    virtual ~TableLine() {
+#ifndef MULTITHREAD_SOUPLEMANAGER
+        hash_hline.remove(getName());
+#endif
+    }
     virtual int dealSignal(int signal,const std::variant<bool,int,float,double,QString>& arg) override {
         return 0;
     }

@@ -99,8 +99,9 @@ protected:
     ColumnsSeparate * bottom_columns_separate = 0;
     PageColumn        next_column;
     /** 任意分栏 实验内容 END */
-
+#ifndef MULTITHREAD_SOUPLEMANAGER
     static inline QHash<QString,AnchorObj_VLine*> hash_vline;
+#endif
     static inline int s_vline_count = 0;
 
 private:

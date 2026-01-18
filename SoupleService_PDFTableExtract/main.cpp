@@ -1,5 +1,6 @@
 #include <boost/beast/websocket.hpp>
 #include <boost/beast/core.hpp>
+#include <boost/asio/strand.hpp>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <json.h>
@@ -35,52 +36,49 @@ inline net::io_context& ioc() {
     return _ioc;
 }
 
+inline auto& get_strand() {
+    static auto strand = net::make_strand(ioc());
+    return strand;
+}
+
 inline websocket::stream<tcp::socket>& ws() {
-    static websocket::stream<tcp::socket> _ws(ioc());
+    static websocket::stream<tcp::socket> _ws(get_strand());
     return _ws;
 }
 
 std::mutex mutex_ws; //对websocket的互斥锁
 
-//生成一个随机标识符
-std::string generateUID() {
-    static std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                                 "1234567890";
-    auto now = std::chrono::system_clock::now();
-    auto seed = now.time_since_epoch();
-    //该随机数产生器，线程安全。
-    std::mt19937 gen(seed.count());
-    std::uniform_int_distribution<int> dist(0, charset.length()-1);
-    auto sec = std::chrono::duration_cast<std::chrono::seconds>(seed);
-    std::string random_str = "";
-    for(unsigned short i = 0; i < 6; ++i)
-        random_str += charset[dist(gen)];
-    return std::format("{}{}",seed,random_str);
-}
-
 void connect_to_server() {
     // 建立连接
-    tcp::resolver resolver(ioc());
-    auto const results = resolver.resolve(HOST, PORT);
-    net::connect(ws().next_layer(), results);
+    net::post(get_strand(), [&]() {
+        try{
+            tcp::resolver resolver(ioc());
+            auto const results = resolver.resolve(HOST, PORT);
+            net::connect(ws().next_layer(), results);
 
-    // WebSocket握手
-    std::string path = "/SouplePDF_Web/service-websocket/" + SERVICE_NAME + "/" + PASSWORD;
-    ws().handshake(HOST + ":" + PORT, path);
-    std::cout << "[info]Connected to WebSocket server" << std::endl;
+            // WebSocket握手
+            std::string path = "/SouplePDF_Web/service-websocket/" + SERVICE_NAME + "/" + PASSWORD;
+            ws().handshake(HOST + ":" + PORT, path);
+            std::cout << "[info]Connected to WebSocket server" << std::endl;
 
-    if(! ws().is_open()) {
-        throw std::runtime_error("WebSocket is_open(): false");
-    }
+            if(! ws().is_open()) {
+                throw std::runtime_error("WebSocket is_open(): false");
+            }
 
-    // 接收初始消息
-    beast::flat_buffer buffer;
-    ws().read(buffer);
+            // 接收初始消息
+            beast::flat_buffer buffer;
+            ws().read(buffer);
 
-    Json::Value jv;
-    Json::Reader().parse(beast::buffers_to_string(buffer.data()),jv);
-    this_service_id = jv["service_id"].asString();
-    std::cout << "[info]service-id:" << this_service_id << std::endl;
+            Json::Value jv;
+            Json::Reader().parse(beast::buffers_to_string(buffer.data()),jv);
+            this_service_id = jv["service_id"].asString();
+            std::cout << "[info]service-id:" << this_service_id << std::endl;
+        } catch(const std::exception& e) {
+            std::cerr << "[Exception]" << e.what() << std::endl;
+            std::cout << "[info]sleep for 2secs.\n";
+            std::this_thread::sleep_for(std::chrono::seconds(2));
+        }
+    });
 }
 
 void process_read_buffer(const beast::flat_buffer& buffer) {
@@ -114,7 +112,8 @@ void process_read_buffer(const beast::flat_buffer& buffer) {
             return;
         }
         //提取PDF文件
-        std::string filename = std::format("pdf_wait_extract_table/{}.pdf",generateUID());
+        std::string filename = std::format("pdf_wait_extract_table/{}.pdf",
+                                    souple_web::generateUID());
         std::ofstream file(filename,std::ios_base::binary);
         file.write(data+4+json_length,data_str.length() - 4 - json_length);
         file.close();
@@ -131,33 +130,46 @@ void process_read_buffer(const beast::flat_buffer& buffer) {
 void read_loop() {
     auto buffer = std::make_shared<beast::flat_buffer>();
     // 接收消息
-    ws().async_read(*buffer,[buffer](beast::error_code ec, std::size_t bytes){
-        if(!ec) {
-            try {
-                process_read_buffer(*buffer);
-            }catch(const std::exception& e) {
-                std::cout << "[exception]" << e.what() << std::endl;
-            }
-            read_loop();
-        } else {
-            std::cout << "[error]Read failed: " << ec.message() << std::endl;
-            if(ws().is_open() == false) {
-                std::cout << "[info]Reconnecting...\n";
-                try{
-                    connect_to_server();
-                }catch(std::exception& e) {
-                    std::cout << "[exception]" << e.what() << std::endl;
+    try{
+        ws().async_read(*buffer,[buffer](beast::error_code ec, std::size_t bytes){
+            if(!ec) {
+                try {
+                    process_read_buffer(*buffer);
+                }catch(const std::exception& e) {
+                    std::cout << "[Exception]" << e.what() << std::endl;
                 }
+                read_loop();
+            } else {
+                std::cout << "[error]Read failed: " << ec.message() << std::endl;
+                if(ws().is_open() == false) {
+                    std::cout << "[info]Reconnecting...\n";
+                    try{
+                        connect_to_server();
+                    }catch(std::exception& e) {
+                        std::cout << "[Exception]" << e.what() << std::endl;
+                    }
+                }
+                read_loop();
             }
-            read_loop();
-        }
-    });
+        });
+    } catch(const std::exception& e) {
+        std::cout << "[Exception]" << e.what() << std::endl;
+    }
 }
 
-void send_message(std::string data) {
-    auto data_ptr = std::make_shared<std::string>(std::move(data));
-    //注意：boost库的net::buffer持有的是引用，一定要注意data的生命周期。
-    net::post(ioc(),[data_ptr]{
+
+std::queue<std::shared_ptr<std::string>> queue_write_data;
+bool has_async_write = false; //是否有正在执行的async_write
+// 写循环
+void write_loop() {
+    if(has_async_write == true) return; //已经有async_write
+    if(queue_write_data.empty()) { //写队列为空
+        return;
+    }
+    auto data_ptr = queue_write_data.front();
+    queue_write_data.pop();
+    has_async_write = true;
+    try{
         ws().async_write(net::buffer(*data_ptr),
         [data_ptr](beast::error_code ec, std::size_t bytes){
             if(ec) {
@@ -165,7 +177,19 @@ void send_message(std::string data) {
             } else {
                 std::cout << "[info]Sent " << bytes << std::endl;
             }
+            has_async_write = false;
+            write_loop(); //触发下一次写
         });
+    } catch(const std::exception& e) {
+        std::cout << "[Exception]" << e.what() << std::endl;
+    }
+}
+
+void send_message(std::string data) {
+    auto data_ptr = std::make_shared<std::string>(std::move(data));
+    net::post(get_strand(),[data_ptr]{
+        queue_write_data.push(data_ptr);
+        write_loop();
     });
 }
 
@@ -200,8 +224,13 @@ void task_notify(const Worker::Task& task) {
     }
 }
 
-int main()
+int main(int argc,char** argv)
 {
+    //禁用qDebug、qInfo输出
+    qputenv("QT_LOGGING_RULES", "*.debug=false;*.info=false");
+    //初始化一个gui-app对象，以便Qt库正常工作
+    QGuiApplication app(argc,argv);
+
     std::cout << "--- Welcome to SoupleService-PDFTableExtract. ---\n";
     if(!std::filesystem::exists("./pdf_wait_extract_table")) {
         if(!std::filesystem::create_directories("./pdf_wait_extract_table")) {
@@ -209,28 +238,34 @@ int main()
             return 1;
         }
     }
-    try {
 
-        //二进制mode
-        ws().binary(true); //初始化网络和io
-        ws().read_message_max(50 * 1024 * 1024); //最多50MB读取缓冲区
-        //第一次连接如果失败，会报错是程序退出。
-        connect_to_server();
-
-        Worker::init(&task_notify);
-
-        read_loop();
-
-        ioc().run();
-
-        // 关闭连接 [实际不可达]
-        ws().close(websocket::close_code::normal);
-        std::cout << "Connection closed" << std::endl;
-
-    } catch (const std::exception& e) {
-        std::cerr << "[Exception]" << e.what() << std::endl;
-        return 1;
+    if(!std::filesystem::exists("./TEMP_generated")) {
+        if(!std::filesystem::create_directories("./TEMP_generated")) {
+            std::cout << "Create Dir 'TEMP_generated' Failed.\n";
+            return 1;
+        }
     }
+
+    Helper::init(); //初始化helper
+
+    //二进制mode
+    ws().binary(true); //初始化网络和io
+    ws().read_message_max(50 * 1024 * 1024); //最多50MB读取缓冲区
+
+    connect_to_server();
+
+    Worker::init(&task_notify);
+
+    net::post(get_strand(),[]{
+        read_loop();
+        write_loop();
+    });
+
+    ioc().run();
+
+    // 关闭连接 [实际不可达]
+    ws().close(websocket::close_code::normal);
+    std::cout << "Connection closed" << std::endl;
 
     return 0;
 }

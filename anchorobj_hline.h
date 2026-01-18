@@ -188,7 +188,11 @@ public:
     // 要求立刻计算水平放缩值（当保存pdf时，必须对每一个HLine调用该函数。）
     void forceCalculateHorizontalScale() noexcept;
 
-    ~AnchorObj_HLine() { hash_hline.remove(name); }
+    ~AnchorObj_HLine() {
+#ifndef MULTITHREAD_SOUPLEMANAGER
+        hash_hline.remove(name);
+#endif
+    }
 protected:
     void check_after_dealSpan() {
 #if Ex_AnyColumn == true

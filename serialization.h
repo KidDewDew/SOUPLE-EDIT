@@ -221,9 +221,9 @@ namespace souple {
             Serial_Output_XML& operator /(KV<T> kv) {
                 QString s = escapeXml(to_string(kv.val));
                 if constexpr(br) {
-                    str->append(u"  <%1>%2</%1>\n"_qs.arg(kv.K).arg(s));
+                    str->append(QStringLiteral("  <%1>%2</%1>\n").arg(kv.K).arg(s));
                 } else {
-                    str->append(u"<%1>%2</%1>"_qs.arg(kv.K).arg(s));
+                    str->append(QStringLiteral("<%1>%2</%1>").arg(kv.K).arg(s));
                 }
                 return *this;
             }
@@ -231,9 +231,9 @@ namespace souple {
             Serial_Output_XML& operator /(KVC<T> kv) {
                 QString s = escapeXml(to_string(kv.val));
                 if constexpr(br) {
-                    str->append(u"  <%1>%2</%1>\n"_qs.arg(kv.K).arg(s));
+                    str->append(QStringLiteral("  <%1>%2</%1>\n").arg(kv.K).arg(s));
                 } else {
-                    str->append(u"<%1>%2</%1>"_qs.arg(kv.K).arg(s));
+                    str->append(QStringLiteral("<%1>%2</%1>").arg(kv.K).arg(s));
                 }
                 return *this;
             }
@@ -241,9 +241,9 @@ namespace souple {
             Serial_Output_XML& operator /(const T& v) {
                 QString s = escapeXml(to_string(v));
                 if constexpr(br) {
-                    str->append(u"  <unknown>%1</unknown>\n"_qs.arg(s));
+                    str->append(QStringLiteral("  <unknown>%1</unknown>\n").arg(s));
                 } else {
-                    str->append(u"<unknown>%1</unknown>"_qs.arg(s));
+                    str->append(QStringLiteral("<unknown>%1</unknown>").arg(s));
                 }
                 return *this;
             }
@@ -336,14 +336,14 @@ namespace souple {
                 throw LLException(QString("souple::serialization: 类型%1未注册")
                                       .arg(typeid(*obj).name()));
             }
-            if constexpr(br) xml->append(u"<%1>\n"_qs.arg(it_si->class_name));
-            else xml->append(u"<%1>"_qs.arg(it_si->class_name));
+            if constexpr(br) xml->append(QStringLiteral("<%1>\n").arg(it_si->class_name));
+            else xml->append(QStringLiteral("<%1>").arg(it_si->class_name));
             //qDebug() << "serialize:" << typeid(*obj).name() << si.id;
             if constexpr(br)
                 it_si->serialize_xml_br(obj,serial_output);
             else it_si->serialize_xml_nobr(obj,serial_output);
-            if constexpr(br) xml->append(u"</%1>\n"_qs.arg(it_si->class_name));
-            else xml->append(u"</%1>"_qs.arg(it_si->class_name));
+            if constexpr(br) xml->append(QStringLiteral("</%1>\n").arg(it_si->class_name));
+            else xml->append(QStringLiteral("</%1>").arg(it_si->class_name));
         }
     };
 }

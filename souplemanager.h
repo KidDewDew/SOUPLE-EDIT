@@ -83,6 +83,7 @@ class SoupleManager : public QObject
         //[2025/11/29 add] 分栏分隔线
         //std::list<ColumnsSeparate> columns_separates;
     };
+public:
     enum {
         Current_Document=-2
     };
@@ -341,12 +342,16 @@ public:
     //static inline QString
 
     Q_INVOKABLE static inline bool hasCreatedFirstHLine() {
+#ifndef MULTITHREAD_SOUPLEMANAGER
         return AnchorObj_HLine::hash_hline.size() > 0;
+#else
+        return false;
+#endif
     }
 
-    Q_INVOKABLE static qint32 getHLineIdByName(const QString& name);
+    Q_INVOKABLE static OBJID_t getHLineIdByName(const QString& name);
 
-    Q_INVOKABLE static qint32 getHLineIdByName(int doc_id,const QString& name);
+    Q_INVOKABLE static OBJID_t getHLineIdByName(int doc_id,const QString& name);
 
     Q_INVOKABLE static inline void requestRemoveObj(qint32 id) {
         auto it = hash_id_obj.find(id);
@@ -732,13 +737,31 @@ public:
     Q_INVOKABLE static void changeSelectedObj(int id);
 
     static std::list<Obj*>& getDocumentObjs(int s) {
-        if(s == currentDocumentID) return all_objs;
+#ifndef MULTITHREAD_SOUPLEMANAGER
+        if(s == currentDocumentID || s == Current_Document) {
+            return all_objs;
+        }
         return all_documents[s]->all_objs;
+#else
+        if(s != Current_Document && s != getCurrentDocumentID())
+            throw std::runtime_error("getDocumentObjs error.");
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        return tb->all_objs;
+#endif
     }
 
     static _PAGE_INF& getDocumentPages(int s) {
-        if(s == currentDocumentID) return page_inf;
+#ifndef MULTITHREAD_SOUPLEMANAGER
+        if(s == currentDocumentID || s == Current_Document) {
+            return page_inf;
+        }
         return all_documents[s]->page_inf;
+#else
+        if(s != Current_Document && s != getCurrentDocumentID())
+            throw std::runtime_error("getDocumentObjs error.");
+        ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
+        return tb->page_inf;
+#endif
     }
 
     static void saveCurrentDocument();
@@ -776,6 +799,7 @@ public:
         for(auto obj : tb->all_objs) {
             delete obj;
         }
+        tb->all_objs.clear();
     }
 #endif
 
@@ -820,8 +844,9 @@ private:
     struct Document {
         Safe_Obj_Pointer<Obj_Start_Sign> start_sign;
         uint32_t obj_s_all_id;
-        int hline_s_hline_count;
+        int hline_s_hline_count,vline_s_vline_count;
         QHash<QString,HorLine_Base*> horline_s_hash_hline;
+        QHash<QString,HorLine_Base*> verline_s_hash_vline;
         int tline_s_tline_count;
         float edit_width,edit_height;
         float view_top, view_bottom;
