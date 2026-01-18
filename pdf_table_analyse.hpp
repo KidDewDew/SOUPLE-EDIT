@@ -49,6 +49,8 @@ void Pdf2Souple::impl_analyseTable(
         float cy() const noexcept { return (y1+y2)/2; }
         float width() const noexcept { return x2 - x1; }
         float height() const noexcept { return y2 - y1; }
+        bool ish() const noexcept { return width() > height(); }
+        bool isv() const noexcept { return !ish(); }
         //检查两个线条是否有相交
         bool intersect(Line_Obj_Record const& l2) const noexcept {
             auto offset = Helper::cm2pixel(LINE_SAME_OFFSET_cm);
@@ -77,6 +79,16 @@ void Pdf2Souple::impl_analyseTable(
     };
 
     QList<Line_Obj_Record> line_objs;
+
+    std::vector<Line_Obj_Record*> line_dynamic_allocate;
+
+    SCOPE_EXIT_DO( //超出局部作用域，自动执行：
+        for(auto r : line_dynamic_allocate) {
+            delete r;
+        }
+    )
+
+    Line_Obj_Record line_extra_1,line_extra_2;
 
     float line_same_offset = Helper::cm2pixel(LINE_SAME_OFFSET_cm);
 
@@ -110,12 +122,16 @@ void Pdf2Souple::impl_analyseTable(
         }
     }
 
+    ///以上找出了本page所有线条路径，记录于line_objs
+
     qDebug() << "lineObjs.count = " << line_objs.count();
 
+    // 对线条路径按照y坐标升序排序。
     ranges::sort(line_objs,[](auto& l1,auto& l2){
         return l1.y1 < l2.y1;
     });
 
+    /// 对每一条线条路径，判断它是否是表格的组成部分。并解析表格。
     for(int i = 0; i < line_objs.size(); ++i) {
         Line_Obj_Record& line = line_objs[i];
         if(line.hasBelong) continue;
@@ -126,8 +142,10 @@ void Pdf2Souple::impl_analyseTable(
         else h_borders.push_back(&line);
         line.hasBelong = true;
 
+        // 寻找与该线条邻接的所有线条
         while(true) {
             bool hasNew = false;
+            //这里似乎可以对line_objs只遍历[i]之后的，当时为什么这么写呢？
             for(auto& line2 : line_objs) {
                 if(line2.hasBelong) continue;
 
@@ -154,6 +172,136 @@ void Pdf2Souple::impl_analyseTable(
         //qDebug() << "找到边框：";
         //for(auto r : borders) r->path_obj->print();
         /** 判断边框是否围成矩形 */
+#ifdef Debug_TableAnalyse
+        qDebug() << "邻接hborder:" << h_borders.size();
+        qDebug() << "邻接vborder:" << v_borders.size();
+#endif
+
+        bool pure_hborder = false,hborder_with_twoside = false;
+
+        if(h_borders.size() == 1 && v_borders.empty())
+            pure_hborder = true; //纯横线表格
+        else if(v_borders.size() == 2 && h_borders.size() >= 2) {
+            std::ranges::sort(v_borders,[](auto l1,auto l2){ return l1->x1 < l2->x1; });
+            if(abs(v_borders.front()->x1 - h_borders.front()->x1) < line_same_offset*2
+             &&abs(v_borders.back()->x2 - h_borders.front()->x2) < line_same_offset*2) {
+                hborder_with_twoside = true; //横线加两边垂直线表格
+            }
+        }
+
+        //请确保之前已经进行过路径预处理，否则这里 ==1可能是错误的。
+        if(pure_hborder || hborder_with_twoside) {
+            //孤立的横线，怀疑是否是横线条表格。
+            //由于下面的代码经过测试是确保正确的，因此这里选择【补充缺失线条】，
+            //并通过额外的属性来记录线条显隐。这也是之后对各种拓展表格解析的设计方法。
+            //这样做，只需要补充线框即可，避免了对各种单元格解析的过程。
+            /** 横线条表格：一组等宽横线条组成，且一对横线条间没有任何垂直线条连接。
+             *  以此确定该表格界限。
+             *  【注意】对于这种表格，默认不考虑单元格合并。因为这种表格单元格界限不明确，而且实际上这种表格很少
+             *  出现单元格合并的情况。能区分的是垂直单元格合并，暂时不考虑，以后可能补充。
+            **/
+
+            std::ranges::sort(h_borders,[](auto l1,auto l2){ return l1->y1 < l2->y1; });
+            std::ranges::sort(v_borders,[](auto l1,auto l2){ return l1->x1 < l2->x1; });
+
+            Line_Obj_Record& old_line = line;
+            Line_Obj_Record& end_line = line;
+            if(pure_hborder) { //纯横线表格
+                for(int j = i+1; j < line_objs.size(); ++j) {
+                    Line_Obj_Record& new_line = line_objs[j];
+                    if(new_line.ish()) {
+                        if(new_line.intersect(old_line)) {
+                            //这表明old_line已经不属于这个表格了
+                            //因为它和垂直线条有邻接
+                            old_line.hasBelong = false; //注意回退hasBelong
+                            h_borders.pop_back();
+                            break;//表格到此为止。
+                        }
+                        break;//嵌套表格怎么办？[todo]
+                    }
+                    if(abs(new_line.width()-old_line.width()) > line_same_offset) {
+                        //不等宽，认为表格以old_line为结束
+                        //嵌套表格怎么办？[todo]
+                        break;
+                    }
+                    new_line.hasBelong = true;
+                    h_borders.push_back(&new_line); //记录new_line为h_border
+                    old_line = new_line;
+                }
+                end_line = old_line;
+            } else {  //横线+两边竖线表格，那么现在就已经知道组成线条了。
+                end_line = *h_borders.back(); //
+            }
+
+
+            /// 到此，h_borders:存储了正确的横线条，
+            /// 而v_borders最多存储了左右两边的竖线条
+
+            //归还左右两边的竖线条，这样一会就不用去重了
+            // for(auto vb : v_borders) {
+            //     vb->hasBelong = false;
+            // }
+            // v_borders.clear();
+
+            //统计该表格的内容
+            std::vector<PDFOBJ*> objs_inTable;
+            float table_left = h_borders.front()->x1;   //表格left
+            float table_top = h_borders.front()->cy(); //表格top
+            float width = h_borders.front()->width();  //表格width
+            float height = end_line.cy() - table_top;  //表格height
+            for(auto& obj : objs) {
+                if(! obj) continue;
+                if(obj->rect.left() > table_left && obj->rect.right() < table_left + width
+                    && obj->rect.top() > table_top && obj->rect.bottom() < table_top + height) {
+                    objs_inTable.push_back(obj.get());
+                }
+            }
+            //分栏算法切一下，以确定全部竖线条，存放到v_borders里
+            std::ranges::sort(objs_inTable,[](auto a,auto b){
+                return a->rect.left() < b->rect.left();
+            });
+            float rightest = table_left;
+            for(auto obj : objs_inTable) {
+                if(obj->rect.right() > rightest+line_same_offset) {
+                    //从上一个rightest 到 这个rightest中间得添加一条v_border
+                    float mid_x = (obj->rect.right() + rightest) * 0.5f;
+                    auto vline = new Line_Obj_Record;
+                    line_dynamic_allocate.push_back(vline);
+                    vline->hasBelong = true;
+                    vline->obj_index -1;
+                    vline->path_obj = {};
+                    vline->x1 = mid_x-0.25;
+                    vline->x2 = mid_x+0.25;
+                    vline->y1 = table_top;
+                    vline->y2 = table_top + height;
+                    v_borders.push_back(vline);
+                    rightest = obj->rect.right();
+                }
+            }
+            if(pure_hborder) {
+                //对于纯横线表格，还要补充一下左右v_border
+                line_extra_1.hasBelong = true;
+                line_extra_1.obj_index = -1; //无obj索引
+                line_extra_1.path_obj = {};
+                line_extra_1.x1 = table_left;
+                line_extra_1.x2 = line.x1 + 0.5;
+                line_extra_1.y1 = table_top;
+                line_extra_1.y2 = table_top + height;
+                // [!]这可能导致内存改变，导致所有引用失效 line_objs.push_back(line);
+                //那如何确保line的生命周期可以维持到函数返回呢？可以使用之前定义的line_extra
+                v_borders.push_back(&line_extra_1);
+
+                line_extra_2.hasBelong = true;
+                line_extra_2.obj_index = -1; //无obj索引
+                line_extra_2.path_obj = {};
+                line_extra_2.x1 = table_left+width-0.5;
+                line_extra_2.x2 = line.x1 + 0.5;
+                line_extra_2.y1 = table_top;
+                line_extra_2.y2 = table_top + height;
+                v_borders.push_back(&line_extra_2);
+            }
+        }
+
 
         if(h_borders.size() < 2 || v_borders.size() < 2) continue; //不是表格
 

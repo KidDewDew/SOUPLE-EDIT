@@ -10,7 +10,7 @@ project(SoupleEdit VERSION 0.1 LANGUAGES CXX)
 
 # BEGIN
 # 是否启用SOUPLE_SERVICE_PDFTABLEEXTRACT子项目。
-set(ENABLE_SOUPLESERVICE_PDFTABLEEXTRACT_SUBPRO ON)
+set(ENABLE_SOUPLESERVICE_PDFTABLEEXTRACT_SUBPRO OFF)
 
 # END
 
@@ -282,7 +282,7 @@ if(WIN32)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/pdfium-win-x64/lib/pdfium.dll.lib)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/dwmapi.lib)
     target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/xlsx/libxlsxwriter.a)
-    #target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/zlib/zlib.lib)
+    target_link_libraries(appSoupleEdit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/zlib/zlib.lib)
     #target_link_libraries(appSoupleEdit PRIVATE E:/freetype/freetype2410.lib)
     #target_link_libraries(appSoupleEdit PRIVATE "C:/Program Files/Java/jdk1.8.0_331/lib/jvm.lib")
 endif()

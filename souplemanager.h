@@ -846,7 +846,7 @@ private:
         uint32_t obj_s_all_id;
         int hline_s_hline_count,vline_s_vline_count;
         QHash<QString,HorLine_Base*> horline_s_hash_hline;
-        QHash<QString,HorLine_Base*> verline_s_hash_vline;
+        QHash<QString,AnchorObj_VLine*> verline_s_hash_vline;
         int tline_s_tline_count;
         float edit_width,edit_height;
         float view_top, view_bottom;
