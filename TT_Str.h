@@ -5,6 +5,25 @@
 //#include "TT_Str_Macro.h"
 #include <array>
 
+
+/**
+ *   TT_Str.h
+ *   @brief 模板字符串
+ *   提供一种把字符串保存为模板参数的方法，
+ *   如同python的命名传参一样。
+ *   example:
+ *   您可以这样调用一个函数fun
+ *   fun<TStr("N=10,Debug=true")>();
+ *   而不必这样调用
+ *   fun<10,true>();
+ *   在函数内，
+ *   可以通过tt.getIntArg("N",1)来获取参数N的值，缺省值为 1
+ *   以及getBoolArg
+ *   如你所见，使用这种方法，不会造成任何运行开销，完全在编译期进行。
+ *   -------------------------------------
+ *   @author liushuo
+ * */
+
 #define $$(str) <TStr(str)>
 
 #define TStr(str) string_to_ttstr(str)

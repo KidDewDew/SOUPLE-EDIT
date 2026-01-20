@@ -861,7 +861,7 @@ shared_ptr<Pdf2Souple::PDFOBJ> Pdf2Souple::readPdfObj(FPDF_PAGEOBJECT fpdf_pageo
             return nullptr; //不填充也不描边~完全隐藏~当作不存在
         }
 
-        // 对path做一些trim
+        // 对path做一些trim，这样以后不会模棱两可了
         if(like_noStroke) {
             obj_path->lineWidth = 0.0f;
             obj_path->stroke = false;

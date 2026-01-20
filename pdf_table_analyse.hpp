@@ -42,7 +42,7 @@ void Pdf2Souple::impl_analyseTable(
     // 注意，要求获取的线条的x1 y1 x2 y2必须考虑到线宽，不能忽略线宽！
     struct Line_Obj_Record {
         bool hasBelong = false;
-        int obj_index;
+        int obj_index = -1;
         float x1,y1,x2,y2;
         std::shared_ptr<Pdf2Souple::PDFOBJ_PATH> path_obj;
         float cx() const noexcept { return (x1+x2)/2; }
@@ -51,6 +51,12 @@ void Pdf2Souple::impl_analyseTable(
         float height() const noexcept { return y2 - y1; }
         bool ish() const noexcept { return width() > height(); }
         bool isv() const noexcept { return !ish(); }
+
+        QString __dstr() noexcept {
+            return QStringLiteral("Line(%1border) x:%2,%3 y:%4,%5")
+                    .arg(ish()?'h':'v').arg(x1).arg(x2).arg(y1).arg(y2);
+        }
+
         //检查两个线条是否有相交
         bool intersect(Line_Obj_Record const& l2) const noexcept {
             auto offset = Helper::cm2pixel(LINE_SAME_OFFSET_cm);
@@ -172,7 +178,7 @@ void Pdf2Souple::impl_analyseTable(
         //qDebug() << "找到边框：";
         //for(auto r : borders) r->path_obj->print();
         /** 判断边框是否围成矩形 */
-#ifdef Debug_TableAnalyse
+#if Debug_TableAnalyse
         qDebug() << "邻接hborder:" << h_borders.size();
         qDebug() << "邻接vborder:" << v_borders.size();
 #endif
@@ -201,36 +207,43 @@ void Pdf2Souple::impl_analyseTable(
              *  出现单元格合并的情况。能区分的是垂直单元格合并，暂时不考虑，以后可能补充。
             **/
 
+#if Debug_TableAnalyse
+            qDebug() << "check 横线条表格; pure_hborder=" << pure_hborder;
+#endif
+
             std::ranges::sort(h_borders,[](auto l1,auto l2){ return l1->y1 < l2->y1; });
             std::ranges::sort(v_borders,[](auto l1,auto l2){ return l1->x1 < l2->x1; });
 
-            Line_Obj_Record& old_line = line;
-            Line_Obj_Record& end_line = line;
+            std::reference_wrapper<Line_Obj_Record> old_line = std::ref(line);
+            std::reference_wrapper<Line_Obj_Record> end_line = std::ref(line);
             if(pure_hborder) { //纯横线表格
                 for(int j = i+1; j < line_objs.size(); ++j) {
-                    Line_Obj_Record& new_line = line_objs[j];
-                    if(new_line.ish()) {
-                        if(new_line.intersect(old_line)) {
+                    std::reference_wrapper<Line_Obj_Record> new_line = std::ref(line_objs[j]);
+                    if(new_line.get().isv()) {
+                        if(new_line.get().intersect(old_line.get())) {
                             //这表明old_line已经不属于这个表格了
                             //因为它和垂直线条有邻接
-                            old_line.hasBelong = false; //注意回退hasBelong
+                            old_line.get().hasBelong = false; //注意回退hasBelong
                             h_borders.pop_back();
                             break;//表格到此为止。
                         }
                         break;//嵌套表格怎么办？[todo]
                     }
-                    if(abs(new_line.width()-old_line.width()) > line_same_offset) {
+                    if(abs(new_line.get().width()-old_line.get().width()) > line_same_offset) {
                         //不等宽，认为表格以old_line为结束
                         //嵌套表格怎么办？[todo]
                         break;
                     }
-                    new_line.hasBelong = true;
-                    h_borders.push_back(&new_line); //记录new_line为h_border
+                    new_line.get().hasBelong = true;
+                    h_borders.push_back(&new_line.get()); //记录new_line为h_border
+#if Debug_TableAnalyse
+                    qDebug() << "mend-hborder: " << new_line.get().__dstr();
+#endif
                     old_line = new_line;
                 }
                 end_line = old_line;
             } else {  //横线+两边竖线表格，那么现在就已经知道组成线条了。
-                end_line = *h_borders.back(); //
+                end_line = std::ref(*h_borders.back()); //
             }
 
 
@@ -244,13 +257,24 @@ void Pdf2Souple::impl_analyseTable(
             // v_borders.clear();
 
             //统计该表格的内容
+            for(auto hb : h_borders) {
+                qDebug() << hb->__dstr();
+            }
             std::vector<PDFOBJ*> objs_inTable;
             float table_left = h_borders.front()->x1;   //表格left
             float table_top = h_borders.front()->cy(); //表格top
             float width = h_borders.front()->width();  //表格width
-            float height = end_line.cy() - table_top;  //表格height
+            float height = end_line.get().cy() - table_top;  //表格height
+            std::set<PDFOBJ*> set_hv_borders;
+            for(auto border : views::join(std::array{h_borders,v_borders}))
+                set_hv_borders.insert(border->path_obj.get());
             for(auto& obj : objs) {
                 if(! obj) continue;
+                qDebug() << obj->rect;
+                if(set_hv_borders.contains(obj.get())) continue; //忽略边线
+                if(dynamic_cast<PDFOBJ_PATH*>(obj.get())) {
+                    continue; //对于这种表格，暂时忽略内部路径对象。
+                }
                 if(obj->rect.left() > table_left && obj->rect.right() < table_left + width
                     && obj->rect.top() > table_top && obj->rect.bottom() < table_top + height) {
                     objs_inTable.push_back(obj.get());
@@ -260,23 +284,28 @@ void Pdf2Souple::impl_analyseTable(
             std::ranges::sort(objs_inTable,[](auto a,auto b){
                 return a->rect.left() < b->rect.left();
             });
-            float rightest = table_left;
+            float rightest = objs_inTable.empty() ?
+                        table_left : objs_inTable[0]->rect.left();
             for(auto obj : objs_inTable) {
-                if(obj->rect.right() > rightest+line_same_offset) {
+                qDebug() << obj->rect.left() << rightest;
+                if(obj->rect.left() > rightest+1) {
                     //从上一个rightest 到 这个rightest中间得添加一条v_border
-                    float mid_x = (obj->rect.right() + rightest) * 0.5f;
+                    float mid_x = (obj->rect.left() + rightest) * 0.5f;
                     auto vline = new Line_Obj_Record;
                     line_dynamic_allocate.push_back(vline);
                     vline->hasBelong = true;
-                    vline->obj_index -1;
+                    vline->obj_index = -1;
                     vline->path_obj = {};
                     vline->x1 = mid_x-0.25;
                     vline->x2 = mid_x+0.25;
                     vline->y1 = table_top;
                     vline->y2 = table_top + height;
                     v_borders.push_back(vline);
-                    rightest = obj->rect.right();
+#if Debug_TableAnalyse
+                    qDebug() << "mend-vborder: " << vline->__dstr();
+#endif
                 }
+                rightest = std::max<float>(rightest,obj->rect.right());
             }
             if(pure_hborder) {
                 //对于纯横线表格，还要补充一下左右v_border
@@ -284,7 +313,7 @@ void Pdf2Souple::impl_analyseTable(
                 line_extra_1.obj_index = -1; //无obj索引
                 line_extra_1.path_obj = {};
                 line_extra_1.x1 = table_left;
-                line_extra_1.x2 = line.x1 + 0.5;
+                line_extra_1.x2 = table_left + 0.5;
                 line_extra_1.y1 = table_top;
                 line_extra_1.y2 = table_top + height;
                 // [!]这可能导致内存改变，导致所有引用失效 line_objs.push_back(line);
@@ -295,15 +324,29 @@ void Pdf2Souple::impl_analyseTable(
                 line_extra_2.obj_index = -1; //无obj索引
                 line_extra_2.path_obj = {};
                 line_extra_2.x1 = table_left+width-0.5;
-                line_extra_2.x2 = line.x1 + 0.5;
+                line_extra_2.x2 = line_extra_2.x1 + 0.5;
                 line_extra_2.y1 = table_top;
                 line_extra_2.y2 = table_top + height;
                 v_borders.push_back(&line_extra_2);
+#if Debug_TableAnalyse
+                qDebug() << "mend-left-side: " << line_extra_1.__dstr();
+                qDebug() << "mend-right-side: " << line_extra_2.__dstr();
+#endif
             }
+
+#if Debug_TableAnalyse
+            qDebug() << "after check and extend: "
+                     << "h_borders: " << h_borders.size()
+                     << "v_borders: " << v_borders.size();
+#endif
         }
 
-
-        if(h_borders.size() < 2 || v_borders.size() < 2) continue; //不是表格
+        if(h_borders.size() < 2 || v_borders.size() < 2) {
+#if Debug_TableAnalyse
+            qDebug() << "非表格：h_borders.size() < 2 || v_borders.size() < 2";
+#endif
+            continue; //不是表格
+        }
 
         std::ranges::sort(h_borders,[](auto l1,auto l2){ return l1->y1 < l2->y1; });
         std::ranges::sort(v_borders,[](auto l1,auto l2){ return l1->x1 < l2->x1; });
@@ -436,9 +479,15 @@ void Pdf2Souple::impl_analyseTable(
         // 找到所有处在这个表格里的pdf对象，记录并删除。
         std::list<std::shared_ptr<Pdf2Souple::PDFOBJ>> objs_inTable;
 
+#if Debug_TableAnalyse
+        qDebug() << "[keyframe] table confirmed.";
+#endif
+
+        qDebug() << objs.size();
         //先删边框，再找obj_inTable
         for(size_t obj_i : border_pdfobj_id_list) {
             /*page->all_objs*/objs[obj_i].reset(); //删除边框对应的pdfobj
+            qDebug() << obj_i;
         }
 
         for(auto& obj : /*page->all_objs*/objs) {
@@ -449,6 +498,9 @@ void Pdf2Souple::impl_analyseTable(
                 obj.reset(); //置0
             }
         }
+#if Debug_TableAnalyse
+        qDebug() << "[keyframe] objs_inTable confirmed.";
+#endif
 
         /** 创建pdf解析时的tableline，此tableline包含了准确的contentTop x y width height等坐标信息 */
 
@@ -536,6 +588,9 @@ void Pdf2Souple::impl_analyseTable(
             for(auto it = objs_inTable.begin(); it != objs_inTable.end(); ) {
                 auto obj = *it;
                 float obj_cy = obj->rect.center().y() + page->page_top_margin;
+
+                //您看，采用obj的中心y坐标来判断它属于哪一行，
+                //这样能确保[单元格背景]对象被正确分配！切勿改变。
                 if(obj_cy <= line_bottom) {
                     //由于tableline从上往下遍历，只需且只能判断line_bottom来判断该单元格是否可能属于本行。
                     objs_inLine.push_back(obj);
@@ -583,6 +638,8 @@ void Pdf2Souple::impl_analyseTable(
                     /** 找到属于本单元格的PDFOBJ，建立块内布局。 */
                     for(auto it = objs_inLine.begin(); it != objs_inLine.end(); ) {
                         auto obj = *it;
+                        //如您所见，如果一个对象超出了单元格范围，它会消失掉，被这个函数删除。
+                        //那么对于单元格背景，建议在这里进行判断并过滤。
                         if(obj->rect.left() >= left_x && obj->rect.right() <= vborder->cx()) {
                             objs_inUnit.push_back(obj);
                             it = objs_inLine.erase(it);
@@ -645,6 +702,7 @@ void Pdf2Souple::impl_analyseTable(
             }
 
             // 我们要把objs_inLine里面剩下的obj(~由于单元格合并导致)还给objs_inTable
+            // 以便之后分配到其他行。
             for(auto& obj : objs_inLine)
                 objs_inTable.push_back(obj);
             //pdf_table->row_units.push_back(std::move(units));
