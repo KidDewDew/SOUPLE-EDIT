@@ -803,6 +803,7 @@ shared_ptr<Pdf2Souple::PDFOBJ> Pdf2Souple::readPdfObj(FPDF_PAGEOBJECT fpdf_pageo
         int width = FPDFBitmap_GetWidth(fpdf_image);
         int height = FPDFBitmap_GetHeight(fpdf_image);
         obj_image->rect = {left,top,right-left,bottom-top};
+        FPDFBitmap_Destroy(fpdf_image);
         return obj_image;
 #endif
       }
@@ -1525,9 +1526,10 @@ void Pdf2Souple::layoutHLine(std::shared_ptr<PDFPage> page, AnchorObj_HLine* hli
         }
         float obj_adjust_width;
         auto anchorObj = obj->toAnchorObj(hline,page->page_top_margin,obj_adjust_width);
-        hline->insertOnRight(anchorObj);
-        adjust_width += obj_adjust_width;
-
+        if(anchorObj) {
+            hline->insertOnRight(anchorObj);
+            adjust_width += obj_adjust_width;
+        }
         last_right = obj->rect.right(); //更新右边缘
     }
 

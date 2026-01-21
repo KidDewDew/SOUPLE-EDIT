@@ -132,7 +132,7 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
                 souple_path->y = obj->rect.top();
                 souple_path->width = obj->rect.width();
                 souple_path->height = obj->rect.height();
-                SoupleManager::wait_register_obj_list.push_back(souple_path);
+                SoupleManager::get_wait_register_obj_list().push_back(souple_path);
             }
         }
     }
@@ -178,7 +178,7 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
                     tableline->leftLine = column.leftLine->be<AnchorObj_VLine*>();
                     tableline->rightLine = column.rightLine->be<AnchorObj_VLine*>();
                     tableline->page = page->souple_page;
-                    SoupleManager::wait_register_obj_list.push_back(tableline);
+                    SoupleManager::get_wait_register_obj_list().push_back(tableline);
                 }
                 auto first_tline = table->tablelines.front();
                 qDebug() << "word-analyse: 表格线" << first_tline->name;
@@ -193,7 +193,7 @@ bool Pdf2Souple::analyseWordPage(std::shared_ptr<PDFPage> page,
                 // 非表格
                 //qDebug() << "word-analyse: 普通线";
                 AnchorObj_HLine* hline = new AnchorObj_HLine;
-                SoupleManager::wait_register_obj_list.push_back(hline);
+                SoupleManager::get_wait_register_obj_list().push_back(hline);
                 Pdf2Souple::layoutHLine(page,hline,last_hline,bk,
                                         column.leftLine->be<AnchorObj_VLine*>(),
                                         column.rightLine->be<AnchorObj_VLine*>());
@@ -256,8 +256,8 @@ TURNBACK: //撤回流程
         fp->turnback(); //撤回FramePart。
     }
     columns.clear();
-    ranges::destroy(SoupleManager::wait_register_obj_list); //注：ranges::destroy ~ delete ...
-    SoupleManager::wait_register_obj_list.clear();
+    ranges::destroy(SoupleManager::get_wait_register_obj_list()); //注：ranges::destroy ~ delete ...
+    SoupleManager::get_wait_register_obj_list().clear();
     SoupleManager::enableRegister=true;
     return false; //由 SCOPE_EXIT_DO 来开启 enableRegister 以及清除队列。
 RETURN_OK:
@@ -285,7 +285,7 @@ RETURN_OK:
     page->the_last_hline_to_continue = last_column_hline; //设置页面最后一条hline
 
     SoupleManager::enableRegister=true;
-    for(auto obj : SoupleManager::wait_register_obj_list)
+    for(auto obj : SoupleManager::get_wait_register_obj_list())
         SoupleManager::registerObj(obj);
 
     // 对于第1页，需要设置内容起点
@@ -302,6 +302,6 @@ RETURN_OK:
         SoupleManager::registerObj(column.rightLine);
     }
 
-    SoupleManager::wait_register_obj_list.clear();
+    SoupleManager::get_wait_register_obj_list().clear();
     return true;
 }

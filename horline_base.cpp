@@ -118,9 +118,9 @@ QString HorLine_Base::get_merged_line_text(bool addSpace) const noexcept
                 str.append(std::any_cast<QString>(text));
             } catch(std::bad_any_cast& e) {}
         } else {
-            //if(!obj->canBe<AnchorObj_PHRect>() || obj->width > 15) {
+            if(obj->width > 10) {
                 to_addspace = true;
-            //}
+            }
         }
         obj = obj->rightObj;
     }

@@ -19,6 +19,8 @@ bool spt_add_worksheet_of_table(lxw_workbook* workbook,
     if(NULL == worksheet) {
         return false;
     }
+    //每列最长的字符串的字符数
+    std::vector<int> max_char_len_ofline_ofcol(table_info->colCount(),8);
     for(int i = 0; i < table_info->rowCount(); ++i) {
         for(int j = 0; j < table_info->colCount(); ++j) {
             const TableInfo::UnitInfo& unit = table_info->units[i][j];
@@ -29,11 +31,30 @@ bool spt_add_worksheet_of_table(lxw_workbook* workbook,
             //获取单元格文本内容
             QString text_impl;
             HorLine_Base* hline = unit.u->getFirstLine();
+
+            bool spanCol = (unit.start_col != unit.end_col);
+
+            int n_char_col = 0;
+
             while(hline) {
-                text_impl += hline->get_merged_line_text();
+                auto lineText = hline->get_merged_line_text(false);
+                if(!spanCol) {
+                    //计算字符数
+                    for(auto ch : lineText) {
+                        if(ch.unicode() >= 0x4e00 && ch.unicode() <= 0x9fff) {
+                            //中文字符
+                            n_char_col += 2;
+                        } else {
+                            ++n_char_col;
+                        }
+                    }
+                }
+                text_impl += lineText;
                 hline = hline->getNextLine();
-                text_impl += '\n';
+                //if(hline) text_impl += '\n';
             }
+
+            max_char_len_ofline_ofcol[j] = std::max(max_char_len_ofline_ofcol[j],n_char_col);
 
             auto stdstr_unit_text = text_impl.toStdString();
             unit_text = stdstr_unit_text.c_str();
@@ -47,5 +68,11 @@ bool spt_add_worksheet_of_table(lxw_workbook* workbook,
             }
         }
     }
+
+    for(int j = 0; j < table_info->colCount(); ++j) {
+        //调整列宽
+        worksheet_set_column(worksheet,j,j,max_char_len_ofline_ofcol[j],NULL);
+    }
+
     return true;
 }

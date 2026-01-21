@@ -130,14 +130,14 @@ public:
 #ifdef MULTITHREAD_SOUPLEMANAGER
         ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
         if(! tb->enableRegister) {
-            tb->wait_register_obj_list.push_back(obj);
+            tb->_wait_register_obj_list.push_back(obj);
             return;
         }
         tb->hash_id_obj[obj->id] = obj;
         tb->all_objs.push_back(obj);
 #else
         if( ! enableRegister) {
-            wait_register_obj_list.push_back(obj);
+            _wait_register_obj_list.push_back(obj);
             return;
         }
         hash_id_obj[obj->id] = obj;
@@ -151,14 +151,14 @@ public:
 #ifdef MULTITHREAD_SOUPLEMANAGER
         ThreadBundle* tb = thread_bundle[std::this_thread::get_id()];
         if( ! tb->enableRegister) {
-            (tb->wait_register_obj_list.push_back(objs),...);
+            (tb->_wait_register_obj_list.push_back(objs),...);
             return;
         }
         ((tb->hash_id_obj[objs->id] = objs),...);
         (tb->all_objs.push_back(objs),...);
 #else
         if( ! enableRegister) {
-            (wait_register_obj_list.push_back(objs),...);
+            (_wait_register_obj_list.push_back(objs),...);
             return;
         }
         ((hash_id_obj[objs->id] = objs),...);
@@ -794,7 +794,7 @@ public:
         tb->edit_height = 0;
         tb->edit_width = 0;
         tb->enableRegister = true;
-        tb->wait_register_obj_list.clear();
+        tb->_wait_register_obj_list.clear();
         tb->hash_id_obj.clear();
         for(auto obj : tb->all_objs) {
             delete obj;
@@ -803,6 +803,15 @@ public:
     }
 #endif
 
+    static inline std::vector<Obj*>& get_wait_register_obj_list() {
+#ifndef MULTITHREAD_SOUPLEMANAGER
+        return _wait_register_obj_list;
+#else
+        auto tb = thread_bundle[std::this_thread::get_id()];
+        return tb->_wait_register_obj_list;
+#endif
+    }
+
 public:
     static inline float view_top, view_bottom;
     static inline SoupleManager *soupleManager;
@@ -810,8 +819,11 @@ public:
     static inline bool frozen = false; //定格
     static inline QMutex mutex; //线程锁
     static inline bool showHelpLine = false; //是否显示辅助线
-    static inline std::vector<Obj*> wait_register_obj_list; //等待注册的对象
+
 private:
+
+    static inline std::vector<Obj*> _wait_register_obj_list; //等待注册的对象
+
     //static void imp_updateUI(); //真正开始
 
     //static inline std::vector<std::list<
@@ -873,7 +885,7 @@ private:
         QHash<OBJID_t,Obj*> hash_id_obj;
         float edit_width; //编辑区总宽度(=最宽的页面的宽度)
         float edit_height; //编辑区总高度(=所有页面高度和)
-        std::vector<Obj*> wait_register_obj_list; //等待注册的对象
+        std::vector<Obj*> _wait_register_obj_list; //等待注册的对象
         _PAGE_INF page_inf;
     };
     static inline QHash<std::thread::id,ThreadBundle*> thread_bundle;

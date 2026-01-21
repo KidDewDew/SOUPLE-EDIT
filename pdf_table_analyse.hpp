@@ -187,7 +187,7 @@ void Pdf2Souple::impl_analyseTable(
 
         if(h_borders.size() == 1 && v_borders.empty())
             pure_hborder = true; //纯横线表格
-        else if(v_borders.size() == 2 && h_borders.size() >= 2) {
+        else if(v_borders.size() == 2 && h_borders.size() > 2) {
             std::ranges::sort(v_borders,[](auto l1,auto l2){ return l1->x1 < l2->x1; });
             if(abs(v_borders.front()->x1 - h_borders.front()->x1) < line_same_offset*2
              &&abs(v_borders.back()->x2 - h_borders.front()->x2) < line_same_offset*2) {

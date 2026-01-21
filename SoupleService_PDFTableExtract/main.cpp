@@ -24,8 +24,8 @@ namespace websocket = beast::websocket;
 namespace net = boost::asio;
 using tcp = boost::asio::ip::tcp;
 
-const std::string HOST = "127.0.0.1";
-const std::string PORT = "8080";
+std::string HOST = "127.0.0.1";
+std::string PORT = "8080";
 const std::string SERVICE_NAME = "PDFTableExtract";
 const std::string PASSWORD = "1d2f3ghduwaijiajdiJAU82131fsdfjuji";
 
@@ -174,9 +174,9 @@ void write_loop() {
         [data_ptr](beast::error_code ec, std::size_t bytes){
             if(ec) {
                 std::cout << "[error]Send failed: " << ec.message() << std::endl;
-            } else {
-                std::cout << "[info]Sent " << bytes << std::endl;
-            }
+            } //else {
+                //std::cout << "[info]Sent " << bytes << std::endl;
+            //}
             has_async_write = false;
             write_loop(); //触发下一次写
         });
@@ -200,6 +200,7 @@ void task_notify(const Worker::Task& task) {
     jv["succeeded"] = task.isSucceeded();
     jv["task_id"] = task.task_id;
     jv["finished"] = true;
+    jv["suffix"] = task.oneExcelFile ? ".xlsx" : ".zip";
     if(task.isSucceeded() == false) {
         jv["failed_reason"] = task.get_failed_reason().data();
         std::string data = souple_web::concatStrAndBinary(Json::FastWriter().write(jv),0,0);
@@ -217,15 +218,28 @@ void task_notify(const Worker::Task& task) {
 
         char *buffer = new char[size];
         is.read(buffer,size);
+        is.close();
 
         std::string data = souple_web::concatStrAndBinary(Json::FastWriter().write(jv),buffer,size);
         delete[] buffer;
         send_message(data);
+
+        //发完即删
+        if(!std::filesystem::remove(task.get_generated_filepath())) {
+           std::cout << "[Error]std::filesystem::remove(task.get_generated_filepath()) failed.\n";
+        }
     }
 }
 
 int main(int argc,char** argv)
 {
+    if(argc < 3) {
+        std::cout << "[info]dafault server:127.0.0.1:8080\n";
+    } else {
+        HOST = argv[1];
+        PORT = argv[2];
+        std::cout << "[info]configured server:"<<HOST<<':'<<PORT<<std::endl;
+    }
     //禁用qDebug、qInfo输出
     qputenv("QT_LOGGING_RULES", "*.debug=false;*.info=false");
     //初始化一个gui-app对象，以便Qt库正常工作

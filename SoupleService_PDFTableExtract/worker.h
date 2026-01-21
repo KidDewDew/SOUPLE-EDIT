@@ -65,39 +65,43 @@ private:
     static inline void worker_thread_loop() {
         SoupleManager::init_for_thread(); //初始化SoupleManager
         Pdf2Souple::init_for_thread();
-        while(true) {
-            std::unique_lock<std::mutex> lock(mutex_for_queue);
-            // 等待任务队列有一个任务
-            task_cv.wait(lock,[]{
-                return !_task_queue.empty();
-            });
-            //该任务已经被本线程抢占
-            Task task = std::move(_task_queue.front());
-            _task_queue.pop();
-            lock.unlock();
-            std::cout << "[info]Thread " << std::this_thread::get_id()
-                      << " is working on Task " << task.task_id << std::endl;
+        try{
+            while(true) {
+                std::unique_lock<std::mutex> lock(mutex_for_queue);
+                // 等待任务队列有一个任务
+                task_cv.wait(lock,[]{
+                    return !_task_queue.empty();
+                });
+                //该任务已经被本线程抢占
+                Task task = std::move(_task_queue.front());
+                _task_queue.pop();
+                lock.unlock();
+                std::cout << "[info]Thread " << std::this_thread::get_id()
+                          << " is working on Task " << task.task_id << std::endl;
 
-            //std::this_thread::sleep_for(std::chrono::seconds(3));
+                //std::this_thread::sleep_for(std::chrono::seconds(3));
 
-            /* 执行任务 */
-            task.succeeded = doTask(task);
+                /* 执行任务 */
+                task.succeeded = doTask(task);
 
-            SoupleManager::clear_for_thread(); //清理SoupleManager
+                SoupleManager::clear_for_thread(); //清理SoupleManager
 
-            if(task.succeeded) {
-                std::cout << "[info]Task " << task.task_id << " Finished." << std::endl;
-            } else {
-                std::cout << "[error]Task " << task.task_id << " Failed: "
-                          << task.failed_reason << std::endl;
+                if(task.succeeded) {
+                    std::cout << "[info]Task " << task.task_id << " Finished." << std::endl;
+                } else {
+                    std::cout << "[error]Task " << task.task_id << " Failed: "
+                              << task.failed_reason << std::endl;
+                }
+
+                task_notifier(task); //通知
+
+                //删除pdf文件
+                if(! std::filesystem::remove(task.pdf_filepath)) {
+                    std::cout << "[error]Remove PDF file failed.\n";
+                }
             }
-
-            task_notifier(task); //通知
-
-            //删除pdf文件
-            if(! std::filesystem::remove(task.pdf_filepath)) {
-                std::cout << "[error]Remove PDF file failed.\n";
-            }
+        }catch(const std::exception& e) {
+            std::cout << "[Exception]" << e.what() << std::endl;
         }
     }
 
@@ -113,9 +117,9 @@ private:
         std::set<TableInfo*> tableinfos;//(注意去重)
         for(auto obj : SoupleManager::getDocumentObjs(SoupleManager::Current_Document))
         {
-            std::cout << obj->__dstr().toStdString() << std::endl;
+            //std::cout << obj->__dstr().toStdString() << std::endl;
             auto tableline = obj->as<TableLine*>();
-            if(tableline) {
+            if(tableline && tableline->getTableInfo()) {
                 tableinfos.insert(tableline->getTableInfo());
             }
         }
@@ -152,10 +156,10 @@ private:
             }
             zipFile zf = zipOpen(task.generated_filepath.c_str(),APPEND_STATUS_CREATE);
             char buf[10240]; //10kB
-            char inner_filename[32];
+            char inner_filename[64];
             int file_id = 1;
             for(auto& file : xlsx_filename_list) {
-                sprintf(inner_filename,"表格(%d).xlsx",file_id);
+                sprintf(inner_filename,"Table-%d.xlsx",file_id);
                 int err = zipOpenNewFileInZip(zf, inner_filename, NULL, NULL, 0, NULL, 0,
                                               NULL, Z_DEFLATED, Z_BEST_COMPRESSION);
                 if (err != ZIP_OK) {
@@ -163,17 +167,18 @@ private:
                     continue;
                 }
                 std::ifstream is(file,std::ios::binary);
-                if(! is.is_open()) {
+                if(!is || ! is.is_open()) {
                     std::cout << "[error]open xlsx failed.\n";
                     continue; //跳过
                 }
-                int len;
-                while(is.read(buf,10240)) {
+                do {
+                    is.read(buf,10240);
                     if(is.gcount() == 0) break;
                     zipWriteInFileInZip(zf,buf,is.gcount());
-                }
+                } while(!is.eof());
                 is.close();
                 zipCloseFileInZip(zf);
+                std::filesystem::remove(file); //删除xlsx表格文件
                 ++ file_id;
             }
             zipClose(zf,NULL);

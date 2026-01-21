@@ -11,10 +11,10 @@ namespace souple_web {
 
         if constexpr(std::endian::native == std::endian::little) {
             //小端序 -> 大端序
-            result[0] = (str.length() & 0xFF000000) >> 24;
-            result[1] = (str.length() & 0xFF0000) >> 16;
-            result[2] = (str.length() & 0xFF00) >> 8;
-            result[3] = (str.length() & 0xFF);
+            result[0] = (char) ((str.length() >> 24) & 0xFF);  // 最高字节
+            result[1] = (char) ((str.length() >> 16) & 0xFF);  // 次高字节
+            result[2] = (char) ((str.length() >> 8) & 0xFF);   // 次低字节
+            result[3] = (char) (str.length() & 0xFF);          // 最低字节
         } else {
             //大端序 -> 大端序，直接赋值即可。
             *((int*)(&result[0])) = (int)str.length();
