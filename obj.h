@@ -29,10 +29,10 @@ struct Obj_Global_Info {
 };
 
 
-// 注意，selfDeal_input=true的对象不仅得自己处理键盘事件，还得自己绘制光标！
+// 注意，selfDeal_input=true的对象不仅得自己处理键盘事件，还得自己绘制光标
 struct Obj_KeyEvent_Info {
-    bool selfDeal_backspace;//暂时【作废】
-    bool selfDeal_input;
+    bool selfDeal_backspace;//是否自己处理退格
+    bool selfDeal_input; //是否自己处理输入(除退格外的按键)
 };
 
 
@@ -60,7 +60,18 @@ class Obj
     //static constexpr inline int C_MIN_Z = (int)Helper::Layer_Z::Bottom;      //默认最小z坐标，最底部
 public:
     Obj();
+
+    /**
+     * @brief generateQmlItem 创建qml对象
+     * @return 创建好的qml对象，可以为无效值
+     * 不同的对象可以自定义如何创建qml对象，
+     * 通常的两种方法是：1.使用UIItemPool(ui组件池)来获取对象。2.调用qml generateObj创建对象
+     * 对于显示数量较多的对象，建议使用方法1，以减少qml对象创建的开销。
+     *
+     * 参加discardQmlItem()回收qml对象
+     */
     virtual QQuickItem* generateQmlItem() = 0;
+
     virtual void updateDataToQmlItem(QQuickItem* item) {
         item->setProperty("data_id",id);
         item->setPosition({x,y});
@@ -68,13 +79,17 @@ public:
         item->setSize({width,height});
         item->setZ((qreal)z);
     };
+
     virtual int dealCommandFromQmlItem(int command,const QVariant& arg) { return 0; };
+
     virtual std::optional<int> getData(int dataName) {
         return {};
     }
+
     virtual std::any getAnyData(std::string key) noexcept {
         return {};
     }
+
     virtual QVariant qmlGetData(int dataName) {
         if(dataName == Helper::X) return x;
         if(dataName == Helper::Y) return y;
@@ -83,10 +98,16 @@ public:
         if(dataName == Helper::Z) return z;
         return QVariant{};
     }
+
+    /**
+     * @brief dealLayout 对象处理布局
+     * dealLayout仅处理数据层面，不会使ui更新。[2025/12/2 added]
+     */
     virtual void dealLayout() {}
 
     // [2025/12/2 added]
     // 把dealLayout和dealUI区分。
+    // dealUI将导致ui更新，因此需注意调用时机。
     virtual void dealUI() noexcept {
         if(Helper::isQmlItemValid(qmlItem)) {
             qmlItem->setPosition({x,y});
@@ -95,8 +116,20 @@ public:
         }
     }
 
+    /**
+     * @brief selectionCommand
+     *   本对象作为本选中的内容的一部分，接受并处理用户对选中内容的操作命令。
+     * @param command  命令名称
+     * @param arg  命令参数
+     */
     virtual void selectionCommand(int command,const QVariant& arg) {}
 
+
+    /**
+     * @brief selectionGetData 获取选中内容的统计数据
+     * @param dataName: 要获取的数据名称
+     * @return 返回空或具体数据，返回空表示本对象不含有此种数据。
+     */
     virtual QVariant selectionGetData(int dataName) {
         return {};
     }
@@ -118,19 +151,38 @@ public:
      * @param end_index: 结束索引(含)
      */
     virtual void positionToIndex(float x1,float x2,int& begin_index,int& end_index) noexcept
-    { begin_index = end_index = 0; }
+    {
+        begin_index = end_index = 0;
+    }
 
     //根据内容索引返回该段内容的起始X坐标(，相对于本对象的x坐标)。
     virtual float x_ofIndex(int index) {
         return index == 0 ? 0.0f : width; //对于内容长度为1者，即可这样计算
     }
 
+    /**
+     * @brief removeSelf
+     *    从布局中移除自身
+     * @param dead  是否删除自身
+     *    removeSelf能保证使本对象离开布局，并重建布局。
+     *    因此，移除对象的最佳方法就是使用该函数。
+     */
     virtual void removeSelf(bool dead = true) {
         if(dead) dead_sign = true;
     }
+
+    // 获取x+width的值。
     virtual float getRightX() const { return x + width; }
 
-    // 按HScale缩放
+    /**
+     * @brief showHScale
+     * @param hscale  水平缩放值
+     * @param addX  平移量
+     * @param justQueryAddWidth  是否只是获取addWidth，而不真正改变对象。
+     * @return 返回addWidth，即本对象应用了hscale后增加的宽度。
+     *         默认返回 0，即对象不受hscale影响。
+     * 凡是想要实现行拉伸的对象，应重载该方法。
+     */
     virtual float showHScale(float hscale,float addX,bool justQueryAddWidth) { return 0.0; }
 
     // 该对象是否还可以继续切分

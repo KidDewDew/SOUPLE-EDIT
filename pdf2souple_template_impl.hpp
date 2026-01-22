@@ -1390,6 +1390,8 @@ bool Pdf2Souple::PDFOBJ_PATH::toSolidRect(float& x1,float& y1,float& x2, float& 
         for(auto& a : list_path_actions) {
             x_set.insert(round(a.x/2));
             y_set.insert(round(a.y/2));
+            qDebug() << "x_set.insert: " << round(a.x/2)
+                << "y_set.insert: " << round(a.y/2);
         }
         if(x_set.size() <= 2 && y_set.size() <= 2) { //矩形判断
             *numLines = 4;

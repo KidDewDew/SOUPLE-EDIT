@@ -105,7 +105,10 @@ void Pdf2Souple::impl_analyseTable(
             //float x1,y1,x2,y2;
             //if( ! path_obj->toSolidRect(x1,y1,x2,y2)) continue;
             std::vector<Pdf2Souple::PDFOBJ_PATH::Line> glines;
-            if(! path_obj->toLinesIfRect(glines)) continue;
+            if(! path_obj->toLinesIfRect(glines)) {
+                qDebug() << path_obj->rect << "不是线条";
+                continue;
+            }
             for(auto[j,line] : glines | views::enumerate) {
                 Line_Obj_Record rec;
                 rec.obj_index = (j == 0 ? i : -1);
@@ -492,8 +495,15 @@ void Pdf2Souple::impl_analyseTable(
 
         for(auto& obj : /*page->all_objs*/objs) {
             if(! obj) continue;
-            if(obj->rect.left() > table_left && obj->rect.right() < table_left + width
-                && obj->rect.top() > table_top && obj->rect.bottom() < table_top + height) {
+            // if(obj->rect.left() > table_left && obj->rect.right() < table_left + width
+            //     && obj->rect.top() > table_top && obj->rect.bottom() < table_top + height) {
+            //     objs_inTable.push_back(obj);
+            //     obj.reset(); //置0
+            // }
+            if(obj->rect.center().x() > table_left
+                    && obj->rect.center().x() < table_left + width
+                && obj->rect.center().y() > table_top
+                    && obj->rect.center().y() < table_top + height) {
                 objs_inTable.push_back(obj);
                 obj.reset(); //置0
             }

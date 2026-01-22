@@ -2004,7 +2004,7 @@ void Pdf2Souple::imp_path_doSomeMerge(std::vector<std::shared_ptr<PDFOBJ>>& objL
                 Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.left(),
                                                 new_bottom-p1.path_obj->lineWidth),
                 Path_Action(Path_Action::LineTo,p1.path_obj->t_rect.left(),
-                                                p1.path_obj->rect.top())
+                                                p1.path_obj->t_rect.top())
             });
             qDebug() << "VMerge合并后：" << p1.path_obj->rect;
             //p1.path_obj->list_path_actions

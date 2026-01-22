@@ -3,7 +3,7 @@ SoupleEdit 嗖谷文档编辑软件的源程序位于本目录。
 1.嗖谷文档编辑软件
 2.小灵通PDF编辑APP(android版本)
 3.SouplePDF库
-4.SouplePDF后端服务程序
+4.SouplePDF各种后端服务程序
 ----- 文件夹说明 -----
 /lib
 ·····存储使用的库(静态库+头文件);
@@ -17,8 +17,8 @@ SoupleEdit 嗖谷文档编辑软件的源程序位于本目录。
 ·····小灵通PDF编辑app的android目录;
 /souple_pdf
 ·····SouplePDF库工程;
-/SoupleService
+/SoupleService_<serviceName>
 ·····SouplePDF后端服务;
 ----- 本文件编辑日期 -----
-·····2026/1/14
+·····2026/1/23
 ----- END -----

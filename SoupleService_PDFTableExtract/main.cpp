@@ -241,7 +241,7 @@ int main(int argc,char** argv)
         std::cout << "[info]configured server:"<<HOST<<':'<<PORT<<std::endl;
     }
     //禁用qDebug、qInfo输出
-    qputenv("QT_LOGGING_RULES", "*.debug=false;*.info=false");
+    //qputenv("QT_LOGGING_RULES", "*.debug=false;*.info=false");
     //初始化一个gui-app对象，以便Qt库正常工作
     QGuiApplication app(argc,argv);
 
