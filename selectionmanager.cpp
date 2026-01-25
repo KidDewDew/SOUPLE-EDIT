@@ -3,6 +3,7 @@
 #include "anchorobj_phright.h"
 #include "anchorobj_phleft.h"
 #include "anchorobj_image.h"
+#include "turnback_template.hpp"
 #include <QGuiApplication>
 
 extern QGuiApplication *global_app;
@@ -32,15 +33,22 @@ void SelectionManager::staticProperty(QObject* pobj)
 {
     int para_count,line_count,charNum,punction_Num,image_Num;
     para_count = line_count = charNum = punction_Num = 0;
-    bool multi_fontsize,multi_textColor,multi_strokeColor,multi_strokeWidth,
-        multi_fillColor,multi_pathColor,multi_bold,multi_italic,multi_underline,
-        multi_vTextAlignMode,multi_vTextAlignOffset,multi_vImageAlignMode,
-        multi_vImageAlignOffset,multi_enableStroke,multi_enableFill,multi_family;
-    multi_fontsize = multi_textColor = multi_strokeColor = multi_strokeWidth =
-        multi_fillColor = multi_pathColor = multi_bold = multi_italic = multi_underline
-        = multi_vTextAlignMode = multi_vTextAlignOffset = multi_vImageAlignMode =
-        multi_vImageAlignOffset = multi_enableStroke = multi_enableFill = multi_family
-        = false;
+    bool multi_fontsize,multi_textColor,
+        multi_strokeColor,multi_strokeWidth,
+        multi_fillColor,multi_pathColor,multi_bold,
+        multi_italic,multi_underline,
+        multi_vTextAlignMode,multi_vTextAlignOffset,
+        multi_vImageAlignMode,multi_vImageAlignOffset,
+        multi_enableStroke,multi_enableFill,
+        multi_family;
+
+    multi_fontsize = multi_textColor = multi_strokeColor =
+        multi_strokeWidth = multi_fillColor = multi_pathColor =
+        multi_bold = multi_italic = multi_underline =
+        multi_vTextAlignMode = multi_vTextAlignOffset = multi_vImageAlignMode =
+        multi_vImageAlignOffset = multi_enableStroke = multi_enableFill =
+        multi_family = false;
+
     qreal fontsize = -1, strokeWidth;
     int vTextAlignMode;
     qreal vTextAlignOffset = 0;
@@ -553,15 +561,27 @@ void SelectionManager::dealKeyEvent(QKeyEvent* keyEvent)
     //keyEvent->
 }
 
-void SelectionManager::deleteAllSelectedObjs()
+void SelectionManager::deleteAllSelectedObjs(bool set_cursor_and_focus)
 {
+    OBJID_t before_selection_obj_id = -1;
+    int cursor_index;
+    std::vector<Obj*> remove_obj_list;
     for(auto& si : selection_items) {
         auto obj = SoupleManager::getObjById(si.obj_id);
         if(!obj) continue;
         auto a = obj->as<AnchorObj*>();
         if(!a) continue;
-        a->slice(si.begin_index,si.end_index - si.begin_index + 1)
-         ->removeSelf(true); //正常操作。。。
+        auto removal = a->slice(si.begin_index,si.end_index - si.begin_index + 1);
+        remove_obj_list.push_back(removal);
+    }
+
+    //添加撤回
+    TurnbackManager::addTurnback_of_obj_remove_or_insert<true,false>(remove_obj_list);
+
+    //考虑一下光标和focus
+    //当选中内容被删除后，有可能需要定位光标了
+    if(set_cursor_and_focus) {
+
     }
     clearSelection();
 }

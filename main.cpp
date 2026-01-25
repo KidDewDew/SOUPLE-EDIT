@@ -60,12 +60,12 @@ void my_terminate()
     try {
         throw;
     }
-    catch(LLException& e) {
+    catch(const LLException& e) {
         auto ba = e.getInfo().toLocal8Bit();
         MessageBoxA(0,ba.constData(),"Error: Uncaught Exception!",MB_OK);
         exit(1);
     }
-    catch(std::exception& e) {
+    catch(const std::exception& e) {
         MessageBoxA(0,e.what(),"Error: Uncaught Exception!",MB_OK);
         exit(1);
     }

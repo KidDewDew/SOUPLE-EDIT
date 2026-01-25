@@ -43,7 +43,7 @@ public:
     Safe_Obj_Pointer& operator=(const Safe_Obj_Pointer& p2) = default;
     Safe_Obj_Pointer& operator=(Safe_Obj_Pointer&& p2) = default;
 private:
-    int obj_id;
+    OBJID_t obj_id;
     T* obj;
 };
 

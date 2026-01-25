@@ -1,8 +1,7 @@
 #include "anchorobj.h"
 #include "anchorobj_hline.h"
-
-
-
+#include "anchornull.h"
+#include "souplemanager.h"
 
 void AnchorObj::dealLayout()
 {
@@ -36,6 +35,17 @@ void AnchorObj::dealLayout()
 void AnchorObj::removeSelf(bool dead)
 {
     //AnchorObj移除自身
+
+    //[2026/1/24 added]
+    // if( ! flow_attachers.empty()) {
+    //     //转移流附着符到左边存活的对象去
+    //     AnchorObj* obj_before = get_neighbor_before();
+    //     if(obj_before) {
+    //         obj_before->merge_flowAttachers(this,obj_before->contentLength());
+    //         //qDebug() << "merge_flowAttachers:" << obj_before->__dstr()<< this->__dstr() ;
+    //     }
+    // }
+
     if(leftObj) leftObj->rightObj = rightObj;
     if(rightObj) rightObj->leftObj = leftObj;
     if(hline) { //更新hline左右对象
@@ -43,8 +53,11 @@ void AnchorObj::removeSelf(bool dead)
         if(hline->rightObj == this) hline->rightObj = leftObj;
     }
     leftObj = rightObj = nullptr; //记住清零
+
+    //merge_flowAttachers(,)
+
     if(dead) {
-        dead_sign = true; //打死亡标记
+        dead_sign /*= hidden_sign*/ = true; //打死亡标记
         if( Helper::isQmlItemValid(qmlItem) ) qmlItem->setVisible(false); //不可见
     }
 }
@@ -113,3 +126,28 @@ AnchorObj* AnchorObj::get_neighbor_after() noexcept {
     }
     return 0;
 }
+
+void AnchorObj::addFlowAttacher(FlowAttacher* attacher) {
+    AnchorObj* obj = this;
+    int add_flow_position = 0, n = 0;
+    do {
+        ++n;
+        obj = obj->get_neighbor_before();
+        if(!obj) break;
+        add_flow_position += obj->contentLength();
+        if(obj->isStake()) {
+            attacher->attach_obj_id = obj->id;
+            attacher->flow_position += add_flow_position;
+            return;
+        }
+    } while(n < 12);
+
+    //需要插桩
+    AnchorNull* stake = new AnchorNull;
+    SoupleManager::registerObj(stake);
+    qDebug() << "Add Stake.";
+    insertOnLeft(stake);
+    attacher->attach_obj_id = stake->id;
+    attacher->flow_position ++; //stake长度为1
+}
+

@@ -38,10 +38,12 @@ bool AnchorObj_FlowText::tryMergeRight()
     if(isFill && fill_color != r2->fill_color) return false;
     if(isStroke && stroke_color != r2->stroke_color) return false;
     //qDebug() << "Merge: " << text << r2->text;
+
+    int old_text_length = text.length();
     QString new_text = text + r2->text;
     width += r2->width; //这个时候r2并没真正死亡
 
-    merge_flowAttachers(r2,text.length()); //合并attacher [2025/9/16]
+    //merge_flowAttachers(r2,text.length()); //合并attacher [2025/9/16]
     text = new_text;
 
 
@@ -49,18 +51,25 @@ bool AnchorObj_FlowText::tryMergeRight()
     if(Helper::isQmlItemValid(r2->qmlItem) && ! Helper::isQmlItemValid(qmlItem)) { //此时可以直接替代qmlItem
         qmlItem = r2->qmlItem;
         r2->qmlItem = 0;
+        int old_cursor = qmlItem->property("cursorPosition").toInt();
         qmlItem->setProperty("data_id",id); //[2025/7/18 添加]
         qmlItem->setProperty("text",text);
+        if(qmlItem->hasFocus()) {
+            qmlItem->setProperty("cursorPosition",old_text_length+old_cursor);
+        }
         SoupleManager::notifyVisible(this); //告诉SM本对象自己让自己从不可见变为可见了
+    }
+    else if( Helper::isQmlItemValid(qmlItem) ) {
+        int old_cursor = qmlItem->property("cursorPosition").toInt();
+        qmlItem->setProperty("text",text);
+        if(qmlItem->hasFocus()) {
+            qmlItem->setProperty("cursorPosition",old_cursor); //恢复光标
+            //qDebug() << text;
+            //qDebug() << "old_cursor:" << old_cursor;
+        }
     }
 
     r2->removeSelf(true);
-
-    if( Helper::isQmlItemValid(qmlItem) ) {
-        int old_cursor = qmlItem->property("cursorPosition").toInt();
-        qmlItem->setProperty("text",text);
-        qmlItem->setProperty("cursorPosition",old_cursor); //恢复光标
-    }
 
     //维护选择内容
     if(SelectionManager::isSelectStopButKeep()) {
@@ -239,7 +248,7 @@ AnchorObj* AnchorObj_FlowText::dropLeft(float dropWidth)
     obj->width = pile_width;
     SoupleManager::registerObj(obj);
 
-    moveFlowAttachers(-obj->text.length()); //移动attacher，但不用转移。
+    //moveFlowAttachers(-obj->text.length()); //移动attacher，但不用转移。
 
     //维持选择内容
     if(SelectionManager::isSelectStopButKeep()) {
@@ -316,6 +325,12 @@ void AnchorObj_FlowText::userUpdateText(const QString& new_text)
 {
     if(!hline || text == new_text) return;
 
+    //1112asdad1111111
+    //eeeee
+
+    //int
+    //for(change_pos = 0; change_pos)
+
     // // 序列化更新前的自己
     // QByteArray old_bytes = souple::serialization::serialize(this);
 
@@ -326,14 +341,16 @@ void AnchorObj_FlowText::userUpdateText(const QString& new_text)
     // 处理redo、undo
 
     Turnback* tb = TurnbackManager::addTurnback(Turnback::AC_Content_Flow);
-    tb->attach_obj_id = id;
+    //[不需要设置了]tb->attach_obj_id = id;
     tb->flow_position = 0;
+
     this->addFlowAttacher(tb); //添加附着符
+
     int old_length = old_text.length();
     int new_length = text.length();
 
     // undo原理：从attacher开始的一段文本(len=new_length)删除掉，然后反序列化生成old_text.
-    tb->undo = [=,font=font](Turnback*tb,Obj*start_obj)->void {
+    tb->undo = [new_length,old_text,font=font](Turnback*tb,Obj*start_obj)->void {
         //咱们给第一个text修改为old_text
         int i = 0,rest_length = new_length;
         auto hline = start_obj->be<AnchorObj*>()->hline->be<HorLine_Base*>();
@@ -367,22 +384,25 @@ void AnchorObj_FlowText::userUpdateText(const QString& new_text)
             ++i;
         }
     };
-    tb->redo = [=,font=font,new_text=text](Turnback*tb,Obj*start_obj)->void {
+    tb->redo = [old_length,font=font,new_text=text](Turnback*tb,Obj*start_obj)->void {
         //咱们给第一个text修改为new_text
+        qDebug() << "tredo: " << start_obj->__dstr() << tb->flow_position;
         int i = 0,rest_length = old_length;
         auto hline = start_obj->be<AnchorObj*>()->hline->be<HorLine_Base*>();
-        for(auto[obj,start_i,len] : hline->getWalker((AnchorObj*)start_obj,tb->flow_position,new_length)) {
+        for(auto[obj,start_i,len] : hline->getWalker((AnchorObj*)start_obj,tb->flow_position,old_length)) {
             AnchorObj_FlowText* t = obj->as<AnchorObj_FlowText*>();
+            qDebug() << "walk-at: " << t->__dstr() << start_i << len;
             if(! t) {
-                if(i == 0) { //text对象死掉了。。
-
-                }
                 return;
             }
-            t->text.slice(start_i,qMin(len,t->text.length()-start_i));
+            int end_i = qMin(start_i + len,t->text.length());
             if(i == 0) {
-                //第一个文本
-                t->text.push_front(new_text);
+                t->text = t->text.sliced(0,start_i) +
+                          new_text +
+                          t->text.sliced(end_i,t->text.length()-end_i);
+            } else {
+                t->text = t->text.sliced(0,start_i) +
+                          t->text.sliced(end_i,t->text.length()-end_i);
             }
             if(Helper::isQmlItemValid(t->qmlItem))
                 t->qmlItem->setProperty("text",t->text);
@@ -581,7 +601,7 @@ void AnchorObj_FlowText::selectionCommand(int command,const QVariant& arg)
             SoupleManager::registerObj(new_left);
             this->insertOnLeft(new_left);
             qDebug() << "chop.insertOnLeft(" << new_left->text;
-            new_left->merge_flowAttachers(this,0); //左截断，合并attachers
+            //new_left->merge_flowAttachers(this,0); //左截断，合并attachers
         }
         if(si->end_index < text.length() - 1) {
             AnchorObj_FlowText* new_right = clone();
@@ -732,6 +752,7 @@ void AnchorObj_FlowText::writeToPDFPage(FPDF_DOCUMENT document,FPDF_PAGE pdf_pag
 AnchorObj* AnchorObj_FlowText::slice(int start_i,int max_len)
 {
     if(start_i >= text.length() || start_i + max_len <= 0) {
+        // 对于错误的参数，本函数仍然返回自身 todo
         return this;
     }
     if(start_i <= 0) {
@@ -752,7 +773,7 @@ AnchorObj* AnchorObj_FlowText::slice(int start_i,int max_len)
             if(Helper::isQmlItemValid(qmlItem)) qmlItem->setProperty("text",text);
             this->insertOnLeft(left_part);
             qDebug() << "left-slice: " << left_part->text << text;
-            moveFlowAttachers(-left_part->text.length()); //移动attacher
+            //moveFlowAttachers(-left_part->text.length()); //移动attacher
         } else { //切成3段
             AnchorObj_FlowText *left_part = clone(), *right_part = clone();
             SoupleManager::registerObj(left_part);
@@ -764,7 +785,7 @@ AnchorObj* AnchorObj_FlowText::slice(int start_i,int max_len)
             this->insertOnLeft(left_part);
             this->insertOnRight(right_part);
             qDebug() << "lr-slice: " << left_part->text << text << right_part->text;
-            moveFlowAttachers(-left_part->text.length()); //移动attacher
+            //moveFlowAttachers(-left_part->text.length()); //移动attacher
         }
     }
     return this;

@@ -8,18 +8,18 @@ Turnback* TurnbackManager::addTurnback() {
     turnback_list.push_back(new Turnback);
     qDebug() << "Turnback Num: " << turnback_list.size();
     /** 清除重做列表 */
-    for(auto tb : redo_list) {
-        if(tb->action == Turnback::AC_Content_Flow) {
-            auto obj = (AnchorObj*)SoupleManager::getObjById(tb->attach_obj_id);
-            if(obj) obj->removeFlowAttacher(tb); //移除附着符
-        }
-    }
+    // for(auto tb : redo_list) {
+    //     if(tb->action == Turnback::AC_Content_Flow) {
+    //         auto obj = (AnchorObj*)SoupleManager::getObjById(tb->attach_obj_id);
+    //         if(obj) obj->removeFlowAttacher(tb); //移除附着符
+    //     }
+    // }
     redo_list.clear(); //清除重做列表
     if(turnback_list.size() > max_num) {
         auto tb = turnback_list.front();
         turnback_list.pop_front();
-        auto obj = (AnchorObj*)SoupleManager::getObjById(tb->attach_obj_id);
-        if(obj) obj->removeFlowAttacher(tb); //移除附着符
+        //auto obj = (AnchorObj*)SoupleManager::getObjById(tb->attach_obj_id);
+        //if(obj) obj->removeFlowAttacher(tb); //移除附着符
     }
     turnback_list.back()->time_stamp = Helper::ptime;
     return turnback_list.back();
@@ -35,9 +35,13 @@ void TurnbackManager::undo() {
         redo_list.push_back(tb);
         qDebug() << "UNDO: ";
         tb->print();
-        Obj* obj = SoupleManager::getObjById(tb->attach_obj_id);
-        if(! obj) return;
-        tb->undo(tb,obj);
+        if(tb->attach_obj_id >= 0) {
+            Obj* obj = SoupleManager::getObjById(tb->attach_obj_id);
+            if(! obj) return;
+            tb->undo(tb,obj);
+        } else {
+            tb->undo(tb,0);
+        }
     };
     while(!turnback_list.empty() && turnback_list.back()->trigger_by_software)
         __undo(); //跳过所有“软件”Turnback，直到找到第一个“用户”Turnback
@@ -55,9 +59,13 @@ void TurnbackManager::redo() {
         Turnback* tb = redo_list.back();
         redo_list.pop_back();
         turnback_list.push_back(tb);
-        Obj* obj = SoupleManager::getObjById(tb->attach_obj_id);
-        if(! obj) return;
-        tb->redo(tb,obj);
+        if(tb->attach_obj_id >= 0) {
+            Obj* obj = SoupleManager::getObjById(tb->attach_obj_id);
+            if(! obj) return;
+            tb->redo(tb,obj);
+        } else {
+            tb->redo(tb,0);
+        }
     };
     while(!redo_list.empty() && redo_list.back()->trigger_by_software)
         __redo(); //跳过所有“软件”Turnback，直到找到第一个“用户”Turnback

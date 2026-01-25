@@ -3,6 +3,9 @@
 #include "magicalcursor.h"
 #include "anchorobj_flowtext.h"
 #include "souplemanager.h"
+#include "turnbackmanager.h"
+#include "serialization.h"
+#include "turnback_template.hpp"
 
 extern QGuiApplication *global_app;
 extern QObject* qmlRoot;
@@ -40,9 +43,9 @@ bool UniformKB::dealKeyPressed(const QKeyEvent* ke)
             else {
                 //可能是输入文本
                 QString text = ke->text();
-
                 if(! text.isEmpty()) {
                     SelectionManager::deleteAllSelectedObjs();
+
                 }
             }
         }
@@ -53,8 +56,25 @@ bool UniformKB::dealKeyPressed(const QKeyEvent* ke)
         if(who && QML_VALID(who) && who->qmlItem->hasFocus())
         { //有焦点
             auto& keyInfo = who->keyInfo();
+
+            if(ke->key() == Qt::Key_Backspace) {
+                //退格
+                qDebug() << "Cursor - 退格";
+                if(keyInfo.selfDeal_backspace)
+                    return false; //自行处理退格，则不进行统一处理
+                //创建undo/redo对象
+
+                //auto tb = TurnbackManager::addTurnback();
+
+
+                who->removeSelf(true);
+                //who->setHidden(true); //仅设置hidden_sign，把对象移除出文档流。
+                return true;
+            } // else-->
+
             if(keyInfo.selfDeal_input)
-                return false; //自处理输入按键，则不进行统一处理
+                return false; //自处理非退格输入按键，则不进行统一处理
+
             Qt::KeyboardModifiers km = ke->modifiers();
             if(km.testAnyFlag(Qt::ControlModifier)) {
                 //按下Ctrl
@@ -65,12 +85,6 @@ bool UniformKB::dealKeyPressed(const QKeyEvent* ke)
                 default: return false; //其余情况不处理。
                 }
                 return true; //凡是被switch处理的情况，一律过滤
-            }
-            else if(ke->key() == Qt::Key_Backspace) {
-                //退格
-                qDebug() << "Cursor - 退格";
-                who->removeSelf(true);
-                return true;
             }
             else {
                 //可能是输入文本
@@ -84,16 +98,20 @@ bool UniformKB::dealKeyPressed(const QKeyEvent* ke)
                                           ->as<AnchorObj_FlowText*>();
 
                         if(right_text_obj) { //如果右边就有文本对象
-                            right_text_obj->text = text + right_text_obj->text;
+                            //right_text_obj->text = text + right_text_obj->text;
                             if( ! QML_VALID(right_text_obj)) {
                                 right_text_obj->qmlItem = right_text_obj->generateQmlItem();
                                 SoupleManager::notifyVisible(right_text_obj);
                             }
-                            if(QML_VALID(right_text_obj)) { //谨防qmlItem创建失败
+                            if(QML_VALID(right_text_obj)) { //谨防qmlItem创建(故意)失败
                                 right_text_obj->qmlItem->setFocus(true);
-                                right_text_obj->qmlItem->setProperty("text",right_text_obj->text);
+                                right_text_obj->qmlItem->setProperty("text",text + right_text_obj->text);
                                 right_text_obj->qmlItem->setProperty("cursorPosition",text.length());
+                                //前后端协同，修改前端自然会修改后端；
+                                //对于这种前后端绑定的属性，建议修改前端。自然记录撤回
                             }
+                            //right_text_obj->dealCommandFromQmlItem(Helper::TEXT_UP,
+                            //                                text + right_text_obj->text);
                             return true;
                         }
 
@@ -125,6 +143,8 @@ bool UniformKB::dealKeyPressed(const QKeyEvent* ke)
                         text_obj->qmlItem = text_obj->generateQmlItem();
                         // 通知SM：该对象已经可见了；如果不通知，该对象将无法正常调控。
                         SoupleManager::notifyVisible(text_obj);
+
+                        TurnbackManager::addTurnback_of_obj_remove_or_insert<false,true>(text_obj);
 
                         if(QML_VALID(text_obj)) { //谨防qmlItem创建失败
                             text_obj->qmlItem->setFocus(true);

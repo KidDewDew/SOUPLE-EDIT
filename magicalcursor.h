@@ -22,7 +22,7 @@ public:
     // 初始化，请在Main.qml可用后调用
     static void init();
 
-    // 光标位于哪个obj上,注意该函数不是O(1)复杂度。
+    // 光标位于哪个obj上,注意该函数不是常数1的复杂度。
     static Obj* at_who() {
         return obj_at.valid() ? obj_at.get() : nullptr;
     }

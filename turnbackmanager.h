@@ -8,7 +8,7 @@
 
 class Obj;
 
-// 请每个HLine对象记录自己的Turnback，并处理Turnback的流动和换行。
+// 请每个(anchorobj)对象记录自己的Turnback，并处理Turnback的流动和换行。
 struct Turnback : public FlowAttacher {
     enum {
         AC_Single_Obj,  //针对单一对象的动作（保证该对象不会分裂和合并即可）
@@ -58,7 +58,31 @@ public:
         requires requires(_Func func,T* obj,int start_i,int len){
             {func(obj,start_i,len)}->std::same_as<void>;
         }
-    static auto new_template_walker(_Func func,int contentLength);
+    static auto new_template_walker(_Func func,int contentLength,int offset=0);
+
+    /**
+     * @brief addTurnback_of_obj_remove_or_insert
+     *       添加撤回/重做记录，专门处理对象删除或插入
+     *       本函数能够处理非anchorObj和anchorObj，请确保每个obj是否是anchorObj与objs[0]一致
+     *       当对象是anchorObj时，如果设置objs_sorted=true，那么请确保objs是按照对象顺序进行排序；
+     *            如果设置objs_sorted=false,本函数将自己完成对objs的排序，nlgn的复杂度。
+     *       显然，objs的长度可以为 1
+     *       ---------------------------
+     *       注意，本函数会对objs进行删除操作，如果isRemoval=true
+     *
+     * @template-param isRemoval: 是否是对这些objs进行了移除操作
+     *                            否则是对这些objs进行了插入操作
+     * @param objs
+     */
+    template<bool isRemoval,bool objs_sorted>
+    static inline void addTurnback_of_obj_remove_or_insert(
+            const std::vector<Obj*>& objs);
+
+    //特化版本：只有一个对象删除/插入
+    //因此，模板参数objs_sorted被忽略。
+    template<bool isRemoval,bool objs_sorted>
+    static inline void addTurnback_of_obj_remove_or_insert(Obj* obj);
+
 public:
     static inline int max_num = 1000000; //默认最大撤回存储量
 private:

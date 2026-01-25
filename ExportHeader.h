@@ -23,7 +23,7 @@ class Obj_Page;
 // 典型的，它被Turnback(撤回/重做符)继承。
 class FlowAttacher {
 public:
-    int attach_obj_id;    //附着的obj id
+    OBJID_t attach_obj_id;    //附着的obj id
     int flow_position;    //操作位于行内容流的位置
 };
 

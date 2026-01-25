@@ -72,6 +72,11 @@ public:
 
     virtual AnchorObj *getLastObj() const;
 
+    //可以作为“桩”吗
+    virtual bool isStake() const noexcept {
+        return false;
+    }
+
     // connect_l2r(至少两个对象才可以使用)
     // 从左到右逐个连接，模板展开。【注】没有递归开销
     template <typename...Ts>
@@ -126,33 +131,48 @@ protected:
     // to_merge_obj: 将要合并掉的对象
     // add_flow_position: 对合并的flow_attacher，增加的偏移量、
     // 注：该函数确保`左对象`合并`右对象`。
-    void merge_flowAttachers(AnchorObj* to_merge_obj,int add_flow_position) {
-        for(auto attacher : to_merge_obj->flow_attachers) {
-            attacher->flow_position += add_flow_position;
-            attacher->attach_obj_id = id;
-            flow_attachers.push_back(attacher);
-        }
-    }
+    // @template-arg Clear: 是否清除to_merge_obj对象的flow_attachers
+    // template <bool Clear=true>
+    // void merge_flowAttachers(AnchorObj* to_merge_obj,int add_flow_position) {
+    //     qDebug() << __dstr() << "mergeFlowAttachers: " << to_merge_obj->__dstr();
+    //     for(auto attacher : to_merge_obj->flow_attachers) {
+    //         attacher->flow_position += add_flow_position;
+    //         attacher->attach_obj_id = id;
+    //         flow_attachers.push_back(attacher);
+    //     }
+    //     if constexpr(Clear) {
+    //         to_merge_obj->flow_attachers.clear();
+    //     }
+    // }
 
     // 移动流附着符
     // @param add_flow_position: 移动的步数 正数:向后 负数:向前
-    void moveFlowAttachers(int add_flow_position) {
-        for(auto attacher : flow_attachers) {
-            attacher->flow_position += add_flow_position;
-        }
-    }
+    // void moveFlowAttachers(int add_flow_position) {
+    //     for(auto attacher : flow_attachers) {
+    //         attacher->flow_position += add_flow_position;
+    //     }
+    // }
 
+public:
     // 添加流附着符
-    void addFlowAttacher(FlowAttacher* attacher) {
-        flow_attachers.push_back(attacher);
-    }
+    // void addFlowAttacher(FlowAttacher* attacher) {
+    //     qDebug() << __dstr() << "addFlowAttacher: " << attacher->flow_position;
+    //     flow_attachers.push_back(attacher);
+    // }
 
     // 移除指定流附着符
-    void removeFlowAttacher(FlowAttacher* attacher) {
-        std::ranges::remove(flow_attachers,attacher);
-    }
+    // void removeFlowAttacher(FlowAttacher* attacher) {
+    //     std::ranges::remove(flow_attachers,attacher);
+    // }
 
-    std::vector<FlowAttacher*> flow_attachers;
+    //于[2026/1/26 删除FlowAttacher机制，转为使用插标法
+    //  即有专门的AnchorObj来保存flow_attachers。新增机制
+    //  由于原机制管理复杂，细节多，易出错，难于调试。
+    //std::vector<FlowAttacher*> flow_attachers;
+
+    //新版本的addFlowAttacher
+    void addFlowAttacher(FlowAttacher* attacher);
+
 private:
 };
 

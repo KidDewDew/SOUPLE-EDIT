@@ -210,7 +210,12 @@ void SoupleManager::imp_updateUI()  //更新ui
                 if(!isIter2Danger && obj == *scan_iter2) {
                     isIter2Danger = true;
                 }
-                delete obj;
+
+                //hidden_sign移除出文档流，dead_sign delete.
+                if(obj->dead_sign)
+                {
+                    delete obj;
+                }
                 //++NUM2;
                 //qDebug() << "注册:" << NUM1 << "删除:" << NUM2;
                 scan_iter = all_objs.erase(scan_iter);

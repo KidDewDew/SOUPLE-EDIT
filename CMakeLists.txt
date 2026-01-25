@@ -37,7 +37,7 @@ qt_add_executable(appSoupleEdit
 )
 
 add_definitions(
--DOBJID_t=quint32
+-DOBJID_t=qint32
 )
 
 #include_directories(C:/Users/guest0/Downloads/poppler-23.07.0/qt6/src)
@@ -259,6 +259,8 @@ qt_add_qml_module(appSoupleEdit
         RESOURCES readme.txt
         SOURCES table_extract_tool.h
         SOURCES table_extract_tool.cpp
+        SOURCES objutil.h
+        SOURCES anchornull.h anchornull.cpp
         #RESOURCES vcpkg.json
 )
 

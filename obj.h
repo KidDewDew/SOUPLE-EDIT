@@ -31,8 +31,8 @@ struct Obj_Global_Info {
 
 // 注意，selfDeal_input=true的对象不仅得自己处理键盘事件，还得自己绘制光标
 struct Obj_KeyEvent_Info {
-    bool selfDeal_backspace;//是否自己处理退格
-    bool selfDeal_input; //是否自己处理输入(除退格外的按键)
+    bool selfDeal_backspace; //是否自己处理退格
+    bool selfDeal_input;     //是否自己处理输入(除退格外的按键)
 };
 
 
@@ -168,8 +168,9 @@ public:
      *    因此，移除对象的最佳方法就是使用该函数。
      */
     virtual void removeSelf(bool dead = true) {
-        if(dead) dead_sign = true;
+        if(dead) dead_sign /*= hidden_sign*/ = true;
     }
+
 
     // 获取x+width的值。
     virtual float getRightX() const { return x + width; }
@@ -216,6 +217,10 @@ public:
         this->height = height;
         if(Helper::isQmlItemValid(qmlItem)) qmlItem->setHeight(height);
     }
+
+    //void setHidden(bool hidden) noexcept {
+    //    this->hidden_sign = hidden;
+    //}
 
     // 该函数指明一个对象如何“丢弃”qml对象
     // 典型的，如果使用了UIItemPool，在这里回收qml对象
@@ -342,7 +347,10 @@ public:
 
     virtual ~Obj();
 public:
+
+    //注意，如果dead_sign=true则hidden_sign一定=true
     bool dead_sign = false; //死亡标志(置位后，由SoupleManager负责删除obj)
+    //bool hidden_sign = false; //隐藏标志(置位后，对象将被移除出文档流，但不被删除)
     float x=0,y=-1000,width=0,height=0;
 #ifdef ULONGLONG_OBJID
     uint64_t id;

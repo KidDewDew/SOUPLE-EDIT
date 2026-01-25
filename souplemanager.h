@@ -27,7 +27,7 @@
 #ifdef ULONGLONG_OBJID
     typedef quint64 OBJID_t;
 #else
-    typedef quint32 OBJID_t;
+    typedef qint32 OBJID_t;
 #endif
 
 #define Soup_Mgr SoupleManager

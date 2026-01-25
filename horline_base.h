@@ -295,14 +295,14 @@ public:
         void walk_to_next() {
             rest_content_length = rest_content_length +
                                   content_length_at_obj - this_obj_content_length;
-            qDebug() << "walk_to_next(rest:"<<rest_content_length;
+            //qDebug() << "walk_to_next(rest:"<<rest_content_length;
             content_length_at_obj = 0;
             if(rest_content_length <= 0) {
                 rest_content_length = 0;
                 return;
             }
             to_next_obj();
-            qDebug() << "at " << obj_at;
+            //qDebug() << "at " << obj_at;
             //必须提前计算这个obj的内容长度
             if(obj_at) {
                 this_obj_content_length = obj_at->contentLength();
@@ -323,7 +323,7 @@ public:
         }
         // 走step步
         void walk_by(int step) {
-            qDebug() << "walk by " << step;
+            //qDebug() << "walk by " << step;
             if(step > 0) goto STEP_GE_0;
             else if(step < 0)goto STEP_LE_0;
             else return;

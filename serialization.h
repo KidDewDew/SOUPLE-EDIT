@@ -27,6 +27,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFile>
+#include "helper.h"
 #include "LLException.h"
 
 class Register_ID_Repeat_Error : std::exception {};
@@ -309,6 +310,16 @@ namespace souple {
             it_si->serialize(obj,serial_output);
         }
 
+        template<typename T>
+        static inline QByteArray serialize(const Iterable<T*> auto& objs) {
+            QByteArray bytes;
+            QDataStream ds(&bytes,QIODevice::WriteOnly);
+            for(auto obj : objs) {
+                souple::serialization::serialize(obj,ds);
+            }
+            return bytes;
+        }
+
         static inline void* unserialize(QDataStream& ds) {
             Serial_Input serial_input(&ds);
             short id;
@@ -322,6 +333,22 @@ namespace souple {
             //qDebug() << "unserialize:" << id << si.id;
             void* obj = it_si->unserialize(serial_input); //反序列化
             return obj;
+        }
+
+        template<class T>
+        static inline void unserialize_list(QByteArray& bytes,CanPushback<T*> auto& result) {
+            QDataStream ds(&bytes,QIODevice::ReadOnly);
+            while(! ds.atEnd()) {
+                result.push_back(
+                    (T*)souple::serialization::unserialize(ds)
+                );
+            }
+        }
+
+        template<class T>
+        static inline T* unserialize_one(QByteArray& bytes) {
+            QDataStream ds(&bytes,QIODevice::ReadOnly);
+            return (T*)unserialize(ds);
         }
 
         // inline void* unserialize_xml(const QString& str,int &i) {
