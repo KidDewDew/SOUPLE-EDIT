@@ -65,6 +65,7 @@ void SelectionManager::staticProperty(QObject* pobj)
         if(! obj) continue;
 
         const std::type_info& ti = typeid(*obj);
+
         if(typeid(AnchorObj_PHRight).before(ti)) {
             ++line_count;
         } else if(typeid(AnchorObj_PHLeft).before(ti)) {
@@ -221,6 +222,12 @@ void SelectionManager::staticProperty(QObject* pobj)
         pobj->setProperty("menablestroke",false);
         pobj->setProperty("eenablestroke",hasEnableStroke);
         pobj->setProperty("enablestroke",enableStroke);
+    }
+    if(multi_strokeWidth) pobj->setProperty("mstrokewidth",true);
+    else {
+        pobj->setProperty("mstrokewidth",false);
+        pobj->setProperty("estrokewidth",hasEnableStroke);
+        pobj->setProperty("strokewidth",strokeWidth);
     }
     if(multi_enableFill) pobj->setProperty("menablefill",true);
     else {

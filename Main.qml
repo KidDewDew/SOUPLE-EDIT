@@ -337,6 +337,19 @@ Window {
     //     return soupleEdit;
     // }
 
+    Popup {
+        id: popup_for_color
+        property var callback
+        contentItem: ColorPanel {
+            onColorSelected: function(selected_color) {
+                popup_for_color.close()
+                if(popup_for_color.callback) {
+                    popup_for_color.callback(selected_color)
+                }
+            }
+        }
+    }
+
     Dialog {
         id: dialog_loading
         anchors.centerIn: Overlay.overlay

@@ -94,7 +94,8 @@ GridLayout {
             onClicked: {
                 font_dialog.open()
                 font_dialog.callback = function() {
-                    tf_font.text = font_dialog.selectedFont.family
+                    spp.efamily = true
+                    spp.family = font_dialog.selectedFont.family
                 }
             }
         }
@@ -145,19 +146,19 @@ GridLayout {
     LineText {
         Layout.columnSpan: 2
         Layout.fillWidth: true
-        text: "文本属性"
+        text: "描边与填充"
     }
 
     CheckBox {
         id: cb_enable_stroke
         text: "开启描边"
-        Layout.columnSpan: 2
+        //Layout.columnSpan: 2
         Component.onCompleted: checked = spp.menablestroke || spp.enablestroke && spp.eenablestroke
         Binding on checked {
             when: spp.enablestrokeChanged || spp.menablestrokeChanged || spp.eenablestrokeChanged
             value: spp.menablestroke || spp.enablestroke && spp.eenablestroke
         }
-        enabled: spp.eenablestroke && spp.enablestroke || spp.menablestroke
+        enabled: spp.eenablestroke/* && spp.enablestroke || spp.menablestroke*/
         onCheckedChanged: {
 
         }
@@ -171,8 +172,38 @@ GridLayout {
         }
     }
 
-    Text { visible: cb_enable_stroke.checked
-        text: "描边宽度"; font.pixelSize: 16 }
+    Row {
+        Text {
+            text: "描边颜色"
+        }
+        ColorComboBox {
+
+        }
+        // ColorSelector {
+        //     //visible: cb_enable_stroke.checked
+        //     enabled: spp.estrokecolor || spp.mstrokecolor
+        //     Binding on color {
+        //         when: spp.estrokecolorChanged || spp.mstrokecolorChanged || spp.strokecolorChanged
+        //         value: spp.strokecolor
+        //     }
+        //     onColorChanged: {
+
+        //     }
+        //     Text {
+        //         text: "[多种]"
+        //         color: "#CF834C"
+        //         x: parent.width
+        //         anchors.verticalCenter: parent.verticalCenter
+        //         font.pixelSize: 13
+        //         visible: spp.mstrokecolor
+        //     }
+        // }
+    }
+
+    Text {
+        visible: cb_enable_stroke.checked
+        text: "描边宽度"; font.pixelSize: 16
+    }
     MyDoubleSpinBox {
         id: spinbox_strokeWidth
         visible: ! spp.mstrokewidth && spp.estrokewidth && cb_enable_stroke.checked
@@ -207,48 +238,34 @@ GridLayout {
     }
 
 
-    Text { visible: cb_enable_stroke.checked
-        text: "描边颜色"; font.pixelSize: 16 }
+    // Text { visible: cb_enable_stroke.checked
+    //     text: "描边颜色"; font.pixelSize: 16 }
 
-    ColorSelector {
-        visible: cb_enable_stroke.checked
-        enabled: spp.estrokecolor || spp.mstrokecolor
-        Binding on color {
-            when: spp.estrokecolorChanged || spp.mstrokecolorChanged || spp.strokecolorChanged
-            value: spp.strokecolor
-        }
-        onColorChanged: {
-
-        }
-        Text {
-            text: "[多种]"
-            color: "#CF834C"
-            x: parent.width
-            anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 13
-            visible: spp.mstrokecolor
-        }
-    }
 
     CheckBox {
         id: cb_enable_fill
         text: "开启填充"
-        Layout.columnSpan: 2
         onCheckedChanged: {
 
         }
     }
 
-    Text { visible: cb_enable_fill.checked
-        text: "填充颜色"; font.pixelSize: 16 }
+    Row {
+        Text {
+            font.pixelSize: 16
+        }
+        ColorSelector {
+            onColorChanged: {
 
-    ColorSelector {
-        visible: cb_enable_fill.checked
-        onColorChanged: {
-
+            }
         }
     }
 
+    LineText {
+        Layout.columnSpan: 2
+        Layout.fillWidth: true
+        text: "文本属性"
+    }
 
     CheckBox {
         text: "粗体"
@@ -297,13 +314,37 @@ GridLayout {
     LineText {
         Layout.columnSpan: 2
         Layout.fillWidth: true
+        text: "内容对齐"
+    }
+
+    Text {
+        text: "垂直对齐"
+    }
+
+    ComboBox {
+        model: ["基线对齐","顶部对齐","居中对齐","底部对齐"]
+    }
+
+    Text {
+        text: "对齐偏移"
+    }
+
+    MyDoubleSpinBox {
+        suffix: "pt"
+        precision: 1
+        step: 0.5
+    }
+
+    LineText {
+        Layout.columnSpan: 2
+        Layout.fillWidth: true
         text: "内容统计"
     }
 
     LineText {
         Layout.columnSpan: 2
         Layout.fillWidth: true
-        text: "文本替换"
+        text: "查找/替换"
     }
 
 }

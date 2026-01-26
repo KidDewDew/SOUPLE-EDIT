@@ -261,6 +261,9 @@ qt_add_qml_module(appSoupleEdit
         SOURCES table_extract_tool.cpp
         SOURCES objutil.h
         SOURCES anchornull.h anchornull.cpp
+        QML_FILES ColorComboBox.qml
+        QML_FILES ColorPanel.qml
+        QML_FILES etc_helper.js
         #RESOURCES vcpkg.json
 )
 
